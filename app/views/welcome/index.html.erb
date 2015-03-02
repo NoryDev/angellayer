@@ -5,12 +5,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-offset-1">
+        <%= image_tag("logo.svg", width: "600", alt: "angellayer_logo", title: "Angel Layer", class: "logo") %>
         <h1>Angel Layer</h1>
-        <p>Our catch phrase is going to impress you.</p>
+        <p class="subtitle">Our catch phrase is going to impress you.</p>
         <div class="my-buttons">
           <%= link_to "Log in as a founder", new_founder_session_path, class: "btn btn-danger" %>
           <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-danger" %>
-          or <%= link_to "register", new_founder_registration_path %>
+          <p>or <%= link_to "register", new_founder_registration_path %></p>
         </div>
       </div>
     </div>
