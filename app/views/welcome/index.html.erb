@@ -2,5 +2,17 @@
 <p>Find me in app/views/welcome/index.html.erb</p> -->
 
 <div id="home-wrapper">
-
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1">
+        <h1>Angel Layer</h1>
+        <p>Our catch phrase is going to impress you.</p>
+        <div class="my-buttons">
+          <%= link_to "Log in as a founder", new_founder_session_path, class: "btn btn-danger" %>
+          <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-danger" %>
+          or <%= link_to "register", new_founder_registration_path %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
