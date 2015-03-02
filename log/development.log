@@ -5087,3 +5087,76 @@ Processing by Devise::SessionsController#new as HTML
   Rendered shared/_navbar.html.erb (1.1ms)
   Rendered shared/_notices.html.erb (0.1ms)
 Completed 200 OK in 159ms (Views: 157.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/auth/facebook" for 127.0.0.1 at 2015-03-02 18:39:05 +0100
+
+
+Started GET "/founders/auth/facebook/callback?code=AQDrAnluD8QQBJ1xtj0Hlh0Ymlkgpjbc3ATYv0EPcBaHBwaR-AhDdVMNgKHUT4Wv1tU6ZxZdqOghkMDiDEklkqEaNvNGBTNWR4Vn504_-YINKwFjF4P2FIyC1HAtlhwFa0hOld4AYd6akKwq1UKEQEBMBw6ohDBJ-Xhf-uolJzvti4Yr1y6aAI18Y0z5Hsy1eIP6-l8_On5tEQmSnTViSUS59savyfivXMGR7nqaYuy2bnCt5GadUqhA_CqZ37RMTrhiHQqxFm6fBJ0efk9t4v3RFPsaABjObVYE38pamGBpfK9NCLxrJ17rV2pdAlnt5bOOmGjm1lwG_bqsT4ZBT-SK&state=a1b25e112874bead55080ec9b0834c06d390d9777a904365" for 127.0.0.1 at 2015-03-02 18:39:05 +0100
+Processing by Founders::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDrAnluD8QQBJ1xtj0Hlh0Ymlkgpjbc3ATYv0EPcBaHBwaR-AhDdVMNgKHUT4Wv1tU6ZxZdqOghkMDiDEklkqEaNvNGBTNWR4Vn504_-YINKwFjF4P2FIyC1HAtlhwFa0hOld4AYd6akKwq1UKEQEBMBw6ohDBJ-Xhf-uolJzvti4Yr1y6aAI18Y0z5Hsy1eIP6-l8_On5tEQmSnTViSUS59savyfivXMGR7nqaYuy2bnCt5GadUqhA_CqZ37RMTrhiHQqxFm6fBJ0efk9t4v3RFPsaABjObVYE38pamGBpfK9NCLxrJ17rV2pdAlnt5bOOmGjm1lwG_bqsT4ZBT-SK", "state"=>"a1b25e112874bead55080ec9b0834c06d390d9777a904365"}
+  [1m[35mFounder Load (0.5ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."provider" = $1 AND "founders"."uid" = $2  ORDER BY "founders"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "922202254481054"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "founders" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "founders"."id" = $5  [["last_sign_in_at", "2015-03-02 17:29:29.733626"], ["current_sign_in_at", "2015-03-02 17:39:05.689728"], ["sign_in_count", 4], ["updated_at", "2015-03-02 17:39:05.691578"], ["id", 1]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:39:05 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (2.0ms)
+  [1m[35mFounder Load (0.6ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 113ms (Views: 111.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:41:48 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (0.7ms)
+  [1m[36mFounder Load (0.3ms)[0m  [1mSELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_navbar.html.erb (18.3ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 128ms (Views: 124.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2015-03-02 18:41:53 +0100
+Processing by EvaluationsController#index as HTML
+  [1m[35mFounder Load (0.6ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mEvaluation Load (1.3ms)[0m  [1mSELECT "evaluations".* FROM "evaluations"[0m
+  Rendered evaluations/index.html.erb within layouts/application (4.8ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_notices.html.erb (0.0ms)
+Completed 200 OK in 150ms (Views: 124.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2015-03-02 18:42:28 +0100
+Processing by EvaluationsController#index as HTML
+  [1m[35mFounder Load (0.4ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mEvaluation Load (0.4ms)[0m  [1mSELECT "evaluations".* FROM "evaluations"[0m
+  Rendered evaluations/index.html.erb within layouts/application (2.3ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 125ms (Views: 120.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/evaluations/new" for 127.0.0.1 at 2015-03-02 18:42:37 +0100
+Processing by EvaluationsController#new as HTML
+  [1m[35mFounder Load (0.7ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mInvestor Load (2.3ms)[0m  [1mSELECT "investors".* FROM "investors"[0m
+  [1m[35mFounder Load (0.4ms)[0m  SELECT "founders".* FROM "founders"
+  Rendered evaluations/_form.html.erb (117.8ms)
+  Rendered evaluations/new.html.erb within layouts/application (120.2ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 261ms (Views: 235.4ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:49:59 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (2.9ms)
+  [1m[36mFounder Load (0.3ms)[0m  [1mSELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_navbar.html.erb (2.8ms)
+  Rendered shared/_notices.html.erb (0.4ms)
+Completed 200 OK in 200ms (Views: 198.5ms | ActiveRecord: 0.3ms)
