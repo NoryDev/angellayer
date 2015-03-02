@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resources :evaluations
 
-  devise_for :founders
+
   devise_for :investors
+  devise_for :founders, controllers: { omniauth_callbacks: "founders/omniauth_callbacks" }
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
