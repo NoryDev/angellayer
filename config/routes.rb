@@ -1,4 +1,36 @@
 Rails.application.routes.draw do
+  # namespace :founders do
+  # get 'profile/index'
+  # end
+
+  # namespace :founders do
+  # get 'profile/show'
+  # end
+
+  # namespace :founders do
+  # get 'profile/new'
+  # end
+
+  # namespace :founders do
+  # get 'profile/edit'
+  # end
+
+  # namespace :founders do
+  # get 'profile/create'
+  # end
+
+  # namespace :founders do
+  # get 'profile/update'
+  # end
+
+  # namespace :founders do
+  # get 'profile/destroy'
+  # end
+
+  scope module: 'founders' do
+    resources :profiles
+  end
+
   get 'welcome/index'
 
   resources :evaluations
