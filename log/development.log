@@ -1085,3 +1085,66 @@ Processing by Devise::SessionsController#new as HTML
   Rendered /Users/floup/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (25.5ms)
   Rendered shared/_notices.html.erb (0.5ms)
 Completed 200 OK in 5558ms (Views: 5556.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 15:57:26 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (25.3ms)
+  Rendered shared/_notices.html.erb (0.3ms)
+Completed 200 OK in 9806ms (Views: 9691.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 15:58:21 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 5871ms (Views: 5871.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 15:58:34 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 5536ms (Views: 5535.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 15:59:25 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 9755ms (Views: 9754.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 16:00:13 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.5ms)
+Completed 200 OK in 6273ms (Views: 6273.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 16:00:31 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.4ms)
+Completed 200 OK in 6033ms (Views: 6032.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 16:00:54 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 6137ms (Views: 6136.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 16:01:19 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 5523ms (Views: 5522.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-03-02 16:01:33 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 5464ms (Views: 5463.1ms | ActiveRecord: 0.0ms)
