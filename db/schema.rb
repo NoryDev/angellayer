@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302133942) do
+ActiveRecord::Schema.define(version: 20150302140014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "investor_id"
+    t.integer  "founder_id"
+    t.text     "review"
+    t.float    "rating_reputation"
+    t.float    "rating_deal"
+    t.float    "rating_pitch"
+    t.float    "rating_competence"
+    t.float    "rating_commitment"
+    t.integer  "amount_raised"
+    t.boolean  "would_work_again"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "evaluations", ["founder_id"], name: "index_evaluations_on_founder_id", using: :btree
+  add_index "evaluations", ["investor_id"], name: "index_evaluations_on_investor_id", using: :btree
 
   create_table "founders", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -52,4 +70,6 @@ ActiveRecord::Schema.define(version: 20150302133942) do
   add_index "investors", ["email"], name: "index_investors_on_email", unique: true, using: :btree
   add_index "investors", ["reset_password_token"], name: "index_investors_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "evaluations", "founders"
+  add_foreign_key "evaluations", "investors"
 end
