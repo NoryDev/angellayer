@@ -41,6 +41,9 @@ gem 'simple_form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'rails_12factor', group: :production
+gem 'puma',           group: :production
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
