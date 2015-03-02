@@ -4779,3 +4779,311 @@ Processing by WelcomeController#index as HTML
   Rendered shared/_navbar.html.erb (4.6ms)
   Rendered shared/_notices.html.erb (0.1ms)
 Completed 200 OK in 142ms (Views: 140.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:20:20 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (1.0ms)
+  [1m[35mFounder Load (0.5ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_navbar.html.erb (3.5ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 132ms (Views: 131.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/founders/sign_out" for 127.0.0.1 at 2015-03-02 18:20:26 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"40xQ9MWuH2IYaHXJWYSoQSXEdoAgiv+SOAAq6mkQBDmdpaNM51EebtwNmwffixn80BtihJQ9kMRY9L4J0ojBfw=="}
+  [1m[36mFounder Load (0.3ms)[0m  [1mSELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:20:26 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (0.6ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 116ms (Views: 115.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:20:30 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (13.8ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (49.2ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 175ms (Views: 170.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:20:38 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (7.1ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (13.5ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 135ms (Views: 134.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:20:41 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (13.1ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (25.7ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 152ms (Views: 150.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:21:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (5.2ms)
+  Rendered shared/_navbar.html.erb (20.7ms)
+  Rendered shared/_notices.html.erb (0.8ms)
+Completed 200 OK in 314ms (Views: 303.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:21:04 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (1.0ms)
+  Rendered shared/_navbar.html.erb (2.1ms)
+  Rendered shared/_notices.html.erb (0.3ms)
+Completed 200 OK in 147ms (Views: 146.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:21:07 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (15.5ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (42.2ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 205ms (Views: 181.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:21:10 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (6.7ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (21.9ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 162ms (Views: 160.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:21:46 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (9.1ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (17.3ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 157ms (Views: 154.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:22:04 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (11.9ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (19.3ms)
+  Rendered shared/_navbar.html.erb (1.8ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 150ms (Views: 148.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:22:05 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (11.5ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (19.1ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 152ms (Views: 151.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:22:06 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (6.8ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (15.9ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 160ms (Views: 158.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:22:31 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (15.0ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (47.2ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+  Rendered shared/_notices.html.erb (0.5ms)
+Completed 200 OK in 328ms (Views: 288.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:22:53 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (12.8ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (36.3ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 200ms (Views: 196.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:22:55 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (9.2ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (18.1ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 170ms (Views: 169.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:23:15 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (5.5ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (16.0ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 139ms (Views: 138.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:23:19 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (8.6ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (19.0ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 147ms (Views: 146.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:24:25 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (21.7ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (56.3ms)
+  Rendered shared/_navbar.html.erb (4.2ms)
+  Rendered shared/_notices.html.erb (0.6ms)
+Completed 200 OK in 341ms (Views: 308.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:24:34 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (2.3ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 193ms (Views: 192.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:24:39 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (1.1ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 130ms (Views: 129.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:24:43 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (4.0ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (11.2ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 161ms (Views: 160.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:25:22 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (8.8ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (19.2ms)
+  Rendered shared/_navbar.html.erb (2.8ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 157ms (Views: 155.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/auth/facebook" for 127.0.0.1 at 2015-03-02 18:29:29 +0100
+
+
+Started GET "/founders/auth/facebook/callback?code=AQBvn5gUZkiz0CbtPEbvUp5ZpjnSN59AHAvu7vKZWAmjMgJzqs_-ccOzsD4PjSPgeqPyz9jThFMTdqyA9JTrJKYSx0K0mpHgxqHWr_cNnvwVvUdvO3QCsdEjVkD5Q9rC5X7r8ujacKnhmCD9Spzar5K8naUWNGrdB3SiFSj2NOhDt57oe6LD0hvTXQUXKeeaOK39NNTx89stetew3OKF9XlcNCh1e4_gU6yDRMG_llFHsU1obDePtTRi1pKzW7s2nI1pQunRtqNIRQYrhSfXXp2dppMQtlH9Cjszi08LoiQXGwT7VxKmr_Kka78Y7pR5HscDTni_Oh0Qf1Ci_pksN6or&state=cccb026c69443569f819b6a4d3876caf6cc0416e9a794ae8" for 127.0.0.1 at 2015-03-02 18:29:29 +0100
+Processing by Founders::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQBvn5gUZkiz0CbtPEbvUp5ZpjnSN59AHAvu7vKZWAmjMgJzqs_-ccOzsD4PjSPgeqPyz9jThFMTdqyA9JTrJKYSx0K0mpHgxqHWr_cNnvwVvUdvO3QCsdEjVkD5Q9rC5X7r8ujacKnhmCD9Spzar5K8naUWNGrdB3SiFSj2NOhDt57oe6LD0hvTXQUXKeeaOK39NNTx89stetew3OKF9XlcNCh1e4_gU6yDRMG_llFHsU1obDePtTRi1pKzW7s2nI1pQunRtqNIRQYrhSfXXp2dppMQtlH9Cjszi08LoiQXGwT7VxKmr_Kka78Y7pR5HscDTni_Oh0Qf1Ci_pksN6or", "state"=>"cccb026c69443569f819b6a4d3876caf6cc0416e9a794ae8"}
+  [1m[35mFounder Load (0.6ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."provider" = $1 AND "founders"."uid" = $2  ORDER BY "founders"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "922202254481054"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "founders" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "founders"."id" = $5  [["last_sign_in_at", "2015-03-02 17:12:37.362889"], ["current_sign_in_at", "2015-03-02 17:29:29.733626"], ["sign_in_count", 3], ["updated_at", "2015-03-02 17:29:29.735485"], ["id", 1]]
+  [1m[36m (12.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 31ms (ActiveRecord: 13.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:29:29 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (2.2ms)
+  [1m[35mFounder Load (0.3ms)[0m  SELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered shared/_navbar.html.erb (3.1ms)
+  Rendered shared/_notices.html.erb (0.2ms)
+Completed 200 OK in 114ms (Views: 112.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/founders/sign_out" for 127.0.0.1 at 2015-03-02 18:29:33 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"oehJ6zFNvUttt5tFa2vfav/WYV4EQRofWK5m8N2F7B/HagiiOv0krniO91TSJAU8Q7o+6ETAhStOLyGllJ+nhg=="}
+  [1m[36mFounder Load (0.5ms)[0m  [1mSELECT  "founders".* FROM "founders" WHERE "founders"."id" = $1  ORDER BY "founders"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:29:33 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (0.7ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 108ms (Views: 107.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:35:19 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (2.5ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 148ms (Views: 146.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_up" for 127.0.0.1 at 2015-03-02 18:35:21 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (6.7ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (14.8ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 137ms (Views: 136.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:35:23 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (12.7ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (28.1ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 158ms (Views: 152.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-02 18:35:25 +0100
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/fullpage (1.1ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 119ms (Views: 117.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/investors/sign_in" for 127.0.0.1 at 2015-03-02 18:35:27 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (12.9ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (22.8ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 151ms (Views: 136.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/founders/sign_in" for 127.0.0.1 at 2015-03-02 18:35:31 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (12.0ms)
+  Rendered /Users/jacques/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (22.3ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_notices.html.erb (0.1ms)
+Completed 200 OK in 159ms (Views: 157.2ms | ActiveRecord: 0.0ms)
