@@ -9,19 +9,19 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <%= image_tag "logo.jpg" %>
+        <%= image_tag "logo.svg" %>
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fa fa-envelope-o"></i> <%= t(".messages", default: "Messages") %>
-            <% end %>
-          </li>
+        <% if founder_signed_in? %>
+          <!-- <li> -->
+            <%#= link_to "#" do %>
+              <!-- <i class="fa fa-envelope-o"></i> --> <%#= t(".messages", default: "Messages") %>
+            <%# end %>
+          <!-- </li> -->
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <%= image_tag "http://placehold.it/30x30", class: "img-avatar" %>
@@ -35,11 +35,11 @@
               </li>
               <li>
                 <%= link_to "#" do %>
-                  <i class="fa fa-home"></i>  <%= t ".profile", default: "Flat" %>
+                  <i class="fa fa-home"></i>  <%= t ".profile", default: "Reviews" %>
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= link_to destroy_founder_session_path, method: :delete do %>
                   <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
                 <% end %>
               </li>
@@ -47,14 +47,17 @@
           </li>
         <% else %>
           <li>
-            <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %>
+            <%= link_to t(".sign_up", default: "Sign up"), new_founder_registration_path %>
           </li>
           <li>
-            <%= link_to t(".sign_in", default: "Sign in"), new_user_session_path %>
+            <%= link_to t(".sign_in", default: "Sign in"), new_founder_session_path %>
           </li>
+          <li><%= link_to founder_omniauth_authorize_path(:facebook) do %>
+              Sign in with <i class="fa fa-facebook-square"></i><% end %>
+              </li>
         <% end %>
         <li>
-          <%= link_to t(".top_call_to_action", default: "Rent your flat"), "#", class: "btn" %>
+          <%= link_to t(".top_call_to_action", default: "All reviews"), "#", class: "btn" %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
