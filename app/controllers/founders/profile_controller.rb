@@ -1,4 +1,4 @@
-class Founders::ProfilesController < ApplicationController
+class Founders::ProfileController < ApplicationController
   before_action :set_founder, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,15 +19,15 @@ class Founders::ProfilesController < ApplicationController
     @founder = Founder.new(evaluation_params)
 
     if @founder.save
-      redirect_to @founder, notice: 'Your profile was successfully created.'
+      redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully created.'
     else
       render :new
     end
   end
 
   def update
-    if @founder.update(evaluation_params)
-      redirect_to @founder, notice: 'Your profile was successfully updated.'
+    if @founder.update(founder_params)
+      redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully updated.'
     else
       render :edit
     end

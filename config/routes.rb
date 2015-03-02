@@ -1,35 +1,40 @@
 Rails.application.routes.draw do
   # namespace :founders do
-  # get 'profile/index'
+  #   get '/' => "profiles#index"
   # end
 
   # namespace :founders do
-  # get 'profile/show'
+  #   get '/:id' => "profiles#show", as: :founder_profile
   # end
 
   # namespace :founders do
-  # get 'profile/new'
+  # get '/new' => "profiles#new", as: :new_founder_profile
   # end
 
   # namespace :founders do
-  # get 'profile/edit'
+  # get '/:id/edit' => "profiles#edit", as: :edit_founder_profile
   # end
 
   # namespace :founders do
-  # get 'profile/create'
+  # post '/' => "profiles#create"
   # end
 
   # namespace :founders do
-  # get 'profile/update'
+  # patch '/:id' => "profiles#update"
+  # put '/:id' => "profiles#update"
   # end
 
   # namespace :founders do
-  # get 'profile/destroy'
+  # delete '/:id' => "profiles#destroy"
   # end
 
-  scope module: 'founders' do
-    resources :profiles
+  namespace :founders do
+    resources :profile
   end
+
+  # scope module: 'founders' do
+  #   resources :profiles
+  # end
 
   get 'welcome/index'
 
