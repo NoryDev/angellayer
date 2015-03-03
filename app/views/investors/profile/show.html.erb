@@ -1,65 +1,84 @@
 <!-- app/views/investors/profile/show.html.erb -->
+<div class = "img-container img-rounded text-center full-padded">
+<h1><%= @investor.company_name %></h1>
+</div>
 
-<h1>Profile of <%= @investor.company_name %></h1>
+
+    <div class="img-container img-rounded full-padded">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
 
 <%= image_tag @investor.profile_pic.url(:thumb), size: "100x100", alt: @investor.company_name %>
+</div>
+
+<div class="col-xs-12 col-sm-9">
+      <p><%= @investor.physical_address %>
+      <br>
+      <%= link_to @investor.website, @investor.website %>
+      <br>
+      <i class="fa fa-phone"> &nbsp; </i><%= @investor.phone_number %></p>
+</div>
+</div>
+
+<br>
 
 <p>
-  Company name: <%= @investor.company_name %>
-</p>
-<p>
-  Address: <%= @investor.physical_address %>
-</p>
-<p>
-  Email: <%= @investor.email %>
-</p>
-<p>
-  Tel: <%= @investor.phone_number %>
-</p>
-<p>
-  FB: <%= @investor.facebook %>
-</p>
-<p>
-  Twitter: <%= @investor.twitter %>
-</p>
-<p>
-  LinkedIn: <%= @investor.linkedin %>
-</p>
-<p>
-  Angel.co: <%= @investor.angellist %>
-</p>
-<p>
-  Skype: <%= @investor.skype %>
-</p>
-<p>
-  Website: <%= @investor.website %>
+  <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @investor.email, @investor.email %>
 </p>
 
 <p>
-  Sectors invested in: <%= @investor.sectors_invested_in %>
+  <i class="fa fa-cubes"></i> Sectors invested in: <%= @investor.sectors_invested_in %>
 </p>
 <p>
-  Capital under managment: <%= @investor.capital_under_managment %>
+  <i class="fa fa-usd"></i> Capital under managment: <%= @investor.capital_under_managment %> $
 </p>
 <p>
-  Geographical focus: <%= @investor.geographical_focus %>
+  <i class="fa fa-globe"></i> Geographical focus: <%= @investor.geographical_focus %>
 </p>
 <p>
-  Preferred investment stage: <%= @investor.preferred_investment_stage %>
+  <i class="fa fa-tree"></i> Investment stage: <%= @investor.preferred_investment_stage %>
 </p>
 <p>
-  Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
+  <i class="fa fa-users"></i> Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
 </p>
+<br>
+<h5>contact person</h5>
 
 <p>
-  Contact person: <%= @investor.contact_person %>
+  <i class="fa fa-user"></i> <%= @investor.contact_person %>
 </p>
 <p>
-  Contact email: <%= @investor.contact_email %>
+  <i class="fa fa-envelope-o"> </i> <%= @investor.contact_email %>
 </p>
 <p>
-  Contact cell phone: <%= @investor.contact_cell_phone %>
+  <i class="fa fa-mobile"></i> <%= @investor.contact_cell_phone %>
 </p>
+<br>
+<p>
+  <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, @investor.facebook %> &nbsp;
+  <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, @investor.twitter %> &nbsp;
+  <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, @investor.linkedin %> &nbsp;
+  <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, @investor.angellist %> &nbsp;
+  <%= link_to '<i class="fa fa-skype"></i>'.html_safe, @investor.skype %>
+  </p>
 
 <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
 <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
+
+<h1> Reviews </h1>
+
+<% @investor.evaluations.each do |evaluation| %>
+  <h3><%= evaluation.title_review %></h3>
+
+  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.created_at %></small>
+    <br>
+    <br>
+
+    <%= evaluation.review %></p>
+    <br>
+    <br>
+
+<% end %>
+
+
+</div>

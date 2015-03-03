@@ -22,4 +22,8 @@ class Investor < ActiveRecord::Base
     profile_pic.url(:thumb)
   end
 
+  def to_s
+    company_name
+  end
+
 end
