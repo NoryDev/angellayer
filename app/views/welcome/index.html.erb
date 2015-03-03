@@ -7,10 +7,17 @@
       <%= image_tag("logo.svg", width: "600", alt: "angellayer_logo", title: "Angel Layer", class: "logo") %>
       <h1>Angel Layer</h1>
       <p class="subtitle">Our catch phrase is going to impress you.</p>
-      <div class="my-buttons">
+
+      <div class="my-buttons btn-group">
         <%= link_to "Log in as a founder", new_founder_session_path, class: "btn btn-danger" %>
-        <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-danger" %>
-        <p>or <%= link_to "register", new_founder_registration_path %></p>
+        <%= link_to "Log out as a founder", destroy_founder_session_path, method: :delete, class: "btn btn-danger" %>
+        <%= link_to "Sign up as a founder", new_founder_registration_path, class: "btn btn-danger" %>
+      </div>
+
+      <div class="my-buttons btn-group">
+        <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-success" %>
+        <%= link_to "Log out as an investor", destroy_investor_session_path, method: :delete, class: "btn btn-success" %>
+        <%= link_to "Sign up as an investor", new_investor_registration_path, class: "btn btn-success" %>
       </div>
 
       <div class="my-buttons btn-group">
