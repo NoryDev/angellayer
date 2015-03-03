@@ -7,6 +7,12 @@ class Founder < ActiveRecord::Base
 
   has_many :evaluations
 
+  has_attached_file :profile_pic,
+    styles: { medium: "300x300#", thumb: "100x100#" }
+
+  validates_attachment_content_type :profile_pic,
+    content_type: /\Aimage\/.*\z/
+
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |founder|
       founder.provider = auth.provider
@@ -24,4 +30,5 @@ class Founder < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
+
 end

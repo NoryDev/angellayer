@@ -1,6 +1,9 @@
 <!-- app/views/investors/profile/show.html.erb -->
 
 <h1>Profile of <%= @investor.company_name %></h1>
+
+<%= image_tag @investor.profile_pic.url(:thumb) %>
+
 <p>
   Company name: <%= @investor.company_name %>
 </p>

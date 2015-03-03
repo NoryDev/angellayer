@@ -1,6 +1,9 @@
 <!-- app/views/founders/profile/show.html.erb -->
 
 <h1>Profile for <%= @founder.name %></h1>
+
+<%= image_tag @founder.profile_pic.url(:thumb) %>
+
 <p>
   First name: <%= @founder.first_name %>
 </p>
