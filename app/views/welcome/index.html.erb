@@ -12,6 +12,12 @@
         <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-danger" %>
         <p>or <%= link_to "register", new_founder_registration_path %></p>
       </div>
+
+      <div class="my-buttons btn-group">
+        <%= link_to 'List All founders', founders_profile_index_path, class: "btn btn-primary" %>
+        <%= link_to 'List All investors', investors_profile_index_path, class: "btn btn-primary" %>
+        <%= link_to 'List All evaluations', evaluations_path, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>

@@ -35,4 +35,5 @@
   All my startups: <%= @founder.all_startups %>
 </p>
 
-<%= link_to "Edit", edit_founders_profile_path(@founder) %>
+<%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
+<%= link_to 'All founders', founders_profile_index_path, class: "btn btn-primary" %>
