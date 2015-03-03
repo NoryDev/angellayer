@@ -26,11 +26,11 @@ class Investor < ActiveRecord::Base
     company_name
   end
 
-  def self.total_average_score(evaluations)
+  def total_average_score
     average_total = 0
     number_of_rates = 0
     evaluations.each do |evaluation|
-      average_total += Evaluation.average_score(evaluation)
+      average_total += evaluation.average_score
       number_of_rates +=1
     end
     "Rated #{(average_total / number_of_rates).round(1)} / 5 by #{number_of_rates} founders"

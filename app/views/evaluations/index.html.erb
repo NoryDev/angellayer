@@ -9,12 +9,12 @@
     <br>
     <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.created_at %></small>
     <br>
-    <p><strong>Rated <%= Evaluation.average_score(evaluation) %></strong></p>
+    <p><strong>Rated <%= evaluation.average_score %></strong></p>
 
   <p><%= evaluation.review %></p>
 
   <p><small>
-    <%= Evaluation.work_again(evaluation.would_work_again)%>
+    <%= evaluation.work_again%>
 
      | amout raised : <%= evaluation.amount_raised %> $
   </small></p>
