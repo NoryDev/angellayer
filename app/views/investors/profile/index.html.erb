@@ -1,9 +1,11 @@
 <!-- app/views/investors/profile/index.html.erb -->
 
 <h1>All the Investors</h1>
-
+<ul>
 <% @investors.each do |investor| %>
-  <%= link_to investors_profile_path(investor) do %>
-    <%= investor.email %>
+  <li><%= link_to investors_profile_path(investor) do %>
+    <%= investor.email %> | <%= investor.company_name %>
   <% end %>
+  </li>
 <% end %>
+</ul>

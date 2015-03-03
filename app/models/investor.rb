@@ -13,4 +13,8 @@ class Investor < ActiveRecord::Base
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
 
+    def to_s
+      company_name
+    end
+
 end
