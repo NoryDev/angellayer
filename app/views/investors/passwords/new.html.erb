@@ -8,8 +8,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+    <%= f.button :submit, "Send me reset password instructions", {class: "btn btn-primary"} %>
   </div>
 <% end %>
 
-<%= render "investors/shared/links" %>
+<div class="btn-group" role="group">
+  <%= render "investors/shared/links" %>
+</div>
