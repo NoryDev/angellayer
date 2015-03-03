@@ -2,25 +2,171 @@
 <div class = "img-container img-rounded full-padded">
   <h1 class = "text-center"><%= @investor.company_name %></h1>
   <hr>
-</div>
-<div class="img-container img-rounded full-padded">
+
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <%= image_tag @investor.profile_pic.url(:thumb), size: "100x100", alt: @investor.company_name %>
     </div>
     <div class="col-xs-12 col-sm-9">
-      <p><%= @investor.physical_address %>
-        <br>
-        <%= link_to @investor.website, @investor.website %>
-        <br>
-      <i class="fa fa-phone"> &nbsp; </i><%= @investor.phone_number %></p>
+      <p>
+        <i class="fa fa-home"></i> <%= @investor.physical_address %>
+      </p>
+      <p>
+        <i class="fa fa-globe"></i> <%= link_to @investor.website, @investor.website %>
+      </p>
+      <p>
+        <i class="fa fa-phone"> &nbsp; </i><%= @investor.phone_number %>
+      </p>
     </div>
   </div>
   <hr>
   <p>
-    <i class="fa fa-star"></i> <strong><%= @investor.total_average_score %></strong>
+    <strong>Rating:</strong> <%= @investor.total_average_score %> / 5.0 (<%= @investor.nb_of_rates %> rates)
   </p>
 
+  <ul class="list-inline">
+    <li>
+      <div>Reputation</div>
+      <%
+        if @investor.rating_reputation > 3.5
+          level = "success"
+        elsif @investor.rating_reputation < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% star_used = 0 %>
+        <% @investor.rating_reputation.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = @investor.rating_reputation.to_i %>
+        <% end %>
+        <% if @investor.rating_reputation - @investor.rating_reputation.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </div>
+    </li>
+
+    <li>
+      <div>Deal</div>
+      <%
+        if @investor.rating_deal > 3.5
+          level = "success"
+        elsif @investor.rating_deal < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% star_used = 0 %>
+        <% @investor.rating_deal.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = @investor.rating_deal.to_i %>
+        <% end %>
+        <% if @investor.rating_deal - @investor.rating_deal.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </div>
+    </li>
+
+    <li>
+      <div>Pitch</div>
+      <%
+        if @investor.rating_pitch > 3.5
+          level = "success"
+        elsif @investor.rating_pitch < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% star_used = 0 %>
+        <% @investor.rating_pitch.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = @investor.rating_pitch.to_i %>
+        <% end %>
+        <% if @investor.rating_pitch - @investor.rating_pitch.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </div>
+    </li>
+
+    <li>
+      <div>Competence</div>
+      <%
+        if @investor.rating_competence > 3.5
+          level = "success"
+        elsif @investor.rating_competence < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% star_used = 0 %>
+        <% @investor.rating_competence.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = @investor.rating_competence.to_i %>
+        <% end %>
+        <% if @investor.rating_competence - @investor.rating_competence.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </div>
+    </li>
+
+    <li>
+      <div>Commitment</div>
+      <%
+        if @investor.rating_commitment > 3.5
+          level = "success"
+        elsif @investor.rating_commitment < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% star_used = 0 %>
+        <% @investor.rating_commitment.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = @investor.rating_commitment.to_i %>
+        <% end %>
+        <% if @investor.rating_commitment - @investor.rating_commitment.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+
+  <hr>
   <p>
     <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @investor.email, @investor.email %>
   </p>
@@ -52,11 +198,11 @@
   </p>
   <hr>
   <p>
-    <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, @investor.facebook %> &nbsp;
-    <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, @investor.twitter %> &nbsp;
-    <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, @investor.linkedin %> &nbsp;
-    <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, @investor.angellist %> &nbsp;
-    <%= link_to '<i class="fa fa-skype"></i>'.html_safe, @investor.skype %>
+    <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, "//" + @investor.facebook, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, "//" + @investor.twitter, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, "//" + @investor.linkedin, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, "//" + @investor.angellist, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-skype"></i>'.html_safe, "//" + @investor.skype %>
   </p>
   <hr>
   <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
@@ -64,7 +210,7 @@
   <hr>
   <% @investor.evaluations.each do |evaluation| %>
   <h3><%= evaluation.title_review %></h3>
-  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.created_at %></small>
+  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.date %></small>
     <br>
     <p><strong>Rated <%= evaluation.average_score %></strong></p>
   <%= evaluation.review %></p>
