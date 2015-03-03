@@ -1,7 +1,11 @@
-<h1>Founders::Profile#index</h1>
-<p>Find me in app/views/founders/profile/index.html.erb</p>
+<!-- app/views/founders/profile/index.html.erb -->
+
+<h1>All the Founders</h1>
 
 <% @founders.each do |founder| %>
-  <%= founder.email %>
-  <%= founder.id %>
+  <p>
+    <%= link_to founders_profile_path(founder) do %>
+      <%= founder.email %>
+    <% end %>
+  </p>
 <% end %>
