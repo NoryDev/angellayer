@@ -1,4 +1,8 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :investor
   belongs_to :founder
+
+  def self.average_score(evaluation)
+    (evaluation.rating_reputation + evaluation.rating_deal + evaluation.rating_pitch + evaluation.rating_competence + evaluation.rating_commitment)/5
+  end
 end
