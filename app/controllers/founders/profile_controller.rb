@@ -8,22 +8,22 @@ class Founders::ProfileController < ApplicationController
   def show
   end
 
-  def new
-    @founder = Founder.new
-  end
+  # def new
+  #   @founder = Founder.new
+  # end
 
   def edit
   end
 
-  def create
-    @founder = Founder.new(evaluation_params)
+  # def create
+  #   @founder = Founder.new(evaluation_params)
 
-    if @founder.save
-      redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully created.'
-    else
-      render :new
-    end
-  end
+  #   if @founder.save
+  #     redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully created.'
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def update
     if @founder.update(founder_params)
@@ -33,10 +33,10 @@ class Founders::ProfileController < ApplicationController
     end
   end
 
-  def destroy
-    @founder.destroy
-    redirect_to founders_url, notice: 'Your profile was successfully destroyed.'
-  end
+  # def destroy
+  #   @founder.destroy
+  #   redirect_to founders_url, notice: 'Your profile was successfully destroyed.'
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
