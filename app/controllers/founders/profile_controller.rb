@@ -27,6 +27,6 @@ class Founders::ProfileController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def founder_params
-      params.require(:founder).permit(:first_name, :last_name, :facebook, :twitter, :linkedin, :angellist, :skype, :cell_phone, :website, :all_startups)
+      params.require(:founder).permit(:first_name, :last_name, :facebook, :twitter, :linkedin, :angellist, :skype, :cell_phone, :website, :all_startups, :profile_pic)
     end
 end
