@@ -9,7 +9,7 @@ class Investor < ActiveRecord::Base
 
   has_attached_file :profile_pic,
     styles: { medium: "300x300#", thumb: "100x100#" },
-    :default_url => "default_founder_picture.svg"
+    :default_url => "default_investor_picture.svg"
 
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
