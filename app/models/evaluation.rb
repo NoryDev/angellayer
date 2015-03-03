@@ -6,7 +6,7 @@ class Evaluation < ActiveRecord::Base
     (rating_reputation + rating_deal + rating_pitch + rating_competence + rating_commitment)/5
   end
 
-    def work_again
+  def work_again
     if would_work_again == true
       "I'd work again with this investor"
     else

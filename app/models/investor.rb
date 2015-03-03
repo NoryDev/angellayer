@@ -26,6 +26,55 @@ class Investor < ActiveRecord::Base
     company_name
   end
 
+  def rating_reputation
+    ratings = evaluations.map { |evaluation| evaluation.rating_reputation }
+    if ratings.empty?
+      "not rated yet"
+    else
+      ratings.reduce(:+)/ratings.size
+    end
+  end
+
+  def rating_deal
+    ratings = evaluations.map { |evaluation| evaluation.rating_deal }
+    if ratings.empty?
+      "not rated yet"
+    else
+      ratings.reduce(:+)/ratings.size
+    end
+  end
+
+  def rating_pitch
+    ratings = evaluations.map { |evaluation| evaluation.rating_pitch }
+    if ratings.empty?
+      "not rated yet"
+    else
+      ratings.reduce(:+)/ratings.size
+    end
+  end
+
+  def rating_competence
+    ratings = evaluations.map { |evaluation| evaluation.rating_competence }
+    if ratings.empty?
+      "not rated yet"
+    else
+      ratings.reduce(:+)/ratings.size
+    end
+  end
+
+  def rating_commitment
+    ratings = evaluations.map { |evaluation| evaluation.rating_commitment }
+    if ratings.empty?
+      "not rated yet"
+    else
+      ratings.reduce(:+)/ratings.size
+    end
+  end
+
+  def nb_of_rates
+    evaluations.size
+  end
+
   def total_average_score
     average_total = 0
     number_of_rates = 0
@@ -36,7 +85,7 @@ class Investor < ActiveRecord::Base
     if number_of_rates == 0
       "No rating"
     else
-      "Rated #{(average_total / number_of_rates).round(1)} / 5 by #{number_of_rates} founders"
+      (average_total / number_of_rates).round(1)
     end
   end
 end
