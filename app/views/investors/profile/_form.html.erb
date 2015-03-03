@@ -1,0 +1,24 @@
+<%= simple_form_for(@investor, url: investors_profile_path) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :company_name, required: true, autofocus: true %>
+  <%= f.input :physical_address %>
+  <%= f.input :phone_number %>
+  <%= f.input :facebook %>
+  <%= f.input :twitter %>
+  <%= f.input :linkedin %>
+  <%= f.input :angellist %>
+  <%= f.input :skype %>
+  <%= f.input :website %>
+
+  <%= f.input :sectors_invested_in %>
+  <%= f.input :capital_under_managment %>
+  <%= f.input :geographical_focus %>
+  <%= f.input :preferred_investment_stage %>
+  <%= f.input :nb_projects_invested_in %>
+
+  <%= f.input :contact_person %>
+  <%= f.input :contact_email %>
+  <%= f.input :contact_cell_phone %>
+  <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+<% end %>

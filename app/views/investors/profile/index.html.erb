@@ -1,0 +1,8 @@
+<h1>Investors::Profile#index</h1>
+<p>Find me in app/views/investors/profile/index.html.erb</p>
+
+<% @investors.each do |investor| %>
+  <%= link_to investors_profile_path(investor) do %>
+    <%= investor.email %>
+  <% end %>
+<% end %>

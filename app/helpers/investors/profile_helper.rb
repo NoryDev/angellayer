@@ -1,0 +1,2 @@
+module Investors::ProfileHelper
+end

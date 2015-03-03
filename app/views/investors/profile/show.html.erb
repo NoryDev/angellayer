@@ -1,0 +1,61 @@
+<h1>Investors::Profile#show</h1>
+<p>Find me in app/views/investors/profile/show.html.erb</p>
+
+<p>
+  Company name: <%= @investor.company_name %>
+</p>
+<p>
+  Address: <%= @investor.physical_address %>
+</p>
+<p>
+  Email: <%= @investor.email %>
+</p>
+<p>
+  Tel: <%= @investor.phone_number %>
+</p>
+<p>
+  FB: <%= @investor.facebook %>
+</p>
+<p>
+  Twitter: <%= @investor.twitter %>
+</p>
+<p>
+  LinkedIn: <%= @investor.linkedin %>
+</p>
+<p>
+  Angel.co: <%= @investor.angellist %>
+</p>
+<p>
+  Skype: <%= @investor.skype %>
+</p>
+<p>
+  Website: <%= @investor.website %>
+</p>
+
+<p>
+  Sectors invested in: <%= @investor.sectors_invested_in %>
+</p>
+<p>
+  Capital under managment: <%= @investor.capital_under_managment %>
+</p>
+<p>
+  Geographical focus: <%= @investor.geographical_focus %>
+</p>
+<p>
+  Preferred investment stage: <%= @investor.preferred_investment_stage %>
+</p>
+<p>
+  Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
+</p>
+
+<p>
+  Contact person: <%= @investor.contact_person %>
+</p>
+<p>
+  Contact email: <%= @investor.contact_email %>
+</p>
+<p>
+  Contact cell phone: <%= @investor.contact_cell_phone %>
+</p>
+
+<%= link_to "Edit", edit_investors_profile_path(@investor) %>

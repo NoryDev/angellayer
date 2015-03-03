@@ -1,5 +1,5 @@
 class Founders::ProfileController < ApplicationController
-  before_action :set_founder, only: [:show, :edit, :update, :destroy]
+  before_action :set_founder, only: [:show, :edit, :update]
 
   def index
     @founders = Founder.all
@@ -8,22 +8,8 @@ class Founders::ProfileController < ApplicationController
   def show
   end
 
-  # def new
-  #   @founder = Founder.new
-  # end
-
   def edit
   end
-
-  # def create
-  #   @founder = Founder.new(evaluation_params)
-
-  #   if @founder.save
-  #     redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully created.'
-  #   else
-  #     render :new
-  #   end
-  # end
 
   def update
     if @founder.update(founder_params)
@@ -32,11 +18,6 @@ class Founders::ProfileController < ApplicationController
       render :edit
     end
   end
-
-  # def destroy
-  #   @founder.destroy
-  #   redirect_to founders_url, notice: 'Your profile was successfully destroyed.'
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -48,5 +29,4 @@ class Founders::ProfileController < ApplicationController
     def founder_params
       params.require(:founder).permit(:first_name, :last_name, :facebook, :twitter, :linkedin, :angellist, :skype, :cell_phone, :website, :all_startups)
     end
-
 end

@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  # namespace :investors do
+  # get 'profile/index'
+  # end
+
+  # namespace :investors do
+  # get 'profile/show'
+  # end
+
+  # namespace :investors do
+  # get 'profile/edit'
+  # end
+
+  # namespace :investors do
+  # get 'profile/update'
+  # end
+
   # namespace :founders do
   #   get '/' => "profiles#index"
   # end
@@ -29,7 +45,11 @@ Rails.application.routes.draw do
   # end
 
   namespace :founders do
-    resources :profile
+    resources :profile, only: [:index, :show, :edit, :update]
+  end
+
+  namespace :investors do
+    resources :profile, only: [:index, :show, :edit, :update]
   end
 
   # scope module: 'founders' do
