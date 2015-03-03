@@ -8,7 +8,8 @@ class Founder < ActiveRecord::Base
   has_many :evaluations
 
   has_attached_file :profile_pic,
-    styles: { medium: "300x300#", thumb: "100x100#" }
+    styles: { medium: "300x300#", thumb: "100x100#" },
+    :default_url => "default_founder_picture.svg"
 
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
@@ -31,8 +32,23 @@ class Founder < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def image
+    if profile_pic.file? || picture.nil?
+      return profile_pic.url(:medium)
+    else
+      return "#{picture}?type=large"
+    end
+  end
+
+  def avatar
+    if profile_pic.file? || picture.nil?
+      return profile_pic.url(:thumb)
+    else
+      return "#{picture}?type=square"
+    end
+  end
+
   def to_s
     name
   end
-
 end

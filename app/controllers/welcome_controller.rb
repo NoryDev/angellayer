@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
-  skip_before_action :authenticate_founder!
-  skip_before_action :authenticate_investor!
-
+  skip_before_action :authenticate
 
   def index
     render layout: "fullpage"
