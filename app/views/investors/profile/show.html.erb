@@ -1,7 +1,9 @@
-<h1>Investors::Profile#show</h1>
-<p>Find me in app/views/investors/profile/show.html.erb</p>
+<!-- app/views/investors/profile/show.html.erb -->
+
+<h1>Profile of <%= @investor.company_name %></h1>
 
 <%= image_tag @investor.profile_pic.url(:thumb) %>
+
 <p>
   Company name: <%= @investor.company_name %>
 </p>
@@ -59,4 +61,5 @@
   Contact cell phone: <%= @investor.contact_cell_phone %>
 </p>
 
-<%= link_to "Edit", edit_investors_profile_path(@investor) %>
+<%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
+<%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>

@@ -1,8 +1,9 @@
-<h1>Founders::Profile#show</h1>
-<p>Find me in app/views/founders/profile/show.html.erb</p>
+<!-- app/views/founders/profile/show.html.erb -->
 
+<h1>Profile for <%= @founder.name %></h1>
 
 <%= image_tag @founder.profile_pic.url(:thumb) %>
+
 <p>
   First name: <%= @founder.first_name %>
 </p>
@@ -37,4 +38,5 @@
   All my startups: <%= @founder.all_startups %>
 </p>
 
-<%= link_to "Edit", edit_founders_profile_path(@founder) %>
+<%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
+<%= link_to 'All founders', founders_profile_index_path, class: "btn btn-primary" %>
