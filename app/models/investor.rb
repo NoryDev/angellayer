@@ -33,7 +33,10 @@ class Investor < ActiveRecord::Base
       average_total += evaluation.average_score
       number_of_rates +=1
     end
-    "Rated #{(average_total / number_of_rates).round(1)} / 5 by #{number_of_rates} founders"
+    if number_of_rates == 0
+      "No rating"
+    else
+      "Rated #{(average_total / number_of_rates).round(1)} / 5 by #{number_of_rates} founders"
+    end
   end
-
 end
