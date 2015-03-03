@@ -13,11 +13,15 @@ class Founder < ActiveRecord::Base
       founder.uid = auth.uid
       founder.email = auth.info.email
       founder.password = Devise.friendly_token[0,20]  # Fake password for validation
-      founder.name = auth.info.name
+      founder.first_name = auth.info.first_name
+      founder.last_name = auth.info.last_name
       founder.picture = auth.info.image
       founder.token = auth.credentials.token
       founder.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

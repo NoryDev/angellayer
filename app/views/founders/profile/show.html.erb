@@ -1,0 +1,38 @@
+<h1>Founders::Profile#show</h1>
+<p>Find me in app/views/founders/profile/show.html.erb</p>
+
+<p>
+  First name: <%= @founder.first_name %>
+</p>
+<p>
+  Last name: <%= @founder.last_name %>
+</p>
+<p>
+  Email: <%= @founder.email %>
+</p>
+<p>
+  FB: <%= @founder.facebook %>
+</p>
+<p>
+  Twitter: <%= @founder.twitter %>
+</p>
+<p>
+  LinkedIn: <%= @founder.linkedin %>
+</p>
+<p>
+  Angel.co: <%= @founder.angellist %>
+</p>
+<p>
+  Skype: <%= @founder.skype %>
+</p>
+<p>
+  Cell phone: <%= @founder.cell_phone %>
+</p>
+<p>
+  Website: <%= @founder.website %>
+</p>
+<p>
+  All my startups: <%= @founder.all_startups %>
+</p>
+
+<%= link_to "Edit", edit_founders_profile_path(@founder) %>

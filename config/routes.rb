@@ -1,4 +1,61 @@
 Rails.application.routes.draw do
+  # namespace :investors do
+  # get 'profile/index'
+  # end
+
+  # namespace :investors do
+  # get 'profile/show'
+  # end
+
+  # namespace :investors do
+  # get 'profile/edit'
+  # end
+
+  # namespace :investors do
+  # get 'profile/update'
+  # end
+
+  # namespace :founders do
+  #   get '/' => "profiles#index"
+  # end
+
+  # namespace :founders do
+  #   get '/:id' => "profiles#show", as: :founder_profile
+  # end
+
+  # namespace :founders do
+  # get '/new' => "profiles#new", as: :new_founder_profile
+  # end
+
+  # namespace :founders do
+  # get '/:id/edit' => "profiles#edit", as: :edit_founder_profile
+  # end
+
+  # namespace :founders do
+  # post '/' => "profiles#create"
+  # end
+
+  # namespace :founders do
+  # patch '/:id' => "profiles#update"
+  # put '/:id' => "profiles#update"
+  # end
+
+  # namespace :founders do
+  # delete '/:id' => "profiles#destroy"
+  # end
+
+  namespace :founders do
+    resources :profile, only: [:index, :show, :edit, :update]
+  end
+
+  namespace :investors do
+    resources :profile, only: [:index, :show, :edit, :update]
+  end
+
+  # scope module: 'founders' do
+  #   resources :profiles
+  # end
+
   get 'welcome/index'
 
   resources :evaluations

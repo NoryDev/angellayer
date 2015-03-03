@@ -1,0 +1,2 @@
+module Founders::ProfilesHelper
+end

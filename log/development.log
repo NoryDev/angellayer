@@ -5160,3 +5160,62 @@ Processing by WelcomeController#index as HTML
   Rendered shared/_navbar.html.erb (2.8ms)
   Rendered shared/_notices.html.erb (0.4ms)
 Completed 200 OK in 200ms (Views: 198.5ms | ActiveRecord: 0.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddParamsToInvestor (20150303090659)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (88.1ms)[0m  [1mALTER TABLE "investors" ADD "company_name" character varying[0m
+  [1m[35m (7.3ms)[0m  ALTER TABLE "investors" ADD "physical_address" text
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "investors" ADD "phone_number" text[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "investors" ADD "facebook" character varying
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "investors" ADD "twitter" character varying[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "investors" ADD "linkedin" character varying
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "investors" ADD "angellist" character varying[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "investors" ADD "skype" character varying
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "investors" ADD "website" character varying[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "investors" ADD "sectors_invested_in" text
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "investors" ADD "capital_under_managment" integer[0m
+  [1m[35m (51.4ms)[0m  ALTER TABLE "investors" ADD "geographical_focus" text
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "investors" ADD "preferred_investment_stage" character varying[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "investors" ADD "nb_projects_invested_in" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "investors" ADD "contact_person" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "investors" ADD "contact_email" character varying
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "investors" ADD "contact_cell_phone" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150303090659"]]
+  [1m[36m (18.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'evaluations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'founders'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'investors'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
