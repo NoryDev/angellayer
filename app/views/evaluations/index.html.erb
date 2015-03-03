@@ -1,46 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Evaluations</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Investor</th>
-      <th>Founder</th>
-      <th>Title Review</th>
-      <th>Review</th>
-      <th>Rating reputation</th>
-      <th>Rating deal</th>
-      <th>Rating pitch</th>
-      <th>Rating competence</th>
-      <th>Rating commitment</th>
-      <th>Amount raised</th>
-      <th>Would work again</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @evaluations.each do |evaluation| %>
       <tr>
-        <td><%= evaluation.investor %></td>
-        <td><%= evaluation.founder %></td>
-        <td><%= evaluation.title_review %></td>
-        <td><%= evaluation.review %></td>
-        <td><%= evaluation.rating_reputation %></td>
-        <td><%= evaluation.rating_deal %></td>
-        <td><%= evaluation.rating_pitch %></td>
-        <td><%= evaluation.rating_competence %></td>
-        <td><%= evaluation.rating_commitment %></td>
-        <td><%= evaluation.amount_raised %></td>
-        <td><%= evaluation.would_work_again %></td>
-        <td><%= link_to 'Show', evaluation %></td>
-        <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-        <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <h3><%= evaluation.title_review %></h3>
+
+  <p>Fund : <%= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
+    <br>
+    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.created_at %></small>
+    <br>
+    <p><strong>Rated <%= evaluation.average_score %></strong></p>
+
+  <p><%= evaluation.review %></p>
+
+  <p><small>
+    <%= evaluation.work_again%>
+
+     | amout raised : <%= evaluation.amount_raised %> $
+  </small></p>
+  <br>
+
+
+
+
+       <p><small class="text-right"><%= link_to 'Show', evaluation %> |
+       <%= link_to 'Edit', edit_evaluation_path(evaluation) %> |
+       <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
+       <hr>
+
     <% end %>
-  </tbody>
-</table>
+
 
 <br>
 
