@@ -28,20 +28,22 @@
 </p>
 
 <p>
-  Sectors invested in: <%= @investor.sectors_invested_in %>
+  <i class="fa fa-cubes"></i> Sectors invested in: <%= @investor.sectors_invested_in %>
 </p>
 <p>
-  Capital under managment: <%= @investor.capital_under_managment %> $
+  <i class="fa fa-usd"></i> Capital under managment: <%= @investor.capital_under_managment %> $
 </p>
 <p>
-  Geographical focus: <%= @investor.geographical_focus %>
+  <i class="fa fa-globe"></i> Geographical focus: <%= @investor.geographical_focus %>
 </p>
 <p>
-  Preferred investment stage: <%= @investor.preferred_investment_stage %>
+  <i class="fa fa-tree"></i> Investment stage: <%= @investor.preferred_investment_stage %>
 </p>
 <p>
-  Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
+  <i class="fa fa-users"></i> Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
 </p>
+<br>
+<h5>contact person</h5>
 
 <p>
   <i class="fa fa-user"></i> <%= @investor.contact_person %>
@@ -52,7 +54,7 @@
 <p>
   <i class="fa fa-mobile"></i> <%= @investor.contact_cell_phone %>
 </p>
-
+<br>
 <p>
   <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, @investor.facebook %> &nbsp;
   <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, @investor.twitter %> &nbsp;
@@ -71,8 +73,10 @@
 
   <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.created_at %></small>
     <br>
+    <br>
 
     <%= evaluation.review %></p>
+    <br>
     <br>
 
 <% end %>
