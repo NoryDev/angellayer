@@ -12,10 +12,12 @@
 </head>
 <body>
 
+<div id="home-wrapper">
   <%= render 'shared/navbar' %>
   <%= render 'shared/notices' %>
 
-      <%= yield %>
+  <%= yield %>
+</div>
 
 
   <%= javascript_include_tag 'application' %>
