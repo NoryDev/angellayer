@@ -6,16 +6,22 @@
     <%= f.association :founder %>
     <%= f.input :title_review %>
     <%= f.input :review %>
-    <%= f.input :rating_reputation %>
-    <%= f.input :rating_deal %>
-    <%= f.input :rating_pitch %>
-    <%= f.input :rating_competence %>
-    <%= f.input :rating_commitment %>
-    <%= f.input :amount_raised %>
-    <%= f.input :would_work_again %>
-  </div>
+    <%= f.input :rating_reputation, collection: 0..5, prompt: "Select your score" %>
+    <%= f.input :rating_deal, collection: 0..5, prompt: "Select your score" %>
+    <%= f.input :rating_pitch, collection: 0..5, prompt: "Select your score" %>
+    <%= f.input :rating_competence, collection: 0..5, prompt: "Select your score" %>
+    <%= f.input :rating_commitment, collection: 0..5, prompt: "Select your score" %>
+    <%= f.input :amount_raised, placeholder: 'Please enter a number in $' %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+
+    <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?" %>
+
+  </div>
+  <br>
+
+  <div class="form-actions btn-group">
+    <%= f.button :submit, {class: "btn btn-primary"} %>
+    <%= link_to 'Back', evaluations_path, {class: "btn btn-primary"} %>
   </div>
 <% end %>
+<br>

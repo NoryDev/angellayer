@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<div class = "img-container img-rounded full-padded">
 
 
     <% @evaluations.each do |evaluation| %>
@@ -7,11 +8,11 @@
 
   <p>Fund : <%= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
     <br>
-    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.created_at %></small>
+    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
     <br>
     <p><strong>Rated <%= evaluation.average_score %></strong></p>
 
-  <p><%= evaluation.review %></p>
+  <p class = "text-justify"><%= evaluation.review %></p>
 
   <p><small>
     <%= evaluation.work_again%>
@@ -23,7 +24,7 @@
 
 
 
-       <p><small class="text-right"><%= link_to 'Show', evaluation %> |
+       <p class="text-right"><small><%= link_to 'Show', evaluation %> |
        <%= link_to 'Edit', edit_evaluation_path(evaluation) %> |
        <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
        <hr>
@@ -33,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Evaluation', new_evaluation_path %>
+<%= link_to 'New Evaluation', new_evaluation_path, class: "btn btn-primary" %>
+
+</div>
