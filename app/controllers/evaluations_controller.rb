@@ -1,6 +1,5 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
-  before_action :find_investor
 
   # GET /evaluations
   def index
@@ -54,12 +53,7 @@ class EvaluationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def evaluation_params
-      params.require(:evaluation).permit(:investor_id, :founder_id, :review, :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, :amount_raised, :would_work_again)
+      params.require(:evaluation).permit(:investor_id, :founder_id, :review, :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, :amount_raised, :would_work_again, :title_review)
     end
-
-    def find_investor
-      @investor = Investor.find(params[:investor_id])
-    end
-
 
 end
