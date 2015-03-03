@@ -2,8 +2,7 @@
 <div class = "img-container img-rounded text-center full-padded">
   <h1><%= @investor.company_name %></h1>
   <hr>
-</div>
-<div class="img-container img-rounded full-padded">
+
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       <%= image_tag @investor.profile_pic.url(:thumb), size: "100x100", alt: @investor.company_name %>
@@ -52,11 +51,11 @@
   </p>
   <hr>
   <p>
-    <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, @investor.facebook %> &nbsp;
-    <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, @investor.twitter %> &nbsp;
-    <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, @investor.linkedin %> &nbsp;
-    <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, @investor.angellist %> &nbsp;
-    <%= link_to '<i class="fa fa-skype"></i>'.html_safe, @investor.skype %>
+    <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, "//" + @investor.facebook, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, "//" + @investor.twitter, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, "//" + @investor.linkedin, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, "//" + @investor.angellist, target: "_blank" %> &nbsp;
+    <%= link_to '<i class="fa fa-skype"></i>'.html_safe, "//" + @investor.skype %>
   </p>
   <hr>
   <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
@@ -64,7 +63,7 @@
   <hr>
   <% @investor.evaluations.each do |evaluation| %>
   <h3><%= evaluation.title_review %></h3>
-  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.created_at %></small>
+  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.date %></small>
     <br>
     <p><strong>Rated <%= evaluation.average_score %></strong></p>
   <%= evaluation.review %></p>
