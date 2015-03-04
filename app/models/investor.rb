@@ -28,6 +28,7 @@ class Investor < ActiveRecord::Base
 
   def rating(area)
     ratings = evaluations.map { |evaluation| evaluation.send("rating_#{area}") }
+    ratings = ratings.reject{ |rating| rating.nil? }
     if ratings.empty?
       nil
     else
@@ -36,15 +37,19 @@ class Investor < ActiveRecord::Base
   end
 
   def nb_of_rates
-    evaluations.size
+    scores = evaluations.map{ |evaluation| evaluation.average_score }
+    scores = scores.reject{ |score| score.nil? }
+    scores.size
   end
 
   def total_average_score
     scores = evaluations.map{ |evaluation| evaluation.average_score }
+    scores = scores.reject{ |score| score.nil? }
     if scores.empty?
       nil
     else
-      scores.reduce(:+)/scores.size
+      average = scores.reduce(:+)/scores.size
+      average.round(1)
     end
   end
 end
