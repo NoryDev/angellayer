@@ -53,13 +53,16 @@ Rails.application.routes.draw do
     resources :profile, only: [:index, :show, :edit, :update]
   end
 
+  get 'investors/profile/:investor_id/evaluations/new' => "evaluations#new", as: :new_investors_profile_evaluation
+  post 'investors/profile/:investor_id/evaluations/create' => "evaluations#create", as: :investors_profile_evaluations
+
   # scope module: 'founders' do
   #   resources :profiles
   # end
 
   get 'welcome/index'
 
-  resources :evaluations
+  resources :evaluations, except: [:new]
 
 
   devise_for :investors

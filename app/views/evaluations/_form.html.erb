@@ -1,9 +1,7 @@
-<%= simple_form_for(@evaluation) do |f| %>
+<%= simple_form_for([@investor, @evaluation], url: investors_profile_evaluations_path) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :investor %>
-    <%= f.association :founder %>
     <%= f.input :title_review %>
     <%= f.input :review %>
     <%= f.input :rating_reputation, collection: 0..5, prompt: "Select your score" %>

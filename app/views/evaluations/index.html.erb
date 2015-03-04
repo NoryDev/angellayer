@@ -6,7 +6,7 @@
 <div class = "img-container img-rounded full-padded">
   <h3><%= evaluation.title_review %></h3>
 
-  <p>Fund : <%= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
+  <p>Fund : <%#= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
     <br>
     <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
     <br>
