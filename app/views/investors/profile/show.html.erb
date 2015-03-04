@@ -73,26 +73,32 @@
   </ul>
 
   <hr>
+
   <p>
     <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @investor.email, @investor.email %>
   </p>
+
   <p>
     <i class="fa fa-cubes"></i> Sectors invested in: <%= @investor.sectors_invested_in %>
   </p>
+
   <p>
     <i class="fa fa-usd"></i> Capital under managment: <%= @investor.capital_under_managment %> $
   </p>
+
   <p>
     <i class="fa fa-globe"></i> Geographical focus: <%= @investor.geographical_focus %>
   </p>
+
   <p>
     <i class="fa fa-tree"></i> Investment stage: <%= @investor.preferred_investment_stage %>
   </p>
+
   <p>
     <i class="fa fa-users"></i> Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
   </p>
   <hr>
- <p><strong>contact</strong></p>
+  <p><strong>contact</strong></p>
   <p>
     <i class="fa fa-user"></i> <%= @investor.contact_person %>
   </p>
@@ -103,12 +109,37 @@
     <i class="fa fa-mobile"></i> <%= @investor.contact_cell_phone %>
   </p>
   <hr>
-  <p>
-    <%= link_to '<i class="fa fa-facebook"></i>'.html_safe, "//" + @investor.facebook, target: "_blank" %> &nbsp;
-    <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, "//" + @investor.twitter, target: "_blank" %> &nbsp;
-    <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, "//" + @investor.linkedin, target: "_blank" %> &nbsp;
-    <%= link_to '<i class="fa fa-angellist"></i>'.html_safe, "//" + @investor.angellist, target: "_blank" %> &nbsp;
-    <%= link_to '<i class="fa fa-skype"></i>'.html_safe, "//" + @investor.skype %>
+  <p class="text-large text-center">
+    <% unless @investor.facebook.nil? || @investor.facebook.empty? %>
+      <%= link_to "//" + @investor.facebook, target: "_blank" do %>
+        <i class="fa fa-facebook"></i>
+      <% end %>
+      &nbsp;
+    <% end %>
+    <% unless @investor.twitter.nil? || @investor.twitter.empty? %>
+      <%= link_to "//" + @investor.twitter, target: "_blank" do %>
+        <i class="fa fa-twitter"></i>
+      <% end %>
+      &nbsp;
+    <% end %>
+    <% unless @investor.linkedin.nil? || @investor.linkedin.empty? %>
+      <%= link_to "//" + @investor.linkedin, target: "_blank" do %>
+        <i class="fa fa-linkedin"></i>
+      <% end %>
+      &nbsp;
+    <% end %>
+    <% unless @investor.angellist.nil? || @investor.angellist.empty? %>
+      <%= link_to "//" + @investor.angellist, target: "_blank" do %>
+        <i class="fa fa-angellist"></i>
+      <% end %>
+      &nbsp;
+    <% end %>
+    <% unless @investor.skype.nil? || @investor.skype.empty? %>
+      <%= link_to "skype:#{@investor.skype}?chat", target: "_blank" do %>
+        <i class="fa fa-skype"></i>
+      <% end %>
+      &nbsp;
+    <% end %>
   </p>
   <hr>
   <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
