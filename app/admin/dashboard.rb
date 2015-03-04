@@ -22,9 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Reviews" do
           ul do
             Evaluation.last(10).map do |evaluation|
-              li link_to(evaluation.title_review, evaluation_path(evaluation)) |
-              link_to(evaluation.founder, founders_profile_path(evaluation.founder))
-              link_to(evaluation.investor, investors_profile_path(evaluation.investor))
+              li link_to(evaluation.title_review, evaluation_path(evaluation))
             end
           end
         end

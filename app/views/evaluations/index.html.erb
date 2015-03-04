@@ -1,40 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 
+    <!-- Order by name/rating... by ordering the params in the controller -->
+
+    <%= link_to "By Name", evaluations_path(order: :title_review) %> |
+    <%= link_to "By Rating", evaluations_path(order: :average_score) %>
+
+    <!-- Using partial to render existing show view in the index -->
 
     <% @evaluations.each do |evaluation| %>
-<div class = "img-container img-rounded full-padded">
-  <h3><%= evaluation.title_review %></h3>
-
-  <p>Fund : <%#= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
-    <br>
-    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
-    <br>
-    <p><strong>Rated <%= evaluation.average_score %></strong></p>
-
-  <p class = "text-justify"><%= evaluation.review %></p>
-
-  <p><small>
-    <%= evaluation.work_again%>
-
-     | amout raised : <%= evaluation.amount_raised %> $
-  </small></p>
-  <br>
-
-
-
-
-       <p class="text-right"><small><%= link_to 'Show', evaluation %> |
-       <%= link_to 'Edit', edit_evaluation_path(evaluation) %> |
-       <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
-       </div>
-       <br>
-
+      <%= render 'show', evaluation: evaluation %>
     <% end %>
 
 
 <br>
 
-<%= link_to 'New Evaluation', new_evaluation_path, class: "btn btn-primary" %>
 
 

@@ -1,0 +1,32 @@
+<div class = "img-container img-rounded full-padded">
+  <h3><%= evaluation.title_review %></h3>
+
+  <p>Fund : <%= link_to evaluation.investor, investors_profile_path(evaluation.investor) %>
+    <br>
+    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+    <br>
+    <p><strong>
+      <% if evaluation.average_score %>
+      Rated <%= evaluation.average_score %> / 5
+      <% else %>
+      Not Rated
+      <% end %>
+    </strong></p>
+
+  <p class = "text-justify"><%= evaluation.review %></p>
+
+  <p><small>
+    <%= evaluation.work_again%>
+
+     amout raised : <%= evaluation.amount_raised %> $
+  </small></p>
+  <br>
+
+
+
+
+       <p class="text-right"><small><%= link_to 'Show', evaluation %> |
+       <%= link_to 'Edit', edit_evaluation_path(evaluation) %> |
+       <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
+  </div>
+  <br>
