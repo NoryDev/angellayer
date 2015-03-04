@@ -1,23 +1,26 @@
 <!-- app/views/investors/profile/index.html.erb -->
-
 <h1>All the Investors</h1>
 
 <% @investors.each do |investor| %>
 
-
-  <div class="img-container img-rounded full-padded">
+<div class="img-container img-rounded full-padded">
   <div class="row">
+
     <div class="col-xs-12 col-sm-3">
       <%= image_tag investor.profile_pic.url(:thumb), size: "100x100", alt: investor.company_name %>
     </div>
+
     <div class="col-xs-12 col-sm-9">
-      <p><%= link_to investor.company_name, investors_profile_path(investor) %>
+      <p><strong><%= link_to investor.company_name, investors_profile_path(investor) %></strong>
         <br>
         <%= link_to investor.website, "//" + investor.website, target: "_blank" %>
         <br>
+        Reviews : <%= investor.evaluations.count %> | General score : <%= investor.total_average_score %>
+      </div>
+
     </div>
-   </div>
-    </div>
+  </div>
 
   <br>
-<% end %>
+
+  <% end %>

@@ -10,6 +10,8 @@ Investor.all.each do |investor|
   investor.destroy
 end
 
+Founder.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
 10.times do
   investor = Investor.new()
   investor.email = "#{Faker::Internet.user_name}@yopmail.com"

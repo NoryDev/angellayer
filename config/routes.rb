@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   # namespace :investors do
   # get 'profile/index'
   # end
