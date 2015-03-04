@@ -13,16 +13,19 @@
       </div>
 
       <div class="col-xs-12 col-sm-9">
-        <p><strong><%= link_to investor.company_name, investors_profile_path(investor) %></strong></p>
-          <% unless investor.website.nil? || investor.website.empty? %>
-            <p><%= link_to investor.website, "//" + investor.website, target: "_blank" %></p>
-          <% end %>
-          Reviews : <%= investor.evaluations.count %> | General score : <%= investor.total_average_score %>
-        </div>
+        <% if investor.company_name %>
+          <p><strong><%= link_to investor.company_name, investors_profile_path(investor) %></strong></p>
+        <% end %>
 
+        <% if investor.website %>
+          <p><%= link_to investor.website, "//" + investor.website, target: "_blank" %></p>
+        <% end %>
+        Reviews : <%= investor.evaluations.count %> | General score : <%= investor.total_average_score %>
       </div>
+
     </div>
+  </div>
 
   <br>
 
-  <% end %>
+<% end %>
