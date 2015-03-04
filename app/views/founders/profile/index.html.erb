@@ -12,7 +12,12 @@
     <div class="col-xs-12 col-sm-9">
       <p><strong><%= link_to founder.name, founders_profile_path(founder) %></strong>
         <br>
+
+        <% if founder.website %>
         <%= link_to founder.website, "//" + founder.website, target: "_blank" %>
+        <% else %>
+        <% end %>
+
         <%= link_to "Edit", edit_founders_profile_path(founder) %>
         <br>
 
