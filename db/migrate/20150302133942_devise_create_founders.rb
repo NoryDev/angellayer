@@ -1,4 +1,10 @@
 class DeviseCreateFounders < ActiveRecord::Migration
+  def migrate(direction)
+    super
+    # Create a default user
+    #
+  end
+
   def change
     create_table(:founders) do |t|
       ## Database authenticatable

@@ -32,6 +32,8 @@ gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
+
 # front-end helper
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
