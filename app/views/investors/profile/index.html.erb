@@ -1,6 +1,11 @@
 <!-- app/views/investors/profile/index.html.erb -->
 <h1>All the Investors</h1>
 
+<div class="alert alert-warning">Are we missing an investor you know? Add it!</div>
+<div class="padded text-center">
+  <%= link_to "Add an investor", new_investor_registration_path, class: "btn btn-success" %>
+</div>
+
 <% @investors.each do |investor| %>
 
   <div class="img-container img-rounded full-padded">
