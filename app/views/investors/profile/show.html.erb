@@ -12,7 +12,9 @@
         <i class="fa fa-home"></i> <%= @investor.physical_address %>
       </p>
       <p>
-        <i class="fa fa-globe"></i> <%= link_to @investor.website, @investor.website %>
+        <i class="fa fa-globe"></i> <% if @investor.website %>
+          <%= link_to @investor.website, "//" + @investor.website %>
+        <% end %>
       </p>
       <p>
         <i class="fa fa-phone"> &nbsp; </i><%= @investor.phone_number %>
