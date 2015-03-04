@@ -14,6 +14,8 @@ class Investor < ActiveRecord::Base
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
 
+  after_create :send_welcome_email
+
   def image
     profile_pic.url(:medium)
   end
@@ -46,5 +48,11 @@ class Investor < ActiveRecord::Base
     else
       scores.reduce(:+)/scores.size
     end
+  end
+
+  private
+
+  def send_welcome_email
+    InvestorMailer.welcome(self).deliver
   end
 end
