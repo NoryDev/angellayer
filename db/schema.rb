@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304095508) do
+ActiveRecord::Schema.define(version: 20150304172628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,13 +42,15 @@ ActiveRecord::Schema.define(version: 20150304095508) do
     t.float    "rating_commitment"
     t.integer  "amount_raised"
     t.boolean  "would_work_again"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "title_review"
+    t.integer  "investor_profile_id"
   end
 
   add_index "evaluations", ["founder_id"], name: "index_evaluations_on_founder_id", using: :btree
   add_index "evaluations", ["investor_id"], name: "index_evaluations_on_investor_id", using: :btree
+  add_index "evaluations", ["investor_profile_id"], name: "index_evaluations_on_investor_profile_id", using: :btree
 
   create_table "founders", force: :cascade do |t|
     t.string   "email",                    default: "",    null: false
@@ -87,6 +89,36 @@ ActiveRecord::Schema.define(version: 20150304095508) do
 
   add_index "founders", ["email"], name: "index_founders_on_email", unique: true, using: :btree
   add_index "founders", ["reset_password_token"], name: "index_founders_on_reset_password_token", unique: true, using: :btree
+
+  create_table "investor_profiles", force: :cascade do |t|
+    t.string   "email"
+    t.string   "company_name"
+    t.text     "physical_address"
+    t.string   "phone_number"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "angellist"
+    t.string   "skype"
+    t.string   "website"
+    t.text     "sectors_invested_in"
+    t.integer  "capital_under_managment"
+    t.text     "geographical_focus"
+    t.string   "preferred_investment_stage"
+    t.integer  "nb_projects_invested_in"
+    t.string   "contact_person"
+    t.string   "contact_email"
+    t.string   "contact_cell_phone"
+    t.integer  "investor_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
+  end
+
+  add_index "investor_profiles", ["investor_id"], name: "index_investor_profiles_on_investor_id", using: :btree
 
   create_table "investors", force: :cascade do |t|
     t.string   "email",                      default: "", null: false
@@ -128,5 +160,7 @@ ActiveRecord::Schema.define(version: 20150304095508) do
   add_index "investors", ["reset_password_token"], name: "index_investors_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "evaluations", "founders"
+  add_foreign_key "evaluations", "investor_profiles"
   add_foreign_key "evaluations", "investors"
+  add_foreign_key "investor_profiles", "investors"
 end

@@ -19,6 +19,27 @@ class Investors::ProfileController < ApplicationController
     end
   end
 
+  #######################
+  # move it later?
+
+  # def new_by_founder
+  #   @investor = Investor.new
+  # end
+
+  # def create_by_founder
+  #   @investor = Investor.new(investor_params)
+  #   @investor = Investor.find(params[:investor_id])
+
+  #   if @investor.save
+  #     redirect_to investors_profile_path(@investor), notice: 'New Investor successfully created.'
+  #   else
+  #     render :new
+  #   end
+  # end
+
+  #
+  #######################
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_investor
