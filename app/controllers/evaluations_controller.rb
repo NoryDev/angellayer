@@ -21,7 +21,7 @@ class EvaluationsController < ApplicationController
   def new
     @evaluation = Evaluation.new
     @investor = Investor.find(params[:investor_id])
-    @evaluation.investor = @investor
+    @evaluation.investor_profile = @investor.investor_profile
     @evaluation.founder = current_founder
   end
 
@@ -33,7 +33,7 @@ class EvaluationsController < ApplicationController
   def create
     @evaluation = Evaluation.new(evaluation_params)
     @investor = Investor.find(params[:investor_id])
-    @evaluation.investor = @investor
+    @evaluation.investor_profile = @investor.investor_profile
     @evaluation.founder = current_founder
 
     if @evaluation.save

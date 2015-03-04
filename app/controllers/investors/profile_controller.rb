@@ -6,13 +6,16 @@ class Investors::ProfileController < ApplicationController
   end
 
   def show
+    @profile = @investor.investor_profile
   end
 
   def edit
+    @profile = @investor.investor_profile
   end
 
   def update
-    if @investor.update(investor_params)
+    @profile = @investor.investor_profile
+    if @profile.update(investor_params)
       redirect_to investors_profile_path(@investor), notice: 'Your profile was successfully updated.'
     else
       render :edit
@@ -48,11 +51,11 @@ class Investors::ProfileController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def investor_params
-      params[:investor][:website].gsub!(/\Ahttps?:\/\//,"")
-      params[:investor][:twitter].gsub!(/\Ahttps?:\/\//,"")
-      params[:investor][:facebook].gsub!(/\Ahttps?:\/\//,"")
-      params[:investor][:angellist].gsub!(/\Ahttps?:\/\//,"")
-      params[:investor][:linkedin].gsub!(/\Ahttps?:\/\//,"")
-      params.require(:investor).permit(:company_name, :physical_address, :phone_number, :facebook, :twitter, :linkedin, :angellist, :skype, :cell_phone, :website, :contact_person, :contact_email, :contact_cell_phone, :sectors_invested_in, :capital_under_managment, :geographical_focus, :preferred_investment_stage, :nb_projects_invested_in, :profile_pic)
+      params[:investor_profile][:website].gsub!(/\Ahttps?:\/\//,"")
+      params[:investor_profile][:twitter].gsub!(/\Ahttps?:\/\//,"")
+      params[:investor_profile][:facebook].gsub!(/\Ahttps?:\/\//,"")
+      params[:investor_profile][:angellist].gsub!(/\Ahttps?:\/\//,"")
+      params[:investor_profile][:linkedin].gsub!(/\Ahttps?:\/\//,"")
+      params.require(:investor_profile).permit(:company_name, :physical_address, :phone_number, :facebook, :twitter, :linkedin, :angellist, :skype, :cell_phone, :website, :contact_person, :contact_email, :contact_cell_phone, :sectors_invested_in, :capital_under_managment, :geographical_focus, :preferred_investment_stage, :nb_projects_invested_in, :profile_pic)
     end
 end

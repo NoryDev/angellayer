@@ -1,4 +1,4 @@
-<%= simple_form_for(@investor, url: investors_profile_path) do |f| %>
+<%= simple_form_for(@investor.investor_profile, url: investors_profile_path) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :company_name, required: true, autofocus: true %>

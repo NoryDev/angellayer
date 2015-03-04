@@ -5,7 +5,9 @@ class Investor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          # :omniauthable, :omniauth_providers => [ :facebook ]
 
-  has_many :evaluations
+  has_many :evaluations, dependent: :destroy
+
+  has_one :investor_profile
 
   has_attached_file :profile_pic,
     styles: { medium: "300x300#", thumb: "100x100#" },
