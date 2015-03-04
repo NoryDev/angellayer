@@ -1,11 +1,24 @@
 <!-- app/views/founders/profile/index.html.erb -->
-
 <h1>All the Founders</h1>
 
 <% @founders.each do |founder| %>
-  <p>
-    <%= link_to founders_profile_path(founder) do %>
-      <%= founder.email %>
-    <% end %>
-  </p>
+<div class="img-container img-rounded full-padded">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-3">
+      <%= image_tag founder.profile_pic.url(:thumb), size: "100x100", alt: founder.name %>
+    </div>
+
+    <div class="col-xs-12 col-sm-9">
+      <p><strong><%= link_to founder.name, founders_profile_path(founder) %></strong>
+        <br>
+        <%= link_to founder.website, "//" + founder.website, target: "_blank" %>
+        <%= link_to "Edit", edit_founders_profile_path(founder) %>
+        <br>
+
+      </div>
+
+    </div>
+  </div>
+  <br>
 <% end %>
