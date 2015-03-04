@@ -39,9 +39,9 @@ class Investor < ActiveRecord::Base
   end
 
   def nb_of_rates
-    scores = evaluations.map{ |evaluation| evaluation.average_score }
-    scores = scores.reject{ |score| score.nil? }
-    scores.size
+    nb_rates = evaluations.map{ |evaluation| evaluation.average_score }
+    nb_rates = nb_rates.reject{ |nb_rate| nb_rate.nil? }
+    nb_rates.size
   end
 
   def total_average_score

@@ -145,13 +145,18 @@
   <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
   <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
   <hr>
-  <% @investor.evaluations.each do |evaluation| %>
-  <h3><%= evaluation.title_review %></h3>
-  <p><small>posted by <%= link_to evaluation.founder, founders_profile_path %> on the <%= evaluation.date %></small>
-    <br>
-    <p><strong>Rated <%= evaluation.average_score %></strong></p>
-  <%= evaluation.review %></p>
- <hr>
-  <% end %>
-  <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@investor), class: "btn btn-primary" %>
+
 </div>
+<div id="evaluations">
+  <% if @investor.evaluations.blank? %>
+
+  <% else %>
+  <!-- using partial to render the show pages -->
+    <% @investor.evaluations.each do |evaluation| %>
+      <%= render 'evaluations/show', evaluation: evaluation %>
+    <% end %>
+  <% end %>
+</div>
+
+<br>
+  <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@investor), class: "btn btn-primary" %>
