@@ -21,149 +21,55 @@
   </div>
   <hr>
   <p>
-    <strong>Rating:</strong> <%= @investor.total_average_score %> / 5.0 (<%= @investor.nb_of_rates %> rates)
+    <strong>Rating: </strong>
+    <% if @investor.total_average_score.nil? %>
+      No rating yet
+    <% else %>
+      <%= @investor.total_average_score %> / 5.0 (<%= @investor.nb_of_rates %> rates)
+    <% end %>
   </p>
 
-  <ul class="list-inline">
-    <li>
-      <div>Reputation</div>
-      <%
-        if @investor.rating_reputation > 3.5
-          level = "success"
-        elsif @investor.rating_reputation < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% star_used = 0 %>
-        <% @investor.rating_reputation.to_i.times do %>
-          <i class="fa fa-star"></i>
-          <% star_used = @investor.rating_reputation.to_i %>
-        <% end %>
-        <% if @investor.rating_reputation - @investor.rating_reputation.to_i >= 0.5 %>
-          <i class="fa fa-star-half-o"></i>
-          <% star_used += 1 %>
-        <% end %>
-        <% empty = 5 - star_used
-          empty.times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
-    </li>
+  <ul class="list-inline text-center">
+    <% rating_areas = ["Reputation", "Deal", "Pitch", "Competence", "Commitment"] %>
 
-    <li>
-      <div>Deal</div>
+    <% rating_areas.each do |area| %>
       <%
-        if @investor.rating_deal > 3.5
+        if @investor.rating(area.downcase).nil?
+          level = "default"
+        elsif @investor.rating(area.downcase) > 3.5
           level = "success"
-        elsif @investor.rating_deal < 2.5
+        elsif @investor.rating(area.downcase) < 2.5
           level = "danger"
         else
           level = "warning"
         end
       %>
-      <div class="label label-<%= level %>">
-        <% star_used = 0 %>
-        <% @investor.rating_deal.to_i.times do %>
-          <i class="fa fa-star"></i>
-          <% star_used = @investor.rating_deal.to_i %>
-        <% end %>
-        <% if @investor.rating_deal - @investor.rating_deal.to_i >= 0.5 %>
-          <i class="fa fa-star-half-o"></i>
-          <% star_used += 1 %>
-        <% end %>
-        <% empty = 5 - star_used
-          empty.times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
-    </li>
+      <li>
+        <div><%= area %></div>
+        <div class="label label-<%= level %>">
 
-    <li>
-      <div>Pitch</div>
-      <%
-        if @investor.rating_pitch > 3.5
-          level = "success"
-        elsif @investor.rating_pitch < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% star_used = 0 %>
-        <% @investor.rating_pitch.to_i.times do %>
-          <i class="fa fa-star"></i>
-          <% star_used = @investor.rating_pitch.to_i %>
-        <% end %>
-        <% if @investor.rating_pitch - @investor.rating_pitch.to_i >= 0.5 %>
-          <i class="fa fa-star-half-o"></i>
-          <% star_used += 1 %>
-        <% end %>
-        <% empty = 5 - star_used
-          empty.times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
-    </li>
-
-    <li>
-      <div>Competence</div>
-      <%
-        if @investor.rating_competence > 3.5
-          level = "success"
-        elsif @investor.rating_competence < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% star_used = 0 %>
-        <% @investor.rating_competence.to_i.times do %>
-          <i class="fa fa-star"></i>
-          <% star_used = @investor.rating_competence.to_i %>
-        <% end %>
-        <% if @investor.rating_competence - @investor.rating_competence.to_i >= 0.5 %>
-          <i class="fa fa-star-half-o"></i>
-          <% star_used += 1 %>
-        <% end %>
-        <% empty = 5 - star_used
-          empty.times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
-    </li>
-
-    <li>
-      <div>Commitment</div>
-      <%
-        if @investor.rating_commitment > 3.5
-          level = "success"
-        elsif @investor.rating_commitment < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% star_used = 0 %>
-        <% @investor.rating_commitment.to_i.times do %>
-          <i class="fa fa-star"></i>
-          <% star_used = @investor.rating_commitment.to_i %>
-        <% end %>
-        <% if @investor.rating_commitment - @investor.rating_commitment.to_i >= 0.5 %>
-          <i class="fa fa-star-half-o"></i>
-          <% star_used += 1 %>
-        <% end %>
-        <% empty = 5 - star_used
-          empty.times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
-      </div>
-    </li>
+          <% if @investor.rating(area.downcase).nil? %>
+            <% 5.times do %>
+              <i class="fa fa-star-o"></i>
+            <% end %>
+          <% else %>
+            <% star_used = 0 %>
+            <% @investor.rating(area.downcase).to_i.times do %>
+              <i class="fa fa-star"></i>
+              <% star_used = @investor.rating(area.downcase).to_i %>
+            <% end %>
+            <% if @investor.rating(area.downcase) - @investor.rating(area.downcase).to_i >= 0.5 %>
+              <i class="fa fa-star-half-o"></i>
+              <% star_used += 1 %>
+            <% end %>
+            <% empty = 5 - star_used
+              empty.times do %>
+              <i class="fa fa-star-o"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
   </ul>
 
   <hr>
