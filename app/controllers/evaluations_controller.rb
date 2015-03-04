@@ -3,7 +3,14 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations
   def index
-    @evaluations = Evaluation.all
+    if(params[:order]) == "title_review"
+      @evaluations = Evaluation.all.order(:title_review)
+    elsif (params[:order]) == "average_score"
+      @evaluations = Evaluation.all.order(:title_review)
+
+    else
+      @evaluations = Evaluation.all
+    end
   end
 
   # GET /evaluations/1

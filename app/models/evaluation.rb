@@ -13,9 +13,11 @@ class Evaluation < ActiveRecord::Base
 
   def work_again
     if would_work_again == true
-      "I'd work again with this investor"
+      "I'd work again with this investor |"
+    elsif would_work_again == false
+      "I wouldn't want to work with this investor in the futur. |"
     else
-      "I wouldn't want to work with this investor in the futur."
+
     end
   end
 
