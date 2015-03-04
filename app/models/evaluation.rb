@@ -17,7 +17,4 @@ class Evaluation < ActiveRecord::Base
   def date
     created_at.strftime("%Y-%m-%d")
   end
-
-
-
 end
