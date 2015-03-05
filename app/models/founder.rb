@@ -7,7 +7,7 @@ class Founder < ActiveRecord::Base
 
   has_many :evaluations
 
-  validates :email, :first_name, :last_name, presence: true
+  validates :email, presence: true
 
   has_attached_file :profile_pic,
     styles: { medium: "300x300#", thumb: "100x100#" },
