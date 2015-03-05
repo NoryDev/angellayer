@@ -6,6 +6,7 @@ class Founder < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [ :facebook ]
 
   has_many :evaluations
+  has_many :comments
 
   validates :email, :first_name, :last_name, presence: true
 

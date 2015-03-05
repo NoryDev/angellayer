@@ -1,6 +1,7 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :investor
   belongs_to :founder
+  has_many :comments
   validates :investor, :founder, :review, :title_review, presence: true
 
   def average_score
