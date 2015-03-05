@@ -1,4 +1,6 @@
 class EvaluationsController < ApplicationController
+
+  before_action :find_profile, only: [:new, :edit, :create]
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
 
   # GET /evaluations
@@ -7,7 +9,6 @@ class EvaluationsController < ApplicationController
       @evaluations = Evaluation.all.order(:title_review)
     elsif (params[:order]) == "average_score"
       @evaluations = Evaluation.all.order(:title_review)
-
     else
       @evaluations = Evaluation.all
     end
@@ -20,20 +21,17 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/new
   def new
     @evaluation = Evaluation.new
-    @profile = InvestorProfile.find(params[:investor_id])
     @evaluation.investor_profile = @profile
     @evaluation.founder = current_founder
   end
 
   # GET /evaluations/1/edit
   def edit
-    @profile = InvestorProfile.find(params[:investor_id])
   end
 
   # POST /evaluations
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    @profile = InvestorProfile.find(params[:investor_id])
     @evaluation.investor_profile = @profile
     @evaluation.founder = current_founder
 
@@ -68,6 +66,10 @@ class EvaluationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def evaluation_params
       params.require(:evaluation).permit(:investor_id, :founder_id, :review, :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, :amount_raised, :would_work_again, :title_review)
+    end
+
+    def find_profile
+      @profile = InvestorProfile.find(params[:investor_id])
     end
 
 end
