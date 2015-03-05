@@ -1,16 +1,17 @@
 <%= simple_form_for(@founder, url: founders_profile_path) do |f| %>
-  <%= f.error_notification %>
+ <%= f.error_notification %>
 
-  <%= f.input :first_name, required: true, autofocus: true %>
-  <%= f.input :last_name, required: true %>
-  <%= f.input :profile_pic, as: :file %>
-  <%= f.input :facebook, required: false %>
-  <%= f.input :twitter, required: false %>
-  <%= f.input :linkedin, required: false %>
-  <%= f.input :angellist, required: false %>
-  <%= f.input :skype, required: false %>
-  <%= f.input :cell_phone, required: false %>
-  <%= f.input :website, required: false %>
-  <%= f.input :all_startups, required: false %>
-  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+ <%= f.input :first_name %>
+ <%= f.input :last_name %>
+ <%= f.input :website %>
+ <%= f.input :profile_pic %>
+ <%= f.input :facebook %>
+ <%= f.input :twitter %>
+ <%= f.input :linkedin %>
+ <%= f.input :angellist %>
+ <%= f.input :skype %>
+ <%= f.input :cell_phone %>
+
+ <%= f.input :all_startups %>
+ <%= f.button :submit, "Save", class: "btn btn-primary" %>
 <% end %>

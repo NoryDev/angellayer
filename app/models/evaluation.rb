@@ -1,5 +1,8 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :founder
+
+  validates :investor_profile, :founder, :review, :title_review, presence: true
+
   belongs_to :investor_profile
 
   def average_score
