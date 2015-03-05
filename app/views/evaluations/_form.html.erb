@@ -8,10 +8,10 @@
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: "Rate Reputation", prompt: "Select your score", hint: 'Is he a shark, cool guy, personally likeable, … ' %>
-  <%= f.input :rating_deal, collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Founder-friendly terms? Favourable terms?' %>
-  <%= f.input :rating_pitch, label: "Rate Pitch feedback", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'How fast were they to react? Was the deal closed quickly and efficiently?' %>
-  <%= f.input :rating_competence, label: "Rate the Investor's competence", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor have a good knowledge of your industry?' %>
+  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: "Rate Investor's Reputation", prompt: "Select your score", hint: 'Is he a shark, cool guy, personally likeable, … ' %>
+  <%= f.input :rating_deal, label: "Rate Deal Terms", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Founder-friendly terms? Favourable terms?' %>
+  <%= f.input :rating_pitch, label: "Rate Pitch Feedback", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'How fast were they to react? Was the deal closed quickly and efficiently?' %>
+  <%= f.input :rating_competence, label: "Rate the Investor's Competence", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor have a good knowledge of your industry?' %>
   <%= f.input :rating_commitment, label: "Rate Investor's Commitment", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, finance and accounting issues and in recruiting new team members.' %>
 </div>
 <br>
