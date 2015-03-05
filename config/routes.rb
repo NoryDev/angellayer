@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   ActiveAdmin.routes(self)
   # namespace :investors do
   # get 'profile/index'
@@ -68,7 +70,10 @@ Rails.application.routes.draw do
 
   # get 'welcome/index'
 
-  resources :evaluations, except: [:new, :edit, :create, :update]
+
+  resources :evaluations, except: [:new, :edit, :create, :update] do
+    resources :comments
+  end
 
 
   devise_for :investors

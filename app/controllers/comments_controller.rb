@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 class CommentsController < ApplicationController
+=======
+class CommentsController < InheritedResources::Base
+>>>>>>> votes
   before_action :find_review
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :current_founder?
@@ -12,7 +16,11 @@ class CommentsController < ApplicationController
   # GET /comments/1
   def show
     @review.comments(@comment)
+<<<<<<< HEAD
   en
+=======
+  end
+>>>>>>> votes
 
   # GET /comments/new
   def new
@@ -28,7 +36,11 @@ class CommentsController < ApplicationController
     @comment = @review.comments.build(comment_params)
 
     if @comment.save
+<<<<<<< HEAD
       redirect_to review_comments_path(@review), notice: 'Your comment was successfully created.'
+=======
+      redirect_to review_comments_path(@review), notice: 'Your image was successfully created.'
+>>>>>>> votes
     else
       render :new
     end
@@ -37,7 +49,11 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
+<<<<<<< HEAD
       redirect_to review_comments_path(@review), notice: 'Your comment was successfully updated.'
+=======
+      redirect_to review_comments_path(@review), notice: 'Your image was successfully updated.'
+>>>>>>> votes
     else
       render :edit
     end
@@ -46,7 +62,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
+<<<<<<< HEAD
     redirect_to review_comments_path(@review), notice: 'Your comment was successfully destroyed.'
+=======
+    redirect_to review_comments_path(@review), notice: 'Your image was successfully destroyed.'
+>>>>>>> votes
   end
 
   private
