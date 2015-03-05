@@ -1,9 +1,21 @@
 <div class = "img-container img-rounded full-padded">
-  <h3><%= evaluation.title_review %></h3>
+  <div class="row">
+    <div class="col-xs-12 col-sm-9">
+      <h3><%= evaluation.title_review %></h3>
 
   <p>Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
     <br>
-    <small>posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+    <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+
+    </div>
+    <div class="col-sm-3 hidden-xs">
+      <%= image_tag evaluation.founder.avatar, class: " small-img" %>
+
+    </div>
+  </div>
+
+
+
     <br>
     <p><strong>
       <% if evaluation.average_score %>

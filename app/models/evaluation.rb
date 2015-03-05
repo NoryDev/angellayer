@@ -6,10 +6,18 @@ class Evaluation < ActiveRecord::Base
   belongs_to :investor_profile
 
   def average_score
-    if rating_reputation.nil? || rating_deal.nil? || rating_pitch.nil? || rating_competence.nil? || rating_commitment.nil?
+    rates = []
+    rates << rating_reputation
+    rates << rating_deal
+    rates << rating_pitch
+    rates << rating_competence
+    rates << rating_commitment
+    rates = rates.reject{ |rate| rate.nil? }
+    rate_sum = rates.inject{|sum,x| sum + x }
+    if rate_sum.nil?
       nil
     else
-      (rating_reputation + rating_deal + rating_pitch + rating_competence + rating_commitment)/5
+      average_rate = rate_sum / rates.size
     end
   end
 
