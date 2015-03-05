@@ -1,44 +1,71 @@
 <!-- app/views/founders/profile/show.html.erb -->
+<div class = "img-container img-rounded full-padded">
+  <h1 class = "text-center"><%= @founder.name %></h1>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <%= image_tag @founder.profile_pic.url(:thumb), size: "100x100", alt: @founder.name %>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <p>
+        <i class="fa fa-globe"></i> <% if @founder.website %>
+        <%= link_to @founder.website, "//" + @founder.website %>
+        <% end %>
+      </p>
+      <p>
+        <i class="fa fa-phone"> &nbsp; </i><%= @founder.cell_phone %>
+      </p>
+      <i class="fa fa-envelope-o"> &nbsp;
+      </i><%= mail_to @founder.email, @founder.email %>
+    </div>
+  </div>
 
-<h1>Profile for <%= @founder.name %></h1>
+  <p class="text-large text-center">
+    <% unless @founder.facebook.nil? || @founder.facebook.empty? %>
+    <%= link_to "//" + @founder.facebook, target: "_blank" do %>
+    <i class="fa fa-facebook"></i>
+    <% end %>
+    &nbsp;
+    <% end %>
+    <% unless @founder.twitter.nil? || @founder.twitter.empty? %>
+    <%= link_to "//" + @founder.twitter, target: "_blank" do %>
+    <i class="fa fa-twitter"></i>
+    <% end %>
+    &nbsp;
+    <% end %>
+    <% unless @founder.linkedin.nil? || @founder.linkedin.empty? %>
+    <%= link_to "//" + @founder.linkedin, target: "_blank" do %>
+    <i class="fa fa-linkedin"></i>
+    <% end %>
+    &nbsp;
+    <% end %>
+    <% unless @founder.angellist.nil? || @founder.angellist.empty? %>
+    <%= link_to "//" + @founder.angellist, target: "_blank" do %>
+    <i class="fa fa-angellist"></i>
+    <% end %>
+    &nbsp;
+    <% end %>
+    <% unless @founder.skype.nil? || @founder.skype.empty? %>
+    <%= link_to "skype:#{@founder.skype}?chat", target: "_blank" do %>
+    <i class="fa fa-skype"></i>
+    <% end %>
+    &nbsp;
+    <% end %>
+    <hr>
+    <p>
+      All my startups: <%= @founder.all_startups %>
+    </p>
+    <%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
+    <%= link_to 'All founders', founders_profile_index_path, class: "btn btn-primary" %>
+  </div>
+  <br>
+  <div id="evaluations">
+  <% if @founder.evaluations.blank? %>
 
-<%= image_tag @founder.image, size: "300x300", alt: @founder.name %>
-
-<p>
-  First name: <%= @founder.first_name %>
-</p>
-<p>
-  Last name: <%= @founder.last_name %>
-</p>
-<p>
-  Email: <%= @founder.email %>
-</p>
-<p>
-  FB: <%= @founder.facebook %>
-</p>
-<p>
-  Twitter: <%= @founder.twitter %>
-</p>
-<p>
-  LinkedIn: <%= @founder.linkedin %>
-</p>
-<p>
-  Angel.co: <%= @founder.angellist %>
-</p>
-<p>
-  Skype: <%= @founder.skype %>
-</p>
-<p>
-  Cell phone: <%= @founder.cell_phone %>
-</p>
-<p>
-  Website: <%= @founder.website %>
-</p>
-<p>
-  All my startups: <%= @founder.all_startups %>
-</p>
-
-<%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
-<%= link_to 'All founders', founders_profile_index_path, class: "btn btn-primary" %>
-
-
+  <% else %>
+  <!-- using partial to render the show pages -->
+    <% @founder.evaluations.each do |evaluation| %>
+      <%= render 'evaluations/show', evaluation: evaluation %>
+    <% end %>
+  <% end %>
+</div>
