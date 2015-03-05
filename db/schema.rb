@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305130330) do
+ActiveRecord::Schema.define(version: 20150305123811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,17 +30,6 @@ ActiveRecord::Schema.define(version: 20150305130330) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "evaluation_id"
-    t.integer  "founder_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "comments", ["evaluation_id"], name: "index_comments_on_evaluation_id", using: :btree
-  add_index "comments", ["founder_id"], name: "index_comments_on_founder_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
     t.integer  "founder_id"
@@ -147,8 +136,6 @@ ActiveRecord::Schema.define(version: 20150305130330) do
   add_index "investors", ["email"], name: "index_investors_on_email", unique: true, using: :btree
   add_index "investors", ["reset_password_token"], name: "index_investors_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "comments", "evaluations"
-  add_foreign_key "comments", "founders"
   add_foreign_key "evaluations", "founders"
   add_foreign_key "evaluations", "investor_profiles"
   add_foreign_key "investor_profiles", "investors"
