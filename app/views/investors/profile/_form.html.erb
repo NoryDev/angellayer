@@ -1,26 +1,50 @@
 <%= simple_form_for(@profile, url: @profile.id? ? investors_profile_path(@profile) : investors_profile_index_path) do |f| %>
-  <%= f.error_notification %>
-
+<%= f.error_notification %>
+<div class = "img-container img-rounded full-padded">
   <%= f.input :company_name, required: true, autofocus: true %>
   <%= f.input :email %>
   <%= f.input :physical_address %>
   <%= f.input :phone_number %>
-  <%= f.input :profile_pic, as: :file%>
-  <%= f.input :facebook %>
-  <%= f.input :twitter %>
-  <%= f.input :linkedin %>
-  <%= f.input :angellist %>
-  <%= f.input :skype %>
   <%= f.input :website %>
+</div>
+<br>
 
+
+<div class = "img-container img-rounded full-padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100" %>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <%= f.input :profile_pic, as: :file, label:"Choose or modify profile picture" %>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class = "img-container img-rounded full-padded">
+  <%= f.input :facebook, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook'  %>
+  <%= f.input :twitter, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter'  %>
+  <%= f.input :linkedin, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin'  %>
+  <%= f.input :angellist, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist'  %>
+  <%= f.input :skype, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype'  %>
+</div>
+<br>
+
+<div class = "img-container img-rounded full-padded">
   <%= f.input :sectors_invested_in %>
-  <%= f.input :capital_under_managment %>
+  <%= f.input :capital_under_managment, label: "Capital Under Management in $", placeholder: "Please enter numbers only please" %>
   <%= f.input :geographical_focus %>
   <%= f.input :preferred_investment_stage %>
   <%= f.input :nb_projects_invested_in %>
+</div>
+<br>
 
+<div class = "img-container img-rounded full-padded">
   <%= f.input :contact_person %>
   <%= f.input :contact_email %>
   <%= f.input :contact_cell_phone %>
   <%= f.button :submit, "Save", class: "btn btn-primary" %>
-<% end %>
+  <% end %>
+</div>
+<br>

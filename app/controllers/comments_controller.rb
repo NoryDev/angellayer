@@ -2,19 +2,6 @@ class CommentsController < ApplicationController
 
   before_action :find_evaluation
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  #before_action :current_founder?
-
-  # GET /comments
-  def index
-    @comments = @evaluation.comments
-    @comment = Comment.new
-  end
-
-  # GET /comments/1
-  def show
-    @evaluation.comments(@comment)
-  end
-
 
   # GET /comments/new
   def new
@@ -66,12 +53,6 @@ class CommentsController < ApplicationController
     def find_evaluation
       @evaluation = Evaluation.find(params[:evaluation_id])
     end
-
-    # def current_founder?
-    #   if current_founder != @evaluation.founder
-    #     not_found
-    #   end
-    # end
 end
 
 
