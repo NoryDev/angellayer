@@ -2,20 +2,14 @@
   <div class="row">
     <div class="col-xs-12 col-sm-9">
       <h3><%= evaluation.title_review %></h3>
-
-  <p>Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
-    <br>
-    <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
-
+      <p>Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
+        <br>
+        <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+      </div>
+      <div class="col-sm-3 hidden-xs">
+        <%= image_tag evaluation.founder.avatar, class: " small-img" %>
+      </div>
     </div>
-    <div class="col-sm-3 hidden-xs">
-      <%= image_tag evaluation.founder.avatar, class: " small-img" %>
-
-    </div>
-  </div>
-
-
-
     <br>
     <p><strong>
       <% if evaluation.average_score %>
@@ -24,21 +18,23 @@
       Not Rated
       <% end %>
     </strong></p>
+    <p class = "text-justify"><%= evaluation.review %></p>
+    <p><small>
+      <%= evaluation.work_again%>
+      amout raised : <%= evaluation.amount_raised %> $
+    </small></p>
+    <br>
+    <p class="text-right"><small><%= link_to 'Show', evaluation %> |
+      <%= link_to 'Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> |
+    <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
+    <hr class = "small">
+    <% evaluation.comments.each do |comment| %>
+    <small><%= comment.content %> - <span class = "text-muted">
+      <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp; <%= comment.date %> <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_evaluation_comment_path(comment.evaluation, comment.id) %> </span></small>
+    <hr class = "small">
+    <%end%>
+    <small class="text-muted"> <%= link_to "add comment", new_evaluation_comment_path(evaluation) %> </small>
 
-  <p class = "text-justify"><%= evaluation.review %></p>
-
-  <p><small>
-    <%= evaluation.work_again%>
-
-     amout raised : <%= evaluation.amount_raised %> $
-  </small></p>
   <br>
-
-
-
-
-       <p class="text-right"><small><%= link_to 'Show', evaluation %> |
-       <%= link_to 'Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> |
-       <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
   </div>
   <br>

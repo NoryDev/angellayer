@@ -1,9 +1,10 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :founder
-
+  has_many :comments
   validates :investor_profile, :founder, :review, :title_review, presence: true
-
   belongs_to :investor_profile
+
+
 
   def average_score
     rates = []
