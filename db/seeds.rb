@@ -6,6 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+admin = Founder.new
+admin.email = "superadmin@yopmail.com"
+admin.password = "superadmin"
+admin.password_confirmation = "superadmin"
+admin.save
+
+admin.first_name = Faker::Name.first_name
+admin.last_name = Faker::Name.last_name
+admin.facebook = Faker::Internet.url('facebook.com')
+admin.twitter = Faker::Internet.url('twitter.com')
+admin.linkedin = Faker::Internet.url('linkedin.com')
+admin.angellist = Faker::Internet.url('angel.co')
+admin.skype = Faker::Internet.user_name
+admin.cell_phone = Faker::PhoneNumber.cell_phone
+admin.website = Faker::Internet.url
+admin.all_startups = "#{Faker::Company.name}, #{Faker::Company.name} & #{Faker::Company.name}"
+admin.save
+
 5.times do
   founder = Founder.new
   founder.email = "#{Faker::Internet.user_name}@yopmail.com"
