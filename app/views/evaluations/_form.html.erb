@@ -21,8 +21,8 @@
   <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?" %>
   <br>
   <div class="form-actions btn-group">
-    <%= f.button :submit, {class: "btn btn-primary"} %>
-    <%= link_to 'Back', evaluations_path, {class: "btn btn-primary"} %>
+    <%= f.button :submit, {class: "btn btn-primary"} %> &nbsp; &nbsp;
+    <%= link_to 'Cancel', evaluations_path, {class: "text-muted"} %>
   </div>
 </div>
 <% end %>
