@@ -20,24 +20,25 @@ class EvaluationsController < ApplicationController
   # GET /evaluations/new
   def new
     @evaluation = Evaluation.new
-    @investor = Investor.find(params[:investor_id])
-    @evaluation.investor = @investor
+    @profile = InvestorProfile.find(params[:investor_id])
+    @evaluation.investor_profile = @profile
     @evaluation.founder = current_founder
   end
 
   # GET /evaluations/1/edit
   def edit
+    @profile = InvestorProfile.find(params[:investor_id])
   end
 
   # POST /evaluations
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    @investor = Investor.find(params[:investor_id])
-    @evaluation.investor = @investor
+    @profile = InvestorProfile.find(params[:investor_id])
+    @evaluation.investor_profile = @profile
     @evaluation.founder = current_founder
 
     if @evaluation.save
-      redirect_to investors_profile_path(@investor), notice: 'Evaluation was successfully created.'
+      redirect_to investors_profile_path(@profile), notice: 'Evaluation was successfully created.'
     else
       render :new
     end

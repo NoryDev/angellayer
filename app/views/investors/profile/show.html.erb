@@ -1,33 +1,33 @@
 <!-- app/views/investors/profile/show.html.erb -->
 <div class = "img-container img-rounded full-padded">
-  <h1 class = "text-center"><%= @investor.company_name %></h1>
+  <h1 class = "text-center"><%= @profile.company_name %></h1>
   <hr>
 
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <%= image_tag @investor.profile_pic.url(:thumb), size: "100x100", alt: @investor.company_name %>
+      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100", alt: @profile.company_name %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <p>
-        <i class="fa fa-home"></i> <%= @investor.physical_address %>
+        <i class="fa fa-home"></i> <%= @profile.physical_address %>
       </p>
       <p>
-        <i class="fa fa-globe"></i> <% if @investor.website %>
-          <%= link_to @investor.website, "//" + @investor.website %>
+        <i class="fa fa-globe"></i> <% if @profile.website %>
+          <%= link_to @profile.website, "//" + @profile.website %>
         <% end %>
       </p>
       <p>
-        <i class="fa fa-phone"> &nbsp; </i><%= @investor.phone_number %>
+        <i class="fa fa-phone"> &nbsp; </i><%= @profile.phone_number %>
       </p>
     </div>
   </div>
   <hr>
   <p>
     <strong>Rating: </strong>
-    <% if @investor.total_average_score.nil? %>
+    <% if @profile.total_average_score.nil? %>
       No rating yet
     <% else %>
-      <%= @investor.total_average_score %> / 5.0 (<%= @investor.nb_of_rates %> rates)
+      <%= @profile.total_average_score %> / 5.0 (<%= @profile.nb_of_rates %> rates)
     <% end %>
   </p>
 
@@ -36,11 +36,11 @@
 
     <% rating_areas.each do |area| %>
       <%
-        if @investor.rating(area.downcase).nil?
+        if @profile.rating(area.downcase).nil?
           level = "default"
-        elsif @investor.rating(area.downcase) > 3.5
+        elsif @profile.rating(area.downcase) > 3.5
           level = "success"
-        elsif @investor.rating(area.downcase) < 2.5
+        elsif @profile.rating(area.downcase) < 2.5
           level = "danger"
         else
           level = "warning"
@@ -50,17 +50,17 @@
         <div><%= area %></div>
         <div class="label label-<%= level %>">
 
-          <% if @investor.rating(area.downcase).nil? %>
+          <% if @profile.rating(area.downcase).nil? %>
             <% 5.times do %>
               <i class="fa fa-star-o"></i>
             <% end %>
           <% else %>
             <% star_used = 0 %>
-            <% @investor.rating(area.downcase).to_i.times do %>
+            <% @profile.rating(area.downcase).to_i.times do %>
               <i class="fa fa-star"></i>
-              <% star_used = @investor.rating(area.downcase).to_i %>
+              <% star_used = @profile.rating(area.downcase).to_i %>
             <% end %>
-            <% if @investor.rating(area.downcase) - @investor.rating(area.downcase).to_i >= 0.5 %>
+            <% if @profile.rating(area.downcase) - @profile.rating(area.downcase).to_i >= 0.5 %>
               <i class="fa fa-star-half-o"></i>
               <% star_used += 1 %>
             <% end %>
@@ -76,90 +76,91 @@
 
   <hr>
 
+  <!-- Or @profile.email? -->
   <p>
-    <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @investor.email, @investor.email %>
+    <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @profile.email, @profile.email %>
   </p>
 
   <p>
-    <i class="fa fa-cubes"></i> Sectors invested in: <%= @investor.sectors_invested_in %>
+    <i class="fa fa-cubes"></i> Sectors invested in: <%= @profile.sectors_invested_in %>
   </p>
 
   <p>
-    <i class="fa fa-usd"></i> Capital under managment: <%= @investor.capital_under_managment %> $
+    <i class="fa fa-usd"></i> Capital under managment: <%= @profile.capital_under_managment %> $
   </p>
 
   <p>
-    <i class="fa fa-globe"></i> Geographical focus: <%= @investor.geographical_focus %>
+    <i class="fa fa-globe"></i> Geographical focus: <%= @profile.geographical_focus %>
   </p>
 
   <p>
-    <i class="fa fa-tree"></i> Investment stage: <%= @investor.preferred_investment_stage %>
+    <i class="fa fa-tree"></i> Investment stage: <%= @profile.preferred_investment_stage %>
   </p>
 
   <p>
-    <i class="fa fa-users"></i> Nb of projects invested in: <%= @investor.nb_projects_invested_in %>
+    <i class="fa fa-users"></i> Nb of projects invested in: <%= @profile.nb_projects_invested_in %>
   </p>
   <hr>
   <p><strong>contact</strong></p>
   <p>
-    <i class="fa fa-user"></i> <%= @investor.contact_person %>
+    <i class="fa fa-user"></i> <%= @profile.contact_person %>
   </p>
   <p>
-    <i class="fa fa-envelope-o"> </i> <%= @investor.contact_email %>
+    <i class="fa fa-envelope-o"> </i> <%= @profile.contact_email %>
   </p>
   <p>
-    <i class="fa fa-mobile"></i> <%= @investor.contact_cell_phone %>
+    <i class="fa fa-mobile"></i> <%= @profile.contact_cell_phone %>
   </p>
   <hr>
   <p class="text-large text-center">
-    <% unless @investor.facebook.nil? || @investor.facebook.empty? %>
-      <%= link_to "//" + @investor.facebook, target: "_blank" do %>
+    <% unless @profile.facebook.nil? || @profile.facebook.empty? %>
+      <%= link_to "//" + @profile.facebook, target: "_blank" do %>
         <i class="fa fa-facebook"></i>
       <% end %>
       &nbsp;
     <% end %>
-    <% unless @investor.twitter.nil? || @investor.twitter.empty? %>
-      <%= link_to "//" + @investor.twitter, target: "_blank" do %>
+    <% unless @profile.twitter.nil? || @profile.twitter.empty? %>
+      <%= link_to "//" + @profile.twitter, target: "_blank" do %>
         <i class="fa fa-twitter"></i>
       <% end %>
       &nbsp;
     <% end %>
-    <% unless @investor.linkedin.nil? || @investor.linkedin.empty? %>
-      <%= link_to "//" + @investor.linkedin, target: "_blank" do %>
+    <% unless @profile.linkedin.nil? || @profile.linkedin.empty? %>
+      <%= link_to "//" + @profile.linkedin, target: "_blank" do %>
         <i class="fa fa-linkedin"></i>
       <% end %>
       &nbsp;
     <% end %>
-    <% unless @investor.angellist.nil? || @investor.angellist.empty? %>
-      <%= link_to "//" + @investor.angellist, target: "_blank" do %>
+    <% unless @profile.angellist.nil? || @profile.angellist.empty? %>
+      <%= link_to "//" + @profile.angellist, target: "_blank" do %>
         <i class="fa fa-angellist"></i>
       <% end %>
       &nbsp;
     <% end %>
-    <% unless @investor.skype.nil? || @investor.skype.empty? %>
-      <%= link_to "skype:#{@investor.skype}?chat", target: "_blank" do %>
+    <% unless @profile.skype.nil? || @profile.skype.empty? %>
+      <%= link_to "skype:#{@profile.skype}?chat", target: "_blank" do %>
         <i class="fa fa-skype"></i>
       <% end %>
       &nbsp;
     <% end %>
   </p>
   <hr>
-  <%= link_to "Edit", edit_investors_profile_path(@investor), class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
   <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
   <hr>
 
 </div>
 <br>
 <div id="evaluations">
-  <% if @investor.evaluations.blank? %>
+  <% if @profile.evaluations.blank? %>
 
   <% else %>
   <!-- using partial to render the show pages -->
-    <% @investor.evaluations.each do |evaluation| %>
+    <% @profile.evaluations.each do |evaluation| %>
       <%= render 'evaluations/show', evaluation: evaluation %>
     <% end %>
   <% end %>
 </div>
 
 <br>
-  <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@investor), class: "btn btn-primary" %>
+  <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@profile), class: "btn btn-primary" %>

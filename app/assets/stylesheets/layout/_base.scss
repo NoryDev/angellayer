@@ -26,6 +26,7 @@ hr {
   font-size: 2em;
 }
 
+
 body {
   background: url(image_path('bg-texture.jpg')) repeat;
 }
@@ -35,4 +36,8 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 50%;
+
+.align-right {
+  float: right;
+
 }
