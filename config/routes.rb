@@ -50,19 +50,25 @@ Rails.application.routes.draw do
   end
 
   namespace :investors do
-    resources :profile, only: [:index, :show, :edit, :update]
+    resources :profile, only: [:index, :show, :edit, :update, :new, :create]
   end
 
   get 'investors/profile/:investor_id/evaluations/new' => "evaluations#new", as: :new_investors_profile_evaluation
-  post 'investors/profile/:investor_id/evaluations/create' => "evaluations#create", as: :investors_profile_evaluations
+  post 'investors/profile/:investor_id/evaluations' => "evaluations#create", as: :investors_profile_evaluations
+
+  get 'investors/profile/:investor_id/evaluations/:id/edit' => "evaluations#edit", as: :edit_investors_profile_evaluation
+
+  patch 'investors/profile/:investor_id/evaluations/:id' => "evaluations#update", as: :investors_profile_evaluation
+  # put 'investors/profile/:investor_id/evaluations/:id' => "evaluations#update", as: :investors_profile_evaluation
+
 
   # scope module: 'founders' do
   #   resources :profiles
   # end
 
-  get 'welcome/index'
+  # get 'welcome/index'
 
-  resources :evaluations, except: [:new]
+  resources :evaluations, except: [:new, :edit, :create, :update]
 
 
   devise_for :investors

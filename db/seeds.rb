@@ -10,7 +10,9 @@ Investor.all.each do |investor|
   investor.destroy
 end
 
-Founder.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+InvestorProfile.all.each do |investor|
+  investor.destroy
+end
 
 10.times do
   investor = Investor.new()
@@ -19,6 +21,8 @@ Founder.create!(email: 'admin@example.com', password: 'password', password_confi
   investor.password_confirmation = "12345678"
   investor.save
 
+  investor = InvestorProfile.new()
+  investor.email = "#{Faker::Internet.user_name}@yopmail.com"
   investor.company_name = Faker::Company.name
   investor.physical_address = "#{Faker::Address.street_address}, #{Faker::Address.zip_code} #{Faker::Address.city}"
   investor.phone_number = Faker::PhoneNumber.phone_number
@@ -26,7 +30,7 @@ Founder.create!(email: 'admin@example.com', password: 'password', password_confi
   investor.twitter = Faker::Internet.url('twitter.com')
   investor.linkedin = Faker::Internet.url('linkedin.com')
   investor.angellist = Faker::Internet.url('angel.co')
-  investor.skype = Faker::Internet.url('skype.com')
+  investor.skype = Faker::Internet.user_name
   investor.website = Faker::Internet.url
   investor.sectors_invested_in = Faker::Commerce.department
   investor.capital_under_managment = rand(101) * 100_000
