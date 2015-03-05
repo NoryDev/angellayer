@@ -1,20 +1,5 @@
-<<<<<<< HEAD
-<%= simple_form_for([@investor, @evaluation], url: investors_profile_evaluations_path) do |f| %>
-<%= f.error_notification %>
-=======
 <%= simple_form_for([@profile, @evaluation], url: @evaluation.id? ? investors_profile_evaluation_path(@profile, @evaluation) : investors_profile_evaluations_path ) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :title_review %>
-    <%= f.input :review %>
-    <%= f.input :rating_reputation, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_deal, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_pitch, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_competence, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_commitment, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :amount_raised, placeholder: 'Please enter a number in $' %>
->>>>>>> ce0d3ae71d5c34faf78964fedb3f13b9d29b3e0d
 
 <div class = "img-container img-rounded full-padded">
   <%= f.input :title_review %>
