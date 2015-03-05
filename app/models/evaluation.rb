@@ -1,23 +1,19 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :founder
-
+  has_many :comments
   validates :investor_profile, :founder, :review, :title_review, presence: true
-
   belongs_to :investor_profile
 
+
+
   def average_score
-    rates = []
-    rates << rating_reputation
-    rates << rating_deal
-    rates << rating_pitch
-    rates << rating_competence
-    rates << rating_commitment
+    rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
     rates = rates.reject{ |rate| rate.nil? }
-    rate_sum = rates.inject{|sum,x| sum + x }
-    if rate_sum.nil?
+    rate_sum = rates.reduce(:+)
+    if rates.empty?
       nil
     else
-      average_rate = rate_sum / rates.size
+      rate_sum / rates.size
     end
   end
 
