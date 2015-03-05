@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   ActiveAdmin.routes(self)
 
   namespace :founders do
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :evaluations, except: [:new, :edit, :create, :update] do
     resources :comments, only: [:new, :create, :edit, :update]
+    resources :votes, only: [:new, :create, :edit, :update]
   end
 
   devise_for :investors
