@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304172628) do
+ActiveRecord::Schema.define(version: 20150305123811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150304172628) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
-    t.integer  "investor_id"
     t.integer  "founder_id"
     t.text     "review"
     t.float    "rating_reputation"
@@ -49,7 +48,6 @@ ActiveRecord::Schema.define(version: 20150304172628) do
   end
 
   add_index "evaluations", ["founder_id"], name: "index_evaluations_on_founder_id", using: :btree
-  add_index "evaluations", ["investor_id"], name: "index_evaluations_on_investor_id", using: :btree
   add_index "evaluations", ["investor_profile_id"], name: "index_evaluations_on_investor_profile_id", using: :btree
 
   create_table "founders", force: :cascade do |t|
@@ -121,39 +119,18 @@ ActiveRecord::Schema.define(version: 20150304172628) do
   add_index "investor_profiles", ["investor_id"], name: "index_investor_profiles_on_investor_id", using: :btree
 
   create_table "investors", force: :cascade do |t|
-    t.string   "email",                      default: "", null: false
-    t.string   "encrypted_password",         default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",              default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "company_name"
-    t.text     "physical_address"
-    t.text     "phone_number"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "linkedin"
-    t.string   "angellist"
-    t.string   "skype"
-    t.string   "website"
-    t.text     "sectors_invested_in"
-    t.integer  "capital_under_managment"
-    t.text     "geographical_focus"
-    t.string   "preferred_investment_stage"
-    t.integer  "nb_projects_invested_in"
-    t.string   "contact_person"
-    t.string   "contact_email"
-    t.string   "contact_cell_phone"
-    t.string   "profile_pic_file_name"
-    t.string   "profile_pic_content_type"
-    t.integer  "profile_pic_file_size"
-    t.datetime "profile_pic_updated_at"
   end
 
   add_index "investors", ["email"], name: "index_investors_on_email", unique: true, using: :btree
@@ -161,6 +138,5 @@ ActiveRecord::Schema.define(version: 20150304172628) do
 
   add_foreign_key "evaluations", "founders"
   add_foreign_key "evaluations", "investor_profiles"
-  add_foreign_key "evaluations", "investors"
   add_foreign_key "investor_profiles", "investors"
 end
