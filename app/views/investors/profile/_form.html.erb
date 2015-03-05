@@ -1,7 +1,8 @@
-<%= simple_form_for(@investor, url: investors_profile_path) do |f| %>
+<%= simple_form_for(@profile, url: @profile.id? ? investors_profile_path(@profile) : investors_profile_index_path) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :company_name, required: true, autofocus: true %>
+  <%= f.input :email %>
   <%= f.input :physical_address %>
   <%= f.input :phone_number %>
   <%= f.input :profile_pic, as: :file%>
