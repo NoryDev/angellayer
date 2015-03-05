@@ -1,4 +1,4 @@
-class CommentsController < InheritedResources::Base
+class CommentsController < ApplicationController
   before_action :find_review
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :current_founder?
@@ -12,7 +12,7 @@ class CommentsController < InheritedResources::Base
   # GET /comments/1
   def show
     @review.comments(@comment)
-  end
+  en
 
   # GET /comments/new
   def new
@@ -28,7 +28,7 @@ class CommentsController < InheritedResources::Base
     @comment = @review.comments.build(comment_params)
 
     if @comment.save
-      redirect_to review_comments_path(@review), notice: 'Your image was successfully created.'
+      redirect_to review_comments_path(@review), notice: 'Your comment was successfully created.'
     else
       render :new
     end
@@ -37,7 +37,7 @@ class CommentsController < InheritedResources::Base
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
-      redirect_to review_comments_path(@review), notice: 'Your image was successfully updated.'
+      redirect_to review_comments_path(@review), notice: 'Your comment was successfully updated.'
     else
       render :edit
     end
@@ -46,7 +46,7 @@ class CommentsController < InheritedResources::Base
   # DELETE /comments/1
   def destroy
     @comment.destroy
-    redirect_to review_comments_path(@review), notice: 'Your image was successfully destroyed.'
+    redirect_to review_comments_path(@review), notice: 'Your comment was successfully destroyed.'
   end
 
   private
