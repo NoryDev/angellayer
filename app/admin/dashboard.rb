@@ -10,7 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Recent Investors" do
           ul do
-            Investor.last(10).map do |investor|
+            InvestorProfile.last(10).map do |investor|
               li link_to(investor.company_name, investors_profile_path(investor))
             end
           end
