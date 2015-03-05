@@ -1,25 +1,29 @@
 <%= simple_form_for([@investor, @evaluation], url: investors_profile_evaluations_path) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title_review %>
-    <%= f.input :review %>
-    <%= f.input :rating_reputation, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_deal, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_pitch, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_competence, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :rating_commitment, collection: 0..5, prompt: "Select your score" %>
-    <%= f.input :amount_raised, placeholder: 'Please enter a number in $' %>
+<div class = "img-container img-rounded full-padded">
+  <%= f.input :title_review %>
+  <%= f.input :review, :input_html => {:rows => 10} %>
+</div>
+<br>
 
+<div class = "img-container img-rounded full-padded">
+  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: "Rate Reputation", prompt: "Select your score", hint: 'Is he a shark, cool guy, personally likeable, … ' %>
+  <%= f.input :rating_deal, collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Founder-friendly terms? Favourable terms?' %>
+  <%= f.input :rating_pitch, label: "Rate Pitch feedback", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'How fast were they to react? Was the deal closed quickly and efficiently?' %>
+  <%= f.input :rating_competence, label: "Rate the Investor's competence", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor have a good knowledge of your industry?' %>
+  <%= f.input :rating_commitment, label: "Rate Investor's Commitment", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, finance and accounting issues and in recruiting new team members.' %>
+</div>
+<br>
 
-    <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?" %>
-
-  </div>
+<div class = "img-container img-rounded full-padded">
+  <%= f.input :amount_raised, as: :currency, placeholder: 'Please enter a number in $' %>
+  <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?" %>
   <br>
-
   <div class="form-actions btn-group">
     <%= f.button :submit, {class: "btn btn-primary"} %>
     <%= link_to 'Back', evaluations_path, {class: "btn btn-primary"} %>
   </div>
+</div>
 <% end %>
 <br>

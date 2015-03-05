@@ -1,6 +1,7 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :investor
   belongs_to :founder
+  validates :investor, :founder, :review, :title_review, presence: true
 
   def average_score
     if rating_reputation.nil? || rating_deal.nil? || rating_pitch.nil? || rating_competence.nil? || rating_commitment.nil?

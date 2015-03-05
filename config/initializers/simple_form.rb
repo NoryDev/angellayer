@@ -161,6 +161,8 @@ SimpleForm.setup do |config|
   # collection wrappers.
   # config.include_default_input_wrapper_class = true
 
+  config.wrapper_mappings = { :currency => :append }
+
   # Defines which i18n scope will be used in Simple Form.
   # config.i18n_scope = 'simple_form'
 end
