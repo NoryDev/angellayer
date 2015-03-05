@@ -24,6 +24,9 @@ admin.website = Faker::Internet.url
 admin.all_startups = "#{Faker::Company.name}, #{Faker::Company.name} & #{Faker::Company.name}"
 admin.save
 
+admin.admin = true
+admin.save
+
 5.times do
   founder = Founder.new
   founder.email = "#{Faker::Internet.user_name}@yopmail.com"
