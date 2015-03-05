@@ -1,13 +1,13 @@
-<%= simple_form_for(@comment) do |f| %>
+<%= simple_form_for [@evaluation, @comment] do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :content %>
-    <%= f.association :evaluation %>
-    <%= f.association :founder %>
+    <%#= f.input :founder, input_html: { value: current_founder } %>
+    <%#= f.input :evaluation, input_html: { value: @evaluation } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit %> &nbsp; &nbsp; <%= link_to 'Cancel', evaluation_path(@evaluation), {class:"text-muted small"} %>
   </div>
 <% end %>
