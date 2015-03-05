@@ -1,7 +1,7 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :founder
 
-  validates :investor, :founder, :review, :title_review, presence: true
+  validates :investor_profile, :founder, :review, :title_review, presence: true
 
   belongs_to :investor_profile
 
