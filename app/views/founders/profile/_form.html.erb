@@ -1,17 +1,40 @@
 <%= simple_form_for(@founder, url: founders_profile_path) do |f| %>
- <%= f.error_notification %>
+<%= f.error_notification %>
 
- <%= f.input :first_name %>
- <%= f.input :last_name %>
- <%= f.input :website %>
- <%= f.input :profile_pic %>
- <%= f.input :facebook %>
- <%= f.input :twitter %>
- <%= f.input :linkedin %>
- <%= f.input :angellist %>
- <%= f.input :skype %>
- <%= f.input :cell_phone %>
+<div class = "img-container img-rounded full-padded">
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :website, as: :url %>
+  <%= f.input :cell_phone %>
+</div>
+<br>
 
- <%= f.input :all_startups %>
- <%= f.button :submit, "Save", class: "btn btn-primary" %>
+<div class = "img-container img-rounded full-padded">
+  <div class="row">
+  <div class="col-xs-12 col-sm-3">
+    <%= image_tag @founder.profile_pic.url(:thumb), size: "100x100" %>
+  </div>
+  <div class="col-xs-12 col-sm-9">
+    <%= f.input :profile_pic, label:"Choose or modify profile picture" %>
+  </div>
+  </div>
+</div>
+<br>
+
+<div class = "img-container img-rounded full-padded">
+
+<%= f.input :facebook, as: :url, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook' %>
+<%= f.input :twitter, as: :url, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter' %>
+<%= f.input :linkedin, as: :url, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin' %>
+<%= f.input :angellist, as: :url, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist' %>
+<%= f.input :skype, as: :url, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype' %>
+</div>
+<br>
+
+<div class = "img-container img-rounded full-padded">
+<%= f.input :all_startups, hint: "List of all your current and previous start-ups with links." %>
+<%= f.button :submit, "Save", class: "btn btn-primary" %>
+</div>
 <% end %>
+
+<br>
