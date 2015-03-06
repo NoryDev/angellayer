@@ -17,15 +17,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if founder_signed_in? %>
-          <!-- <li> -->
-            <%#= link_to "#" do %>
-              <!-- <i class="fa fa-envelope-o"></i> --> <%#= t(".messages", default: "Messages") %>
-            <%# end %>
-          <!-- </li> -->
+          <li>
+            <%= link_to "Investors", investors_profile_index_path %>
+          </li>
+          <li>
+            <%= link_to "Founders", founders_profile_index_path %>
+          </li>
+          <li>
+            <%= link_to "Evaluations", evaluations_path %>
+          </li>
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <%= image_tag current_founder.avatar, class: "img-avatar" %>
-              <%= current_founder.name %> <span class="caret"></span>
             <% end %>
             <ul class="dropdown-menu" role="menu">
               <li>
@@ -34,7 +37,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to "#" do %>
+                <%= link_to evaluations_path do %>
                   <i class="fa fa-home"></i>  <%= t ".profile", default: "Reviews" %>
                 <% end %>
               </li>
@@ -49,7 +52,6 @@
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <%= image_tag current_investor.investor_profile.avatar, class: "img-avatar" %>
-              <%= current_investor.investor_profile.company_name %> <span class="caret"></span>
             <% end %>
             <ul class="dropdown-menu" role="menu">
               <li>
@@ -70,18 +72,17 @@
             </ul>
           </li>
         <% else %>
-          <li>
-            <%= link_to t(".sign_up", default: "Sign up"), new_founder_registration_path %>
+          <li > <%= link_to t(".sign_up", default: "Sign up"), new_founder_registration_path, {class: "btn btn-primary margin-top"} %>
           </li>
           <li>
-            <%= link_to t(".sign_in", default: "Sign in"), new_founder_session_path %>
+            <%= link_to t(".sign_in", default: "Sign in"), new_founder_session_path, {class: "btn btn-primary margin-top"} %>
           </li>
-          <li><%= link_to founder_omniauth_authorize_path(:facebook) do %>
-              Sign in with <i class="fa fa-facebook-square"></i><% end %>
+          <li><%#= link_to founder_omniauth_authorize_path(:facebook) do %>
+              <!--Sign in with <i class="fa fa-facebook-square"></i>--><%# end %>
               </li>
         <% end %>
         <li>
-          <%= link_to t(".top_call_to_action", default: "All reviews"), evaluations_path, class: "btn" %>
+          <%#= link_to t(".top_call_to_action", default: "All reviews"), evaluations_path, class: "btn" %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

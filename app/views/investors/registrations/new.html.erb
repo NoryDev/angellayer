@@ -1,4 +1,9 @@
-<h2>Sign up</h2>
+<h2>Sign up as an Investor</h2>
+<br>
+
+<%= link_to "Sign up as a Founder", new_founder_registration_path, class: "btn btn-danger btn-lg" %>
+      <br>
+      <br>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>

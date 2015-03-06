@@ -4,7 +4,7 @@
 <div class = "img-container img-rounded full-padded">
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :website, as: :url %>
+  <%= f.input :website, as: :url, :input_html => { :value => "http://" } %> %>
   <%= f.input :cell_phone %>
 </div>
 <br>
