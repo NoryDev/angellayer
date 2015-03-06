@@ -8,16 +8,16 @@ class VotesController < ApplicationController
       @vote = setup_vote
       @vote.plus = true
       @vote.save
-      notice = 'Thank you for voting!'
+      @notice = 'Thank you for voting'
     elsif @vote.first.plus
-      alert = 'Sorry, you already voted on this evaluation'
+      @alert = 'Sorry, you already voted on this evaluation'
     elsif @vote.first.minus
       @vote.first.destroy
-      notice = 'Thank you for voting!'
+      @notice = 'Thank you for voting'
     end
 
     respond_to do |format|
-      format.html { redirect_to evaluations_path, notice: notice, alert: alert }
+      format.html { redirect_to evaluations_path, notice: @notice, alert: @alert }
       format.js
     end
   end
@@ -28,16 +28,16 @@ class VotesController < ApplicationController
       @vote = setup_vote
       @vote.minus = true
       @vote.save
-      notice = 'Thank you for voting!'
+      @notice = 'Thank you for voting'
     elsif @vote.first.minus
-      alert = 'Sorry, you already voted on this evaluation'
+      @alert = 'Sorry, you already voted on this evaluation'
     elsif @vote.first.plus
       @vote.first.destroy
-      notice = 'Thank you for voting!'
+      @notice = 'Thank you for voting'
     end
 
     respond_to do |format|
-      format.html { redirect_to evaluations_path, notice: notice, alert: alert }
+      format.html { redirect_to evaluations_path, notice: @notice, alert: @alert }
       format.js
     end
   end

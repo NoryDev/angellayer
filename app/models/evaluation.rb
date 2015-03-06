@@ -20,11 +20,11 @@ class Evaluation < ActiveRecord::Base
 
   def work_again
     if would_work_again == true
-      "I'd work again with this investor |"
+      "I would work with this investor again"
     elsif would_work_again == false
-      "I wouldn't want to work with this investor in the futur. |"
+      "I would not work with this investor again"
     else
-
+      ""
     end
   end
 
@@ -33,8 +33,8 @@ class Evaluation < ActiveRecord::Base
   end
 
   def score
-    pluses = votes.select{ |vote| vote.plus }.size
-    minuses = votes.select{ |vote| vote.minus }.size
+    pluses = votes.where(plus: true).size
+    minuses = votes.where(minus: true).size
     pluses - minuses
   end
 end

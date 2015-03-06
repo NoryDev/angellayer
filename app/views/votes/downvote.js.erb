@@ -1,1 +1,15 @@
-$('#evaluation-<%= @evaluation.id %>').text("<%= @evaluation.score %>");
+$('#evaluation-<%= @evaluation.id %> .nb_votes').text("<%= @evaluation.score %>");
+
+<% if @notice %>
+  $('#evaluation-<%= @evaluation.id %> .votes-info').text("")
+  $('#evaluation-<%= @evaluation.id %> .votes-info').append("<%= @notice %>")
+  $('#evaluation-<%= @evaluation.id %> .alert-warning').slideUp(300, "linear")
+  $('#evaluation-<%= @evaluation.id %> .alert-info').slideDown(300, "linear")
+<% end %>
+
+<% if @alert %>
+  $('#evaluation-<%= @evaluation.id %> .votes-warning').text("")
+  $('#evaluation-<%= @evaluation.id %> .votes-warning').append("<%= @alert %>")
+  $('#evaluation-<%= @evaluation.id %> .alert-info').slideUp(300, "linear")
+  $('#evaluation-<%= @evaluation.id %> .alert-warning').slideDown(300, "linear")
+<% end %>
