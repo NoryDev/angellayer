@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   ActiveAdmin.routes(self)
 
   namespace :founders do
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :evaluations, except: [:new, :edit, :create, :update] do
     resources :comments, only: [:new, :create, :edit, :update]
+    get '/upvote' => "votes#upvote", as: :upvote
+    get '/downvote' => "votes#downvote", as: :downvote
   end
 
   devise_for :investors
