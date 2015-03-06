@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305130330) do
+ActiveRecord::Schema.define(version: 20150305172944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,9 +147,23 @@ ActiveRecord::Schema.define(version: 20150305130330) do
   add_index "investors", ["email"], name: "index_investors_on_email", unique: true, using: :btree
   add_index "investors", ["reset_password_token"], name: "index_investors_on_reset_password_token", unique: true, using: :btree
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "founder_id"
+    t.integer  "evaluation_id"
+    t.boolean  "plus",          default: false, null: false
+    t.boolean  "minus",         default: false, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "votes", ["evaluation_id"], name: "index_votes_on_evaluation_id", using: :btree
+  add_index "votes", ["founder_id"], name: "index_votes_on_founder_id", using: :btree
+
   add_foreign_key "comments", "evaluations"
   add_foreign_key "comments", "founders"
   add_foreign_key "evaluations", "founders"
   add_foreign_key "evaluations", "investor_profiles"
   add_foreign_key "investor_profiles", "investors"
+  add_foreign_key "votes", "evaluations"
+  add_foreign_key "votes", "founders"
 end
