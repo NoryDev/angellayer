@@ -1,6 +1,11 @@
 <!-- app/views/devise/sessions/new.html.erb -->
 
-<h2>Log in</h2>
+<h2>Log in as an Investor</h2>
+<br>
+
+<%= link_to "Log in as an founder", new_founder_session_path, class: "btn btn-danger btn-lg" %>
+      <br>
+      <br>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.input :email, required: false, autofocus: true %>

@@ -1,43 +1,33 @@
 <!-- <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p> -->
-
-<div class="container">
+<br>
+<br>
+<div class="container" id="home-wrapper">
   <div class="row">
-    <div class="col-xs-offset-1 col-xs-10">
-      <%= image_tag("logo.svg", width: "600", alt: "angellayer_logo", title: "Angel Layer", class: "logo") %>
-      <h1>Angel Layer</h1>
-      <p class="subtitle">Our catch phrase is going to impress you.</p>
-      <div class="my-buttons btn-group">
-        <%= link_to "Log in as a founder", new_founder_session_path, class: "btn btn-danger" %>
-        <%= link_to "Log out as a founder", destroy_founder_session_path, method: :delete, class: "btn btn-danger" %>
-        <%= link_to "Sign up as a founder", new_founder_registration_path, class: "btn btn-danger" %>
+    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+      <div class="logo">
+        <div class="middle-page">
+      <h1 class="pullDown">Founder community</h1>
+      <h4 class="pullDown">Helping you select the right investor.</h4>
       </div>
-      <div class="my-buttons btn-group">
-        <%= link_to "Log in as an investor", new_investor_session_path, class: "btn btn-success" %>
-        <%= link_to "Log out as an investor", destroy_investor_session_path, method: :delete, class: "btn btn-success" %>
-        <%= link_to "Sign up as an investor", new_investor_registration_path, class: "btn btn-success" %>
+      <div class="bottom-page">
+       <a class="" href="#snippets"><i class="fa fa-angle-down fa-6 pulse scroll-btn"></i></a>
       </div>
-      <div class="my-buttons btn-group">
-        <%= link_to 'List All founders', founders_profile_index_path, class: "btn btn-primary" %>
-        <%= link_to 'List All investors', investors_profile_index_path, class: "btn btn-primary" %>
-        <%= link_to 'List All evaluations', evaluations_path, class: "btn btn-primary" %>
       </div>
+
     </div>
   </div>
 </div>
 
-<div class="padded">
-  <br>
-  <br>
-  <br>
-</div>
-
-<div class="container">
+<div class="container" id="snippets">
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+      <br>
+      <br>
       <% @evaluations[0..2].each do |evaluation| %>
       <%= render 'evaluations/show_snippets', evaluation: evaluation %>
       <% end %>
     </div>
   </div>
 </div>
+
