@@ -33,7 +33,8 @@
 
 <div class = "img-container img-rounded full-padded">
 <%= f.input :all_startups, hint: "List of all your current and previous start-ups with links." %>
-<%= f.button :submit, "Save", class: "btn btn-primary" %>
+<%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
+    <%= link_to 'Cancel', founders_profile_path, {class: "text-muted"} %>
 </div>
 <% end %>
 

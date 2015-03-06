@@ -23,7 +23,7 @@
   </div>
   <hr>
   <p>
-    <strong>Rating: </strong>
+    <strong>Rating : </strong>
     <% if @profile.total_average_score.nil? %>
       No rating yet
     <% else %>
@@ -101,7 +101,7 @@
     <i class="fa fa-users"></i> Nb of projects invested in: <%= @profile.nb_projects_invested_in %>
   </p>
   <hr>
-  <p><strong>contact</strong></p>
+  <p><strong>Contact :</strong></p>
   <p>
     <i class="fa fa-user"></i> <%= @profile.contact_person %>
   </p>
@@ -147,7 +147,7 @@
   <hr>
   <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
   <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
-  <hr>
+  <br>
 
 </div>
 <br>

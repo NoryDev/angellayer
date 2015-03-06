@@ -7,6 +7,7 @@
       </p>
       <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
     </div>
+
     <div class="col-sm-2 hidden-xs">
       <%= image_tag evaluation.founder.avatar, class: " small-img" %>
     </div>
@@ -30,9 +31,9 @@
       <p>
         <strong>
           <% if evaluation.average_score %>
-          Rated <%= evaluation.average_score %> / 5
+            Rated <%= evaluation.average_score %> / 5
           <% else %>
-          Not Rated
+            Not Rated
           <% end %>
         </strong>
       </p>
@@ -45,10 +46,8 @@
       </p>
     </div>
   </div>
-  <br>
   <p class="text-right">
     <small>
-      <%= link_to 'Show', evaluation %> |
       <%= link_to 'Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> |
       <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %>
     </small>
@@ -59,8 +58,13 @@
       <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp; <%= comment.date %> <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_evaluation_comment_path(comment.evaluation, comment.id) %> </span></small>
     <hr class = "small">
   <%end%>
-  <small class="text-muted"> <%= link_to "add comment", new_evaluation_comment_path(evaluation) %> </small>
-
+  <small class="text-muted">
+    <% if current_founder %>
+      <%= link_to "add comment", new_evaluation_comment_path(evaluation) %>
+    <% else %>
+      <%= "Investor's can't comment" %>
+    <% end %>
+  </small>
   <br>
 </div>
 <br>

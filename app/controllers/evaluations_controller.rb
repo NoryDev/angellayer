@@ -65,7 +65,7 @@ class EvaluationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def evaluation_params
-      params.require(:evaluation).permit(:investor_id, :founder_id, :review, :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, :amount_raised, :would_work_again, :title_review)
+      params.require(:evaluation).permit(:investor_id, :founder_id, :review, :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, :amount_raised, :would_work_again, :title_review, :created_at)
     end
 
     def find_profile
