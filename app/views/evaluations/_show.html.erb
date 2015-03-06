@@ -16,13 +16,15 @@
   <div class="row">
     <div class="col-sm-1 text-center">
       <p>
-        <%= link_to evaluation_upvote_path(evaluation) do %>
+        <%= link_to evaluation_upvote_path(evaluation), remote: true do %>
           <i class="fa fa-chevron-up text-large"></i>
         <% end %>
       <br>
-      <%= evaluation.score %>
+      <span id="evaluation-<%= evaluation.id %>">
+        <%= evaluation.score %>
+      </span>
       <br>
-        <%= link_to evaluation_downvote_path(evaluation) do %>
+        <%= link_to evaluation_downvote_path(evaluation), remote: true do %>
           <i class="fa fa-chevron-down text-large"></i>
         <% end %>
       </p>

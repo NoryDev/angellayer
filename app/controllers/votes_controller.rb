@@ -16,7 +16,10 @@ class VotesController < ApplicationController
       notice = 'Thank you for voting!'
     end
 
-    redirect_to evaluations_path, notice: notice, alert: alert
+    respond_to do |format|
+      format.html { redirect_to evaluations_path, notice: notice, alert: alert }
+      format.js
+    end
   end
 
   def downvote
@@ -33,7 +36,10 @@ class VotesController < ApplicationController
       notice = 'Thank you for voting!'
     end
 
-    redirect_to evaluations_path, notice: notice, alert: alert
+    respond_to do |format|
+      format.html { redirect_to evaluations_path, notice: notice, alert: alert }
+      format.js
+    end
   end
 
   private
