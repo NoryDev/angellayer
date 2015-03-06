@@ -68,15 +68,25 @@
   </p>
   <hr class="small">
   <% evaluation.comments.each do |comment| %>
-    <small><%= comment.content %> - <span class = "text-muted">
-      <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp; <%= comment.date %> <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_evaluation_comment_path(comment.evaluation, comment.id) %> </span></small>
-    <hr class = "small">
+    <p class="text-right">
+      <small>
+        <%= comment.content %> -
+        <span class = "text-muted">
+          <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
+          <%= comment.date %>
+          <%= link_to edit_evaluation_comment_path(comment.evaluation, comment.id) do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </span>
+      </small>
+    </p>
+    <hr class="small">
   <%end%>
   <small class="text-muted">
     <% if current_founder %>
       <%= link_to "add comment", new_evaluation_comment_path(evaluation) %>
     <% else %>
-      <%= "Investor's can't comment" %>
+      <%= "Investors can't comment" %>
     <% end %>
   </small>
   <br>
