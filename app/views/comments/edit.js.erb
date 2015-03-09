@@ -1,7 +1,0 @@
-var edit_comment = $("<%= j render 'comments/form', evaluation: @evaluation, comment: @comment %>").hide();
-
-$( '.edit-comment' ).click(function() {
-  $( '#comment-<%= @comment.id %>' ).append(edit_comment);
-});
-
-edit_comment.slideDown();

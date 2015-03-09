@@ -38,7 +38,11 @@ class CommentsController < ApplicationController
   def update
     @comment.founder = current_founder
     if @comment.update(comment_params)
-      redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully updated.'}
+        format.js
+      end
+
     else
       render :edit
     end
