@@ -16,6 +16,8 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1
   def show
+    @evaluation = Evaluation.find(params[:id])
+    authorize @evaluation
   end
 
   # GET /evaluations/new

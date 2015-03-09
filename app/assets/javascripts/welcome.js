@@ -1,7 +1,3 @@
-$(document).ready(function() {
-  $(".window-height").css("height", $(window).height());
-});
-
 $('a[href^="#"]').click(function(){
   var the_id = $(this).attr("href");
 

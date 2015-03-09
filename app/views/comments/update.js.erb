@@ -1,0 +1,16 @@
+// app/views/comments/create.js.erb
+// Here you will write *javascript* that would be executed by the browser
+<% if @comment.errors.any? %>
+  // Render new comment form with errors
+  $('#edit_comment').html("<%= j render 'comments/form', evaluation: evaluation, comment: @comment.id %>");
+<% else %>
+  // Create a paragraph for the new comment. But hide it.
+  var edited_comment = '<%= @comment.content %>';
+  //alert(<%= @comment.content %>);
+  // Add it to the DOM, at the end of the existing comments. It's still hidden.
+  $('#comment-<%= @comment.id %>').html(edited_comment)
+  // Show the new comment with an animation!
+  // Remove the text from the content textarea.
+  $('#edit-form-<%= @comment.id %>').slideUp();
+  $('#comment_content').val('');
+<% end %>

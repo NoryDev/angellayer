@@ -67,28 +67,39 @@
     </small>
   </p>
   <hr class="small">
+
+  <div id="comments-<%= evaluation.id %>">
   <% evaluation.comments.each do |comment| %>
-    <p class="text-right">
-      <small>
-        <%= comment.content %> -
-        <span class = "text-muted">
-          <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
-          <%= comment.date %>
-          <%= link_to edit_evaluation_comment_path(comment.evaluation, comment.id) do %>
-            <i class="fa fa-pencil"></i>
-          <% end %>
-        </span>
-      </small>
-    </p>
-    <hr class="small">
+        <%= render 'comments/show', comment: comment %>
   <%end%>
-  <small class="text-muted">
-    <% if current_founder %>
-      <%= link_to "add comment", new_evaluation_comment_path(evaluation) %>
-    <% else %>
-      <%= "Investors can't comment" %>
-    <% end %>
+  </div>
+  <div id="new-comment-form-<%= evaluation.id %>">
+  <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+  </div>
+  <small class="text-muted ">
+  <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pullbow-right">new comment</span></a>
   </small>
+  <br>
+
+
+<%= content_for(:after_js) do %>
+  <script>
+    $('#new-comment-form-<%= evaluation.id %>').hide()
+    $( '#new-form-button-<%= evaluation.id %>' ).click(function(e) {
+      e.preventDefault();
+      $('#new-comment-form-<%= evaluation.id %>').slideDown();
+      $( '#new-form-button-<%= evaluation.id %>' ).hide().slideUp();
+    });
+  </script>
+<% end %>
+
+
+    <%# if current_founder %>
+      <%#= link_to "add comment", new_evaluation_comment_path(evaluation) %>
+    <%# else %>
+      <%#= "Investors can't comment" %>
+    <%# end %>
+
   <br>
 </div>
 <br>
