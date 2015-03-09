@@ -64,9 +64,13 @@
   }
 
   .review {
-    font-style: italic;
-    color: $gray;
-    height: 100px;
+
+    height: 150px;
+
+    small {
+      font-style: italic;
+      color: $gray;
+    }
   }
 
   /*========================================
