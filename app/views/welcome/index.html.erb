@@ -17,11 +17,11 @@
 
       <!-- LOG IN -->
       <div class="col-xs-12 col-sm-6 text-right text-large">
-        <form class="login-form form-inline" id="login" role="form">
-          <input class="form-control input-box" id="email" type="email" name="email" placeholder="Email">
-          <input class="form-control input-box" id="password" type="text" name="password" placeholder="Password">
-          <button class="btn btn-primary" type="submit" id="submit" name="submit">Log in</button>
-        </form>
+        <%= form_for :founder, :html => { class: "login-form form-inline", id: "login"}, url: founder_session_path do |f| %>
+          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email" %>
+          <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+          <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+        <% end %>
       </div>
     </div>
     <div class="row">
@@ -94,6 +94,14 @@
 
             <button class="btn btn-danger btn-lg" type="submit" id="submit" name="submit">Get Started</button>
           </form>
+
+          <%= form_for :founder, :html => { class: "registration-form", id: "register"}, url: registration_path(:founder) do |f| %>
+            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email" %>
+            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Password" %>
+            <%= f.submit "Get Started", class: "btn btn-danger btn-lg", id: "submit" %>
+          <% end %>
+
         </div>
       </div>
       <!-- /END - REGISTRATION FORM -->

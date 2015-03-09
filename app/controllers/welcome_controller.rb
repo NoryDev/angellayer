@@ -10,6 +10,14 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def sign_up
+  end
+
+  def log_in
+  end
+
+  private
+
   def dashboard
     @evaluations = Evaluation.all.order(created_at: :desc)
     render "evaluations/index"
