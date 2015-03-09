@@ -1,20 +1,28 @@
 #home-wrapper {
-  width: 100%;
-  height: 85vh;
-  background: url(image_path('welcome.jpg')) no-repeat center fixed;
-  background-size: cover;
 
-  .logo {
-    max-width: 100%;
-    margin-top: 0;
-    vertical-align: middle;
-    width:200 px
+  background: white;
+
+  .home-padded {
+    padding: 5%;
   }
 
-  // h1 {
-  //   font-size: 0;
-  //   visibility: hidden;
-  // }
+  .bar {
+    margin-bottom: 3em;
+  }
+
+  .middle-page{
+    margin-top: 15vh;
+  }
+
+  .scroll-btn{
+    position: relative;
+    bottom: 0;
+    margin-left: -50px;
+    left: 50%;
+    text-align: center;
+    font-size: 60px;
+    color: white;
+  }
 
   .subtitle {
     font-size: 1.5em;
@@ -26,3 +34,231 @@
     margin-top: 3em;
   }
 }
+
+.snippet-avatar {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#home-header {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: url(image_path('welcome.jpg')) no-repeat center;
+  background-size: cover;
+
+  color: white;
+
+  section {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+/*---------------------------------------
+   LOG IN FORM
+-----------------------------------------*/
+.login-form .input-box {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: #000000;
+  border-radius: 3px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: inherit;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/*---------------------------------------
+   VERTICAL REGISTRATION FORM
+-----------------------------------------*/
+.vertical-registration-form {
+  background: rgba(0, 0, 0, 0.5);
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  max-width: 390px;
+  margin: auto;
+  padding-top: 1px;
+  padding-bottom: 30px;
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 25px;
+  }
+
+  .switch > span {
+    position: absolute;
+    top: 11px;
+    pointer-events: none;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+    width: 50%;
+    text-align: center;
+  }
+
+  input.check-toggle-round-flat:checked ~ .off {
+    color: #fff;
+  }
+
+  input.check-toggle-round-flat:checked ~ .on {
+    color: #afafaf;
+  }
+
+  .switch > span.on {
+    left: 0;
+    padding-left: 2px;
+    color: #fff;
+  }
+
+  .switch > span.off {
+    right: 0;
+    padding-right: 4px;
+    color: #afafaf;
+  }
+
+  .check-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+  .check-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input.check-toggle-round-flat + label {
+    padding: 2px;
+    width: 257px;
+    height: 36px;
+    background-color: #fff;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
+    border-radius: 60px;
+  }
+  input.check-toggle-round-flat + label:before, input.check-toggle-round-flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+  }
+
+  input.check-toggle-round-flat + label:before {
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    background-color: #000;
+    -webkit-border-radius: 60px;
+
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
+    border-radius: 60px;
+  }
+  input.check-toggle-round-flat + label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 128px;
+    background-color: #008ed6;
+    -webkit-border-radius: 52px;
+    -moz-border-radius: 52px;
+    -ms-border-radius: 52px;
+    -o-border-radius: 52px;
+    border-radius: 52px;
+    -webkit-transition: margin 0.2s;
+    -moz-transition: margin 0.2s;
+    -o-transition: margin 0.2s;
+    transition: margin 0.2s;
+  }
+
+  input.check-toggle-round-flat:checked + label {
+  }
+
+  input.check-toggle-round-flat:checked + label:after {
+    margin-left: 121px;
+  }
+
+}
+
+.vertical-registration-form .colored-line {
+  margin-top: 0;
+}
+
+.vertical-registration-form h3 {
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.vertical-registration-form .input-box {
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  height: 45px;
+  background: #000000;
+  border-radius: 3px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: inherit;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.vertical-registration-form .input-box:focus,
+.vertical-registration-form .input-box:active {
+  box-shadow: inherit;
+  color: #ffffff;
+}
+
+/*---------------------------------------
+   4.2.3 FEATURE LIST
+-----------------------------------------*/
+.feature-list-1 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.feature-list-1 li {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.feature-list-1 li .icon-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  color: #ffffff;
+  line-height: 32px;
+  margin-right: 15px;
+  margin-top: 8px;
+}
+
+.feature-list-1 li p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.feature-list-1 li .icon-container {
+  background: #008ed6;
+}
+

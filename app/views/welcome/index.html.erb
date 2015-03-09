@@ -1,33 +1,124 @@
 <!-- <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p> -->
-<br>
-<br>
-<div class="container" id="home-wrapper">
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
-      <div class="logo">
-        <div class="middle-page">
-      <h1 class="pullDown">Founder community</h1>
-      <h4 class="pullDown">Helping you select the right investor.</h4>
-      </div>
-      <div class="bottom-page">
-       <a class="" href="#snippets"><i class="fa fa-angle-down fa-6 pulse scroll-btn"></i></a>
-      </div>
+
+<!-- HEADING, FEATURES AND REGISTRATION FORM CONTAINER -->
+<div class="container" id="home-header">
+
+  <section class="home-padded">
+    <!-- UPPER BAR -->
+    <div class="row bar">
+
+      <!-- BRAND LOGO -->
+      <div class="col-xs-12 col-sm-6">
+        <%= link_to root_path do %>
+          <p class="text-large">Angel Layer</p>
+        <% end %>
       </div>
 
+      <!-- LOG IN -->
+      <div class="col-xs-12 col-sm-6 text-right text-large">
+        <form class="login-form form-inline" id="login" role="form">
+          <input class="form-control input-box" id="email" type="email" name="email" placeholder="Email">
+          <input class="form-control input-box" id="password" type="text" name="password" placeholder="Password">
+          <button class="btn btn-primary" type="submit" id="submit" name="submit">Log in</button>
+        </form>
+      </div>
     </div>
-  </div>
-</div>
+    <div class="row">
+    <!-- UPPER BAR -->
 
-<div class="container" id="snippets">
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
-      <br>
-      <br>
-      <% @evaluations[0..2].each do |evaluation| %>
-      <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-      <% end %>
+      <!-- LEFT - HEADING AND TEXTS -->
+      <div class="col-md-7 col-sm-7 intro-section">
+
+        <h1 class="intro text-left">
+          Founders <strong>community</strong> to help you select the <strong>right</strong> investor
+        </h1>
+
+        <ul class="feature-list-1 list-unstyled">
+
+          <!-- FEATURE ROW -->
+          <li>
+            <div class="icon-container pull-left text-center">
+              <i class="fa fa-check"></i>
+            </div>
+            <p class="text-left">
+              Lorem lean startup ipsum product market fit customer development acquihire tech cofounder. User engagement A/B testing.
+            </p>
+          </li>
+
+          <!-- FEATURE ROW -->
+          <li>
+            <div class="icon-container pull-left text-center">
+              <i class="fa fa-check"></i>
+            </div>
+            <p class="text-left">
+              Accelerator photo sharing business school drop out ramen hustle crush it revenue traction platforms.
+            </p>
+          </li>
+
+          <!-- FEATURE ROW -->
+          <li>
+            <div class="icon-container pull-left text-center">
+              <i class="fa fa-check"></i>
+            </div>
+            <p class="text-left">
+              Social bookmarking group buying crowded market pivot onboarding freemium prototype ping pong. Early stage disruptive ecosystem.
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- RIGHT - REGISTRATION FORM -->
+
+      <div class="col-md-5 col-sm-5">
+
+        <div class="vertical-registration-form text-center">
+          <div class="colored-line">
+          </div>
+          <h3>Try Premium Account</h3>
+          <form class="registration-form" id="register" role="form">
+            <input class="form-control input-box" id="email" type="email" name="email" placeholder="Your Email">
+            <input class="form-control input-box" id="password" type="text" name="password" placeholder="Your Password">
+            <input class="form-control input-box" id="password-repeat" type="text" name="password-repeat" placeholder="Repeat password">
+
+            <div class="switch">
+
+              <input id="cc-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+              <label for="cc-toggle"></label>
+
+              <span class="on">I'm a founder</span>
+              <span class="off">I'm an investor</span>
+
+            </div>
+
+            <button class="btn btn-danger btn-lg" type="submit" id="submit" name="submit">Get Started</button>
+          </form>
+        </div>
+      </div>
+      <!-- /END - REGISTRATION FORM -->
     </div>
-  </div>
+
+
+    <a class="" href="#snippets"><i class="fa fa-angle-down fa-6 pulse scroll-btn"></i></a>
+  </section>
+
 </div>
+<!-- /END HEADING, FEATURES AND REGISTRATION FORM CONTAINER -->
+
+<section class="home-padded">
+      <div>
+        <h1>Latest Reviews</h4>
+        <div id="snippets">
+          <div class="row">
+            <% @evaluations.each do |evaluation| %>
+              <div class="col-sm-6 col-md-4">
+                <%= render 'evaluations/show_snippets', evaluation: evaluation %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+  </div>
+</section>
+
 

@@ -27,6 +27,7 @@ hr {
 }
 
 body {
+  font-family: "Source Sans pro", "sans-serif";
   background: url(image_path('bg-texture.jpg')) repeat;
 }
 
@@ -45,23 +46,6 @@ hr.small {
   height: 0;
 }
 
-.middle-page{
-  margin-top: 15vh;
-}
-
-.bottom-page{
-  margin-top: 50vh;
-
-}
-
-.scroll-btn{
-position: absolute;
-width: 100px;
-margin-left: -50px;
-bottom: 20px;
-left: 50%;
-text-align: center;
-font-size: 60px;
-color: white;
-
+h3 {
+  font-size: 1.5em;
 }

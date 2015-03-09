@@ -1,22 +1,60 @@
 <div class = "img-container img-rounded full-padded">
   <div class="row">
-    <div class="col-xs-12 col-sm-9">
-      <h4><%= evaluation.title_review %></h4>
-      <p>Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
-      <br>
-      <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+    <div class="col-sm-3 col-xs-4 text-center">
+      <%= link_to investors_profile_path(evaluation.investor_profile) do %>
+        <div><%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar" %></div>
+      <% end %>
+      <% score = evaluation.investor_profile.total_average_score
+        if score.nil?
+          level = "default"
+        elsif score > 3.5
+          level = "success"
+        elsif score < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end
+      %>
+      <div class="label label-<%= level %>">
+        <% if score.nil? %>
+          <% 5.times do %>
+            <i class="fa fa-star-o"></i>
+          <% end %>
+        <% else %>
+          <% star_used = 0 %>
+          <% score.to_i.times do %>
+            <i class="fa fa-star"></i>
+            <% star_used = score.to_i %>
+          <% end %>
+          <% if score - score.to_i >= 0.5 %>
+            <i class="fa fa-star-half-o"></i>
+            <% star_used += 1 %>
+          <% end %>
+          <% empty = 5 - star_used
+            empty.times do %>
+            <i class="fa fa-star-o"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div><small>Average: <%= score %></small></div>
     </div>
-    <div class="col-sm-3 hidden-xs">
-        <%= image_tag evaluation.founder.avatar, class: " small-img" %>
+    <div class="col-xs-7 col-xs-offset-1 col-sm-8">
+      <p>
+        <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
+      </p>
+      <p>
+        <small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", investors_profile_path(evaluation.investor_profile) %></small>
+      </p>
+      <p>
+        <strong>
+          <% if evaluation.average_score %>
+            Rated <%= evaluation.average_score %> / 5
+          <% else %>
+            Not Rated
+          <% end %>
+        </strong>
+      </p>
     </div>
   </div>
-    <p><strong>
-      <% if evaluation.average_score %>
-      Rated <%= evaluation.average_score %> / 5
-      <% else %>
-      Not Rated
-      <% end %>
-    </strong></p>
-    <p class = "text-justify"><%= evaluation.review.truncate_words(14) %> <small><%= link_to "Read on", investors_profile_path(evaluation.investor_profile) %></small></p>
 </div>
 <br>
