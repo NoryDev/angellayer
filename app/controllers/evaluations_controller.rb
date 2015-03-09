@@ -5,12 +5,20 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations
   def index
-    if(params[:order]) == "title_review"
-      @evaluations = Evaluation.all.order(:title_review)
-    elsif (params[:order]) == "average_score"
-      @evaluations = Evaluation.all.order(:title_review)
-    else
-      @evaluations = Evaluation.all
+    case params[:order]
+      when "date"
+        @evaluations = Evaluation.all.order(created_at: :desc)
+      when "title_review"
+        @evaluations = Evaluation.all.order(:title_review)
+      when "average_score"
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.average_score}.reverse
+      when "company_name"
+        # this is bad:
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.investor_profile.company_name }
+      when "founder"
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.founder.last_name }
+      else
+        @evaluations = Evaluation.all
     end
   end
 
