@@ -5,11 +5,13 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
   end
 
   # GET /comments/1/edit
   def edit
+  end
+
+  def show
   end
 
   # POST /comments
@@ -17,11 +19,20 @@ class CommentsController < ApplicationController
     @comment = @evaluation.comments.build(comment_params)
     @comment.founder = current_founder
     if @comment.save
-      redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully created.' }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
+
+
+
 
   # PATCH/PUT /comments/1
   def update

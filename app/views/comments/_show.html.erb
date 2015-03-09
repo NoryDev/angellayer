@@ -1,0 +1,14 @@
+<div id="comment-<%= comment.id %>"></div>
+<p class="text-right">
+  <small>
+    <%= comment.content %> -
+    <span class = "text-muted">
+      <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
+      <%= comment.date %>
+      <%= link_to edit_evaluation_comment_path(comment.evaluation, comment.id) do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </span>
+  </small>
+</p>
+<hr class="small">
