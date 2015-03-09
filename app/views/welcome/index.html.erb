@@ -11,7 +11,7 @@
       <!-- BRAND LOGO -->
       <div class="col-xs-12 col-sm-6">
         <%= link_to root_path do %>
-          <p class="text-large">Angel Layer</p>
+          <p class="text-large logo">Angel<span class="text-primary">Layer</span></p>
         <% end %>
       </div>
 
@@ -76,7 +76,7 @@
         <div class="vertical-registration-form text-center">
           <div class="colored-line">
           </div>
-          <h3>Try Premium Account</h3>
+          <h3>Try it for free</h3>
           <form class="registration-form" id="register" role="form">
             <input class="form-control input-box" id="email" type="email" name="email" placeholder="Your Email">
             <input class="form-control input-box" id="password" type="text" name="password" placeholder="Your Password">
@@ -106,19 +106,36 @@
 </div>
 <!-- /END HEADING, FEATURES AND REGISTRATION FORM CONTAINER -->
 
-<section class="home-padded">
-      <div>
-        <h1>Latest Reviews</h4>
-        <div id="snippets">
-          <div class="row">
-            <% @evaluations.each do |evaluation| %>
-              <div class="col-sm-6 col-md-4">
-                <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-              </div>
-            <% end %>
+<section id="snippets" class="home-padded text-center">
+  <div>
+    <h2>Latest Reviews</h2>
+    <div class="colored-line">
+    </div>
+    <div>
+      <div id="evaluations" class="row">
+        <% @evaluations.each do |evaluation| %>
+          <div class="col-sm-6 col-md-4 text-left">
+            <%= render 'evaluations/show_snippets', evaluation: evaluation %>
           </div>
-        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- =========================
+     SECTION 10 - FOOTER
+============================== -->
+<footer class="text-center bgcolor-2">
+<div class="container">
+
+  <div class="footer-logo">
+    <%= link_to root_path do %>
+      <p class="text-large logo">Angel<span class="text-primary">Layer</span></p>
+    <% end %>
+  </div>
+
+</div>
+</footer>
 
 

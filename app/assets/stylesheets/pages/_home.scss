@@ -6,6 +6,11 @@
     padding: 5%;
   }
 
+
+  .logo {
+    color: white;
+  }
+
   .bar {
     margin-bottom: 3em;
   }
@@ -15,10 +20,10 @@
   }
 
   .scroll-btn{
-    position: relative;
-    bottom: 0;
-    margin-left: -50px;
-    left: 50%;
+    position: absolute;
+    width: 100px;
+    bottom: 20px;
+    left: calc(50% - 50px);
     text-align: center;
     font-size: 60px;
     color: white;
@@ -33,6 +38,54 @@
   .my-buttons {
     margin-top: 3em;
   }
+
+  .intro {
+    color: #ffffff;
+    line-height: 1.2em;
+  }
+
+  .intro-section {
+    margin-top: 50px;
+    margin-bottom: 137px;
+  }
+
+  .img-container {
+    background: none repeat scroll 0 0 #f7f8fa;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 0 rgba(229, 229, 229, 0.75);
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  #evaluations {
+    margin-top: 50px;
+  }
+
+  .review {
+    font-style: italic;
+    color: $gray;
+    height: 100px;
+  }
+
+  /*========================================
+     4.11 SECTION: FOOTER
+  ==========================================*/
+  footer {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .footer-logo {
+    max-width: 180px;
+    margin: auto;
+  }
+
+  .bgcolor-2 {
+    background: none repeat scroll 0 0 $gray-darker;
+  }
+
 }
 
 .snippet-avatar {
@@ -50,6 +103,7 @@
   color: white;
 
   section {
+    position: relative;
     width: 100%;
     height: 100%;
     min-height: 100vh;
@@ -83,7 +137,7 @@
   width: 100%;
   max-width: 390px;
   margin: auto;
-  padding-top: 1px;
+  margin-bottom: 70px;
   padding-bottom: 30px;
 
   .switch {
