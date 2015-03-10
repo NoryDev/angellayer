@@ -41,7 +41,7 @@
     <div class="col-xs-7 col-xs-offset-1 col-sm-8">
       <div class="review">
         <p>
-          Last review about <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
+          Review for <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
         </p>
         <p><small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", investors_profile_path(evaluation.investor_profile) %></small></p>
       </div>
