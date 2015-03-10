@@ -50,7 +50,7 @@ class WelcomeController < ApplicationController
         sign_in_and_redirect investor
       else
         @alert = "invalid email or password"
-        redirect_to(root_path, alert: @alert, log_email: @log_email)
+        redirect_to(root_path, alert: @alert)
       end
     elsif founder
       if founder.valid_password?(params[:password])
