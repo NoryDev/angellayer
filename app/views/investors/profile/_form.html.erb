@@ -23,29 +23,29 @@
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :facebook, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook'  %>
-  <%= f.input :twitter, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter'  %>
-  <%= f.input :linkedin, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin'  %>
-  <%= f.input :angellist, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist'  %>
-  <%= f.input :skype, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype'  %>
+  <%= f.input :facebook, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook', placeholder: "www.facebook.com/investor"  %>
+  <%= f.input :twitter, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter', placeholder: "www.twitter.com/investor"  %>
+  <%= f.input :linkedin, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin', placeholder: "www.linkedin.com/in/investor"  %>
+  <%= f.input :angellist, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist', placeholder: "www.angel.co/investor"  %>
+  <%= f.input :skype, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype', placeholder: "investor.name"  %>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :sectors_invested_in %>
+  <%= f.input :sectors_invested_in, placeholder: "Example Web apps, technology start-ups, environment related businesses..." %>
   <%= f.input :capital_under_managment, label: "Capital Under Management in $", placeholder: "Please enter numbers only please" %>
-  <%= f.input :geographical_focus %>
-  <%= f.input :preferred_investment_stage %>
+  <%= f.input :geographical_focus, placeholder: "Example North America, South-East Asia..." %>
+  <%= f.input :preferred_investment_stage, placeholder: "Example Seed, Stage A, Stage B, Stage C ..." %>
   <%= f.input :nb_projects_invested_in %>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
   <%= f.input :contact_person %>
-  <%= f.input :contact_email %>
+  <%= f.input :contact_email, placeholder: "If different from above" %>
   <%= f.input :contact_cell_phone %>
   <%= f.button :submit, "Save", class: "btn btn-primary" %>
-  <%= link_to 'Cancel', investors_profile_index_path, {class: "text-muted"} %>
+  <%= link_to 'Cancel', investors_profile_index_path, {class: "btn text-muted"} %>
   <% end %>
 </div>
 <br>

@@ -21,6 +21,10 @@ class Evaluation < ActiveRecord::Base
     end
   end
 
+  def best_comments
+
+  end
+
   def work_again
     if would_work_again == true
       "I would work with this investor again"
