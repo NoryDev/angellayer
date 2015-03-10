@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   devise_for :investors
   devise_for :founders, controllers: { omniauth_callbacks: "founders/omniauth_callbacks" }
 
+  get 'founders/profile/:founder_id/dashboard' => "welcome#dashboard", as: :founder_profile_dashboard
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
