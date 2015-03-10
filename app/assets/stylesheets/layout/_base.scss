@@ -42,10 +42,10 @@ body {
 }
 
 hr.small {
-  border: solid #ddd;
+  border: dotted #ddd;
   border-width: 1px 0 0;
   clear: both;
-  margin: 8px 0 8px;
+  margin: 4px 0 4px;
   height: 0;
 }
 
@@ -58,6 +58,9 @@ hr.small {
   background: #008ed6;
 }
 
+.black-button {
+  color: #333;
+}
 
 /*---------------------------------------
    3.2 TYPOGRAPHY
