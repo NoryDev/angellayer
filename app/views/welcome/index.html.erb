@@ -18,7 +18,7 @@
       <!-- LOG IN -->
       <div class="col-xs-12 col-sm-6 text-right text-large">
         <%= form_for :resource, :html => { class: "login-form form-inline", id: "login"}, url: log_in_path do |f| %>
-          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: @log_email %>
+          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
           <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
         <% end %>
@@ -78,11 +78,11 @@
           </div>
           <h3>Try it for free</h3>
           <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
-            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: @sign_email %>
+            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
             <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
             <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Password" %>
             <div class="switch">
-              <% if @is_investor %>
+              <% if flash[:is_investor] %>
                 <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
               <% else %>
                 <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
