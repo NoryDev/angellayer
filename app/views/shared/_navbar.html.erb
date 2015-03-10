@@ -49,6 +49,15 @@
             </ul>
           </li>
         <% elsif investor_signed_in? %>
+          <li>
+            <%= link_to "Investors", investors_profile_index_path %>
+          </li>
+          <li>
+            <%= link_to "Founders", founders_profile_index_path %>
+          </li>
+          <li>
+            <%= link_to "Evaluations", evaluations_path %>
+          </li>
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <% if current_investor.investor_profile %>
