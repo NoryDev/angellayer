@@ -27,6 +27,10 @@ class Investors::ProfileController < ApplicationController
   def create
     @profile = InvestorProfile.new(profile_params)
 
+    if current_investor && current_investor.investor_profile.nil?
+      @profile.investor = current_investor
+    end
+
     if @profile.save
       redirect_to investors_profile_path(@profile), notice: "Profile for #{@profile.company_name} was successfully created."
     else

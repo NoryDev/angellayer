@@ -17,7 +17,7 @@
 
       <!-- LOG IN -->
       <div class="col-xs-12 col-sm-6 text-right text-large">
-        <%= form_for :founder, :html => { class: "login-form form-inline", id: "login"}, url: founder_session_path do |f| %>
+        <%= form_for :resource, :html => { class: "login-form form-inline", id: "login"}, url: log_in_path do |f| %>
           <%= f.email_field :email, class: "form-control input-box", placeholder: "Email" %>
           <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
@@ -77,14 +77,14 @@
           <div class="colored-line">
           </div>
           <h3>Try it for free</h3>
-          <form class="registration-form" id="register" role="form">
+          <!-- <form class="registration-form" id="register" role="form">
             <input class="form-control input-box" id="email" type="email" name="email" placeholder="Your Email">
             <input class="form-control input-box" id="password" type="text" name="password" placeholder="Your Password">
             <input class="form-control input-box" id="password-repeat" type="text" name="password-repeat" placeholder="Repeat password">
 
             <div class="switch">
 
-              <input id="cc-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+              <input id="cc-toggle" class="check-toggle check-toggle-round-flat" name="is_investor" type="checkbox">
               <label for="cc-toggle"></label>
 
               <span class="on">I'm a founder</span>
@@ -93,12 +93,21 @@
             </div>
 
             <button class="btn btn-danger btn-lg" type="submit" id="submit" name="submit">Get Started</button>
-          </form>
+          </form> -->
 
-          <%= form_for :founder, :html => { class: "registration-form", id: "register"}, url: registration_path(:founder) do |f| %>
+          email: <%= @email %>
+         is investor? <%= @is_investor %>
+
+          <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
             <%= f.email_field :email, class: "form-control input-box", placeholder: "Email" %>
             <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
             <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Password" %>
+            <div class="switch">
+              <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle" %>
+              <label for="cc-toggle"></label>
+              <span class="on">I'm a founder</span>
+              <span class="off">I'm an investor</span>
+            </div>
             <%= f.submit "Get Started", class: "btn btn-danger btn-lg", id: "submit" %>
           <% end %>
 

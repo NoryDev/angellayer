@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   devise_for :investors
   devise_for :founders, controllers: { omniauth_callbacks: "founders/omniauth_callbacks" }
 
+  # Home: forms managment
+  post '/sign_up' => "welcome#sign_up"
+  post '/log_in' => "welcome#log_in"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
