@@ -22,6 +22,11 @@ class Investors::ProfileController < ApplicationController
 
   def new
     @profile = InvestorProfile.new
+    if current_investor
+    @profile.email = current_investor.email
+    else
+
+    end
   end
 
   def create

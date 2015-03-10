@@ -7,25 +7,24 @@ class EvaluationsController < ApplicationController
   def index
     case params[:order]
       when "date"
-        @evaluations = Evaluation.all.order(created_at: :desc)
+        @evaluations = Evaluation.all.order(created_at: :desc).limit(6)
       when "title_review"
-        @evaluations = Evaluation.all.order(:title_review)
+        @evaluations = Evaluation.all.order(:title_review).limit(6)
       when "average_score"
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.average_score}.reverse
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.average_score}.reverse.first(6)
       when "company_name"
         # this is bad:
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.investor_profile.company_name }
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.investor_profile.company_name }.first(6)
       when "founder"
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.founder.last_name }
+        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.founder.last_name }.first(6)
       else
-        @evaluations = Evaluation.all
+        @evaluations = Evaluation.all.limit(6)
     end
   end
 
   # GET /evaluations/1
   def show
     @evaluation = Evaluation.find(params[:id])
-    authorize @evaluation
   end
 
   # GET /evaluations/new

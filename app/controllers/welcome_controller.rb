@@ -2,8 +2,12 @@ class WelcomeController < ApplicationController
   skip_before_action :authenticate
 
   def index
-    if founder_signed_in? || investor_signed_in?
-      dashboard
+    if founder_signed_in?
+      redirect_to founder_profile_dashboard_path(current_founder)
+    elsif investor_signed_in? && current_investor.investor_profile
+      redirect_to investors_profile_path(current_investor.investor_profile)
+    elsif investor_signed_in?
+      redirect_to investors_profile_index_path
     else
       @evaluations = Evaluation.all.order(created_at: :desc).first(3)
       render "index", layout: "fullpage"
@@ -65,12 +69,15 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def dashboard
+    @evaluations = Evaluation.all.order(created_at: :desc).first(5)
+    @founder = current_founder
+    render 'dashboard', layout: 'dashboard-fullpage'
+  end
+
   private
 
-    def dashboard
-      @evaluations = Evaluation.all.order(created_at: :desc)
-      render "evaluations/index"
-    end
+
 
     # Only allow a trusted parameter "white list" through.
     def sign_up_params
