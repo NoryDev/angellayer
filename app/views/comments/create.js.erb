@@ -13,7 +13,7 @@
   new_comment.slideDown();
   // Remove the text from the content textarea.
   $('#edit-form-<%= @comment.id %>').hide();
-  $('#new-comment-form-<%= @evaluation.id %>').hide();
+  $('#new-comment-form-<%= @evaluation.id %>').slideUp();
   $('#new-form-button-<%= @evaluation.id %>' ).slideDown();
   $('#comment_content').val('');
 

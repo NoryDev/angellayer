@@ -15,16 +15,21 @@
 <hr class="small">
 
 <div id="edit-form-<%= comment.id %>">
-        <%=render 'comments/form', evaluation: comment.evaluation, comment: comment %>
+        <%=render 'comments/edit_form', evaluation: comment.evaluation, comment: comment %>
         </div>
         <br>
 
+<!-- Hide the edit-form until click the edit button -->
 <%= content_for(:after_js) do %>
 <script>
   $('#edit-form-<%= comment.id %>').hide()
   $( '.edit-button-<%= comment.id %>' ).click(function(e) {
     e.preventDefault();
     $('#edit-form-<%= comment.id %>').slideDown();
+});
+  $( '.cancel-<%= comment.id %>' ).click(function(e) {
+    e.preventDefault();
+  $('#edit-form-<%= comment.id %>').slideUp();
 });
 </script>
 <% end %>
