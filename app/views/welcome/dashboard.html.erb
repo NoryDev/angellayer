@@ -39,7 +39,7 @@
           <% if @founder.evaluations.blank? %>
           <% else %>
           <!-- using partial to render the show pages -->
-            <% @founder.evaluations.limit(6).each do |evaluation| %>
+            <% @founder.evaluations.limit(5).each do |evaluation| %>
               <%= render 'evaluations/show_snippets', evaluation: evaluation %>
             <% end %>
           <% end %>
