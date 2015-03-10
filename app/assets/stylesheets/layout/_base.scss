@@ -11,7 +11,8 @@
 
 .img-container {
   background: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 2px;
+  //box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px;
+  border: 1px solid #e3e3e3
 }
 
 .full-padded {
@@ -28,7 +29,9 @@ hr {
 
 body {
   font-family: "Source Sans pro", "sans-serif";
-  background: url(image_path('bg-texture.jpg')) repeat;
+  //background: url(image_path('bg-texture.jpg')) repeat;
+  background: #f7f8fa;
+
 }
 
 .small-img {
