@@ -6,8 +6,9 @@
         <div class="colored-line"></div>
         <br>
 
-        <% @founder.evaluations.each do |evaluation| %>
-          <p> votes : <%= evaluation.score %> for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+        <% evaluations = @founder.evaluations.sort_by{ |evaluation| evaluation.score}.reverse %>
+        <% evaluations.each do |evaluation| %>
+          <p class = "score-list"> <div class = "label label-primary score-badge "><%= evaluation.score %></div> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
         <% end %>
         <br>
 
@@ -27,7 +28,7 @@
         <br>
 
         <% @founder.comments.limit(10).each do |comment| %>
-          <p> <%= link_to comment.content, evaluation_path(comment.evaluation) %></p>
+          <p>  <%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.date) %> ago</p>
         <% end %>
         <br>
 
