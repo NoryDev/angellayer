@@ -8,17 +8,27 @@
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: "Rate Investor's Reputation", prompt: "Select your score", hint: 'Is he a shark, cool guy, personally likeable, … ' %>
-  <%= f.input :rating_deal, label: "Rate Deal Terms", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Founder-friendly terms? Favourable terms?' %>
-  <%= f.input :rating_pitch, label: "Rate Pitch Feedback", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'How fast were they to react? Was the deal closed quickly and efficiently?' %>
-  <%= f.input :rating_competence, label: "Rate the Investor's Competence", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor have a good knowledge of your industry?' %>
-  <%= f.input :rating_commitment, label: "Rate Investor's Commitment", collection: (0..5).sort.reverse!, prompt: "Select your score", hint: 'Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, finance and accounting issues and in recruiting new team members.' %>
+
+  <a class="popover_form" data-content="<small class='text-muted'> Was the investor open and forthcoming. Did she/he talk and negotiate in a professional and trustworthy way? Is he a shark, cool guy, personally likeable, … </small>"><strong class="black-button">Rate Investor's Reputation <i class="fa fa-question-circle"></i></strong></a>
+  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
+
+  <a class="popover_form" data-content="<small class='text-muted'> Founder-friendly terms? Favourable or equal terms?</small>"><strong class="black-button">Rate Deal Terms <i class="fa fa-question-circle"></i></strong></a>
+  <%= f.input :rating_deal, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
+
+  <a class="popover_form" data-content="<small class='text-muted'> How fast did the investor react after your pitch? Was the deal closed quickly and efficiently? Was the investor's demands justified? </small>"><strong class="black-button">Rate Pitch Feedback <i class="fa fa-question-circle"></i></strong></a>
+  <%= f.input :rating_pitch, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
+
+  <a class="popover_form" data-content="<small class='text-muted'> Does the investor have a good knowledge of your industry? Does she/he understand the issues you encounter and eventually offer constructive solutions?</small>"><strong class="black-button">Rate the Investor's Competence <i class="fa fa-question-circle"></i></strong></a>
+  <%= f.input :rating_competence, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
+
+  <a class="popover_form" data-content="<small class='text-muted'> Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, financial and accounting issues and in recruiting new team members.</small>"><strong class="black-button">Rate Investor's Commitment <i class="fa fa-question-circle"></i></strong></a>
+  <%= f.input :rating_commitment, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
   <%= f.input :amount_raised, as: :currency, placeholder: 'Please enter a number in $' %>
-  <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?" %>
+  <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?"%>
   <br>
   <div class="form-actions btn-group">
     <%= f.button :submit, {class: "btn btn-primary"} %> &nbsp; &nbsp;
@@ -27,3 +37,16 @@
 </div>
 <% end %>
 <br>
+
+<!-- Bootstrap JS for Popover -->
+<%= content_for(:after_js) do %>
+  <script>
+        $(document).ready(function(){
+    $(".popover_form").popover({
+      html: true,
+      trigger: "hover",
+      placement: "right"
+    });
+  })
+  </script>
+<% end %>

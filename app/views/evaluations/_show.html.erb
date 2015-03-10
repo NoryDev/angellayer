@@ -77,18 +77,24 @@
   <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
   </div>
   <small class="text-muted ">
-  <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pullbow-right">new comment</span></a>
+  <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
   </small>
   <br>
 
 
+<!-- Method for showing and hidding the add NEW COMMENT form -->
 <%= content_for(:after_js) do %>
   <script>
     $('#new-comment-form-<%= evaluation.id %>').hide()
     $( '#new-form-button-<%= evaluation.id %>' ).click(function(e) {
       e.preventDefault();
       $('#new-comment-form-<%= evaluation.id %>').slideDown();
-      $( '#new-form-button-<%= evaluation.id %>' ).hide().slideUp();
+      $('#new-form-button-<%= evaluation.id %>' ).slideUp();
+    });
+    $('.cancel-new-form' ).click(function(e) {
+      e.preventDefault();
+      $('#new-comment-form-<%= evaluation.id %>').slideUp();
+      $('#new-form-button-<%= evaluation.id %>').slideDown();
     });
   </script>
 <% end %>
