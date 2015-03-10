@@ -5,7 +5,7 @@
       <p>
         Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
       </p>
-      <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> on the <%= evaluation.date %></small>
+      <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> - <%= time_ago_in_words(evaluation.date) %> ago</small>
     </div>
 
     <div class="col-sm-2 hidden-xs">

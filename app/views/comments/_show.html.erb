@@ -4,7 +4,7 @@
     <span id="comment-<%= comment.id %>"><%= comment.content %></span> -
     <span class = "text-muted">
       <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
-      <%= comment.date %> &nbsp;
+      <%= time_ago_in_words(comment.date) %> ago &nbsp;
          <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i>
          </a>
     </span>
