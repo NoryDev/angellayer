@@ -1,4 +1,7 @@
 class InvestorProfile < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:company_name, :physical_address, :sectors_invested_in, :geographical_focus, :preferred_investment_stage, :contact_person]
+
   belongs_to :investor
 
   has_many :evaluations, dependent: :destroy

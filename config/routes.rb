@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   post '/sign_up' => "welcome#sign_up"
   post '/log_in' => "welcome#log_in"
 
+  #search bar
+  get '/search' => "welcome#search"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

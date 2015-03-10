@@ -1,0 +1,53 @@
+<h1 class="text-center">Search results for '<%= @searched %>'</h1>
+<div class="colored-line"></div>
+  <br>
+
+<ul class="list-unstyled">
+  <% @results.each do |result| %>
+    <% case result %>
+      <% when Evaluation %>
+        <li class="img-container img-rounded full-padded">
+          <h4>
+            <%= link_to evaluation_path(result) do %>
+              <%= result.title_review %>
+            <% end %>
+          </h4>
+          <p>
+            <%= result.review.truncate_words(20) %>
+          </p>
+        </li>
+      <% when Comment %>
+        <li class="img-container img-rounded full-padded">
+          <h4>
+          <%= link_to evaluation_path(result.evaluation) do %>
+            Comment on <%= result.evaluation.title_review %>
+          <% end %>
+          </h4>
+          <p><%= result.content %></p>
+        </li>
+      <% when InvestorProfile %>
+        <li class="img-container img-rounded full-padded">
+          <h4>
+          <%= link_to investors_profile_path(result) do %>
+            <%= result.company_name %>
+          <% end %>
+          </h4>
+          <p><strong>Investor profile</strong></p>
+          <p>Physical address: <%= result.physical_address %></p>
+          <p>Sectors invested in: <%= result.sectors_invested_in %></p>
+          <p>Geographical focus: <%= result.geographical_focus %></p>
+          <p>Preferred investment stage: <%= result.preferred_investment_stage %></p>
+          <p>Contact Person: <%= result.contact_person %></p>
+        </li>
+      <% when Founder %>
+        <li class="img-container img-rounded full-padded">
+          <h4>
+          <%= link_to founders_profile_path(result) do %>
+            <%= result.name %>
+          <% end %>
+          </h4>
+        </li>
+    <% end %>
+    <br>
+  <% end %>
+</ul>
