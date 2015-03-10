@@ -1,4 +1,7 @@
 class Founder < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:first_name, :last_name, :all_startups]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

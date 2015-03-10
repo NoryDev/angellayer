@@ -1,4 +1,7 @@
 class Evaluation < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:review, :title_review]
+
   belongs_to :founder
   belongs_to :investor_profile
 
