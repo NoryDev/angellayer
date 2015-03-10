@@ -17,11 +17,11 @@
 
       <!-- LOG IN -->
       <div class="col-xs-12 col-sm-6 text-right text-large">
-        <form class="login-form form-inline" id="login" role="form">
-          <input class="form-control input-box" id="email" type="email" name="email" placeholder="Email">
-          <input class="form-control input-box" id="password" type="text" name="password" placeholder="Password">
-          <button class="btn btn-primary" type="submit" id="submit" name="submit">Log in</button>
-        </form>
+        <%= form_for :resource, :html => { class: "login-form form-inline", id: "login"}, url: log_in_path do |f| %>
+          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
+          <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+          <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+        <% end %>
       </div>
     </div>
     <div class="row">
@@ -77,23 +77,23 @@
           <div class="colored-line">
           </div>
           <h3>Try it for free</h3>
-          <form class="registration-form" id="register" role="form">
-            <input class="form-control input-box" id="email" type="email" name="email" placeholder="Your Email">
-            <input class="form-control input-box" id="password" type="text" name="password" placeholder="Your Password">
-            <input class="form-control input-box" id="password-repeat" type="text" name="password-repeat" placeholder="Repeat password">
-
+          <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
+            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
+            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
             <div class="switch">
-
-              <input id="cc-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+              <% if flash[:is_investor] %>
+                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
+              <% else %>
+                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
+              <% end %>
               <label for="cc-toggle"></label>
-
               <span class="on">I'm a founder</span>
               <span class="off">I'm an investor</span>
-
             </div>
+            <%= f.submit "Get Started", class: "btn btn-danger btn-lg", id: "submit" %>
+          <% end %>
 
-            <button class="btn btn-danger btn-lg" type="submit" id="submit" name="submit">Get Started</button>
-          </form>
         </div>
       </div>
       <!-- /END - REGISTRATION FORM -->
