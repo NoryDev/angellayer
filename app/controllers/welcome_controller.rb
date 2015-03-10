@@ -10,6 +10,11 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def search
+    @result = PgSearch.multisearch(params[:search][:searchfield])
+    @result = @result.map { |s| s.searchable }
+  end
+
   def sign_up
     params = sign_up_params
     flash[:sign_email] = params[:email]
