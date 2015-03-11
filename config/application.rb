@@ -31,5 +31,14 @@ module Angellayer
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.embed_authenticity_token_in_remote_forms = true
+
+
+    # skip authorize for devise
+    config.to_prepare do
+      Devise::SessionsController.skip_before_action :founder_not_authorized
+      Devise::RegistrationsController.skip_before_action :founder_not_authorized
+      Devise::SessionsController.skip_before_action :investor_not_authorized
+      Devise::RegistrationsController.skip_before_action :investor_not_authorized
+    end
   end
 end

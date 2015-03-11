@@ -2,6 +2,9 @@ class Investors::ProfileController < ApplicationController
 
   before_action :set_profile, only: [:show, :edit, :update]
 
+  skip_before_action :founder_not_authorized, except: [:edit, :update]
+  skip_before_action :investor_not_authorized
+
   def index
     @profiles = InvestorProfile.all
   end
@@ -10,20 +13,27 @@ class Investors::ProfileController < ApplicationController
   end
 
   def edit
+    if current_investor != @profile.investor
+      investor_not_authorized
+    end
   end
 
   def update
-    if @profile.update(profile_params)
-      redirect_to investors_profile_path(@profile), notice: 'Your profile was successfully updated.'
+    if current_investor != @profile.investor
+      investor_not_authorized
     else
-      render :edit
+      if @profile.update(profile_params)
+        redirect_to investors_profile_path(@profile), notice: 'Your profile was successfully updated.'
+      else
+        render :edit
+      end
     end
   end
 
   def new
     @profile = InvestorProfile.new
     if current_investor
-    @profile.email = current_investor.email
+      @profile.email = current_investor.email
     else
 
     end

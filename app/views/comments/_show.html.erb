@@ -1,22 +1,22 @@
-
 <div class="comment-show">
-  <p class="text-right">
+  <div class="text-right">
     <small>
       <span id="comment-<%= comment.id %>"><%= comment.content %></span> -
       <span class = "text-muted">
         <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
-        <%= time_ago_in_words(comment.created_at) %> ago &nbsp;
-        <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i>
-        </a>
+        <%= time_ago_in_words(comment.date) %> ago &nbsp;
+        <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
+          <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i></a>
+        <% end %>
       </span>
     </small>
-  </p>
+  </div>
   <hr class="small">
 
-  <div class="edit-comment-form" id="edit-form-<%= comment.id %>">
-    <%=render 'comments/edit_form', evaluation: comment.evaluation, comment: comment %>
-  </div>
-  <br>
+  <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
+    <div class="edit-comment-form" id="edit-form-<%= comment.id %>">
+      <%=render 'comments/edit_form', evaluation: comment.evaluation, comment: comment %>
+    </div>
+  <% end %>
 </div>
-
 <!-- See comment.js for the hide and show form -->
