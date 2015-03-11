@@ -159,7 +159,7 @@
   <% else %>
   <!-- using partial to render the show pages -->
     <% @profile.evaluations.each do |evaluation| %>
-      <%= render 'evaluations/show', evaluation: evaluation %>
+      <%= render 'evaluations/evaluation', evaluation: evaluation %>
     <% end %>
   <% end %>
 </div>

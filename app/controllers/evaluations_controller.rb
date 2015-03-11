@@ -20,9 +20,21 @@ class EvaluationsController < ApplicationController
       when "founder"
         @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.founder.last_name }.first(6)
       else
-        @evaluations = Evaluation.all.limit(6)
+          # if the id params is present
+        if params[:id]
+          # get all records with id less than 'our last id'
+          # and limit the results to 5
+          @evaluations = Evaluation.where('id < ?', params[:id]).limit(5)
+        else
+          @evaluations = Evaluation.limit(5)
+        end
+        respond_to do |format|
+          format.html
+          format.js
+        end
     end
   end
+
 
   # GET /evaluations/1
   def show

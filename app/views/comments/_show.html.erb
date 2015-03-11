@@ -1,35 +1,22 @@
-
-<div class="text-right">
-  <small>
-    <span id="comment-<%= comment.id %>"><%= comment.content %></span> -
-    <span class = "text-muted">
-      <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
-      <%= time_ago_in_words(comment.date) %> ago &nbsp;
-      <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
-        <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i></a>
-      <% end %>
-    </span>
-  </small>
-</div>
-<hr class="small">
-
-<% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
-  <div id="edit-form-<%= comment.id %>">
-    <%=render 'comments/edit_form', evaluation: comment.evaluation, comment: comment %>
+<div class="comment-show">
+  <div class="text-right">
+    <small>
+      <span id="comment-<%= comment.id %>"><%= comment.content %></span> -
+      <span class = "text-muted">
+        <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
+        <%= time_ago_in_words(comment.created_at) %> ago &nbsp;
+        <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
+          <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i></a>
+        <% end %>
+      </span>
+    </small>
   </div>
-<% end %>
+  <hr class="small">
 
-<!-- Hide the edit-form until click the edit button -->
-<%= content_for(:after_js) do %>
-<script>
-  $('#edit-form-<%= comment.id %>').hide()
-  $( '.edit-button-<%= comment.id %>' ).click(function(e) {
-    e.preventDefault();
-    $('#edit-form-<%= comment.id %>').slideDown();
-});
-  $( '.cancel-<%= comment.id %>' ).click(function(e) {
-    e.preventDefault();
-  $('#edit-form-<%= comment.id %>').slideUp();
-});
-</script>
-<% end %>
+  <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
+    <div class="edit-comment-form" id="edit-form-<%= comment.id %>">
+      <%=render 'comments/edit_form', evaluation: comment.evaluation, comment: comment %>
+    </div>
+  <% end %>
+</div>
+<!-- See comment.js for the hide and show form -->

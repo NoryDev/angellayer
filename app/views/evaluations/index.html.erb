@@ -13,8 +13,13 @@
 <br>
 
 <!-- Using partial to render existing show view in the index -->
-
-<% @evaluations.each do |evaluation| %>
-  <%= render 'evaluations/show', evaluation: evaluation %>
-<% end %>
+<div class="evaluation-container">
+  <%= render @evaluations %>
 <br>
+</div>
+
+<div class="load-more-container text-center">
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+  <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+  <%= link_to "Load More", evaluations_path, class: "load-more btn btn-primary" %>
+</div>

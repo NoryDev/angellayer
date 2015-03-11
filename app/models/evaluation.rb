@@ -10,6 +10,8 @@ class Evaluation < ActiveRecord::Base
 
   validates :investor_profile, :founder, :review, :title_review, presence: true
 
+  default_scope { order('created_at DESC') }
+
   def average_score
     rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
     rates = rates.reject{ |rate| rate.nil? }
@@ -33,10 +35,6 @@ class Evaluation < ActiveRecord::Base
     else
       ""
     end
-  end
-
-  def date
-    created_at.strftime("%Y-%m-%d")
   end
 
   def score
