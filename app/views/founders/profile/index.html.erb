@@ -22,7 +22,9 @@
         <% end %>
         <br>
 
-        <%= link_to "Edit", edit_founders_profile_path(founder) %>
+        <% if current_founder == founder || (current_founder && current_founder.admin) %>
+          <%= link_to "Edit", edit_founders_profile_path(founder) %>
+        <% end %>
         <br>
 
       </div>
