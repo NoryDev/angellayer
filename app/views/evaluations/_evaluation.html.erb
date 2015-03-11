@@ -74,7 +74,7 @@
         <%= render 'comments/show', comment: comment %>
   <%end%>
   </div>
-  <div id="new-comment-form-<%= evaluation.id %>">
+  <div class="new-comment-hide" id="new-comment-form-<%= evaluation.id %>">
   <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
   </div>
   <small class="text-muted ">

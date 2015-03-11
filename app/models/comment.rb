@@ -7,8 +7,4 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true
 
-  def date
-    created_at.strftime("%Y-%m-%d")
-  end
-
 end
