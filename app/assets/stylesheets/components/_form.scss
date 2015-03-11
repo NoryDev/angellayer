@@ -1,3 +1,35 @@
 /* -------------------------------------
  * You killer form SASS module
  * ------------------------------------- */
+
+.rating {
+
+  width: 160px;
+  margin: 10px 0;
+  font-size: 2em;
+  overflow:hidden;
+
+  label {
+    font-weight: normal;
+    float:right;
+    color: #aaa;
+    text-decoration: none;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+  }
+
+  input {
+    float: right;
+    opacity: 0;
+    position: absolute;
+  }
+  label:hover ~ label,
+  input:focus ~ label,
+  label:hover,
+  input:checked ~ label {
+      color: orange;
+      cursor: pointer;
+    }
+}
