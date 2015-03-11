@@ -10,19 +10,61 @@
 <div class = "img-container img-rounded full-padded">
 
   <a class="popover_form" data-content="<small class='text-muted'> Was the investor open and forthcoming. Did she/he talk and negotiate in a professional and trustworthy way? Is he a shark, cool guy, personally likeable, … </small>"><strong class="black-button">Rate Investor's Reputation <i class="fa fa-question-circle"></i></strong></a>
-  <%= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
+  <%#= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
+
+  <div class="rating"><!--
+  --><input name="evaluation[rating_reputation]" id="rating_reputation5" type="radio" value="5" <% if @evaluation.rating_reputation == 5.0 %> checked="checked" <% end %>><label for="rating_reputation5"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_reputation]" id="rating_reputation4" type="radio" value="4" <% if @evaluation.rating_reputation == 4.0 %> checked="checked" <% end %>><label for="rating_reputation4"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_reputation]" id="rating_reputation3" type="radio" value="3" <% if @evaluation.rating_reputation == 3.0 %> checked="checked" <% end %>><label for="rating_reputation3"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_reputation]" id="rating_reputation2" type="radio" value="2" <% if @evaluation.rating_reputation == 2.0 %> checked="checked" <% end %>><label for="rating_reputation2"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_reputation]" id="rating_reputation1" type="radio" value="1" <% if @evaluation.rating_reputation == 1.0 %> checked="checked" <% end %>><label for="rating_reputation1"><i class="fa fa-star"></i></label>
+  </div>
+
 
   <a class="popover_form" data-content="<small class='text-muted'> Founder-friendly terms? Favourable or equal terms?</small>"><strong class="black-button">Rate Deal Terms <i class="fa fa-question-circle"></i></strong></a>
-  <%= f.input :rating_deal, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
+  <%#= f.input :rating_deal, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, label: false, prompt: "Select your score" %>
+
+  <div class="rating"><!--
+  --><input name="evaluation[rating_deal]" id="rating_deal5" type="radio" value="5" <% if @evaluation.rating_deal == 5.0 %> checked="checked" <% end %>><label for="rating_deal5"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_deal]" id="rating_deal4" type="radio" value="4" <% if @evaluation.rating_deal == 4.0 %> checked="checked" <% end %>><label for="rating_deal4"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_deal]" id="rating_deal3" type="radio" value="3" <% if @evaluation.rating_deal == 3.0 %> checked="checked" <% end %>><label for="rating_deal3"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_deal]" id="rating_deal2" type="radio" value="2" <% if @evaluation.rating_deal == 2.0 %> checked="checked" <% end %>><label for="rating_deal2"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_deal]" id="rating_deal1" type="radio" value="1" <% if @evaluation.rating_deal == 1.0 %> checked="checked" <% end %>><label for="rating_deal1"><i class="fa fa-star"></i></label>
+  </div>
 
   <a class="popover_form" data-content="<small class='text-muted'> How fast did the investor react after your pitch? Was the deal closed quickly and efficiently? Was the investor's demands justified? </small>"><strong class="black-button">Rate Pitch Feedback <i class="fa fa-question-circle"></i></strong></a>
-  <%= f.input :rating_pitch, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
+  <%#= f.input :rating_pitch, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
+
+  <div class="rating"><!--
+  --><input name="evaluation[rating_pitch]" id="rating_pitch5" type="radio" value="5" <% if @evaluation.rating_pitch == 5.0 %> checked="checked" <% end %>><label for="rating_pitch5"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_pitch]" id="rating_pitch4" type="radio" value="4" <% if @evaluation.rating_pitch == 4.0 %> checked="checked" <% end %>><label for="rating_pitch4"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_pitch]" id="rating_pitch3" type="radio" value="3" <% if @evaluation.rating_pitch == 3.0 %> checked="checked" <% end %>><label for="rating_pitch3"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_pitch]" id="rating_pitch2" type="radio" value="2" <% if @evaluation.rating_pitch == 2.0 %> checked="checked" <% end %>><label for="rating_pitch2"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_pitch]" id="rating_pitch1" type="radio" value="1" <% if @evaluation.rating_pitch == 1.0 %> checked="checked" <% end %>><label for="rating_pitch1"><i class="fa fa-star"></i></label>
+  </div>
 
   <a class="popover_form" data-content="<small class='text-muted'> Does the investor have a good knowledge of your industry? Does she/he understand the issues you encounter and eventually offer constructive solutions?</small>"><strong class="black-button">Rate the Investor's Competence <i class="fa fa-question-circle"></i></strong></a>
-  <%= f.input :rating_competence, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
+  <%#= f.input :rating_competence, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
+
+  <div class="rating"><!--
+  --><input name="evaluation[rating_competence]" id="rating_competence5" type="radio" value="5" <% if @evaluation.rating_competence == 5.0 %> checked="checked" <% end %>><label for="rating_competence5"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_competence]" id="rating_competence4" type="radio" value="4" <% if @evaluation.rating_competence == 4.0 %> checked="checked" <% end %>><label for="rating_competence4"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_competence]" id="rating_competence3" type="radio" value="3" <% if @evaluation.rating_competence == 3.0 %> checked="checked" <% end %>><label for="rating_competence3"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_competence]" id="rating_competence2" type="radio" value="2" <% if @evaluation.rating_competence == 2.0 %> checked="checked" <% end %>><label for="rating_competence2"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_competence]" id="rating_competence1" type="radio" value="1" <% if @evaluation.rating_competence == 1.0 %> checked="checked" <% end %>><label for="rating_competence1"><i class="fa fa-star"></i></label>
+  </div>
 
   <a class="popover_form" data-content="<small class='text-muted'> Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, financial and accounting issues and in recruiting new team members.</small>"><strong class="black-button">Rate Investor's Commitment <i class="fa fa-question-circle"></i></strong></a>
-  <%= f.input :rating_commitment, label: false, collection: (0..5).sort.reverse!, prompt: "Select your score" %>
+  <%#= f.input :rating_commitment, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
+
+  <div class="rating"><!--
+  --><input name="evaluation[rating_commitment]" id="rating_commitment5" type="radio" value="5" <% if @evaluation.rating_commitment == 5.0 %> checked="checked" <% end %>><label for="rating_commitment5"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_commitment]" id="rating_commitment4" type="radio" value="4" <% if @evaluation.rating_commitment == 4.0 %> checked="checked" <% end %>><label for="rating_commitment4"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_commitment]" id="rating_commitment3" type="radio" value="3" <% if @evaluation.rating_commitment == 3.0 %> checked="checked" <% end %>><label for="rating_commitment3"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_commitment]" id="rating_commitment2" type="radio" value="2" <% if @evaluation.rating_commitment == 2.0 %> checked="checked" <% end %>><label for="rating_commitment2"><i class="fa fa-star"></i></label><!--
+    --><input name="evaluation[rating_commitment]" id="rating_commitment1" type="radio" value="1" <% if @evaluation.rating_commitment == 1.0 %> checked="checked" <% end %>><label for="rating_commitment1"><i class="fa fa-star"></i></label>
+  </div>
+
 </div>
 <br>
 

@@ -36,7 +36,9 @@ module Angellayer
     # skip authorize for devise
     config.to_prepare do
       Devise::SessionsController.skip_before_action :founder_not_authorized
+      Devise::RegistrationsController.skip_before_action :founder_not_authorized
       Devise::SessionsController.skip_before_action :investor_not_authorized
+      Devise::RegistrationsController.skip_before_action :investor_not_authorized
     end
   end
 end

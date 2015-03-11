@@ -144,11 +144,11 @@
       &nbsp;
     <% end %>
   </p>
-  <hr>
   <% if current_investor && (current_investor == @profile.investor) || (current_founder && current_founder.admin) %>
+    <hr>
     <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
+    <%= link_to "Account settings", edit_investor_registration_path, class: "btn btn-primary" %>
   <% end %>
-  <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
   <br>
 
 </div>

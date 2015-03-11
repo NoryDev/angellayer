@@ -55,8 +55,12 @@
     <p>
       All my startups: <%= @founder.all_startups %>
     </p>
-    <%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
-    <%= link_to 'All founders', founders_profile_index_path, class: "btn btn-primary" %>
+
+    <% if current_founder == @founder || (current_founder && current_founder.admin) %>
+      <hr>
+      <%= link_to "Edit", edit_founders_profile_path(@founder), class: "btn btn-primary" %>
+      <%= link_to "Account settings", edit_founder_registration_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
   <br>
   <div id="evaluations">
