@@ -145,7 +145,9 @@
     <% end %>
   </p>
   <hr>
-  <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
+  <% if current_investor == @profile.investor || (current_founder && current_founder.admin) %>
+    <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
+  <% end %>
   <%= link_to "All investors", investors_profile_index_path, class: "btn btn-primary" %>
   <br>
 
@@ -163,4 +165,6 @@
 </div>
 
 <br>
+<% if current_founder %>
   <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@profile), class: "btn btn-primary" %>
+<% end %>

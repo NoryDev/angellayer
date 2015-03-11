@@ -1,15 +1,17 @@
 class EvaluationsController < ApplicationController
-
   before_action :find_profile, only: [:new, :edit, :create]
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+
+  skip_before_action :founder_not_authorized, except: [:destroy]
+  skip_before_action :investor_not_authorized, only: [:index, :show]
 
   # GET /evaluations
   def index
     case params[:order]
       when "date"
-        @evaluations = Evaluation.all.order(created_at: :desc).limit(6)
+        @evaluations = Evaluation.order(created_at: :desc).limit(6)
       when "title_review"
-        @evaluations = Evaluation.all.order(:title_review).limit(6)
+        @evaluations = Evaluation.order(:title_review).limit(6)
       when "average_score"
         @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.average_score}.reverse.first(6)
       when "company_name"
@@ -36,6 +38,9 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
+    if current_founder != @evaluation.founder
+      founder_not_authorized
+    end
   end
 
   # POST /evaluations
@@ -53,10 +58,14 @@ class EvaluationsController < ApplicationController
 
   # PATCH/PUT /evaluations/1
   def update
-    if @evaluation.update(evaluation_params)
-      redirect_to @evaluation, notice: 'Evaluation was successfully updated.'
+    if current_founder != @evaluation.founder
+      founder_not_authorized
     else
-      render :edit
+      if @evaluation.update(evaluation_params)
+        redirect_to @evaluation, notice: 'Evaluation was successfully updated.'
+      else
+        render :edit
+      end
     end
   end
 

@@ -1,5 +1,7 @@
 class Founders::ProfileController < ApplicationController
   before_action :set_founder, only: [:show, :edit, :update]
+  skip_before_action :founder_not_authorized
+  skip_before_action :investor_not_authorized, except: [:edit, :update]
 
   def index
     @founders = Founder.all
@@ -9,13 +11,20 @@ class Founders::ProfileController < ApplicationController
   end
 
   def edit
+    if current_founder != @founder
+      founder_not_authorized
+    end
   end
 
   def update
-    if @founder.update(founder_params)
-      redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully updated.'
+    if current_founder != @founder
+      founder_not_authorized
     else
-      render :edit
+      if @founder.update(founder_params)
+        redirect_to founders_profile_path(@founder), notice: 'Your profile was successfully updated.'
+      else
+        render :edit
+      end
     end
   end
 

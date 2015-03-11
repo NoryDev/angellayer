@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
   skip_before_action :authenticate
+  skip_before_action :founder_not_authorized
+  skip_before_action :investor_not_authorized
 
   def index
     if founder_signed_in?

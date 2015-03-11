@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
-
   before_action :find_evaluation
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  skip_before_action :founder_not_authorized, except: [:destroy]
+  skip_before_action :investor_not_authorized, only: [:show]
 
   # GET /comments/new
   def new
@@ -9,6 +10,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    if current_founder != @comment.founder
+      founder_not_authorized
+    end
   end
 
   def show
@@ -31,20 +35,20 @@ class CommentsController < ApplicationController
     end
   end
 
-
-
-
   # PATCH/PUT /comments/1
   def update
-    @comment.founder = current_founder
-    if @comment.update(comment_params)
-      respond_to do |format|
-        format.html { redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully updated.'}
-        format.js
-      end
-
+    if current_founder != @comment.founder
+      founder_not_authorized
     else
-      render :edit
+      @comment.founder = current_founder
+      if @comment.update(comment_params)
+        respond_to do |format|
+          format.html { redirect_to investors_profile_path(@evaluation.investor_profile), notice: 'Your comment was successfully updated.'}
+          format.js
+        end
+      else
+        render :edit
+      end
     end
   end
 

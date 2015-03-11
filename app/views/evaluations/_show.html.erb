@@ -28,16 +28,24 @@
   <div class="row">
     <div class="col-xs-2 col-sm-1 text-center">
       <p>
-        <%= link_to evaluation_upvote_path(evaluation), remote: true do %>
-          <i class="fa fa-chevron-up text-large"></i>
+        <% if current_founder %>
+          <%= link_to evaluation_upvote_path(evaluation), remote: true do %>
+            <i class="fa fa-chevron-up text-large"></i>
+          <% end %>
+        <% else %>
+          <i class="fa fa-chevron-up text-large text-muted"></i>
         <% end %>
       <br>
       <span class="nb_votes">
         <%= evaluation.score %>
       </span>
       <br>
-        <%= link_to evaluation_downvote_path(evaluation), remote: true do %>
-          <i class="fa fa-chevron-down text-large"></i>
+        <% if current_founder %>
+          <%= link_to evaluation_downvote_path(evaluation), remote: true do %>
+            <i class="fa fa-chevron-down text-large"></i>
+          <% end %>
+        <% else %>
+          <i class="fa fa-chevron-down text-large text-muted"></i>
         <% end %>
       </p>
     </div>
@@ -62,8 +70,10 @@
   </div>
   <p class="text-right">
     <small>
-      <%= link_to 'Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> |
-      <%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if current_founder == evaluation.founder || (current_founder && current_founder.admin) %>
+        <%= link_to 'Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> <!-- | -->
+        <%#= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </small>
   </p>
   <hr class="small">
@@ -73,13 +83,15 @@
         <%= render 'comments/show', comment: comment %>
   <%end%>
   </div>
-  <div id="new-comment-form-<%= evaluation.id %>">
-  <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
-  </div>
-  <small class="text-muted ">
-  <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
-  </small>
-  <br>
+  <% if current_founder %>
+    <div id="new-comment-form-<%= evaluation.id %>">
+    <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+    </div>
+    <small class="text-muted ">
+    <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
+    </small>
+    <br>
+  <% end %>
 
 
 <!-- Method for showing and hidding the add NEW COMMENT form -->
