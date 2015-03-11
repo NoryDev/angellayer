@@ -2,8 +2,8 @@
 // when the page is ready for manipulation
 $(document).ready(function () {
   // when the edit link is clicked
-  $('.edit-comment-form').hide()
-  $('.comment-show a').click(function (e) {
+  // cette fonction permet de reloader le document pour que les boutons edit fonctionnent
+  $(document).on("click", '.comment-show a', function (e) {
       // prevent the default click action
       e.preventDefault();
       // show the edit form
@@ -11,10 +11,10 @@ $(document).ready(function () {
   });
 
   // when the Cancel link is clicked
-  $( '.edit-comment-form a' ).click(function(e) {
+  $(document).on("click", '.edit-comment-form a', function (e) {
   e.preventDefault();
   // hide the edit form
-  $(e.target).parents(".edit-comment-form").slideUp();
+  $('.edit-comment-form').slideUp();
   });
 
 });

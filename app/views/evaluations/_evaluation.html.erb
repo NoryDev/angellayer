@@ -70,15 +70,16 @@
   <hr class="small">
 
   <div id="comments-<%= evaluation.id %>">
-  <% evaluation.comments.each do |comment| %>
-        <%= render 'comments/show', comment: comment %>
-  <%end%>
+    <% evaluation.comments.each do |comment| %>
+          <%= render 'comments/show', comment: comment %>
+    <%end%>
   </div>
-  <div class="new-comment-hide" id="new-comment-form-<%= evaluation.id %>">
-  <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+
+  <div class="new-comment-form" id="new-comment-form-<%= evaluation.id %>">
+    <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
   </div>
   <small class="text-muted ">
-  <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
+    <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
   </small>
   <br>
 
@@ -87,7 +88,7 @@
 <%= content_for(:after_js) do %>
   <script>
     $('#new-comment-form-<%= evaluation.id %>').hide()
-    $( '#new-form-button-<%= evaluation.id %>' ).click(function(e) {
+    $(document).on("click", '#new-form-button-<%= evaluation.id %>', function (e) {
       e.preventDefault();
       $('#new-comment-form-<%= evaluation.id %>').slideDown();
       $('#new-form-button-<%= evaluation.id %>' ).slideUp();
