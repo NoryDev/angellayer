@@ -20,14 +20,16 @@
 
       <div class="col-xs-12 col-sm-9">
 
-        <% if profile.investor_id %>
-          <!-- <div class="label label-success pull-right">
-            <span>claimed!</span>
-          </div> -->
-        <% else %>
-          <div class="pull-right">
-            <small><%= mail_to "angellayer@yopmail.com", "claim profile" %></small>
-          </div>
+        <% if current_investor || (current_founder && current_founder.admin) %>
+          <% if profile.investor_id %>
+            <!-- <div class="label label-success pull-right">
+              <span>claimed!</span>
+            </div> -->
+          <% else %>
+            <div class="pull-right">
+              <small><%= mail_to "angellayer@yopmail.com", "claim profile" %></small>
+            </div>
+          <% end %>
         <% end %>
 
         <% if profile.company_name %>

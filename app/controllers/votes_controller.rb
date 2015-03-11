@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :find_evaluation
+  skip_before_action :founder_not_authorized
 
   def upvote
 
