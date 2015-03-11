@@ -30,6 +30,7 @@ class Founder < ActiveRecord::Base
       founder.first_name = auth.info.first_name
       founder.last_name = auth.info.last_name
       founder.picture = auth.info.image
+      founder.facebook = "www.facebook.com/#{auth.uid}"
       founder.token = auth.credentials.token
       founder.token_expiry = Time.at(auth.credentials.expires_at)
     end

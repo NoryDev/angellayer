@@ -22,6 +22,7 @@
           <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
         <% end %>
+        <p><%= link_to "Connect with Facebook", founder_omniauth_authorize_path(:facebook) %></p>
       </div>
     </div>
     <div class="row">
