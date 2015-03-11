@@ -11,6 +11,5 @@
   $('#comment-<%= @comment.id %>').html(edited_comment)
   // Show the new comment with an animation!
   // Remove the text from the content textarea.
-  $('#edit-form-<%= @comment.id %>').slideUp();
-  $('#comment_content').val('');
+  $('.edit-comment-form').slideUp();
 <% end %>
