@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 full-padded">
-      <h3 class="text-center">Votes on Your Reviews</h3>
+      <h3 class="text-center">Your top Reviews</h3>
       <div class="colored-line"></div>
       <br>
 
-      <% evaluations = @founder.evaluations.sort_by{ |evaluation| evaluation.score}.reverse %>
+      <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(10) %>
       <% evaluations.each do |evaluation| %>
-        <p class = "score-list"> <div class = "label label-primary score-badge "><%= evaluation.score %></div> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+        <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
       <% end %>
       <br>
     </div>
@@ -19,7 +19,7 @@
       <br>
 
       <% @founder.comments.limit(10).each do |comment| %>
-        <p>  <%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
+        <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
       <% end %>
       <br>
     </div>
