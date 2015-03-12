@@ -51,17 +51,27 @@ class Founder < ActiveRecord::Base
     end
   end
 
-  def self.find_for_linkedin_oauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |founder|
-      founder.provider = auth.provider
-      founder.uid = auth.uid
-      founder.email = auth.info.email
-      founder.password = Devise.friendly_token[0,20]  # Fake password for validation
-      founder.first_name = auth.info.first_name
-      founder.last_name = auth.info.last_name
-      founder.picture = auth.info.image
-      founder.linkedin = auth.info.urls.public_profile
-      founder.token = auth.credentials.token
+  def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    founder = User.where(:provider => auth.provider, :uid => auth.uid).first
+    if founder
+      return founder
+    else
+      registered_founder = Founder.where(:email => auth.info.email).first
+      if registered_founder
+        return registered_founder
+      else
+        founder = Founder.create(name:auth.info.first_name,
+          provider:auth.provider,
+          uid:auth.uid,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          first_name: auth.info.first_name,
+          last_name: auth.info.last_name,
+          picture: auth.info.image,
+          linkedin: auth.info.urls.public_profile,
+          token: auth.credentials.token
+          )
+      end
     end
   end
 
