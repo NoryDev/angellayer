@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <%= image_tag "logo-angel-layer.svg" %>
+        <%= image_tag "logo-angel-layer.svg", class: "margin-right" %>
       </a>
     </div>
 
@@ -17,8 +17,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <%= form_for :search, method: 'GET', url: search_path, :html => { class: "navbar-form navbar-left", style: "margin-top: 16px;", id: "search"} do |f| %>
-        <%= f.text_field :searchfield, class: "form-control", placeholder: "Search..." %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
+        <%= f.text_field :searchfield, class: "form-control input-sm", placeholder: "Search..." %>
+        <%= f.submit "Search", class: "btn btn-default btn-sm" %>
       <% end %>
 
       <ul class="nav navbar-nav navbar-right">
@@ -31,7 +31,7 @@
             <%= link_to "Founders", founders_profile_index_path %>
           </li>
           <li>
-            <%= link_to "Evaluations", evaluations_path %>
+            <%= link_to "Reviews", evaluations_path %>
           </li>
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
