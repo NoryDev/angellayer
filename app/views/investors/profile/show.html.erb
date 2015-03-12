@@ -1,4 +1,11 @@
 <div class = "img-container img-rounded full-padded">
+  <% if current_investor || (current_founder && current_founder.admin) %>
+    <% unless @profile.investor_id %>
+      <div class="pull-right">
+        <small><%= mail_to "angellayer@yopmail.com", "claim profile" %></small>
+      </div>
+    <% end %>
+  <% end %>
   <h1 class = "text-center"><%= @profile.company_name %></h1>
   <hr>
 
@@ -12,7 +19,7 @@
       </p>
       <p>
         <i class="fa fa-globe"></i> <% if @profile.website %>
-          <%= link_to @profile.website, "//" + @profile.website %>
+          <%= link_to @profile.website, "//" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
         <% end %>
       </p>
       <p>

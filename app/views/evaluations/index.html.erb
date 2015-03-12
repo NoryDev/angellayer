@@ -1,11 +1,11 @@
-<h1 class="text-center">Evaluations</h1>
+<h1 class="text-center">Reviews</h1>
 <div class="colored-line"></div>
   <br>
 
 <!-- Order by name/rating... by ordering the params in the controller -->
 
 <p class="text-center">Order by :
-<%= link_to  'Date'.html_safe, evaluations_path(order: :date) %> |
+<%= link_to "Date", evaluations_path(order: :date) %> |
 <%= link_to "Rating", evaluations_path(order: :average_score) %> |
 <%= link_to "Company name", evaluations_path(order: :company_name) %> |
 <%= link_to "Review title", evaluations_path(order: :title_review) %> |
