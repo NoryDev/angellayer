@@ -313,6 +313,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   jquery-rails
+  kaminari
   letter_opener
   omniauth-angellist
   omniauth-facebook

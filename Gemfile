@@ -8,6 +8,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+gem 'kaminari'
 
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'

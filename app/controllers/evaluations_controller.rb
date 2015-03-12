@@ -7,31 +7,12 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations
   def index
-    case params[:order]
-      when "date"
-        @evaluations = Evaluation.order(created_at: :desc).limit(6)
-      when "title_review"
-        @evaluations = Evaluation.order(:title_review).limit(6)
-      when "average_score"
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.average_score}.reverse.first(6)
-      when "company_name"
-        # this is bad:
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.investor_profile.company_name }.first(6)
-      when "founder"
-        @evaluations = Evaluation.all.sort_by{ |evaluation| evaluation.founder.last_name }.first(6)
-      else
-          # if the id params is present
-        if params[:id]
-          # get all records with id less than 'our last id'
-          # and limit the results to 5
-          @evaluations = Evaluation.where('id < ?', params[:id]).limit(5)
-        else
-          @evaluations = Evaluation.limit(5)
-        end
-        respond_to do |format|
-          format.html
-          format.js
-        end
+    @evaluations = fetch_evaluations
+    @evaluations = @evaluations.page(params[:page]).per(per_page)
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -88,6 +69,35 @@ class EvaluationsController < ApplicationController
   end
 
   private
+
+  # Method for sorting
+  def fetch_evaluations
+    case params[:order]
+    when "date"
+      base_scope.order(created_at: :desc)
+    when "title_review"
+      base_scope.order(:title_review)
+    when "average_score"
+      base_scope.order(average_score: :desc)
+    when "company_name"
+      base_scope.joins(:investor_profile).order("investor_profiles.company_name ASC")
+    when "founder"
+      base_scope.joins(:founder).order("founders.last_name ASC")
+    else
+      base_scope
+    end
+  end
+
+  # Method for sorting, loads the investors, founders, and comments for quicker action
+  def base_scope
+    Evaluation.includes(:investor_profile, :founder, :comments)
+  end
+
+  # Number of evaluation on a page
+  def per_page
+    5
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_evaluation
       @evaluation = Evaluation.find(params[:id])
