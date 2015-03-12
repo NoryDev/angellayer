@@ -47,7 +47,7 @@ class Founder < ActiveRecord::Base
       founder.picture = auth.info.image
       founder.twitter = auth.info.urls.Twitter
       founder.token = auth.credentials.token
-      founder.token_expiry = Time.at(auth.credentials.expires_at)
+      # founder.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
 
