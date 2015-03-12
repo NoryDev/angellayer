@@ -170,6 +170,8 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-angellist (0.0.7)
+      omniauth-oauth2 (~> 1.1)
     omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
     omniauth-linkedin (0.2.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   font-awesome-sass
   jquery-rails
   letter_opener
+  omniauth-angellist
   omniauth-facebook
   omniauth-linkedin
   omniauth-twitter

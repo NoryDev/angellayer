@@ -8,6 +8,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"], scope: 'email'
   config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], scope: 'email'
   config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"]
+  config.omniauth :linkedin, ENV["ANGELLIST_KEY"], ENV["ANGELLIST_SECRET"], scope: 'email'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
