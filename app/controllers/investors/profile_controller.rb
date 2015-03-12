@@ -20,7 +20,7 @@ class Investors::ProfileController < ApplicationController
   end
 
   def update
-    if current_investor != @profile.investor
+    if current_investor && (current_investor != @profile.investor)
       investor_not_authorized
     else
       if @profile.update(profile_params)

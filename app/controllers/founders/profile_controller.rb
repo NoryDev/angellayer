@@ -11,13 +11,13 @@ class Founders::ProfileController < ApplicationController
   end
 
   def edit
-    if current_founder != @founder
+    if current_founder != @founder && (current_founder && !current_founder.admin)
       founder_not_authorized
     end
   end
 
   def update
-    if current_founder != @founder
+    if current_founder != @founder && (current_founder && !current_founder.admin)
       founder_not_authorized
     else
       if @founder.update(founder_params)

@@ -31,7 +31,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
-    if current_founder != @evaluation.founder
+    if (current_founder != @evaluation.founder) && (current_founder && !current_founder.admin)
       founder_not_authorized
     end
   end
@@ -51,7 +51,7 @@ class EvaluationsController < ApplicationController
 
   # PATCH/PUT /evaluations/1
   def update
-    if current_founder != @evaluation.founder
+    if current_founder != @evaluation.founder && (current_founder && !current_founder.admin)
       founder_not_authorized
     else
       if @evaluation.update(evaluation_params)
