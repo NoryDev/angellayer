@@ -6,7 +6,7 @@ class Founder < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [ :facebook, :twitter ]
+         :omniauthable, :omniauth_providers => [ :facebook, :twitter, :linkedin ]
 
   has_many :evaluations
   has_many :comments
@@ -47,6 +47,20 @@ class Founder < ActiveRecord::Base
       founder.picture = auth.info.image.gsub(/_normal/, '')
       founder.twitter = auth.info.urls.Twitter
       founder.website = auth.info.urls.Website
+      founder.token = auth.credentials.token
+    end
+  end
+
+  def self.find_for_linkedin_oauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |founder|
+      founder.provider = auth.provider
+      founder.uid = auth.uid
+      founder.email = auth.info.email
+      founder.password = Devise.friendly_token[0,20]  # Fake password for validation
+      founder.first_name = auth.info.first_name
+      founder.last_name = auth.info.last_name
+      founder.picture = auth.info.image
+      founder.linkedin = auth.info.urls.public_profile
       founder.token = auth.credentials.token
     end
   end
