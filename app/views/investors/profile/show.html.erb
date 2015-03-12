@@ -1,4 +1,3 @@
-<!-- app/views/investors/profile/show.html.erb -->
 <div class = "img-container img-rounded full-padded">
   <h1 class = "text-center"><%= @profile.company_name %></h1>
   <hr>
@@ -17,7 +16,11 @@
         <% end %>
       </p>
       <p>
-        <i class="fa fa-phone"> &nbsp; </i><%= @profile.phone_number %>
+        <% if current_founder %>
+          <%= link_to new_investors_profile_evaluation_path(@profile), {class: 'btn btn-primary btn-sm'} do %>
+          New Review for <%= @profile.company_name %>
+          <% end %>
+        <% end %>
       </p>
     </div>
   </div>
@@ -47,7 +50,9 @@
         end
       %>
       <li>
-        <div><%= area %></div>
+
+        <div><a class="popover_form" data-content="<small class='text-muted'> <%= t "#{area.downcase}_description" %></small>"><strong class="black-button"><%= area %> <i class="fa fa-question-circle"></i></strong></a></div>
+
         <div class="label label-<%= level %>">
 
           <% if @profile.rating(area.downcase).nil? %>
@@ -73,13 +78,7 @@
       </li>
     <% end %>
   </ul>
-
   <hr>
-
-  <!-- Or @profile.email? -->
-  <p>
-    <i class="fa fa-envelope-o"> &nbsp; </i><%= mail_to @profile.email, @profile.email %>
-  </p>
 
   <p>
     <i class="fa fa-cubes"></i> Sectors invested in: <%= @profile.sectors_invested_in %>
@@ -100,17 +99,35 @@
   <p>
     <i class="fa fa-users"></i> Nb of projects invested in: <%= @profile.nb_projects_invested_in %>
   </p>
-  <hr>
-  <p><strong>Contact :</strong></p>
-  <p>
-    <i class="fa fa-user"></i> <%= @profile.contact_person %>
-  </p>
-  <p>
-    <i class="fa fa-envelope-o"> </i> <%= @profile.contact_email %>
-  </p>
-  <p>
-    <i class="fa fa-mobile"></i> <%= @profile.contact_cell_phone %>
-  </p>
+
+  <% if @profile.investor_id %>
+    <!-- show contact -->
+    <div>
+      <hr>
+      <p><strong>Contact :</strong></p>
+      <p>
+        <i class="fa fa-user"></i> <%= @profile.contact_person %>
+      </p>
+
+      <p>
+        <i class="fa fa-envelope-o"></i> &nbsp;
+        <% if @profile.contact_email %>
+        <%= mail_to @profile.contact_email, @profile.contact_email %>
+        <% else %>
+        <%= mail_to @profile.email, @profile.email %>
+        <% end %>
+      </p>
+      <p>
+        <i class="fa fa-phone"> &nbsp; </i><%= @profile.phone_number %>
+      </p>
+      <p>
+        <i class="fa fa-mobile"></i> <%= @profile.contact_cell_phone %>
+      </p>
+    </div>
+  <% else %>
+    <!-- hide contact info -->
+  <% end %>
+
   <hr>
   <p class="text-large text-center">
     <% unless @profile.facebook.nil? || @profile.facebook.empty? %>
@@ -149,6 +166,11 @@
     <%= link_to "Edit", edit_investors_profile_path(@profile), class: "btn btn-primary" %>
     <%= link_to "Account settings", edit_investor_registration_path, class: "btn btn-primary" %>
   <% end %>
+  <% if current_founder %>
+    <%= link_to new_investors_profile_evaluation_path(@profile), {class: 'btn btn-primary'} do %>
+      New Review for <%= @profile.company_name %>
+    <% end %>
+  <% end %>
   <br>
 
 </div>
@@ -164,7 +186,20 @@
   <% end %>
 </div>
 
-<br>
 <% if current_founder %>
-  <%= link_to 'New Evaluation', new_investors_profile_evaluation_path(@profile), class: "btn btn-primary" %>
+  <%= link_to new_investors_profile_evaluation_path(@profile), {class: 'btn btn-primary btn-sm'} do %>
+    New Review for <%= @profile.company_name %>
+  <% end %>
+<% end %>
+
+<%= content_for(:after_js) do %>
+  <script>
+        $(document).ready(function(){
+    $(".popover_form").popover({
+      html: true,
+      trigger: "hover",
+      placement: "top"
+    });
+  })
+  </script>
 <% end %>

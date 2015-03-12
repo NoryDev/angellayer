@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  reputation_description: "Was the investor open and forthcoming. Did she/he talk and negotiate in a professional and trustworthy way? Is he a shark, cool guy, personally likeable, … "
+  deal_description: "Founder-friendly terms? Favourable or equal terms?"
+  pitch_description: "How fast did the investor react after your pitch? Was the deal closed quickly and efficiently? Was the investor's demands justified?"
+  competence_description: "Does the investor have a good knowledge of your industry? Does she/he understand the issues you encounter and eventually offer constructive solutions?"
+  commitment_description: "Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, financial and accounting issues and in recruiting new team members."

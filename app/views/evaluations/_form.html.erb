@@ -9,7 +9,7 @@
 
 <div class = "img-container img-rounded full-padded">
 
-  <a class="popover_form" data-content="<small class='text-muted'> Was the investor open and forthcoming. Did she/he talk and negotiate in a professional and trustworthy way? Is he a shark, cool guy, personally likeable, … </small>"><strong class="black-button">Rate Investor's Reputation <i class="fa fa-question-circle"></i></strong></a>
+  <a class="popover_form" data-content="<small class='text-muted'> <%= t 'reputation_description' %></small>"><strong class="black-button">Rate Investor's Reputation <i class="fa fa-question-circle"></i></strong></a>
   <%#= f.input :rating_reputation, collection: (0..5).sort.reverse!, label: false, prompt: "Select your score" %>
 
   <div class="rating"><!--
@@ -21,7 +21,7 @@
   </div>
 
 
-  <a class="popover_form" data-content="<small class='text-muted'> Founder-friendly terms? Favourable or equal terms?</small>"><strong class="black-button">Rate Deal Terms <i class="fa fa-question-circle"></i></strong></a>
+  <a class="popover_form" data-content="<small class='text-muted'> <%= t 'deal_description' %> </small>"><strong class="black-button">Rate Deal Terms <i class="fa fa-question-circle"></i></strong></a>
   <%#= f.input :rating_deal, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, label: false, prompt: "Select your score" %>
 
   <div class="rating"><!--
@@ -32,7 +32,7 @@
     --><input name="evaluation[rating_deal]" id="rating_deal1" type="radio" value="1" <% if @evaluation.rating_deal == 1.0 %> checked="checked" <% end %>><label for="rating_deal1"><i class="fa fa-star"></i></label>
   </div>
 
-  <a class="popover_form" data-content="<small class='text-muted'> How fast did the investor react after your pitch? Was the deal closed quickly and efficiently? Was the investor's demands justified? </small>"><strong class="black-button">Rate Pitch Feedback <i class="fa fa-question-circle"></i></strong></a>
+  <a class="popover_form" data-content="<small class='text-muted'> <%= t 'pitch_description' %> </small>"><strong class="black-button">Rate Pitch Feedback <i class="fa fa-question-circle"></i></strong></a>
   <%#= f.input :rating_pitch, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
 
   <div class="rating"><!--
@@ -43,7 +43,7 @@
     --><input name="evaluation[rating_pitch]" id="rating_pitch1" type="radio" value="1" <% if @evaluation.rating_pitch == 1.0 %> checked="checked" <% end %>><label for="rating_pitch1"><i class="fa fa-star"></i></label>
   </div>
 
-  <a class="popover_form" data-content="<small class='text-muted'> Does the investor have a good knowledge of your industry? Does she/he understand the issues you encounter and eventually offer constructive solutions?</small>"><strong class="black-button">Rate the Investor's Competence <i class="fa fa-question-circle"></i></strong></a>
+  <a class="popover_form" data-content="<small class='text-muted'><%= t 'competence_description' %></small>"><strong class="black-button">Rate the Investor's Competence <i class="fa fa-question-circle"></i></strong></a>
   <%#= f.input :rating_competence, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
 
   <div class="rating"><!--
@@ -54,7 +54,7 @@
     --><input name="evaluation[rating_competence]" id="rating_competence1" type="radio" value="1" <% if @evaluation.rating_competence == 1.0 %> checked="checked" <% end %>><label for="rating_competence1"><i class="fa fa-star"></i></label>
   </div>
 
-  <a class="popover_form" data-content="<small class='text-muted'> Does the investor invest time and energy in your project? Does she/he have good connections? Did she/he help the business to grow and improve. Advise for legal, financial and accounting issues and in recruiting new team members.</small>"><strong class="black-button">Rate Investor's Commitment <i class="fa fa-question-circle"></i></strong></a>
+  <a class="popover_form" data-content="<small class='text-muted'> <%= t 'commitment_description' %></small>"><strong class="black-button">Rate Investor's Commitment <i class="fa fa-question-circle"></i></strong></a>
   <%#= f.input :rating_commitment, label: false, collection: (0..5).sort.reverse!, :as => :radio_buttons_inline, prompt: "Select your score" %>
 
   <div class="rating"><!--

@@ -1,48 +1,54 @@
 <div class="container">
   <div class="row">
-      <div class="col-xs-12 col-sm-6 full-padded">
+    <div class="col-xs-12 col-sm-6 full-padded">
+      <h3 class="text-center">Votes on Your Evaluations</h3>
+      <div class="colored-line"></div>
+      <br>
 
-        <h3 class="text-center">Votes on Your Evaluations</h3>
-        <div class="colored-line"></div>
-        <br>
+      <% evaluations = @founder.evaluations.sort_by{ |evaluation| evaluation.score}.reverse %>
+      <% evaluations.each do |evaluation| %>
+        <p class = "score-list"> <div class = "label label-primary score-badge "><%= evaluation.score %></div> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+      <% end %>
+      <br>
+    </div>
 
-        <% evaluations = @founder.evaluations.sort_by{ |evaluation| evaluation.score}.reverse %>
-        <% evaluations.each do |evaluation| %>
-          <p class = "score-list"> <div class = "label label-primary score-badge "><%= evaluation.score %></div> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+    <div class="col-xs-12 col-sm-6 full-padded">
+
+      <h3 class="text-center">Your last comments</h3>
+      <div class="colored-line"></div>
+      <br>
+
+      <% @founder.comments.limit(10).each do |comment| %>
+        <p>  <%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
+      <% end %>
+      <br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 full-padded">
+
+      <h3 class="text-center">Last Evaluations</h3>
+      <div class="colored-line"></div>
+      <br>
+
+      <% @evaluations.each do |evaluation| %>
+        <%= render 'evaluations/show_snippets', evaluation: evaluation %>
         <% end %>
-        <br>
+    </div>
 
-        <h3 class="text-center">Last Evaluations</h3>
-        <div class="colored-line"></div>
-        <br>
+    <div class="col-xs-12 col-sm-6 full-padded">
 
-        <% @evaluations.each do |evaluation| %>
-          <%= render 'evaluations/show_snippets', evaluation: evaluation %>
+      <h3 class="text-center">Your Last Evaluations</h3>
+      <div class="colored-line"></div>
+      <br>
+        <% if @founder.evaluations.blank? %>
+        <% else %>
+        <!-- using partial to render the show pages -->
+          <% @founder.evaluations.limit(5).each do |evaluation| %>
+            <%= render 'evaluations/show_snippets', evaluation: evaluation %>
           <% end %>
-      </div>
-
-      <div class="col-xs-12 col-sm-6 full-padded">
-
-        <h3 class="text-center">Your last comments</h3>
-        <div class="colored-line"></div>
-        <br>
-
-        <% @founder.comments.limit(10).each do |comment| %>
-          <p>  <%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
         <% end %>
-        <br>
-
-
-        <h3 class="text-center">Your Last Evaluations</h3>
-        <div class="colored-line"></div>
-        <br>
-          <% if @founder.evaluations.blank? %>
-          <% else %>
-          <!-- using partial to render the show pages -->
-            <% @founder.evaluations.limit(5).each do |evaluation| %>
-              <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-            <% end %>
-          <% end %>
     </div>
   </div>
 </div>

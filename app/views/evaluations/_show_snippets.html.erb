@@ -43,7 +43,7 @@
         <p>
           Review for <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
         </p>
-        <p><small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", investors_profile_path(evaluation.investor_profile) %></small></p>
+        <p><small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", evaluation_path(evaluation) %></small></p>
       </div>
     </div>
   </div>
