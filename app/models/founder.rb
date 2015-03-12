@@ -44,10 +44,10 @@ class Founder < ActiveRecord::Base
       founder.password = Devise.friendly_token[0,20]  # Fake password for validation
       founder.first_name = auth.info.name.split(' ').first
       founder.last_name = auth.info.name.split(' ').last
-      founder.picture = auth.info.image
+      founder.picture = auth.info.image.gsub(/_normal/, '')
       founder.twitter = auth.info.urls.Twitter
+      founder.website = auth.info.urls.Website
       founder.token = auth.credentials.token
-      # founder.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
 
