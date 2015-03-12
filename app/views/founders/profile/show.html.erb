@@ -22,25 +22,25 @@
 
   <p class="text-large text-center">
     <% unless @founder.facebook.nil? || @founder.facebook.empty? %>
-    <%= link_to "://" + @founder.facebook, target: "_blank" do %>
+    <%= link_to "//" + @founder.facebook, target: "_blank" do %>
     <i class="fa fa-facebook"></i>
     <% end %>
     &nbsp;
     <% end %>
     <% unless @founder.twitter.nil? || @founder.twitter.empty? %>
-    <%= link_to "://" + @founder.twitter, target: "_blank" do %>
+    <%= link_to "//" + @founder.twitter, target: "_blank" do %>
     <i class="fa fa-twitter"></i>
     <% end %>
     &nbsp;
     <% end %>
     <% unless @founder.linkedin.nil? || @founder.linkedin.empty? %>
-    <%= link_to "://" + @founder.linkedin, target: "_blank" do %>
+    <%= link_to "//" + @founder.linkedin, target: "_blank" do %>
     <i class="fa fa-linkedin"></i>
     <% end %>
     &nbsp;
     <% end %>
     <% unless @founder.angellist.nil? || @founder.angellist.empty? %>
-    <%= link_to "://" + @founder.angellist, target: "_blank" do %>
+    <%= link_to "//" + @founder.angellist, target: "_blank" do %>
     <i class="fa fa-angellist"></i>
     <% end %>
     &nbsp;
