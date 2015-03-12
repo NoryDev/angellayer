@@ -4,7 +4,7 @@ class Founders::ProfileController < ApplicationController
   skip_before_action :investor_not_authorized, except: [:edit, :update]
 
   def index
-    @founders = Founder.all
+    @founders = fetch_founders
   end
 
   def show
@@ -29,6 +29,31 @@ class Founders::ProfileController < ApplicationController
   end
 
   private
+
+    # Method for sorting
+    def fetch_founders
+      case params[:order]
+      when "last_name"
+        base_scope.order(last_name: :asc)
+      when "nb_reviews"
+        base_scope.joins(:evaluations).group("founders.id").order("count(evaluations.id) DESC")
+      when "nb_comments"
+        base_scope.joins(:comments).group("founders.id").order("count(comments.id) DESC")
+      else
+        base_scope
+      end
+    end
+
+    # Method for sorting, loads the investors, founders, and comments for quicker action
+    def base_scope
+      Founder.all
+    end
+
+    # Number of evaluation on a page
+    def per_page
+      5
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_founder
       @founder = Founder.find(params[:id])
