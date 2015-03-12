@@ -22,4 +22,16 @@ class Founders::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
       redirect_to new_founder_registration_url
     end
   end
+
+  def linkedin
+    auth = env["omniauth.auth"]
+    @founder = Founder.connect_to_linkedin(request.env["omniauth.auth"], current_founder)
+    if @founder.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
+      sign_in_and_redirect @founder, :event => :authentication
+    else
+      session["devise.linkedin_uid"] = request.env["omniauth.auth"]
+      redirect_to new_founder_registration_url
+    end
+  end
 end
