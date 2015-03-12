@@ -6,6 +6,7 @@ ruby "2.2.0"
 gem "figaro"
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
