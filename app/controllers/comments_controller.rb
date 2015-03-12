@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    if current_founder != @comment.founder
+    if current_founder != @comment.founder && (current_founder && !current_founder.admin)
       founder_not_authorized
     end
   end
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    if current_founder != @comment.founder
+    if current_founder != @comment.founder && (current_founder && !current_founder.admin)
       founder_not_authorized
     else
       @comment.founder = current_founder
