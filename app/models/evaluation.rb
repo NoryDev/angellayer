@@ -10,18 +10,10 @@ class Evaluation < ActiveRecord::Base
 
   validates :investor_profile, :founder, :review, :title_review, presence: true
 
-  default_scope { order('created_at DESC') }
+  before_save :set_average_score
 
-  def average_score
-    rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
-    rates = rates.reject{ |rate| rate.nil? }
-    rate_sum = rates.reduce(:+)
-    if rates.empty?
-      nil
-    else
-      rate_sum / rates.size
-    end
-  end
+  #default_scope { order('created_at DESC') }
+
 
   def best_comments
 
@@ -38,8 +30,25 @@ class Evaluation < ActiveRecord::Base
   end
 
   def score
-    pluses = votes.where(plus: true).size
+    pluses  = votes.where(plus: true).size
     minuses = votes.where(minus: true).size
     pluses - minuses
+  end
+
+  private
+
+  def set_average_score
+    self.average_score = get_average_score
+  end
+
+  def get_average_score
+    rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
+    rates = rates.reject{ |rate| rate.nil? }
+    rate_sum = rates.reduce(:+)
+    if rates.empty?
+      nil
+    else
+      rate_sum / rates.size
+    end
   end
 end
