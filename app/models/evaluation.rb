@@ -37,18 +37,18 @@ class Evaluation < ActiveRecord::Base
 
   private
 
-  def set_average_score
-    self.average_score = get_average_score
-  end
-
-  def get_average_score
-    rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
-    rates = rates.reject{ |rate| rate.nil? }
-    rate_sum = rates.reduce(:+)
-    if rates.empty?
-      nil
-    else
-      rate_sum / rates.size
+    def set_average_score
+      self.average_score = get_average_score
     end
-  end
+
+    def get_average_score
+      rates = [rating_reputation, rating_deal, rating_pitch, rating_competence, rating_commitment]
+      rates = rates.reject{ |rate| rate.nil? }
+      rate_sum = rates.reduce(:+)
+      if rates.empty?
+        nil
+      else
+        rate_sum / rates.size
+      end
+    end
 end

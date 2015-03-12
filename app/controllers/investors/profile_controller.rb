@@ -6,7 +6,8 @@ class Investors::ProfileController < ApplicationController
   skip_before_action :investor_not_authorized
 
   def index
-    @profiles = InvestorProfile.all
+    @profiles = fetch_profiles
+    # @evaluations = @evaluations.page(params[:page]).per(per_page)
   end
 
   def show
@@ -54,6 +55,33 @@ class Investors::ProfileController < ApplicationController
   end
 
   private
+
+    # Method for sorting
+    def fetch_profiles
+      case params[:order]
+      when "average_score"
+        base_scope.sort_by{ |investor| -investor.total_average_score}
+      when "company_name"
+        base_scope.order(company_name: :asc)
+      when "nb_reviews"
+        base_scope.joins(:evaluations).group("investor_profiles.id").order("count(evaluations.id) DESC")
+      else
+        base_scope
+      end
+    end
+
+    # Method for sorting, loads the investors, founders, and comments for quicker action
+    def base_scope
+      # InvestorProfile.all
+      InvestorProfile.all
+    end
+
+    # Number of evaluation on a page
+    def per_page
+      5
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = InvestorProfile.find(params[:id])
