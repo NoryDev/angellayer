@@ -1,8 +1,11 @@
 // when the page is ready for manipulation
 $(document).ready(function () {
+    var page = 1;
     // when the load more link is clicked
     $('a.load-more').click(function (e) {
-
+        page += 1;
+        var url =  window.location.href
+        var order = purl(url).param().order
         // prevent the default click action
         e.preventDefault();
 
@@ -11,9 +14,6 @@ $(document).ready(function () {
 
         // show loading gif
         $('.loading-gif').show();
-
-        // get the last id and save it in a variable 'last-id'
-        var last_id = $('.record').last().attr('data-id');
 
         // make an ajax call passing along our last user id
         $.ajax({
@@ -24,7 +24,8 @@ $(document).ready(function () {
             url: $(this).attr('href'),
             // send the last id to our rails app
             data: {
-                id: last_id
+                page:  page,
+                order: order
             },
             // the response will be a script
             dataType: "script",

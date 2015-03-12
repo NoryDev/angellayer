@@ -76,22 +76,22 @@ class Founder < ActiveRecord::Base
   end
 
   def name
-    "#{first_name} #{last_name}"
+    [first_name, last_name].reject(&:blank?).join(' ')
   end
 
   def image
     if profile_pic.file? || picture.nil?
-      return profile_pic.url(:medium)
+      profile_pic.url(:medium)
     else
-      return "#{picture}?type=large"
+      "#{picture}?type=large"
     end
   end
 
   def avatar
     if profile_pic.file? || picture.nil?
-      return profile_pic.url(:thumb)
+      profile_pic.url(:thumb)
     else
-      return "#{picture}?type=square"
+      "#{picture}?type=square"
     end
   end
 
