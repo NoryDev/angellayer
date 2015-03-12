@@ -161,7 +161,7 @@ of his friends. Jabba the hut. I thought he was convincing and he certainly
 seemed to have a lot of capital he wanted to invest wisely. When I told him
 about my new "Oil for Droids" ® he told me the idea was excellent. Then he tried
 to kill me, I managed to escape by falling through a trap door. Can not remember
-much after that'
+much after that...'
 evaluation1.rating_reputation = 1
 evaluation1.rating_deal = 1
 evaluation1.rating_pitch = 1
@@ -170,6 +170,59 @@ evaluation1.rating_commitment = 1
 evaluation1.amount_raised = 10_000 * rand(100)
 evaluation1.would_work_again = false
 evaluation1.save
+
+evaluation1b = Evaluation.new
+evaluation1b.founder = founder2
+evaluation1b.investor_profile = profile4
+evaluation1b.title_review = 'Very disappointed by Mr Vader'
+evaluation1b.review = "Frightning at first, I then thought I had actually found
+a father figure in Mr Vader. Then he suddenly turned to the dark side, or was
+I too blind to see this at first. The business deal was terrible, he got into great
+tantrums and started killing the staff. He also breathes extremly loud, very difficult
+to concentrate when he's around."
+evaluation1b.rating_reputation = 2
+evaluation1b.rating_deal = 1
+evaluation1b.rating_pitch = 2
+evaluation1b.rating_competence = 1
+evaluation1b.rating_commitment = 2
+evaluation1b.amount_raised = 10_000 * rand(100)
+evaluation1b.would_work_again = false
+evaluation1b.save
+
+evaluation1c = Evaluation.new
+evaluation1c.founder = founder5
+evaluation1c.investor_profile = profile4
+evaluation1c.title_review = 'Mr Vader is a great boss, no really I mean it!'
+evaluation1c.review = "Well there's nothing more to say I was really really really
+delighted to work once again with him, yes I really mean it!! He invested in my
+Death-star Hotels© and really understood the potential of this business...
+Please get me out of here..."
+evaluation1c.rating_reputation = 2
+evaluation1c.rating_deal = 1
+evaluation1c.rating_pitch = 2
+evaluation1c.rating_competence = 1
+evaluation1c.rating_commitment = 2
+evaluation1c.amount_raised = 10_000 * rand(100)
+evaluation1c.would_work_again = false
+evaluation1c.save
+
+evaluation1d = Evaluation.new
+evaluation1d.founder = founder3
+evaluation1d.investor_profile = profile4
+evaluation1d.title_review = 'Mr Vader is about to reboot me'
+evaluation1d.review = "I don't know what I did wrong but Mr Vader stole my business
+Star Wheel cleaner®. It sounds familiar after my adventure with Mr Jabba, maybe
+I'll just never learn, especially since I think Mr Vader is about to reboot me
+and wipe out my memory."
+evaluation1d.rating_reputation = 1
+evaluation1d.rating_deal = 1
+evaluation1d.rating_pitch = 1
+evaluation1d.rating_competence = 2
+evaluation1d.rating_commitment = 1
+evaluation1d.amount_raised = 10_000 * rand(100)
+evaluation1d.would_work_again = false
+evaluation1d.save
+
 
 
 
@@ -223,6 +276,42 @@ evaluation2.amount_raised = 10_000 * rand(100)
 evaluation2.would_work_again = true
 evaluation2.save
 
+evaluation2b = Evaluation.new
+evaluation2b.founder = founder4
+evaluation2b.investor_profile = profile2
+evaluation2b.title_review = 'I loved working with Yoda'
+evaluation2b.review = "Everybody thinks that StormTrooper's lack personality
+and don't have enough carisma to build and keep a business. But Mr Yoda really
+sensed the force within me and invested massively his time, his energy and his money
+this was a great success and I do it again anyday..."
+evaluation2b.rating_reputation = 3
+evaluation2b.rating_deal = 5
+evaluation2b.rating_pitch = 3
+evaluation2b.rating_competence = 5
+evaluation2b.rating_commitment = 3
+evaluation2b.amount_raised = 10_000 * rand(100)
+evaluation2b.would_work_again = true
+evaluation2b.save
+
+evaluation2c = Evaluation.new
+evaluation2c.founder = admin
+evaluation2c.investor_profile = profile2
+evaluation2c.title_review = 'I really felt the force with Mr Yoda'
+evaluation2c.review = "I came to Yoda with my oil for squeaks®.
+I come from a background where there is little room for self-development and
+Mr Yoda not only helped me better define and sell my product, but he was
+also a great coach and helped me find the creativity and the force that lied
+within me. I don't know how to thank him for everything he's done. The business
+is going fine, we have really managed to find and develop a niche product."
+evaluation2c.rating_reputation = 5
+evaluation2c.rating_deal = 3
+evaluation2c.rating_pitch = 5
+evaluation2c.rating_competence = 4
+evaluation2c.rating_commitment = 5
+evaluation2c.amount_raised = 10_000 * rand(100)
+evaluation2c.would_work_again = true
+evaluation2c.save
+
 
 
 
@@ -262,7 +351,7 @@ investor3.save
 evaluation3 = Evaluation.new
 evaluation3.founder = founder3
 evaluation3.investor_profile = profile3
-evaluation3.title_review = 'Interesting philosophy'
+evaluation3.title_review = "How did Jabba the Hutt do it?"
 evaluation3.review = "Well, that was an experience. I don't really know whant
 I got out of it. I came to Mr Jaba with an interesting idea about an cleaning
  system for the Imperial-shuttle. Mr Jabba was interested in the idea and
@@ -277,6 +366,25 @@ evaluation3.rating_commitment = 4
 evaluation3.amount_raised = 10_000 * rand(100)
 evaluation3.would_work_again = false
 evaluation3.save
+
+
+evaluation3b = Evaluation.new
+evaluation3b.founder = founder2
+evaluation3b.investor_profile = profile3
+evaluation3b.title_review = 'Jabba the Hutt kept me prisonner!'
+evaluation3b.review = "I came to Jabba the Hutt with a great business proposal.
+He took me prisonner and kept me chained for weeks before my brother came to free
+me. I don't know what to say except flee Jabba, avoid landing on his planet."
+evaluation3b.rating_reputation = 1
+evaluation3b.rating_deal = 1
+evaluation3b.rating_pitch = 1
+evaluation3b.rating_competence = 1
+evaluation3b.rating_commitment = 1
+evaluation3b.amount_raised = 10_000 * rand(100)
+evaluation3b.would_work_again = false
+evaluation3b.save
+
+
 
 
 
@@ -331,6 +439,10 @@ evaluation4.rating_commitment = 4
 evaluation4.amount_raised = 10_000 * rand(100)
 evaluation4.would_work_again = false
 evaluation4.save
+
+
+
+
 
 my_comments = ["This review is great it really helped me out, thanks",
 "Wow, this is like deep and meaninful", "What did you mean exactly, you
