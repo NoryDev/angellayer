@@ -15,8 +15,6 @@ class InvestorProfile < ActiveRecord::Base
 
   after_create :send_welcome_email
 
-  before_save :set_total_average_score
-
   def image
     profile_pic.url(:medium)
   end
