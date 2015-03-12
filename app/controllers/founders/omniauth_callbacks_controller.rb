@@ -27,7 +27,7 @@ class Founders::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
     auth = env["omniauth.auth"]
     @founder = Founder.connect_to_linkedin(request.env["omniauth.auth"], current_founder)
     if @founder.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
+      set_flash_message(:notice, :success, :kind => "LinkedIn") if is_navigational_format?
       sign_in_and_redirect @founder, :event => :authentication
     else
       session["devise.linkedin_uid"] = request.env["omniauth.auth"]
