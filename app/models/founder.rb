@@ -60,7 +60,7 @@ class Founder < ActiveRecord::Base
       if registered_founder
         return registered_founder
       else
-        founder = Founder.create(name:auth.info.first_name,
+        founder = Founder.create(
           provider:auth.provider,
           uid:auth.uid,
           email:auth.info.email,
