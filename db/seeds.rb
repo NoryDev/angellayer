@@ -175,10 +175,10 @@ evaluation1b = Evaluation.new
 evaluation1b.founder = founder2
 evaluation1b.investor_profile = profile4
 evaluation1b.title_review = 'Very disappointed by Mr Vader'
-evaluation1b.review = "Frightning at first, I then thought I had actually found
+evaluation1b.review = "Frightening at first, I then thought I had actually found
 a father figure in Mr Vader. Then he suddenly turned to the dark side, or was
 I too blind to see this at first. The business deal was terrible, he got into great
-tantrums and started killing the staff. He also breathes extremly loud, very difficult
+tantrums and started killing the staff. He also breathes extremely loud, very difficult
 to concentrate when he's around."
 evaluation1b.rating_reputation = 2
 evaluation1b.rating_deal = 1
@@ -266,7 +266,7 @@ evaluation2.review = "Mr Yoda really helped me grow my company and my hair.
 He helped me do my curly braces and find a great business model. Thanks to
 him I found loads of business partners and even a new co-founder (who ended
 up being my brother, gosh...). My Millenium Falcon Interior Design© is now working
-great, thanks to Mr Yoda's exeperience we are growing as fast as star-fighter..."
+great, thanks to Mr Yoda's experience we are growing as fast as star-fighter..."
 evaluation2.rating_reputation = 4
 evaluation2.rating_deal = 4
 evaluation2.rating_pitch = 4
@@ -281,7 +281,7 @@ evaluation2b.founder = founder4
 evaluation2b.investor_profile = profile2
 evaluation2b.title_review = 'I loved working with Yoda'
 evaluation2b.review = "Everybody thinks that StormTrooper's lack personality
-and don't have enough carisma to build and keep a business. But Mr Yoda really
+and don't have enough charisma to build and keep a business. But Mr Yoda really
 sensed the force within me and invested massively his time, his energy and his money
 this was a great success and I do it again anyday..."
 evaluation2b.rating_reputation = 3
@@ -313,10 +313,6 @@ evaluation2c.would_work_again = true
 evaluation2c.save
 
 
-
-
-
-
 investor3 = Investor.new
 investor3.email = "Jabba@yopmail.com"
 investor3.password = "12345678"
@@ -337,7 +333,7 @@ profile3.website = 'www.jabbas-bar.com'
 profile3.sectors_invested_in = 'Alcohol, gambling and games'
 profile3.capital_under_managment = rand(101) * 100_000
 profile3.geographical_focus = "I'll find you wherever you hide"
-profile3.preferred_investment_stage = "Any no deal is too big or too small"
+profile3.preferred_investment_stage = "No deal is too big or too small"
 profile3.nb_projects_invested_in = rand(200)
 profile3.contact_person = 'Jabba The Hutt'
 profile3.contact_email = investor3.email
@@ -352,11 +348,11 @@ evaluation3 = Evaluation.new
 evaluation3.founder = founder3
 evaluation3.investor_profile = profile3
 evaluation3.title_review = "How did Jabba the Hutt do it?"
-evaluation3.review = "Well, that was an experience. I don't really know whant
+evaluation3.review = "Well, that was an experience. I don't really know what
 I got out of it. I came to Mr Jaba with an interesting idea about an cleaning
  system for the Imperial-shuttle. Mr Jabba was interested in the idea and
  invested in my firm. A few months later he seems to have taken possession
- of the firm completly. I have no more stock and no more options. But the
+ of the firm completely. I have no more stock and no more options. But the
  firm is going great and Mr Jabba has found an exit strategy. Where did I go wrong?"
 evaluation3.rating_reputation = 1
 evaluation3.rating_deal = 1
@@ -371,9 +367,9 @@ evaluation3.save
 evaluation3b = Evaluation.new
 evaluation3b.founder = founder2
 evaluation3b.investor_profile = profile3
-evaluation3b.title_review = 'Jabba the Hutt kept me prisonner!'
+evaluation3b.title_review = 'Jabba the Hutt kept me prisoner!'
 evaluation3b.review = "I came to Jabba the Hutt with a great business proposal.
-He took me prisonner and kept me chained for weeks before my brother came to free
+He took me prisoner and kept me chained for weeks before my brother came to free
 me. I don't know what to say except flee Jabba, avoid landing on his planet."
 evaluation3b.rating_reputation = 1
 evaluation3b.rating_deal = 1
@@ -384,6 +380,37 @@ evaluation3b.amount_raised = 10_000 * rand(100)
 evaluation3b.would_work_again = false
 evaluation3b.save
 
+evaluation3c = Evaluation.new
+evaluation3c.founder = founder1
+evaluation3c.investor_profile = profile3
+evaluation3c.title_review = 'Jabba the What???'
+evaluation3c.review = "Never again, I went there with my friend Han Solo.
+I thought Jabba would be interested in my business, but instead I had
+to free my captured sister and blast my way out of his shady bar"
+evaluation3c.rating_reputation = 1
+evaluation3c.rating_deal = 1
+evaluation3c.rating_pitch = 1
+evaluation3c.rating_competence = 3
+evaluation3c.rating_commitment = 1
+evaluation3c.amount_raised = 10_000 * rand(100)
+evaluation3c.would_work_again = false
+evaluation3c.save
+
+evaluation3d = Evaluation.new
+evaluation3d.founder = founder2
+evaluation3d.investor_profile = profile3
+evaluation3d.title_review = 'Free Me from Jabba the Hutt'
+evaluation3d.review = "I am still prisoner. Luke help me, I want to get out of here.
+Oh and by the way he's a disastrous business partner. I think he belongs
+to a criminal organisation..."
+evaluation3d.rating_reputation = 1
+evaluation3d.rating_deal = 1
+evaluation3d.rating_pitch = 1
+evaluation3d.rating_competence = 1
+evaluation3d.rating_commitment = 1
+evaluation3d.amount_raised = 10_000 * rand(100)
+evaluation3d.would_work_again = false
+evaluation3d.save
 
 
 
@@ -421,6 +448,22 @@ profile4.save
 investor4.investor_profile = profile4
 investor4.save
 
+evaluation4b = Evaluation.new
+evaluation4b.founder = founder1
+evaluation4b.investor_profile = profile4
+evaluation4b.title_review = 'I strongly recommend Obi-Wan Kenobi'
+evaluation4b.review = " The last business we had together was a great success.
+Our new spring collection for the Ewok's helped us create havoc in Ewok land.
+Mr Obi-Wan-Kenobi is the business associate you want to work with"
+evaluation4b.rating_reputation = 4
+evaluation4b.rating_deal = 3
+evaluation4b.rating_pitch = 4
+evaluation4b.rating_competence = 4
+evaluation4b.rating_commitment = 5
+evaluation4b.amount_raised = 10_000 * rand(100)
+evaluation4b.would_work_again = false
+evaluation4b.save
+
 evaluation4 = Evaluation.new
 evaluation4.founder = admin
 evaluation4.investor_profile = profile4
@@ -440,8 +483,39 @@ evaluation4.amount_raised = 10_000 * rand(100)
 evaluation4.would_work_again = false
 evaluation4.save
 
+evaluation4a = Evaluation.new
+evaluation4a.founder = founder1
+evaluation4a.investor_profile = profile4
+evaluation4a.title_review = 'Obi-Wan Kenobi is my master'
+evaluation4a.review = " Wow, what else can I say. I was a boy and made me a man.
+He came to get me in my small country village and transformed me into a real
+jedi warrior. He taught me how to use a Lightsaber and he even showed me how to
+cut my hair. This guy is the King!!"
+evaluation4a.rating_reputation = 5
+evaluation4a.rating_deal = 5
+evaluation4a.rating_pitch = 5
+evaluation4a.rating_competence = 5
+evaluation4a.rating_commitment = 5
+evaluation4a.amount_raised = 10_000 * rand(100)
+evaluation4a.would_work_again = false
+evaluation4a.save
 
-
+evaluation4c = Evaluation.new
+evaluation4c.founder = founder2
+evaluation4c.investor_profile = profile4
+evaluation4c.title_review = 'Obi-Wan Kenobi is the man'
+evaluation4c.review = " Our business deal was great and the man is a star.
+He helped me connect with loads of nice and friendly people. Thanks to him
+we created a great team. He even introduced me to my long lost brother and
+to my husband to be, Han Solo."
+evaluation4c.rating_reputation = 4
+evaluation4c.rating_deal = 3
+evaluation4c.rating_pitch = 4
+evaluation4c.rating_competence = 3
+evaluation4c.rating_commitment = 4
+evaluation4c.amount_raised = 10_000 * rand(100)
+evaluation4c.would_work_again = false
+evaluation4c.save
 
 
 my_comments = ["This review is great it really helped me out, thanks",
