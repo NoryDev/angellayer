@@ -81,6 +81,20 @@ hr.small {
   display: none;
 }
 
+.white-button{
+  color:#bbb;
+}
+
+.social-margin{
+  margin-right: 75px;
+}
+
+@media (max-width: 767px) {
+  .social-margin {
+    margin-right: 0;
+  }
+}
+
 /*---------------------------------------
    3.2 TYPOGRAPHY
 -----------------------------------------*/
