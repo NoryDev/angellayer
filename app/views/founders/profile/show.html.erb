@@ -68,7 +68,7 @@
 
   <% else %>
   <!-- using partial to render the show pages -->
-    <% @founder.evaluations.each do |evaluation| %>
+    <% @founder.evaluations.order(created_at: :desc).each do |evaluation| %>
       <%= render 'evaluations/evaluation', evaluation: evaluation %>
     <% end %>
   <% end %>

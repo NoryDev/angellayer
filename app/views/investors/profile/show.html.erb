@@ -187,7 +187,7 @@
 
   <% else %>
   <!-- using partial to render the show pages -->
-    <% @profile.evaluations.each do |evaluation| %>
+    <% @profile.evaluations.order(created_at: :desc).each do |evaluation| %>
       <%= render 'evaluations/evaluation', evaluation: evaluation %>
     <% end %>
   <% end %>
