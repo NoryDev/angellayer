@@ -26,26 +26,31 @@ class WelcomeController < ApplicationController
     params = sign_up_params
     flash[:sign_email] = params[:email]
 
-    if params[:is_investor] == "1"
-      flash[:is_investor] = true
-      investor = Investor.new(email: sign_up_params[:email], password: sign_up_params[:password], password_confirmation: sign_up_params[:password_confirmation])
-      if investor.save
-        sign_in_and_redirect investor
+    if params[:code] == ENV["SIGN_UP"]
+      if params[:is_investor] == "1"
+        flash[:is_investor] = true
+        investor = Investor.new(email: sign_up_params[:email], password: sign_up_params[:password], password_confirmation: sign_up_params[:password_confirmation])
+        if investor.save
+          sign_in_and_redirect investor
+        else
+          @alert = investor.errors.map{ |key, value| "#{key} #{value}" }.join(", ")
+          redirect_to(root_path, alert: @alert)
+        end
+      elsif params[:is_investor] == "0"
+        flash[:is_investor] = false
+        founder = Founder.new(email: sign_up_params[:email], password: sign_up_params[:password], password_confirmation: sign_up_params[:password_confirmation])
+        if founder.save
+          sign_in_and_redirect founder
+        else
+          @alert = founder.errors.map{ |key, value| "#{key} #{value}" }.join(", ")
+          redirect_to(root_path, alert: @alert)
+        end
       else
-        @alert = investor.errors.map{ |key, value| "#{key} #{value}" }.join(", ")
-        redirect_to(root_path, alert: @alert)
-      end
-    elsif params[:is_investor] == "0"
-      flash[:is_investor] = false
-      founder = Founder.new(email: sign_up_params[:email], password: sign_up_params[:password], password_confirmation: sign_up_params[:password_confirmation])
-      if founder.save
-        sign_in_and_redirect founder
-      else
-        @alert = founder.errors.map{ |key, value| "#{key} #{value}" }.join(", ")
+        @alert = "You must be either a founder or an investor"
         redirect_to(root_path, alert: @alert)
       end
     else
-      @alert = "You must be either a founder or an investor"
+      @alert = "Wrong invitation code"
       redirect_to(root_path, alert: @alert)
     end
 
@@ -89,7 +94,7 @@ class WelcomeController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sign_up_params
-      params.require(:resource).permit(:email, :password, :password_confirmation, :is_investor)
+      params.require(:resource).permit(:email, :password, :password_confirmation, :is_investor, :code)
     end
 
     def log_in_params
