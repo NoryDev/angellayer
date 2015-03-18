@@ -5,6 +5,12 @@ class Founders::ProfileController < ApplicationController
 
   def index
     @founders = fetch_founders
+    @founders = @founders.page(params[:page]).per(per_page)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
