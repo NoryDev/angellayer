@@ -2,7 +2,7 @@
 // when the page is ready for manipulation
 $(document).ready(function () {
   // when the edit link is clicked
-  // cette fonction permet de reloader le document pour que les boutons edit fonctionnent
+  // reloads document when button is clicked
   $(document).on("click", '.comment-show a', function (e) {
       // prevent the default click action
       e.preventDefault();
@@ -21,11 +21,11 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   // when the new comment is clicked
-  // cette fonction permet de reloader le document pour que les boutons new comment fonctionnent
+  // reloads document when button is clicked
   $(document).on("click", '.new-comment a', function (e) {
       // prevent the default click action
       e.preventDefault();
-      // show the edit form
+      // show the new-comment form
       $(e.target).parents(".new-comment").find( ".new-comment-form").slideDown();
 
   });
@@ -33,7 +33,7 @@ $(document).ready(function () {
   // when the Cancel link is clicked
   $(document).on("click", '.new-comment-form a', function (e) {
   e.preventDefault();
-  // hide the edit form
+  // hide the new-comment form
   $('.new-comment-form').slideUp();
   });
 
