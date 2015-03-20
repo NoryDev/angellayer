@@ -1,4 +1,25 @@
 <div class="container">
+  <div class="padded text-center "></div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 full-padded text-center">
+        Welcome back <%=@founder.name %>, <br>
+        <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
+        <br><br>
+        <%= link_to "Rate an Investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 full-padded text-center">
+
+        Hey <%=@founder.name %>, <br>
+        So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
+        <br><br>
+        <%= link_to "Reviews", evaluations_path, class: "btn btn-success btn-lg" %>
+    </div>
+  </div>
+
+  <div class="padded text-center "></div>
+
+
   <div class="row">
     <div class="col-xs-12 col-sm-6 full-padded">
       <h3 class="text-center">Your top Reviews</h3>

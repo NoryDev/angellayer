@@ -3,9 +3,8 @@
 <div class="colored-line"></div>
 <br>
 
-<div class="img-container img-rounded full-padded">Are we missing an investor you know? Add it! <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success pull-right btn-xs" %> </div>
-<div class="padded text-center ">
-</div>
+<div class="img-container img-rounded full-padded text-center">Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
+<div class="padded text-center "></div>
 
 <p class="text-center">Order by :
 <%= link_to "General Score", investors_profile_index_path(order: :average_score) %> |
@@ -17,7 +16,7 @@
   <div class="img-container img-rounded full-padded">
     <div class="row">
 
-      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
+      <div class="col-xs-4 col-sm-3 text-center">
         <%= link_to investors_profile_path(profile) do %>
           <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, style: "max-width: 90%; height: auto;"%></p>
         <% end %>
@@ -55,29 +54,35 @@
         </div>
       </div>
 
-      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if current_investor || (current_founder && current_founder.admin) %>
-          <% unless profile.investor_id %>
-            <div class="pull-right">
-              <small><%= mail_to "angellayer@yopmail.com", "claim profile" %></small>
-            </div>
-          <% end %>
-        <% end %>
+      <div class="col-xs-8 col-sm-5">
+
 
         <% if profile.company_name %>
           <p><strong><%= link_to profile.company_name, investors_profile_path(profile) %></strong></p>
         <% end %>
 
-        <p><%= profile.physical_address %></p>
-        <p>
+        <% if current_founder %>
+          <%= link_to "New Rating", new_investors_profile_evaluation_path(profile), {class: 'btn btn-danger btn-xs'} %>
+        <% end %>
+
+        <% if current_investor || (current_founder && current_founder.admin) %>
+          <% unless profile.investor_id %>
+              <small><%= mail_to "angellayer@yopmail.com", "claim profile", class: "btn btn-success btn-xs" %></small>
+          <% end %>
+        <% end %>
+
+        <p><%= profile.physical_address %>
+          <br>
           <% if profile.website %>
             <%= link_to profile.website, "//" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
           <% end %>
         </p>
-
+      </div>
+      <div class="col-xs-12 col-sm-4">
         <div class="text-uppercase text-muted">
-          <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
+          <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> <br> <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
         </div>
+
       </div>
     </div>
   </div>
@@ -85,3 +90,6 @@
   <br>
 
 <% end %>
+
+<div class="padded text-center "></div>
+<div class="img-container img-rounded full-padded text-center">Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
