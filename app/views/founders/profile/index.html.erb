@@ -8,41 +8,12 @@
 <%= link_to "Number of comments", founders_profile_index_path(order: :nb_comments) %> |
 <%= link_to "Last name", founders_profile_index_path(order: :last_name) %></p>
 
-<% @founders.each do |founder| %>
-<div class="img-container img-rounded full-padded">
-  <div class="row">
-
-    <div class="col-xs-12 col-sm-8">
-      <%= link_to founders_profile_path(founder), class: "pull-left", style: "padding-right: 1em" do %>
-        <%= image_tag founder.image, size: "100x100", alt: founder.name %>
-      <% end %>
-
-      <p><strong><%= link_to founder.name, founders_profile_path(founder) %></strong>
-        <br>
-        <br>
-
-        <% if founder.website %>
-        <%= link_to founder.website, "http://" + founder.website.gsub(/\Ahttps?:\/\//,""), target: "_blank" %>
-        <% else %>
-        <% end %>
-        <br>
-
-        <% if current_founder == founder || (current_founder && current_founder.admin) %>
-          <%= link_to "Edit", edit_founders_profile_path(founder) %>
-        <% end %>
-        <br>
-
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <p><strong>Contribution</strong></p>
-      <div class="text-uppercase text-muted">
-       <i class="fa fa-bar-chart"></i> <small><%= founder.evaluations.count %> Reviews given</small>
-      </div>
-      <div class="text-uppercase text-muted">
-       <i class="fa fa-comments"></i> <small><%= founder.comments.count %> Comments submitted</small>
-      </div>
-    </div>
-  </div>
+<div class="founder-container">
+  <%= render "founder" %>
 </div>
-  <br>
-<% end %>
+
+<div class="load-more-container text-center">
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+  <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+  <%= link_to "Load More", founders_profile_index_path, class: "load-more btn btn-primary" %>
+</div>
