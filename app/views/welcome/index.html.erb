@@ -22,9 +22,12 @@
           <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
         <% end %>
-        <small class="white-button social-margin">or connect with &nbsp;<%= link_to '<i class="fa fa-facebook-square"></i>'.html_safe, founder_omniauth_authorize_path(:facebook), class: "white-button" %> &nbsp;
+        <div>
+          <small class="white-button social-margin">or connect with &nbsp;<%= link_to '<i class="fa fa-facebook-square"></i>'.html_safe, founder_omniauth_authorize_path(:facebook), class: "white-button" %> &nbsp;
           <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, founder_omniauth_authorize_path(:twitter), class: "white-button"  %> &nbsp;
           <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, founder_omniauth_authorize_path(:linkedin), class: "white-button"  %></small>
+          <small><%= link_to "Forgot your password?", new_password_path(:founder) %></small>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -81,10 +84,6 @@
           </div>
           <h3>Try it for free</h3>
           <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
-            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
-            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
-            <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
             <div class="switch">
               <% if flash[:is_investor] %>
                 <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
@@ -95,6 +94,35 @@
               <span class="on">I'm a founder</span>
               <span class="off">I'm an investor</span>
             </div>
+
+            <div class="form-group">
+              <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
+            </div>
+            <div class="for-founders">
+              <p>
+                <%= link_to founder_omniauth_authorize_path(:facebook), style: "width: 100%", class: "btn btn-primary social-signup" do %>
+                  <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with Facebook
+                <% end %>
+              </p>
+
+              <p>
+                <%= link_to founder_omniauth_authorize_path(:twitter), style: "width: 100%", class: "btn btn-primary social-signup" do %>
+                  <i class="fa fa-twitter"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with Twitter
+                <% end %>
+              </p>
+
+              <p>
+                <%= link_to founder_omniauth_authorize_path(:linkedin), style: "width: 100%", class: "btn btn-primary social-signup" do %>
+                  <i class="fa fa-linkedin"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with LinkedIn
+                <% end %>
+              </p>
+
+              <div class="content_divider"><small>or</small></div>
+            </div>
+
+            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
+            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
             <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
           <% end %>
 

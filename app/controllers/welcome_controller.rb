@@ -53,7 +53,6 @@ class WelcomeController < ApplicationController
       @alert = "Wrong invitation code"
       redirect_to(root_path, alert: @alert)
     end
-
   end
 
   def log_in
@@ -89,8 +88,6 @@ class WelcomeController < ApplicationController
   end
 
   private
-
-
 
     # Only allow a trusted parameter "white list" through.
     def sign_up_params
