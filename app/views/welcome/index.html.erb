@@ -99,23 +99,16 @@
               <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
             </div>
             <div class="for-founders">
-              <p>
-                <%= link_to founder_omniauth_authorize_path(:facebook), style: "width: 100%", class: "btn btn-primary social-signup" do %>
-                  <i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with Facebook
+                <p>Sign up with:</p>
+                <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-xs social-signup" do %>
+                  <i class="fa fa-facebook"></i> Facebook
                 <% end %>
-              </p>
-
-              <p>
-                <%= link_to founder_omniauth_authorize_path(:twitter), style: "width: 100%", class: "btn btn-primary social-signup" do %>
-                  <i class="fa fa-twitter"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with Twitter
+                <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-xs social-signup" do %>
+                  <i class="fa fa-twitter"></i> Twitter
                 <% end %>
-              </p>
-
-              <p>
-                <%= link_to founder_omniauth_authorize_path(:linkedin), style: "width: 100%", class: "btn btn-primary social-signup" do %>
-                  <i class="fa fa-linkedin"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sign up with LinkedIn
+                <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-primary btn-xs social-signup" do %>
+                  <i class="fa fa-linkedin"></i> LinkedIn
                 <% end %>
-              </p>
 
               <div class="content_divider"><small>or</small></div>
             </div>

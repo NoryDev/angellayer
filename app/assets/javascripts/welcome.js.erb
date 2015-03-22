@@ -25,6 +25,7 @@ $(document).ready(function() {
   });
 
   //js validation for form: need invitation code
+  var error = false;
   $('.social-signup').click(function(event) {
       // Remember the link href
       var href = this.href;
@@ -37,11 +38,12 @@ $(document).ready(function() {
       // This is the completion callback for the asynchronous thing;
       if ( code == <%= ENV['SIGN_UP'] %> ) {
         // go to the link
+        error = false;
         window.location = href;
-      } else {
-        // alert('wrong code');
+      } else if (!error) {
         $('#resource_code').parent().addClass('has-error');
-        $('#resource_code').parent().append('<span class="text-danger pull-left code-error">Wrong invitation code</span>');
+        $('#resource_code').parent().append('<span class="text-danger code-error">Wrong invitation code</span>');
+        error = true;
       }
   });
 });
