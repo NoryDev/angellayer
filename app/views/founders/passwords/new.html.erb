@@ -1,5 +1,10 @@
 <h2>Forgot your password?</h2>
 
+<br>
+<%= link_to "I am an investor", new_password_path(:investor), class: "btn btn-danger btn-lg" %>
+<br>
+<br>
+
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 

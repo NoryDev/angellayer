@@ -49,6 +49,36 @@ hr.small {
   height: 0;
 }
 
+.content_divider:before {
+  content: "";
+  width: 30%;
+  border: none;
+  border-top: 1px solid rgba(155,155,155,0.3);
+  color: rgba(155,155,155,0.3);
+  position: absolute;
+  margin-top: 0.7em;
+  left: 15%;
+  padding: 0;
+  height: 0;
+}
+
+.content_divider {
+  margin-top: 1em;
+}
+
+.content_divider:after {
+  content: "";
+  width: 30%;
+  border: none;
+  border-top: 1px solid rgba(155,155,155,0.3);
+  color: rgba(155,155,155,0.3);
+  position: absolute;
+  margin-top: 0.7em;
+  right: 15%;
+  padding: 0;
+  height: 0;
+}
+
 .colored-line {
   height: 1px;
   width: 70px;
