@@ -34,9 +34,10 @@ $(document).ready(function() {
       event.preventDefault();
 
       var code = $('#resource_code').val();
+      var valid_code = '' + <%= ENV['SIGN_UP'] %>;
 
       // This is the completion callback for the asynchronous thing;
-      if ( code == <%= ENV['SIGN_UP'].to_s %> ) {
+      if ( code == valid_code ) {
         // go to the link
         error = false;
         window.location = href;
