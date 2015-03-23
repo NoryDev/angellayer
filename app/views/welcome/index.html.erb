@@ -23,9 +23,17 @@
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
         <% end %>
         <div>
-          <small class="white-button social-margin">or connect with &nbsp;<%= link_to '<i class="fa fa-facebook-square"></i>'.html_safe, founder_omniauth_authorize_path(:facebook), class: "white-button" %> &nbsp;
-          <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, founder_omniauth_authorize_path(:twitter), class: "white-button"  %> &nbsp;
-          <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, founder_omniauth_authorize_path(:linkedin), class: "white-button"  %></small>
+          <small class="white-button social-margin">or connect with &nbsp;
+            <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn-xs social-signup" do %>
+              <i class="fa fa-facebook"></i> Facebook
+            <% end %>
+            <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-xs social-signup" do %>
+              <i class="fa fa-twitter"></i> Twitter
+            <% end %>
+            <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin btn-xs social-signup" do %>
+              <i class="fa fa-linkedin"></i> LinkedIn
+            <% end %>
+          </small>
           <small><%= link_to "Forgot your password?", new_password_path(:founder) %></small>
         </div>
       </div>
@@ -100,13 +108,13 @@
             </div>
             <div class="for-founders">
                 <p>Sign up with:</p>
-                <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-xs social-signup" do %>
+                <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn-xs social-signup" do %>
                   <i class="fa fa-facebook"></i> Facebook
                 <% end %>
-                <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-xs social-signup" do %>
+                <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-xs social-signup" do %>
                   <i class="fa fa-twitter"></i> Twitter
                 <% end %>
-                <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-primary btn-xs social-signup" do %>
+                <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin btn-xs social-signup" do %>
                   <i class="fa fa-linkedin"></i> LinkedIn
                 <% end %>
 
