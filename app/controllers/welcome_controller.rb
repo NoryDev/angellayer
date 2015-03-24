@@ -84,6 +84,7 @@ class WelcomeController < ApplicationController
   def dashboard
     @evaluations = Evaluation.all.order(created_at: :desc).first(5)
     @founder = current_founder
+    @profiles = InvestorProfile.all.order(created_at: :desc).first(5)
     render 'dashboard', layout: 'dashboard-fullpage'
   end
 
