@@ -36,7 +36,7 @@
 
         <h3>Your most popular reviews</h3>
         <br>
-        <% evaluations = @founder.evaluations.sort_by{ |evaluation| - evaluation.score}.first(5) %>
+        <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(5) %>
         <% evaluations.each do |evaluation| %>
           <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
         <% end %>
