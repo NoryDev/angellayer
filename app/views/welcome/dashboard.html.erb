@@ -12,20 +12,28 @@
           <br>
           number of comments : <%= @founder.comments.count %>
           <br>
+          Amount raised :
+          <% total_raised = 0 %>
+          <% @founder.evaluations.each do |evaluation| %>
+          <% total_raised += evaluation.amount_raised.to_i %>
+          <% end %>
+          <%= number_to_currency(total_raised) %> $
         </p>
         <br>
-        <select class="form-control">
-          <option>Select Investor</option>
+        <select id="select-investor" class="form-control">
+        <option value="">Select Investor</option>
         <% @profiles.each do |profile| %>
-        <option><%= link_to profile.company_name, investors_profile_path(profile) %></option>
-
-
+        <option value=<%=profile.id%>><%= profile.company_name %></option>
         <% end %>
+        <option value="">Investor not in list</option>
         </select>
+        <!-- check the dashboard.js for jquery code -->
+        <br>
+        <button id="submit-profile" class="btn btn-danger btn-lg">Rate an Investor</button>
+        <br><br>
         </p>
          <p>
-          <%= link_to "Rate an Investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
-          <br><br>
+
           <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
         </p>
         <br><br>
