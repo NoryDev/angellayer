@@ -5,12 +5,12 @@ class InvestorMailer < ApplicationMailer
   #
   #   en.investor_mailer.welcome.subject
   #
-  default from: 'angellayer@yopmail.com'
+  default from: 'info@sharkrank.co'
 
   def welcome(investor)
     @investor = investor  # Instance variable => available in view
 
-    mail(to: @investor.email, subject: 'Your profile has been created on AngelLayer.com')
+    mail(to: @investor.email, subject: 'Your profile has been created on Sharkrank.co')
   end
 
 end

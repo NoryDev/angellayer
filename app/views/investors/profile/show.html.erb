@@ -25,7 +25,7 @@
 
         <% if current_investor || (current_founder && current_founder.admin) %>
         <% unless @profile.investor_id %>
-        &nbsp; <%= mail_to "angellayer@yopmail.com", "claim profile", {class: 'btn btn-success btn-sm'} %>
+        &nbsp; <%= mail_to "info@sharkrank.co", "claim profile", {class: 'btn btn-success btn-sm'} %>
         <% end %>
         <% end %>
 
