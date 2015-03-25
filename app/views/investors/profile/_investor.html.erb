@@ -43,9 +43,10 @@
 
       <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
         <% if current_investor || (current_founder && current_founder.admin) %>
+        <% user = current_investor || current_founder %>
           <% unless profile.investor_id %>
             <div class="pull-right">
-              <small><%= mail_to "info@sharkrank.co", "claim profile" %></small>
+              <small><%= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{profile.company_name}", body: "I would like to claim #{profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. "} %></small>
             </div>
           <% end %>
         <% end %>

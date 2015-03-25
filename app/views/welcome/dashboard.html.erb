@@ -8,16 +8,16 @@
       </p>
 
       <p>
-        number of reviews : <%= @founder.evaluations.count %>
+        Reviews : <strong><%= @founder.evaluations.count %></strong>
         <br>
-        number of comments : <%= @founder.comments.count %>
+        Comments : <strong><%= @founder.comments.count %></strong>
         <br>
-        Amount raised :
+        Raised :
         <% total_raised = 0 %>
         <% @founder.evaluations.each do |evaluation| %>
         <% total_raised += evaluation.amount_raised %>
         <% end %>
-        <%= number_to_currency(total_raised) %>
+        <strong><%= number_to_currency(total_raised) %></strong>
       </p>
 
       <br>
@@ -34,7 +34,7 @@
         <br><br>
         </p>
 
-        <h3>Your most voted for reviews</h3>
+        <h3>Your most popular reviews</h3>
         <br>
         <% evaluations = @founder.evaluations.sort_by{ |evaluation| - evaluation.score}.first(5) %>
         <% evaluations.each do |evaluation| %>
