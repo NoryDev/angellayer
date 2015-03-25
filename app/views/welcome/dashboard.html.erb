@@ -22,11 +22,11 @@
 
       <br>
       <select id="select-investor" class="form-control">
-        <option value="">Select Investor</option>
+        <option value="0">Select Investor</option>
         <% @profiles.each do |profile| %>
         <option value=<%=profile.id%>><%= profile.company_name %></option>
         <% end %>
-        <option value="">Investor not in list</option>
+        <option value="0">Investor not in list</option>
         </select>
         <!-- check the dashboard.js for jquery code -->
         <br>
