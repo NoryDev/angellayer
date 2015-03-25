@@ -3,24 +3,25 @@
   <div class="row">
     <div class="col-sm-4 full-padded text-left img-container margin-right">
 
-        <p><%= image_tag @founder.image, size: "100x100", alt: @founder.name %> &nbsp;
-        <%=@founder.name %> <br>
-        </p>
+      <p><%= image_tag @founder.image, size: "100x100", alt: @founder.name %> &nbsp;
+      <%=@founder.name %> <br>
+      </p>
 
-        <p>
-          number of reviews : <%= @founder.evaluations.count %>
-          <br>
-          number of comments : <%= @founder.comments.count %>
-          <br>
-          Amount raised :
-          <% total_raised = 0 %>
-          <% @founder.evaluations.each do |evaluation| %>
-          <% total_raised += evaluation.amount_raised.to_i %>
-          <% end %>
-          <%= number_to_currency(total_raised) %> $
-        </p>
+      <p>
+        number of reviews : <%= @founder.evaluations.count %>
         <br>
-        <select id="select-investor" class="form-control">
+        number of comments : <%= @founder.comments.count %>
+        <br>
+        Amount raised :
+        <% total_raised = 0 %>
+        <% @founder.evaluations.each do |evaluation| %>
+        <% total_raised += evaluation.amount_raised %>
+        <% end %>
+        <%= number_to_currency(total_raised) %>
+      </p>
+
+      <br>
+      <select id="select-investor" class="form-control">
         <option value="">Select Investor</option>
         <% @profiles.each do |profile| %>
         <option value=<%=profile.id%>><%= profile.company_name %></option>
@@ -32,40 +33,38 @@
         <button id="submit-profile" class="btn btn-danger btn-lg">Rate an Investor</button>
         <br><br>
         </p>
-         <p>
 
-          <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
-        </p>
-        <br><br>
-        <p>
-          <%= link_to "All reviews", evaluations_path, class: "btn btn-success btn-lg" %>
-          <br><br>
-          So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
-          <br><br>
+        <h3>Your most voted for reviews</h3>
+        <br>
+        <% evaluations = @founder.evaluations.sort_by{ |evaluation| - evaluation.score}.first(5) %>
+        <% evaluations.each do |evaluation| %>
+          <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+        <% end %>
+        <br>
 
-        </p>
+        <h3>Your last comments</h3>
+        <br>
+        <% @founder.comments.limit(5).each do |comment| %>
+          <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
+        <% end %>
+        <br>
+           <p>
+            <%= link_to "Rate an investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
+            <br><br>
+
+            <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
+          </p>
+          <br><br>
+          <p>
+            <%= link_to "All reviews", evaluations_path, class: "btn btn-success btn-lg" %>
+            <br><br>
+            So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
+            <br><br>
+
+          </p>
     </div>
 
-
-  <!-- <div class="padded text-center "></div> -->
-
     <div class="col-sm-7 full-padded img-container">
-      <h3>Your most voted for reviews</h3>
-      <br>
-
-      <% evaluations = @founder.evaluations.sort_by{ |evaluation| - evaluation.score}.first(10) %>
-      <% evaluations.each do |evaluation| %>
-        <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
-      <% end %>
-      <br>
-
-      <h3>Your last comments</h3>
-      <br>
-
-      <% @founder.comments.limit(10).each do |comment| %>
-        <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
-      <% end %>
-      <br>
 
       <h3>Most recent reviews</h3>
       <br>
