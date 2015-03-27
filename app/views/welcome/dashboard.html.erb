@@ -1,67 +1,78 @@
 <div class="container">
   <div class="padded text-center "></div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 full-padded text-center">
-        Welcome back <%=@founder.name %>, <br>
-        <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
+    <div class="col-sm-4 full-padded text-left img-container margin-right">
+
+      <p><%= image_tag @founder.image, size: "100x100", alt: @founder.name %> &nbsp;
+      <%=@founder.name %> <br>
+      </p>
+
+      <p>
+        Reviews : <strong><%= @founder.evaluations.count %></strong>
+        <br>
+        Comments : <strong><%= @founder.comments.count %></strong>
+        <br>
+        Raised :
+        <% total_raised = 0 %>
+        <% @founder.evaluations.each do |evaluation| %>
+        <% total_raised += evaluation.amount_raised %>
+        <% end %>
+        <strong><%= number_to_currency(total_raised) %></strong>
+      </p>
+
+      <br>
+      <select id="select-investor" class="form-control">
+        <option value="0">Select Investor</option>
+        <% @profiles.each do |profile| %>
+        <option value=<%=profile.id%>><%= profile.company_name %></option>
+        <% end %>
+        <option value="0">Investor not in list</option>
+        </select>
+        <!-- check the dashboard.js for jquery code -->
+        <br>
+        <button id="submit-profile" class="btn btn-danger btn-lg">Rate an Investor</button>
         <br><br>
-        <%= link_to "Rate an Investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
-      </div>
+        </p>
 
-      <div class="col-xs-12 col-sm-6 full-padded text-center">
+        <h3>Your most popular reviews</h3>
+        <br>
+        <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(5) %>
+        <% evaluations.each do |evaluation| %>
+          <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+        <% end %>
+        <br>
 
-        Hey <%=@founder.name %>, <br>
-        So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
-        <br><br>
-        <%= link_to "Reviews", evaluations_path, class: "btn btn-success btn-lg" %>
+        <h3>Your last comments</h3>
+        <br>
+        <% @founder.comments.limit(5).each do |comment| %>
+          <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
+        <% end %>
+        <br>
+           <p>
+            <%= link_to "Rate an investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
+            <br><br>
+
+            <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
+          </p>
+          <br><br>
+          <p>
+            <%= link_to "All reviews", evaluations_path, class: "btn btn-success btn-lg" %>
+            <br><br>
+            So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
+            <br><br>
+
+          </p>
     </div>
-  </div>
 
-  <div class="padded text-center "></div>
-
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 full-padded">
-      <h3 class="text-center">Your top Reviews</h3>
-      <div class="colored-line"></div>
-      <br>
-
-      <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(10) %>
-      <% evaluations.each do |evaluation| %>
-        <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
-      <% end %>
-      <br>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 full-padded">
-
-      <h3 class="text-center">Your last comments</h3>
-      <div class="colored-line"></div>
-      <br>
-
-      <% @founder.comments.limit(10).each do |comment| %>
-        <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
-      <% end %>
-      <br>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 full-padded">
-
-      <h3 class="text-center">All the last Reviews</h3>
-      <div class="colored-line"></div>
+    <div class="col-sm-7 full-padded img-container">
+      <h3>Most recent reviews</h3>
       <br>
 
       <% @evaluations.each do |evaluation| %>
         <%= render 'evaluations/show_snippets', evaluation: evaluation %>
         <% end %>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 full-padded">
 
       <h3 class="text-center">Your Last Reviews</h3>
-      <div class="colored-line"></div>
       <br>
         <% if @founder.evaluations.blank? %>
         <% else %>

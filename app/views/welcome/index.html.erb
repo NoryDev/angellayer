@@ -11,7 +11,7 @@
       <!-- BRAND LOGO -->
       <div class="col-xs-12 col-sm-6">
         <%= link_to root_path do %>
-          <p class="text-large logo">Angel<span class="text-primary">Layer</span></p>
+          <p><%= image_tag "logo-sharkrank-welcome.svg", class: "welcome-logo margin-right" %></span></p>
         <% end %>
       </div>
 
@@ -23,7 +23,9 @@
           <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
         <% end %>
         <div>
-          <small class="white-button social-margin">or connect with &nbsp;
+          <small class="white-button">
+            <%= link_to "Forgot your password?", new_password_path(:founder) %>
+            or sign-in with &nbsp;
             <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn-xs social-signup" do %>
               <i class="fa fa-facebook"></i> Facebook
             <% end %>
@@ -33,11 +35,12 @@
             <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin btn-xs social-signup" do %>
               <i class="fa fa-linkedin"></i> LinkedIn
             <% end %>
+            &nbsp;
           </small>
-          <small><%= link_to "Forgot your password?", new_password_path(:founder) %></small>
         </div>
       </div>
     </div>
+
     <div class="row">
     <!-- UPPER BAR -->
 
