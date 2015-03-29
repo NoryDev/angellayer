@@ -42,6 +42,7 @@ $(document).ready(function() {
         error = false;
         window.location = href;
       } else if (!error) {
+        // error message
         $('#resource_code').parent().addClass('has-error');
         $('#resource_code').parent().append('<span class="text-danger code-error">Wrong invitation code</span>');
         error = true;
