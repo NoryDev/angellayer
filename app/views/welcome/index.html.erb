@@ -15,40 +15,126 @@
         <% end %>
       </div>
 
+
       <!-- LOG IN -->
+
+      <!-- Button trigger modal -->
       <div class="col-xs-12 col-sm-6 text-right">
-        <%= form_for :resource, :html => { class: "login-form form-inline", id: "login"}, url: log_in_path do |f| %>
-          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
-          <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-          <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
-        <% end %>
-        <div>
-          <small class="white-button">
-            <%= link_to "Forgot your password?", new_password_path(:founder) %>
-            or sign-in with &nbsp;
-            <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn-xs social-signup" do %>
-              <i class="fa fa-facebook"></i> Facebook
-            <% end %>
-            <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-xs social-signup" do %>
-              <i class="fa fa-twitter"></i> Twitter
-            <% end %>
-            <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin btn-xs social-signup" do %>
-              <i class="fa fa-linkedin"></i> LinkedIn
-            <% end %>
-            &nbsp;
-          </small>
-        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinModal">
+          Sign In
+        </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
+          Sign Up
+        </button>
       </div>
     </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+            </div>
+            <div class="modal-body">
+              <div class = "black-button"><strong>Get instant access to all investors reviews and ratings</strong></div><br>
+              <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn social-signup" do %>
+                    <i class="fa fa-facebook"></i> Sign In
+                <% end %>
+              <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signup" do %>
+                    <i class="fa fa-twitter"></i> Sign In
+                <% end %>
+              <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signup" do %>
+                    <i class="fa fa-linkedin"></i> Sign In
+                <% end %>
+
+              <div class="content_divider"></div>
+
+              <p class = "black-button text-center">Or</p>
+
+              <%= form_for :resource, :html => { class: "login-form", id: "login"}, url: log_in_path do |f| %>
+                <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
+                <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+                <br>
+                <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+                <small><%= link_to "Forgot your password?", new_password_path(:founder), class: "text-right" %></small>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+          <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
+            <div class="switch">
+              <% if flash[:is_investor] %>
+                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
+              <% else %>
+                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
+              <% end %>
+              <label for="cc-toggle"></label>
+              <span class="off black-button">I'm an investor</span>
+              <br>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
+            </div>
+            <div class="for-founders">
+                <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook social-signup" do %>
+                  <i class="fa fa-facebook"></i> Sign Up
+                <% end %>
+                <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signup" do %>
+                  <i class="fa fa-twitter"></i> Sign Up
+                <% end %>
+                <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signup" do %>
+                  <i class="fa fa-linkedin"></i> Sign Up
+                <% end %>
+
+              <div class="content_divider"></div>
+
+                <p class = "black-button text-center">Or</p>
+            </div>
+
+            <div class="login-form">
+
+              <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>
+              <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+              <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
+              <br>
+              <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
+             <% end %>
+          </div>
+
+        </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
 
     <div class="row">
     <!-- UPPER BAR -->
 
       <!-- LEFT - HEADING AND TEXTS -->
-      <div class="col-md-7 col-sm-7 intro-section">
+      <div class="col-xs-10 col-xs-offset-1 intro-section">
 
-        <h1 class="intro text-left">
-          Founders <strong>community</strong> to help you select the <strong>right</strong> investor
+        <h1 class="intro">
+          A <strong>community</strong> of founders to rate and <strong>review</strong> angel investors and VC firms
         </h1>
 
         <ul class="feature-list-1 list-unstyled">
@@ -59,7 +145,7 @@
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              As a founder and entrepreneur, see the ratings of investor's to find the one that best suits your profile.
+              Help other founders by publicly sharing, reviewing and rating your experiences with angel investors and VC's
             </p>
           </li>
 
@@ -69,7 +155,7 @@
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              As an investor, see what founders think of you and where you might want to improve your skills to attract only the best.
+              As an investor, see what founders think of you and where you might want to improve your skills to attract better deal flow.
             </p>
           </li>
 
@@ -79,61 +165,15 @@
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              Founders can evaluate and post reviews about investors. A voting system helps find the most useful reviews.
+              Browse the reputation of angel investors and VC's firms so founders can make better informed decisions.
             </p>
           </li>
         </ul>
-
       </div>
 
       <!-- RIGHT - REGISTRATION FORM -->
 
-      <div class="col-md-5 col-sm-5">
 
-        <div class="vertical-registration-form text-center">
-          <div class="colored-line">
-          </div>
-          <h3>Try it for free</h3>
-          <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
-            <div class="switch">
-              <% if flash[:is_investor] %>
-                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
-              <% else %>
-                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
-              <% end %>
-              <label for="cc-toggle"></label>
-              <span class="on">I'm a founder</span>
-              <span class="off">I'm an investor</span>
-            </div>
-
-            <div class="form-group">
-              <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
-            </div>
-            <div class="for-founders">
-                <p>Sign up with:</p>
-                <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn-xs social-signup" do %>
-                  <i class="fa fa-facebook"></i> Facebook
-                <% end %>
-                <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-xs social-signup" do %>
-                  <i class="fa fa-twitter"></i> Twitter
-                <% end %>
-                <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin btn-xs social-signup" do %>
-                  <i class="fa fa-linkedin"></i> LinkedIn
-                <% end %>
-
-              <div class="content_divider"><small>or</small></div>
-            </div>
-
-            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
-            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
-            <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
-          <% end %>
-
-        </div>
-      </div>
-      <!-- /END - REGISTRATION FORM -->
-    </div>
 
 
     <a class="" href="#snippets"><i class="fa fa-angle-down fa-6 pulse scroll-btn"></i></a>
@@ -156,6 +196,45 @@
         <% end %>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section id="community" class="home-padded text-center full-page bgcolor-2 white-button pullUp">
+  <div class= "row">
+    <br>
+    <br>
+    <div class="col-sm-8 col-sm-offset-2">
+      <i class="fa fa-users text-large text-center"></i>
+      <h2 class = "white-button">Help the community</h2>
+      <div class="colored-line">
+      </div>
+      <div>
+        <strong>PAY IT BACK</strong> (and not payback time). Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
+      </div>
+      </div>
+
+  </div>
+</section>
+
+
+<section id="browse" class="home-padded text-center full-page-with-footer bgcolor-image">
+  <div class= "row">
+    <div class="col-sm-3 padded">
+      <br>
+      <br>
+      <i class="fa fa-search text-large text-center"></i>
+      <h2>Browse Investors</h2>
+      <div class="colored-line">
+      </div>
+      <div>
+        Are you the <strong>founder</strong> of a start-up, looking for the right investor? <br>
+        Browse the <strong>reputation</strong> of angel investors and Venture Capitalist firms to <strong>help you</strong> take a better and more informed decision.
+      </div>
+      </div>
+      <div class="col-sm-7 col-sm-offset-1">
+        <%= image_tag "sharkrank-preview.jpg", class: "slideLeft img-responsive" %>
+      </div>
   </div>
 </section>
 
