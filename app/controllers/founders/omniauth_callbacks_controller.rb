@@ -1,5 +1,4 @@
 class Founders::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def facebook
     founder = Founder.find_for_facebook_oauth(request.env["omniauth.auth"])
 
