@@ -1,19 +1,23 @@
-      <h2>Sign up as a Founder</h2>
-      <br>
-        <%= link_to "Sign up as an Investor", new_investor_registration_path, class: "btn btn-danger btn-lg" %>
-      <br>
-      <br>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+  <h4>Sign up as a Founder</h4>
+  <hr>
+    <%= link_to "I'm not a Founder, I'm an Investor", new_investor_registration_path, class: "btn btn-danger" %>
+  <br>
+  <br>
+  <div>
+  <%= render "founders/shared/links" %>
+  </div>
+  <br>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-        <%= f.input :email, required: true, autofocus: true %>
-        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-        <%= f.input :password_confirmation, required: true %>
-        <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
-      <% end %>
-      <br>
+    <%= f.input :email, required: true, autofocus: true, placeholder:"Email", label: false %>
+    <%= f.input :password, required: true, placeholder: ("Password - #{@minimum_password_length} characters minimum" if @validatable), label: false %>
+    <%= f.input :password_confirmation, required: true, placeholder:"Confirm Password", label: false %>
+    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+  <% end %>
+  <br>
+</div>
 
-      <div class="btn-group" role="group">
-      <%= render "founders/shared/links" %>
-      </div>
+
 
