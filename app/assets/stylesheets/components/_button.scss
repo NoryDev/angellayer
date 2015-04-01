@@ -49,3 +49,15 @@
 .btn-linkedin:active, .btn-linkedin.active {
     box-shadow: none;
 }
+
+.btn-social{
+  background: #007bb6;
+    color: #ffffff;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+.btn-social:hover, .btn-social:focus, .btn-social:active, .btn-social.active, .open > .dropdown-toggle.btn-linkedin {
+    background: #05519b;
+    color: #ffffff;
+}

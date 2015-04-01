@@ -1,22 +1,27 @@
-<h2>Forgot your password?</h2>
+<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+  <h4>Forgot your password?</h4>
 
-<br>
-<%= link_to "I am an investor", new_password_path(:investor), class: "btn btn-danger btn-lg" %>
-<br>
-<br>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <hr>
+  <%= link_to "I'm not a Founder, I'm an Investor", new_password_path(:investor), class: "btn btn-danger" %>
+  <br>
+  <br>
+  <div class="btn-group" role="group">
+  <%= render "founders/shared/links" %>
   </div>
+  <br>
+  <br>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions", {class: "btn btn-primary"} %>
-  </div>
-<% end %>
-<br>
-<div class="btn-group" role="group">
-<%= render "founders/shared/links" %>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true, placeholder:"Email", label: false %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Send Password Reset ", {class: "btn btn-primary"} %>
+    </div>
+  <% end %>
+  <br>
+
 </div>
