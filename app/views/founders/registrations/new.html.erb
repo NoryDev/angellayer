@@ -4,6 +4,11 @@
     <%= link_to "I'm not a Founder, I'm an Investor", new_investor_registration_path, class: "btn btn-danger" %>
   <br>
   <br>
+
+  <div class="form-group">
+    <input id="resource_code" class="form-control input-box" placeholder="Your invitation code">
+  </div>
+
   <div>
   <%= render "founders/shared/links" %>
   </div>
@@ -14,7 +19,7 @@
     <%= f.input :email, required: true, autofocus: true, placeholder:"Email", label: false %>
     <%= f.input :password, required: true, placeholder: ("Password - #{@minimum_password_length} characters minimum" if @validatable), label: false %>
     <%= f.input :password_confirmation, required: true, placeholder:"Confirm Password", label: false %>
-    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-primary social-signup" %>
   <% end %>
   <br>
 </div>

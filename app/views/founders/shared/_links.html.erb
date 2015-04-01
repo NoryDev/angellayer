@@ -1,9 +1,15 @@
-
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to " Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-#{provider.to_s} social-signup" %>
-  <% end -%>
-  <br>
+  <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to " Log in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-#{provider.to_s} social-signin" %>
+    <% end -%>
+    <br>
+  <% elsif controller_name != 'sessions' %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to " Sign up with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "btn btn-#{provider.to_s} social-signup" %>
+      <% end -%>
+    <br>
+  <% end %>
 <% end -%>
 
 
