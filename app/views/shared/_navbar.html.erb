@@ -137,9 +137,11 @@ MODAL - Contact
       </div>
       <div class="modal-body">
         <% if founder_signed_in? %>
-        <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
+          <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
+        <% elsif investor_signed_in? && current_investor.investor_profile %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: current_investor.investor_profile.company_name %>
         <% elsif investor_signed_in? %>
-        <%= render 'contacts/logged_contact_form', email: current_investor.email, name: current_investor.investor_profile.company_name || nil %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: "Investor without profile" %>
         <% else %>
           <%= render 'contacts/empty_contact_form' %>
         <% end %>
