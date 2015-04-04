@@ -154,7 +154,7 @@ SECTION - COMMUNITY
 SECTION - BULLET POINTS
 ============================== -->
 
-<section id="bullets"class="home-padded text-center full-page home-bg-image-3">
+<section id="bullets" class="home-padded text-center full-page home-bg-image-3">
   <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
         <br>
@@ -226,7 +226,7 @@ SECTION - SNIPPETS
 SECTION - BROWSE
 ============================== -->
 
-<section id="browse" class="home-padded text-center full-page-with-footer bgcolor-image">
+<section id="browse" class="home-padded text-center full-page bgcolor-image">
   <div data-sr="wait 0.2s, ease-in-out 100px" class= "row">
     <div class="col-sm-3 padded">
       <br>
@@ -241,6 +241,31 @@ SECTION - BROWSE
     </div>
     <div class="col-sm-7 col-sm-offset-1">
       <%= image_tag "sharkrank-preview.jpg", class: "img-responsive" %>
+    </div>
+  </div>
+  <a class="" href="#contact"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+</section>
+
+<!-- =========================
+SECTION - CONTACT
+============================== -->
+
+<section id="contact" class="home-padded text-center full-page-with-footer home-bg-image-3">
+  <div data-sr="wait 0.2s, ease-in-out 100px" class= "row">
+
+    <br>
+    <br>
+    <br>
+    <div class="col-sm-3 padded white-text">
+      <i class="fa fa-envelope text-large text-center"></i>
+      <h2 class="white-text">Contact us</h2>
+      <div class="colored-line"></div>
+      <div>
+        <p>Use the form to contact us or send us a mail to <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <%= render 'contacts/empty_contact_form' %>
     </div>
   </div>
 </section>

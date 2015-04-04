@@ -15,6 +15,7 @@
         Raised :
         <% total_raised = 0 %>
         <% @founder.evaluations.each do |evaluation| %>
+        <% next if evaluation.amount_raised.nil? %>
         <% total_raised += evaluation.amount_raised %>
         <% end %>
         <strong><%= number_to_currency(total_raised) %></strong>
