@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'contacts/send_contact'
+
   ActiveAdmin.routes(self)
 
   namespace :founders do

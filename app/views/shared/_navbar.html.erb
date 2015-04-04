@@ -23,6 +23,9 @@
 
       <ul class="nav navbar-nav navbar-right">
 
+        <li>
+          <%= link_to "Contact us", "#", :data => { toggle: "modal", target: "#contact" } %>
+        </li>
         <% if founder_signed_in? %>
           <li>
             <%= link_to "Investors", investors_profile_index_path %>
@@ -120,3 +123,29 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<!-- =========================
+MODAL - Contact
+============================== -->
+
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Leave us your comment</h4>
+      </div>
+      <div class="modal-body">
+        <% if founder_signed_in? %>
+          <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
+        <% elsif investor_signed_in? && current_investor.investor_profile %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: current_investor.investor_profile.company_name %>
+        <% elsif investor_signed_in? %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: "Investor without profile" %>
+        <% else %>
+          <%= render 'contacts/empty_contact_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
