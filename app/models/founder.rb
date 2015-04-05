@@ -4,7 +4,7 @@ class Founder < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [ :facebook, :twitter, :linkedin ]
 
@@ -33,6 +33,7 @@ class Founder < ActiveRecord::Base
       founder.facebook = "www.facebook.com/#{auth.uid}"
       founder.token = auth.credentials.token
       founder.token_expiry = Time.at(auth.credentials.expires_at)
+      founder.skip_confirmation!
     end
   end
 
@@ -48,6 +49,7 @@ class Founder < ActiveRecord::Base
       founder.twitter = auth.info.urls.Twitter
       founder.website = auth.info.urls.Website
       founder.token = auth.credentials.token
+      founder.skip_confirmation!
     end
   end
 
@@ -71,6 +73,7 @@ class Founder < ActiveRecord::Base
           linkedin: auth.info.urls.public_profile,
           token: auth.credentials.token
           )
+        founder.skip_confirmation!
       end
     end
   end

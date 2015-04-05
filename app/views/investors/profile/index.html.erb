@@ -3,85 +3,23 @@
 <div class="colored-line"></div>
 <br>
 
-<div class="img-container img-rounded full-padded">Are we missing an investor you know? Add it! <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success pull-right btn-xs" %> </div>
-<div class="padded text-center ">
-</div>
+<div class="img-container img-rounded full-padded text-center">Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
+<div class="padded text-center "></div>
 
 <p class="text-center">Order by :
 <%= link_to "General Score", investors_profile_index_path(order: :average_score) %> |
 <%= link_to "Number of reviews", investors_profile_index_path(order: :nb_reviews) %> |
 <%= link_to "Company name", investors_profile_index_path(order: :company_name) %></p>
 
-<% @profiles.each do |profile| %>
+<div class="investor-container">
+  <%= render "investor" %>
+</div>
 
-  <div class="img-container img-rounded full-padded">
-    <div class="row">
+<div class="load-more-container text-center">
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+  <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+  <%= link_to "Load More", investors_profile_index_path, class: "load-more btn btn-primary" %>
+</div>
 
-      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
-        <%= link_to investors_profile_path(profile) do %>
-          <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, style: "max-width: 90%; height: auto;"%></p>
-        <% end %>
-        <% score = profile.total_average_score
-          if score.nil?
-            level = "default"
-          elsif score > 3.5
-            level = "success"
-          elsif score < 2.5
-            level = "danger"
-          else
-            level = "warning"
-          end
-        %>
-        <div class="label label-<%= level %>">
-          <% if score.nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% else %>
-            <% star_used = 0 %>
-            <% score.to_i.times do %>
-              <i class="fa fa-star"></i>
-              <% star_used = score.to_i %>
-            <% end %>
-            <% if score - score.to_i >= 0.5 %>
-              <i class="fa fa-star-half-o"></i>
-              <% star_used += 1 %>
-            <% end %>
-            <% empty = 5 - star_used
-              empty.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if current_investor || (current_founder && current_founder.admin) %>
-          <% unless profile.investor_id %>
-            <div class="pull-right">
-              <small><%= mail_to "angellayer@yopmail.com", "claim profile" %></small>
-            </div>
-          <% end %>
-        <% end %>
-
-        <% if profile.company_name %>
-          <p><strong><%= link_to profile.company_name, investors_profile_path(profile) %></strong></p>
-        <% end %>
-
-        <p><%= profile.physical_address %></p>
-        <p>
-          <% if profile.website %>
-            <%= link_to profile.website, "//" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
-          <% end %>
-        </p>
-
-        <div class="text-uppercase text-muted">
-          <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-<% end %>
+<div class="padded text-center "></div>
+<div class="img-container img-rounded full-padded text-center">Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>

@@ -1,20 +1,21 @@
 <!-- app/views/devise/sessions/new.html.erb -->
+<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+  <h4>Log in as an Investor</h4>
+  <hr>
 
-<h2>Log in as an Investor</h2>
-<br>
+  <%= link_to "I'm not an Investor, I'm a Founder", new_founder_session_path, class: "btn btn-success" %>
+        <br>
+        <br>
 
-<%= link_to "Log in as an founder", new_founder_session_path, class: "btn btn-danger btn-lg" %>
-      <br>
-      <br>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    <%= f.button :submit, "Log in", class: "btn btn-primary" %>
-<% end %>
-<br>
-<div class="btn-group" role="group">
-  <%= render "investors/shared/links" %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.input :email, required: false, autofocus: true, placeholder:"Email", label: false %>
+      <%= f.input :password, required: false, placeholder:"Confirm Password", label: false %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+  <% end %>
+  <br>
+  <div class="btn-group" role="group">
+    <%= render "investors/shared/links" %>
+  </div>
 </div>
 

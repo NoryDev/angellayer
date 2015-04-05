@@ -7,7 +7,13 @@ class Investors::ProfileController < ApplicationController
 
   def index
     @profiles = fetch_profiles
-    # @evaluations = @evaluations.page(params[:page]).per(per_page)
+    @profiles = @profiles.page(params[:page]).per(per_page)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def show
@@ -76,7 +82,7 @@ class Investors::ProfileController < ApplicationController
       InvestorProfile.all
     end
 
-    # Number of evaluation on a page
+    # Number of profiles on a page
     def per_page
       5
     end

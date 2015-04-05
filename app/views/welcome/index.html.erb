@@ -1,144 +1,285 @@
-<!-- <h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p> -->
-
-<!-- HEADING, FEATURES AND REGISTRATION FORM CONTAINER -->
 <div class="container" id="home-header">
-
   <section class="home-padded">
     <!-- UPPER BAR -->
     <div class="row bar">
-
       <!-- BRAND LOGO -->
       <div class="col-xs-12 col-sm-6">
         <%= link_to root_path do %>
-          <p class="text-large logo">Angel<span class="text-primary">Layer</span></p>
+        <p data-sr="wait 0.4s, enter left, scale down 40%"><%= image_tag "logo-sharkrank-welcome.svg", class: "welcome-logo margin-right" %></span></p>
         <% end %>
       </div>
-
-      <!-- LOG IN -->
+      <!-- BUTTON LOG IN -->
       <div class="col-xs-12 col-sm-6 text-right">
-        <%= form_for :resource, :html => { class: "login-form form-inline", id: "login"}, url: log_in_path do |f| %>
-          <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
-          <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-          <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
-        <% end %>
-        <small class="white-button social-margin">or connect with &nbsp;<%= link_to '<i class="fa fa-facebook-square"></i>'.html_safe, founder_omniauth_authorize_path(:facebook), class: "white-button" %> &nbsp;
-          <%= link_to '<i class="fa fa-twitter"></i>'.html_safe, founder_omniauth_authorize_path(:twitter), class: "white-button"  %> &nbsp;
-          <%= link_to '<i class="fa fa-linkedin"></i>'.html_safe, founder_omniauth_authorize_path(:linkedin), class: "white-button"  %></small>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinModal">
+        Sign In
+        </button>
+        <!-- BUTTON SIGN UP -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
+        Sign Up
+        </button>
       </div>
     </div>
+
+    <!-- =========================
+    MODAL - SIGN IN
+    ============================== -->
+
+    <div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+          </div>
+          <div class="modal-body">
+            <div class = "black-button"><strong>Get instant access to all investors reviews and ratings</strong></div><br>
+            <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn social-signin" do %>
+            <i class="fa fa-facebook"></i> Sign In
+            <% end %>
+            <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signin" do %>
+            <i class="fa fa-twitter"></i> Sign In
+            <% end %>
+            <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signin" do %>
+            <i class="fa fa-linkedin"></i> Sign In
+            <% end %>
+            <div class="content_divider"></div>
+            <p class = "black-button text-center">Or</p>
+            <%= form_for :resource, :html => { class: "login-form", id: "login"}, url: log_in_path do |f| %>
+            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
+            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+            <br>
+            <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+            <small><%= link_to "Forgot your password?", new_password_path(:founder), class: "text-right" %></small>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
+    MODAL - SIGN UP
+    ============================== -->
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
+            <div class="switch">
+              <% if flash[:is_investor] %>
+              <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
+              <% else %>
+              <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
+              <% end %>
+              <label for="cc-toggle"></label>
+              <span class="off black-button">I'm an investor</span>
+              <br>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
+            </div>
+            <div class="for-founders">
+              <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook social-signup" do %>
+              <i class="fa fa-facebook"></i> Sign Up
+              <% end %>
+              <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signup" do %>
+              <i class="fa fa-twitter"></i> Sign Up
+              <% end %>
+              <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signup" do %>
+              <i class="fa fa-linkedin"></i> Sign Up
+              <% end %>
+              <div class="content_divider"></div>
+              <p class = "black-button text-center">Or</p>
+            </div>
+            <div class="login-form">
+              <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>
+              <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+              <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
+              <br>
+              <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
+    HOMEPAGE - TEXT
+    ============================== -->
+
     <div class="row">
-    <!-- UPPER BAR -->
-
-      <!-- LEFT - HEADING AND TEXTS -->
-      <div class="col-md-7 col-sm-7 intro-section">
-
-        <h1 class="intro text-left">
-          Founders <strong>community</strong> to help you select the <strong>right</strong> investor
+      <div class="col-xs-10 col-xs-offset-1 intro-section">
+        <br>
+        <br>
+        <h1 data-sr="wait 0.1s, ease-in-out 100px" class="intro">
+        Sharkrank is a crowdsourced rating and review system of the reputation and interactions of investors worldwide.
         </h1>
+        <p data-sr="move 16px scale up 20%, over 2s" class = "white-text big-text feature-list-1">Rate and review angel investors – Help other founders by publicly sharing your experiences when dealing with investors. Share trustworthy and first-hand tesimonials on the reputation of investors, and stop wasteful interactions.</p>
 
+      </div>
+      <a class="" href="#community"><i class="fa fa-angle-down pulse scroll-btn"></i></a>
+    </div>
+  </section>
+</div>
+
+<!-- =========================
+SECTION - COMMUNITY
+============================== -->
+
+<section id="community" class="text-center full-page bgcolor-image-computer no-left-margin">
+  <div class= "row">
+    <div data-sr="wait 0.2s, enter left, move 100px, over 2.0s" class="col-sm-6">
+      <%= image_tag "computer.jpg", class: "slideRight img-responsive no-left-margin" %>
+    </div>
+    <div data-sr="wait 0.3s, enter right, scale down 20%" class="col-sm-3 col-sm-offset-1 padded">
+      <br>
+      <br>
+      <i class="fa fa-users text-large text-center"></i>
+      <h2>Help the start-up community</h2>
+      <div class="colored-line"></div>
+      <div style="visibility: visible; ">
+        <strong>PAY IT BACK.</strong> Share your experience with other founders, tell them about previous experiences you've had with investors. Give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs.
+      </div>
+    </div>
+  </div>
+  <a class="" href="#bullets"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+</section>
+
+<!-- =========================
+SECTION - BULLET POINTS
+============================== -->
+
+<section id="bullets" class="home-padded text-center full-page home-bg-image-3">
+  <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <br>
+        <br>
+        <br>
+        <h1 data-sr="wait 0.2s, enter right, scale down 20%" class="white-text">
+        A <strong>community</strong> of founders to rate and <strong>review</strong> angel investors and VC firms
+        </h1>
         <ul class="feature-list-1 list-unstyled">
-
           <!-- FEATURE ROW -->
-          <li>
+          <li data-sr="wait 0.1s, enter right">
             <div class="icon-container pull-left text-center">
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              As a founder and entrepreneur, see the ratings of investor's to find the one that best suits your profile.
+              Help other founders by publicly sharing, reviewing and rating your experiences with angel investors and VC's
             </p>
           </li>
-
           <!-- FEATURE ROW -->
-          <li>
+          <li data-sr="wait 0.3s, enter right">
             <div class="icon-container pull-left text-center">
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              As an investor, see what founders think of you and where you might want to improve your skills to attract only the best.
+              As an investor, see what founders think of you and where you might want to improve your skills to attract better deal flow.
             </p>
           </li>
-
           <!-- FEATURE ROW -->
-          <li>
+          <li data-sr="wait 0.5s, enter right">
             <div class="icon-container pull-left text-center">
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              Founders can evaluate and post reviews about investors. A voting system helps find the most useful reviews.
+              Browse the reputation of angel investors and VC's firms so founders can make better informed decisions.
             </p>
           </li>
         </ul>
-
       </div>
 
-      <!-- RIGHT - REGISTRATION FORM -->
-
-      <div class="col-md-5 col-sm-5">
-
-        <div class="vertical-registration-form text-center">
-          <div class="colored-line">
-          </div>
-          <h3>Try it for free</h3>
-          <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
-            <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:sign_email] %>
-            <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-            <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
-            <div class="switch">
-              <% if flash[:is_investor] %>
-                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
-              <% else %>
-                <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
-              <% end %>
-              <label for="cc-toggle"></label>
-              <span class="on">I'm a founder</span>
-              <span class="off">I'm an investor</span>
-            </div>
-            <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
-          <% end %>
-
-        </div>
-      </div>
-      <!-- /END - REGISTRATION FORM -->
     </div>
+    <a class="" href="#snippets"><i class="fa fa-angle-down pulse scroll-btn"></i></a>
+</section>
 
 
-    <a class="" href="#snippets"><i class="fa fa-angle-down fa-6 pulse scroll-btn"></i></a>
-  </section>
-
-</div>
-<!-- /END HEADING, FEATURES AND REGISTRATION FORM CONTAINER -->
+<!-- =========================
+SECTION - SNIPPETS
+============================== -->
 
 <section id="snippets" class="home-padded text-center full-page">
   <div>
-    <h2>Latest Reviews</h2>
-    <div class="colored-line">
-    </div>
+    <h2 data-sr="wait 0.1s, enter right">Latest Reviews</h2>
+    <div class="colored-line"></div>
     <div>
       <div id="evaluations" class="row">
         <% @evaluations.each do |evaluation| %>
-          <div class="col-sm-6 col-md-4 text-left">
-            <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-          </div>
+        <div data-sr="wait 0.2s, enter right" class="col-sm-6 col-md-4 text-left">
+          <%= render 'evaluations/show_snippets', evaluation: evaluation %>
+        </div>
         <% end %>
       </div>
+    </div>
+  </div>
+  <a class="" href="#browse"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+</section>
+
+
+
+<!-- =========================
+SECTION - BROWSE
+============================== -->
+
+<section id="browse" class="home-padded text-center full-page bgcolor-image">
+  <div data-sr="wait 0.2s, ease-in-out 100px" class= "row">
+    <div class="col-sm-3 padded">
+      <br>
+      <br>
+      <i class="fa fa-search text-large text-center"></i>
+      <h2>Browse Investors</h2>
+      <div class="colored-line"></div>
+      <div>
+        <p>Are you the <strong>founder</strong> of a start-up, looking for the right investor? <br>
+        Browse the <strong>reputation</strong> of angel investors and Venture Capitalist firms to <strong>help you</strong> take a better and more informed decision.</p>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <%= image_tag "sharkrank-preview.jpg", class: "img-responsive" %>
+    </div>
+  </div>
+  <a class="" href="#contact"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+</section>
+
+<!-- =========================
+SECTION - CONTACT
+============================== -->
+
+<section id="contact" class="home-padded text-center full-page-with-footer home-bg-image-3">
+  <div data-sr="wait 0.2s, ease-in-out 100px" class= "row">
+
+    <br>
+    <br>
+    <br>
+    <div class="col-sm-3 padded white-text">
+      <i class="fa fa-envelope text-large text-center"></i>
+      <h2 class="white-text">Contact us</h2>
+      <div class="colored-line"></div>
+      <div>
+        <p>Use the form to contact us or send us a mail to <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <%= render 'contacts/empty_contact_form' %>
     </div>
   </div>
 </section>
 
 <!-- =========================
-     SECTION 10 - FOOTER
+SECTION 10 - FOOTER
 ============================== -->
+
 <footer class="text-center bgcolor-2">
-<div class="container">
-
-  <div class="footer-logo">
-    <%= link_to root_path do %>
-      <p class="text-large logo">Angel<span class="text-primary">Layer</span></p>
-    <% end %>
+  <div class="container">
+    <div class="footer-logo">
+      <%= link_to root_path do %>
+      <p><%= image_tag "logo-sharkrank-welcome.svg", class: "welcome-logo"%></span></p>
+      <% end %>
+    </div>
   </div>
-
-</div>
 </footer>
-
-

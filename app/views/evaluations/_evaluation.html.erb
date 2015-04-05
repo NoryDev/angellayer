@@ -1,5 +1,4 @@
 <div id="evaluation-<%= evaluation.id %>" class = "img-container img-rounded full-padded record" data-id="<%= evaluation.id %>">
-
   <div class="row">
     <div class="col-xs-12 col-sm-10">
       <h3><%= evaluation.title_review %></h3>
@@ -8,11 +7,11 @@
       </p>
       <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> - <%= time_ago_in_words(evaluation.created_at) %> ago</small>
     </div>
-
     <div class="col-sm-2 hidden-xs">
       <%= image_tag evaluation.founder.avatar, class: " small-img" %>
     </div>
-
+  </div>
+  <div class="row">
     <div class="col-xs-12 padded">
       <div class="alert alert-info alert-dismissible" style="display:none" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -23,104 +22,85 @@
         <span class="votes-warning"></span>
       </div>
     </div>
-
   </div>
   <br>
   <div class="row">
     <div class="col-xs-2 col-sm-1 text-center">
       <p>
         <% if current_founder %>
-          <%= link_to evaluation_upvote_path(evaluation), remote: true do %>
-            <i class="fa fa-chevron-up text-large"></i>
-          <% end %>
-        <% else %>
-          <i class="fa fa-chevron-up text-large text-muted"></i>
+        <%= link_to evaluation_upvote_path(evaluation), remote: true do %>
+        <i class="fa fa-chevron-up text-large"></i>
         <% end %>
-      <br>
-      <span class="nb_votes">
-        <%= evaluation.score %>
-      </span>
-      <br>
-        <% if current_founder %>
-          <%= link_to evaluation_downvote_path(evaluation), remote: true do %>
-            <i class="fa fa-chevron-down text-large"></i>
-          <% end %>
         <% else %>
-          <i class="fa fa-chevron-down text-large text-muted"></i>
+        <i class="fa fa-chevron-up text-large text-muted"></i>
+        <% end %>
+        <br>
+        <span class="nb_votes">
+          <%= evaluation.score %>
+        </span>
+        <br>
+        <% if current_founder %>
+        <%= link_to evaluation_downvote_path(evaluation), remote: true do %>
+        <i class="fa fa-chevron-down text-large"></i>
+        <% end %>
+        <% else %>
+        <i class="fa fa-chevron-down text-large text-muted"></i>
         <% end %>
       </p>
     </div>
     <div class="col-xs-10 col-sm-11">
       <p>
         <strong>
-          <% if evaluation.average_score %>
-            Rated <%= evaluation.average_score %> / 5
-          <% else %>
-            Not Rated
-          <% end %>
+        <% if evaluation.average_score %>
+        Rated <%= evaluation.average_score %> / 5
+        <% else %>
+        Not Rated
+        <% end %>
         </strong>
       </p>
       <p class = "text-justify"><%= evaluation.review %></p>
       <p>
         <small class="text-right pull-right">
-          <%= evaluation.work_again %> |
-          amout raised : <%= evaluation.amount_raised %> $
+        <%= evaluation.work_again %> |
+        amout raised : <%= evaluation.amount_raised %> $
+        </small>
+      </p>
+      <br>
+      <p class="text-right">
+        <small>
+        <a href="mailto:info@sharkrank.co"><i class="fa fa-flag"></i> &nbsp; Flag as inappropriate</a>
+        <% if current_founder == evaluation.founder || (current_founder && current_founder.admin) %>
+        <%= link_to '| Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> <!-- | -->
+        <%#= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         </small>
       </p>
     </div>
   </div>
-  <p class="text-right">
-    <small>
-      <a href="mailto:angellayer@yopmail.com"><i class="fa fa-flag"></i> &nbsp; Flag as inappropriate</a>
-      <% if current_founder == evaluation.founder || (current_founder && current_founder.admin) %>
-        <%= link_to '| Edit', edit_investors_profile_evaluation_path(evaluation.investor_profile, evaluation) %> <!-- | -->
-        <%#= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="row">
+    <div class="col-xs-12 padded">
+      <hr class="small">
+      <div id="comments-<%= evaluation.id %>">
+        <% evaluation.comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
+        <%end%>
+      </div>
+    </div>
+    <div class="row">
+      <% if current_founder %>
+      <div class="new-comment">
+        <div class="new-comment-form" id="new-comment-form-<%= evaluation.id %>">
+          <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+        </div>
+        <small class="text-muted ">
+        <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
+        </small>
+        <br>
+      </div>
       <% end %>
 
-    </small>
-  </p>
-  <hr class="small">
-
-  <div id="comments-<%= evaluation.id %>">
-    <% evaluation.comments.each do |comment| %>
-          <%= render 'comments/show', comment: comment %>
-    <%end%>
-  </div>
-
-  <% if current_founder %>
-    <div class="new-comment-form" id="new-comment-form-<%= evaluation.id %>">
-    <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
     </div>
-    <small class="text-muted ">
-    <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
-    </small>
-    <br>
-  <% end %>
-
-<!-- Method for showing and hidding the add NEW COMMENT form -->
-<%= content_for(:after_js) do %>
-  <script>
-    $('#new-comment-form-<%= evaluation.id %>').hide()
-    $(document).on("click", '#new-form-button-<%= evaluation.id %>', function (e) {
-      e.preventDefault();
-      $('#new-comment-form-<%= evaluation.id %>').slideDown();
-      $('#new-form-button-<%= evaluation.id %>' ).slideUp();
-    });
-    $('.cancel-new-form' ).click(function(e) {
-      e.preventDefault();
-      $('#new-comment-form-<%= evaluation.id %>').slideUp();
-      $('#new-form-button-<%= evaluation.id %>').slideDown();
-    });
-  </script>
-<% end %>
-
-
-    <%# if current_founder %>
-      <%#= link_to "add comment", new_evaluation_comment_path(evaluation) %>
-    <%# else %>
-      <%#= "Investors can't comment" %>
-    <%# end %>
-
-  <br>
+  </div>
 </div>
+<br>
 <br>
