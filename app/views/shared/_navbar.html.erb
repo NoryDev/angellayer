@@ -136,6 +136,7 @@ MODAL - Contact
         <h4 class="modal-title" id="myModalLabel">Leave us your comment</h4>
       </div>
       <div class="modal-body">
+        <p class="thanks" style="display: none;"><strong>Thank you for your message</strong></p>
         <% if founder_signed_in? %>
           <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
         <% elsif investor_signed_in? && current_investor.investor_profile %>

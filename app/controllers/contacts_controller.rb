@@ -7,7 +7,11 @@ class ContactsController < ApplicationController
     params = contact_params
 
     ContactMailer.contact(params).deliver
-    redirect_to root_path, notice: "Your message has been sent, thanks!"
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Your message has been sent, thanks!" }
+      format.js
+    end
   end
 
   def flag
