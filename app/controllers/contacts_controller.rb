@@ -11,10 +11,14 @@ class ContactsController < ApplicationController
   end
 
   def flag
-    params = flag_params
+    @params = flag_params
 
-    ContactMailer.flag(params).deliver
-    redirect_to root_path, notice: "Your report has been sent, thanks!"
+    ContactMailer.flag(@params).deliver
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Your report has been sent, thanks!" }
+      format.js
+    end
   end
 
   private

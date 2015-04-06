@@ -68,7 +68,7 @@
       <p class="text-right">
         <small>
         <!-- <a href="mailto:info@sharkrank.co"><i class="fa fa-flag"></i> &nbsp; Flag as inappropriate</a> -->
-        <%= link_to "#", :data => { toggle: "modal", target: "#flag" } do %>
+        <%= link_to "#", :data => { toggle: "modal", target: "#flag-#{evaluation.id}" } do %>
           <i class="fa fa-flag"></i> &nbsp; Flag as inappropriate
         <% end %>
         <% if current_founder == evaluation.founder || (current_founder && current_founder.admin) %>
@@ -111,7 +111,7 @@
 MODAL - Flag
 ============================== -->
 
-<div class="modal fade" id="flag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="flag-<%= evaluation.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">

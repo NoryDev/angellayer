@@ -1,4 +1,4 @@
-<%= form_for :resource, url: contacts_flag_path do |f| %>
+<%= form_for :resource, url: contacts_flag_path, remote: true do |f| %>
 
 <%= f.hidden_field :name, value: name %>
 <%= f.hidden_field :email, value: user.email, required: true %>
