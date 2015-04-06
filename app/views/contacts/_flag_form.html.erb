@@ -1,0 +1,27 @@
+<%= form_for :resource, url: contacts_flag_path do |f| %>
+
+<%= f.hidden_field :name, value: user.name %>
+<%= f.hidden_field :email, value: user.email, required: true %>
+<%= f.hidden_field :eval_id, value: evaluation.id, required: true  %>
+
+<div class="checkbox">
+  <label>
+  <%= f.check_box :like_not, {}, "true", "false" %> I don't like it
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+  <%= f.check_box :spam, {}, "true", "false" %> This is spam
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+  <%= f.check_box :insulting, {}, "true", "false" %> This is insulting/degrading
+  </label>
+</div>
+<div class="form-group">
+  <%= f.label :message %>:
+  <%= f.text_area :message, rows: "10", class: "form-control textarea", placeholder: "Your message..." %>
+</div>
+<%= f.submit "Send", class: "btn btn-primary text-left", id: "submit" %>
+<% end %>

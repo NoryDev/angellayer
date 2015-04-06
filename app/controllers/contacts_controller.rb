@@ -10,10 +10,21 @@ class ContactsController < ApplicationController
     redirect_to root_path, notice: "Your message has been sent, thanks!"
   end
 
+  def flag
+    params = flag_params
+
+    ContactMailer.flag(params).deliver
+    redirect_to root_path, notice: "Your report has been sent, thanks!"
+  end
+
   private
 
     # Only allow a trusted parameter "white list" through.
     def contact_params
       params.require(:resource).permit(:email, :name, :subject, :message)
+    end
+
+    def flag_params
+      params.require(:resource).permit(:email, :name, :eval_id, :like_not, :spam, :insulting, :message)
     end
 end
