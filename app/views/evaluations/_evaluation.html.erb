@@ -120,12 +120,13 @@ MODAL - Flag
       </div>
       <div class="modal-body">
         <% if founder_signed_in? %>
-          <%= render 'contacts/flag_form', user: current_founder, evaluation: evaluation %>
+          <% name = current_founder.name %>
         <% elsif investor_signed_in? && current_investor.investor_profile %>
-          <%= render 'contacts/flag_form', email: current_investor.email, name: current_investor.investor_profile.company_name %>
+          <% name = "Investor: " + current_investor.investor_profile.company_name %>
         <% elsif investor_signed_in? %>
-          <%= render 'contacts/flag_form', email: current_investor.email, name: "Investor without profile" %>
+          <% name = "Investor without profile" %>
         <% end %>
+        <%= render 'contacts/flag_form', user: current_founder || current_investor, name: name, evaluation: evaluation %>
       </div>
     </div>
   </div>

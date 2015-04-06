@@ -1,6 +1,6 @@
 <%= form_for :resource, url: contacts_flag_path do |f| %>
 
-<%= f.hidden_field :name, value: user.name %>
+<%= f.hidden_field :name, value: name %>
 <%= f.hidden_field :email, value: user.email, required: true %>
 <%= f.hidden_field :eval_id, value: evaluation.id, required: true  %>
 
