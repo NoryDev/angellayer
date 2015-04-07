@@ -26,7 +26,9 @@
         <% if current_investor || (current_founder && current_founder.admin) %>
         <% user = current_investor || current_founder %>
         <% unless @profile.investor_id %>
-        &nbsp; <%= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{@profile.company_name}", body: "I would like to claim #{@profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. ", class: 'btn btn-success btn-sm'} %>
+        <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{@profile.company_name}", body: "I would like to claim #{@profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. ", class: 'btn btn-success btn-sm'} %>
+        <%= link_to "claim profile", "#", class: "btn btn-success btn-sm", :data => { toggle: "modal", target: "#claim-#{@profile.id}" } %>
+        <%= render 'claim_modal', profile: @profile %>
         <% end %>
         <% end %>
 

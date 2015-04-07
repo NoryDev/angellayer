@@ -1,0 +1,5 @@
+$("#flag-<%= @params[:eval_id] %> .modal-body input").prop('disabled', true);
+$("#flag-<%= @params[:eval_id] %> .modal-body textarea").prop('disabled', true);
+$("#flag-<%= @params[:eval_id] %> .modal-body").prepend('<p><strong>Thank you for your feedback</strong></p>').fadeIn();
+
+setTimeout(function(){ $("#flag-<%= @params[:eval_id] %>").modal('hide'); }, 3000);

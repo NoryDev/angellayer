@@ -1,0 +1,7 @@
+$("#claim-<%= @params[:profile_id] %> .modal-body textarea").prop('disabled', true);
+
+$("#claim-<%= @params[:profile_id] %> .info-claim").addClass('text-muted');
+
+$("#claim-<%= @params[:profile_id] %> .thanks").fadeIn();
+
+setTimeout(function(){ $("#claim-<%= @params[:profile_id] %>").modal('hide'); }, 3000);

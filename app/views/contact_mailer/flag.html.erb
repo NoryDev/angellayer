@@ -1,0 +1,23 @@
+<strong>Evaluation has been flagged</strong>
+<p>
+  Evaluation n° <%= @content[:eval_id] %> <br>
+  Flagged by <%= @content[:name] %> <%= "<#{@content[:email]}>" %><br>
+  Reasons:
+    <ul>
+      <% if @content[:like_not] == "true" %>
+        <li>I don't like it</li>
+      <% end %>
+      <% if @content[:spam] == "true" %>
+        <li>This is spam</li>
+      <% end %>
+      <% if @content[:insulting] == "true" %>
+        <li>This is insulting/degrading</li>
+      <% end %>
+    </ul>
+</p>
+
+<p>Message: <br>
+<blockquote>
+  <%= @content[:message] %>
+</blockquote>
+</p>

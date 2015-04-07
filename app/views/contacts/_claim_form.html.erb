@@ -1,0 +1,12 @@
+<%= form_for :resource, url: contacts_claim_path, remote: true do |f| %>
+
+<%= f.hidden_field :email, value: user.email, required: true %>
+<%= f.hidden_field :profile_id, value: profile.id, required: true  %>
+
+<div class="form-group">
+  <p class="info-claim">Please, write us a personnal message to show us you are a human, and that you are indeed behind <%= profile.company_name %></p>
+  <%= f.label :message %>:
+  <%= f.text_area :message, rows: "10", class: "form-control textarea", placeholder: "Your message..." %>
+</div>
+<%= f.submit "Send", class: "btn btn-primary text-left", id: "submit" %>
+<% end %>
