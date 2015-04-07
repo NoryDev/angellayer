@@ -25,6 +25,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  def claim
+    @params = claim_params
+
+    ContactMailer.claim(@params).deliver
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Your request has been sent, thanks!" }
+      format.js
+    end
+  end
+
   private
 
     # Only allow a trusted parameter "white list" through.
@@ -34,5 +45,9 @@ class ContactsController < ApplicationController
 
     def flag_params
       params.require(:resource).permit(:email, :name, :eval_id, :like_not, :spam, :insulting, :message)
+    end
+
+    def claim_params
+      params.require(:resource).permit(:email, :profile_id, :message)
     end
 end

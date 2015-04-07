@@ -46,7 +46,11 @@
         <% user = current_investor || current_founder %>
           <% unless profile.investor_id %>
             <div class="pull-right">
-              <small><%= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{profile.company_name}", body: "I would like to claim #{profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. "} %></small>
+              <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{profile.company_name}", body: "I would like to claim #{profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. "} %>
+              <small>
+                <%= link_to "claim profile", "#", :data => { toggle: "modal", target: "#claim-#{profile.id}" } %>
+              </small>
+              <%= render 'claim_modal', profile: profile %>
             </div>
           <% end %>
         <% end %>

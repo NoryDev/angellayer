@@ -1,0 +1,13 @@
+<strong>Investor Profile claimed</strong>
+<p>
+  Profile n° <strong><%= @content[:profile_id] %><br></strong>
+  Profile Company name: <strong><%= InvestorProfile.find(@content[:profile_id]).company_name %><br></strong>
+  Claimed by <strong><%= @content[:email] %><br></strong>
+  Claimer n° <strong><%= Investor.find_by_email(@content[:email]).id %></strong>
+</p>
+
+<p>Message: <br>
+<blockquote>
+  <%= @content[:message] %>
+</blockquote>
+</p>

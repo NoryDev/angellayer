@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   post 'contacts/send_contact'
   post 'contacts/flag'
+  post 'contacts/claim'
 
   ActiveAdmin.routes(self)
 
