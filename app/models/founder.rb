@@ -29,7 +29,7 @@ class Founder < ActiveRecord::Base
       founder.password = Devise.friendly_token[0,20]  # Fake password for validation
       founder.first_name = auth.info.first_name
       founder.last_name = auth.info.last_name
-      founder.picture = auth.info.image
+      founder.picture = "#{auth.info.image}?type=large"
       founder.facebook = "www.facebook.com/#{auth.uid}"
       founder.token = auth.credentials.token
       founder.token_expiry = Time.at(auth.credentials.expires_at)
@@ -86,7 +86,7 @@ class Founder < ActiveRecord::Base
     if profile_pic.file? || picture.nil?
       profile_pic.url(:medium)
     else
-      "#{picture}?type=large"
+      picture
     end
   end
 
@@ -94,7 +94,7 @@ class Founder < ActiveRecord::Base
     if profile_pic.file? || picture.nil?
       profile_pic.url(:thumb)
     else
-      "#{picture}?type=square"
+      picture
     end
   end
 
