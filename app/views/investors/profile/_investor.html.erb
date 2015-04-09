@@ -62,7 +62,7 @@
         <p><%= profile.physical_address %></p>
         <p>
           <% if profile.website %>
-            <%= link_to profile.website, "//" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
+            <%= link_to profile.website, "http://" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
           <% end %>
         </p>
 
