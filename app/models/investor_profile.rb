@@ -3,6 +3,8 @@ class InvestorProfile < ActiveRecord::Base
   multisearchable :against => [:company_name, :physical_address, :sectors_invested_in, :geographical_focus, :preferred_investment_stage, :contact_person]
 
   belongs_to :investor
+  belongs_to :author_as_founder, :class_name => "Founder"
+  belongs_to :author_as_investor, :class_name => "Investor"
 
   has_many :evaluations, dependent: :destroy
 
