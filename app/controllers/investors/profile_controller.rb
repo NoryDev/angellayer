@@ -53,6 +53,14 @@ class Investors::ProfileController < ApplicationController
       @profile.investor = current_investor
     end
 
+    if current_founder
+      @profile.author_as_founder = current_founder
+      @profile.author_is_founder = true
+    elsif current_investor
+      @profile.author_as_investor = current_investor
+      @profile.author_is_founder = false
+    end
+
     if @profile.save
       redirect_to investors_profile_path(@profile), notice: "Profile for #{@profile.company_name} was successfully created."
     else

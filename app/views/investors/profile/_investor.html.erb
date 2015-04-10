@@ -42,7 +42,7 @@
       </div>
 
       <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if current_investor || (current_founder && current_founder.admin) %>
+        <% if current_investor.investor_profile.nil? || (current_founder && current_founder.admin) %>
         <% user = current_investor || current_founder %>
           <% unless profile.investor_id %>
             <div class="pull-right">

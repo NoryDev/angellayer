@@ -12,6 +12,8 @@ class Founder < ActiveRecord::Base
   has_many :comments
   has_many :votes
 
+  has_many :investor_profiles_author, :class_name => "InvestorProfile", :foreign_key => "author_as_founder_id"
+
   validates :email, presence: true
 
   has_attached_file :profile_pic,
