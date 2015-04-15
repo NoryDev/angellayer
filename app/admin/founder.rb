@@ -26,6 +26,21 @@ ActiveAdmin.register Founder do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :admin
+      f.input :first_name
+      f.input :last_name
+      f.input :picture
+      f.input :profile_pic_file_name
+      f.input :profile_pic_content_type
+      f.input :profile_pic_file_size
+      f.input :facebook
+      f.input :twitter
+      f.input :linkedin
+      f.input :angellist
+      f.input :skype
+      f.input :cell_phone
+      f.input :website
+      f.input :all_startups
     end
     f.actions
   end
