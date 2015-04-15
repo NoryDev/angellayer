@@ -23,7 +23,7 @@
           <% end %>
         <% end %>
 
-        <% if current_investor.investor_profile.nil? || (current_founder && current_founder.admin) %>
+        <% if (current_investor && !current_investor.investor_profile) || (current_founder && current_founder.admin) %>
           <% user = current_investor || current_founder %>
           <% unless @profile.investor_id %>
             <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{@profile.company_name}", body: "I would like to claim #{@profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. ", class: 'btn btn-success btn-sm'} %>
