@@ -3,7 +3,7 @@
 $(document).ready(function () {
   // when the edit link is clicked
   // reloads document when button is clicked
-  $(document).on("click", '.comment-show a', function (e) {
+  $(document).on("click", '.edit-btn', function (e) {
       // prevent the default click action
       e.preventDefault();
       // show the edit form

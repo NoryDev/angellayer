@@ -6,9 +6,12 @@
         Fund : <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
       </p>
       <small class="text-muted">posted by <%= link_to evaluation.founder, founders_profile_path(evaluation.founder) %> - <%= time_ago_in_words(evaluation.created_at) %> ago</small>
+      <% if evaluation.updated_at != evaluation.created_at %>
+        <br><small class="text-muted">edited <%= time_ago_in_words(evaluation.updated_at) %> ago</small>
+      <% end %>
     </div>
     <div class="col-sm-2 hidden-xs">
-      <%= image_tag evaluation.founder.avatar, class: " small-img" %>
+      <%= image_tag evaluation.founder.avatar, class: "small-img" %>
     </div>
   </div>
   <div class="row">
@@ -58,7 +61,14 @@
           <% end %>
         </strong>
       </p>
-      <p class = "text-justify"><%= evaluation.review %></p>
+      <p class="text-justify"><%= evaluation.review %></p>
+
+      <% if evaluation.updated_at != evaluation.created_at %>
+        <p class="text-muted text-uppercase">
+          <small>Edited: <%= time_ago_in_words(evaluation.updated_at) %> ago</small>
+        </p>
+      <% end %>
+
       <p>
         <small class="text-right pull-right">
           <%= evaluation.work_again %> | amout raised : <%= evaluation.amount_raised %> $
@@ -87,19 +97,18 @@
         <%end%>
       </div>
     </div>
-    <div class="row">
+    <div class="col-xs-12">
       <% if current_founder %>
-      <div class="new-comment">
-        <div class="new-comment-form" id="new-comment-form-<%= evaluation.id %>">
-          <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+        <div class="new-comment">
+          <div class="new-comment-form" id="new-comment-form-<%= evaluation.id %>">
+            <%= render 'comments/form', evaluation: evaluation, comment: Comment.new %>
+          </div>
+          <small class="text-muted ">
+            <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
+          </small>
+          <br>
         </div>
-        <small class="text-muted ">
-        <a href=""><span id="new-form-button-<%= evaluation.id %>" class = "pull-right">new comment</span></a>
-        </small>
-        <br>
-      </div>
       <% end %>
-
     </div>
   </div>
 </div>
