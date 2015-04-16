@@ -80,7 +80,7 @@ class Investors::ProfileController < ApplicationController
       when "nb_reviews"
         base_scope.joins(:evaluations).group("investor_profiles.id").order("count(evaluations.id) DESC")
       else
-        base_scope
+        base_scope.order(updated_at: :desc)
       end
     end
 
