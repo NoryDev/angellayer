@@ -6,13 +6,15 @@
         <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
         <%= time_ago_in_words(comment.created_at) %> ago
 
-        <% if comment.updated_at != comment.created_at %>
-          &nbsp;| Edited: <%= time_ago_in_words(comment.updated_at) %> ago
-        <% end %>
+        <span id="comment-<%= comment.id %>-edit">
+          <% if comment.updated_at != comment.created_at %>
+            &nbsp;| Edited: <%= time_ago_in_words(comment.updated_at) %> ago
+          <% end %>
+        </span>
          &nbsp;
 
         <% if current_founder == comment.founder || (current_founder && current_founder.admin) %>
-          <a href=""><i class="fa fa-pencil edit-button-<%= comment.id %>"></i></a>
+          <a href="" class="edit-btn"><i class="fa fa-pencil edit-button-<%= comment.id %>"></i></a>
         <% end %>
       </span>
     </small>

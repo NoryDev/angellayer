@@ -9,6 +9,7 @@
   //alert(<%= @comment.content %>);
   // Add it to the DOM, at the end of the existing comments. It's still hidden.
   $('#comment-<%= @comment.id %>').html(edited_comment)
+  $('#comment-<%= @comment.id %>-edit').html('&nbsp;| Edited: <%= time_ago_in_words(@comment.updated_at) %> ago')
   // Show the new comment with an animation!
   // Remove the text from the content textarea.
   $('.edit-comment-form').slideUp();
