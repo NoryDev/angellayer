@@ -8,6 +8,18 @@ class ContactMailer < ApplicationMailer
   def contact(message)
     @message = message
 
-    mail(to: "info@sharkrank.co", from: "#{message[:name]} <#{message[:email]}>", subject: @message[:subject])
+    mail(to: "info@sharkrank.co", from: "#{@message[:name]} <#{@message[:email]}>", subject: @message[:subject])
+  end
+
+  def flag(content)
+    @content = content
+
+    mail(to: "info@sharkrank.co", from: "#{@content[:name]} <#{@content[:email]}>", subject: "Flag: Eval n°#{@content[:eval_id]}")
+  end
+
+  def claim(content)
+    @content = content
+
+    mail(to: "info@sharkrank.co", from: "#{@content[:email]}", subject: "Claim profile n° #{@content[:profile_id]}")
   end
 end

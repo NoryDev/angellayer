@@ -1,0 +1,10 @@
+$("#contact .modal-body input").prop('disabled', true);
+$("#contact .modal-body textarea").prop('disabled', true);
+$("#contact .thanks").fadeIn();
+
+setTimeout(function(){
+  $("#contact").modal('hide');
+  $("#contact .modal-body input").prop('disabled', false).val('');
+  $("#contact .modal-body textarea").prop('disabled', false).val('');
+  $("#contact .thanks").hide();
+}, 3000);

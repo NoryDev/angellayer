@@ -13,7 +13,7 @@
       </p>
       <p>
         <i class="fa fa-globe"></i> <% if @profile.website %>
-          <%= link_to @profile.website, "//" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
+          <%= link_to @profile.website, "http://" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
         <% end %>
       </p>
       <p>
@@ -23,11 +23,13 @@
           <% end %>
         <% end %>
 
-        <% if current_investor || (current_founder && current_founder.admin) %>
-        <% user = current_investor || current_founder %>
-        <% unless @profile.investor_id %>
-        &nbsp; <%= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{@profile.company_name}", body: "I would like to claim #{@profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. ", class: 'btn btn-success btn-sm'} %>
-        <% end %>
+        <% if (current_investor && current_investor.investor_profile.nil?) || (current_founder && current_founder.admin) %>
+          <% user = current_investor || current_founder %>
+          <% unless @profile.investor_id %>
+            <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{@profile.company_name}", body: "I would like to claim #{@profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. ", class: 'btn btn-success btn-sm'} %>
+            <%= link_to "claim profile", "#", class: "btn btn-success btn-sm", :data => { toggle: "modal", target: "#claim-#{@profile.id}" } %>
+            <%= render 'claim_modal', profile: @profile %>
+          <% end %>
         <% end %>
 
 
@@ -141,25 +143,25 @@
   <hr>
   <p class="text-large text-center">
     <% unless @profile.facebook.nil? || @profile.facebook.empty? %>
-      <%= link_to "//" + @profile.facebook, target: "_blank" do %>
+      <%= link_to "http://" + @profile.facebook.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
         <i class="fa fa-facebook"></i>
       <% end %>
       &nbsp;
     <% end %>
     <% unless @profile.twitter.nil? || @profile.twitter.empty? %>
-      <%= link_to "//" + @profile.twitter, target: "_blank" do %>
+      <%= link_to "http://" + @profile.twitter.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
         <i class="fa fa-twitter"></i>
       <% end %>
       &nbsp;
     <% end %>
     <% unless @profile.linkedin.nil? || @profile.linkedin.empty? %>
-      <%= link_to "//" + @profile.linkedin, target: "_blank" do %>
+      <%= link_to "http://" + @profile.linkedin.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
         <i class="fa fa-linkedin"></i>
       <% end %>
       &nbsp;
     <% end %>
     <% unless @profile.angellist.nil? || @profile.angellist.empty? %>
-      <%= link_to "//" + @profile.angellist, target: "_blank" do %>
+      <%= link_to "http://" + @profile.angellist.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
         <i class="fa fa-angellist"></i>
       <% end %>
       &nbsp;

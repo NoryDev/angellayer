@@ -46,7 +46,7 @@ class Founders::ProfileController < ApplicationController
       when "nb_comments"
         base_scope.joins(:comments).group("founders.id").order("count(comments.id) DESC")
       else
-        base_scope
+        base_scope.order(updated_at: :desc)
       end
     end
 

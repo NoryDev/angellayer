@@ -1,5 +1,12 @@
 <div class="container">
-  <div class="padded text-center "></div>
+  <div class="padded text-center ">
+    <% if @founder.name.empty? %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        It seems that your profile is incomplete. Please provide your name: <%= link_to "Complete", edit_founders_profile_path(@founder) %>
+      </div>
+    <% end %>
+  </div>
   <div class="row">
     <div class="col-sm-4 full-padded text-left img-container margin-right">
 

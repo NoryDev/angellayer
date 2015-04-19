@@ -30,6 +30,9 @@ ActiveAdmin.register InvestorProfile do
       f.input :investor_id
       f.input :physical_address
       f.input :phone_number
+      f.input :profile_pic_file_name
+      f.input :profile_pic_content_type
+      f.input :profile_pic_file_size
       f.input :facebook
       f.input :twitter
       f.input :linkedin
@@ -44,6 +47,9 @@ ActiveAdmin.register InvestorProfile do
       f.input :geographical_focus
       f.input :preferred_investment_stage
       f.input :nb_projects_invested_in
+      f.input :author_as_founder_id
+      f.input :author_as_investor_id
+      f.input :author_is_founder
     end
     f.actions
   end

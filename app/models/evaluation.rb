@@ -11,6 +11,7 @@ class Evaluation < ActiveRecord::Base
   validates :investor_profile, :founder, :review, :title_review, presence: true
 
   before_save :set_average_score
+  after_save :set_total_average_score
 
   #default_scope { order('created_at DESC') }
 
@@ -51,4 +52,20 @@ class Evaluation < ActiveRecord::Base
         rate_sum / rates.size
       end
     end
+
+    def set_total_average_score
+      self.investor_profile.total_average_score = get_total_average_score(self.investor_profile)
+      self.investor_profile.save
+    end
+
+    def get_total_average_score(investor_profile)
+    scores = investor_profile.evaluations.map{ |evaluation| evaluation.average_score }
+    scores = scores.reject{ |score| score.nil? }
+    if scores.empty?
+      nil
+    else
+      average = scores.reduce(:+)/scores.size
+      average.round(1)
+    end
+  end
 end
