@@ -74,7 +74,8 @@ class Investors::ProfileController < ApplicationController
     def fetch_profiles
       case params[:order]
       when "average_score"
-        base_scope.sort_by{ |investor| -investor.total_average_score}
+        # order(total_average_score: :desc) with nil in the end, solution found on stackoverflow n° 5520628
+        base_scope.order('coalesce(total_average_score, -1) desc')
       when "company_name"
         base_scope.order(company_name: :asc)
       when "nb_reviews"
