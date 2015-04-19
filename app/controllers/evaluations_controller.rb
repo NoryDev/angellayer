@@ -78,7 +78,8 @@ class EvaluationsController < ApplicationController
     when "title_review"
       base_scope.order(:title_review)
     when "average_score"
-      base_scope.order(average_score: :desc)
+      # order(average_score: :desc) with nil in the end, solution found on stackoverflow n° 5520628
+      base_scope.order('coalesce(average_score, -1) desc')
     when "company_name"
       base_scope.joins(:investor_profile).order("investor_profiles.company_name ASC")
     when "founder"

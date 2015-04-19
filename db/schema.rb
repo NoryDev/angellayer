@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409095750) do
+ActiveRecord::Schema.define(version: 20150419192602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150409095750) do
     t.integer  "author_as_founder_id"
     t.integer  "author_as_investor_id"
     t.boolean  "author_is_founder"
+    t.float    "total_average_score"
   end
 
   add_index "investor_profiles", ["investor_id"], name: "index_investor_profiles_on_investor_id", using: :btree

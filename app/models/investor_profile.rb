@@ -45,17 +45,6 @@ class InvestorProfile < ActiveRecord::Base
     nb_rates.size
   end
 
-  def total_average_score
-    scores = evaluations.map{ |evaluation| evaluation.average_score }
-    scores = scores.reject{ |score| score.nil? }
-    if scores.empty?
-      nil
-    else
-      average = scores.reduce(:+)/scores.size
-      average.round(1)
-    end
-  end
-
   private
 
   def send_welcome_email
