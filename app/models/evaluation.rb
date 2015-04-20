@@ -36,6 +36,31 @@ class Evaluation < ActiveRecord::Base
     pluses - minuses
   end
 
+  def star_score(score)
+    stars = "".html_safe
+    if score.nil?
+      5.times do
+        stars << '<i class="fa fa-star-o"></i>'.html_safe
+        #not very clean but only technique that worked...
+      end
+    else
+      stars_used = 0
+      score.to_i.times do
+        stars << '<i class="fa fa-star"></i>'.html_safe
+      end
+      stars_used = score.to_i
+      if score - score.to_i >= 0.5
+        stars << "<i class='fa fa-star-half-o'></i>".html_safe
+        stars_used += 1
+      end
+      empty = 5 - stars_used
+      empty.times do
+        stars << "<i class='fa fa-star-o'></i>".html_safe
+      end
+    end
+    stars
+  end
+
   private
 
     def set_average_score
@@ -61,11 +86,12 @@ class Evaluation < ActiveRecord::Base
     def get_total_average_score(investor_profile)
     scores = investor_profile.evaluations.map{ |evaluation| evaluation.average_score }
     scores = scores.reject{ |score| score.nil? }
-    if scores.empty?
-      nil
-    else
-      average = scores.reduce(:+)/scores.size
-      average.round(1)
+      if scores.empty?
+        nil
+      else
+        average = scores.reduce(:+)/scores.size
+        average.round(1)
+      end
     end
-  end
+
 end

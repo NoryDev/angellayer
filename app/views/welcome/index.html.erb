@@ -4,7 +4,9 @@
 
 <div class="container" id="home-header">
   <section class="home-padded">
-    <div class="row">
+    <br>
+    <br>
+    <div class="row logo-bottom-padded">
       <div class="col-xs-12 col-sm-7 intro-section">
         <h1 data-sr="wait 0.1s, ease-in-out 100px" class="intro">Welcome to SharkRank
 
@@ -30,8 +32,10 @@
             <%= f.submit "Log in", class: "btn btn-primary col-sm-11 col-sm-offset-1 col-xs-3 button-margin-top", id: "submit" %>
             </div>
 
+
           <% end %>
           </div>
+
           <small><%= link_to "Forgot your password?", new_password_path(:founder), class: "text-right" %></small>
           <br>
           <small> Sign in with
@@ -83,19 +87,20 @@
               </small>
             </div>
           </div>
-
       </div> <!-- closing tag for 2 forms -->
+      <%= image_tag "sharkrank-icon.svg", class: "z-logo" %>
     </div> <!-- row closing tag -->
-    <a class="" href="#community"><i class="fa fa-angle-down pulse scroll-btn"></i></a>
   </section>
+
 </div> <!-- container closing tag -->
 
 <!-- =========================
 SECTION - COMMUNITY
 ============================== -->
 
-<section id="community" class="text-center full-page bgcolor-image-computer no-left-margin">
-  <div class= "row">
+<section id="community" class="text-center full-page bgcolor-image-computer no-left-margin logo-top-padded">
+
+  <div class= "row scroll-btn-padding">
     <div data-sr="wait 0.2s, enter left, move 100px, over 2.0s" class="col-sm-6">
       <%= image_tag "computer.jpg", class: "slideRight img-responsive no-left-margin" %>
     </div>
@@ -110,15 +115,38 @@ SECTION - COMMUNITY
       </div>
     </div>
   </div>
+  <a class="" href="#snippets"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+</section>
+
+<!-- =========================
+SECTION - SNIPPETS
+============================== -->
+
+<section id="snippets" class="home-padded text-center full-page bg-color-snippets">
+  <div>
+    <h2 data-sr="wait 0.1s, enter right">Latest Reviews</h2>
+    <div class="colored-line"></div>
+    <div>
+      <div id="evaluations" class="row scroll-btn-padding">
+        <% @evaluations.each do |evaluation| %>
+        <div data-sr="wait 0.2s, enter right" class="col-sm-6 col-md-4 text-left">
+          <%= render 'evaluations/show_snippets_2', evaluation: evaluation %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <a class="" href="#bullets"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
 </section>
+
+
 
 <!-- =========================
 SECTION - BULLET POINTS
 ============================== -->
 
 <section id="bullets" class="home-padded text-center full-page home-bg-image-3">
-  <div class="row">
+  <div class="row scroll-btn-padding">
       <div class="col-xs-10 col-xs-offset-1">
         <br>
         <br>
@@ -158,29 +186,7 @@ SECTION - BULLET POINTS
       </div>
 
     </div>
-    <a class="" href="#snippets"><i class="fa fa-angle-down pulse scroll-btn"></i></a>
-</section>
-
-
-<!-- =========================
-SECTION - SNIPPETS
-============================== -->
-
-<section id="snippets" class="home-padded text-center full-page">
-  <div>
-    <h2 data-sr="wait 0.1s, enter right">Latest Reviews</h2>
-    <div class="colored-line"></div>
-    <div>
-      <div id="evaluations" class="row">
-        <% @evaluations.each do |evaluation| %>
-        <div data-sr="wait 0.2s, enter right" class="col-sm-6 col-md-4 text-left">
-          <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <a class="" href="#browse"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
+    <a class="" href="#browse"><i class="fa fa-angle-down pulse scroll-btn"></i></a>
 </section>
 
 
@@ -191,7 +197,7 @@ SECTION - BROWSE
 
 <section id="browse" class="home-padded text-center full-page bgcolor-image">
   <div data-sr="wait 0.2s, ease-in-out 100px" class= "row">
-    <div class="col-sm-3 padded">
+    <div class="col-sm-3 padded scroll-btn-padding">
       <br>
       <br>
       <i class="fa fa-search text-large text-center"></i>
