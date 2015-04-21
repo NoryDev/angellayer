@@ -8,7 +8,7 @@
         Reputation
       </div>
       <div class="col-xs-6 text-right text-yellow">
-        <%= evaluation.star_score(evaluation.rating_reputation)%>
+        <%= render 'evaluations/stars', score: evaluation.rating_reputation %>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
         Deal Terms
       </div>
       <div class="col-xs-6 text-right text-yellow">
-        <%= evaluation.star_score(evaluation.rating_deal)%>
+        <%= render 'evaluations/stars', score: evaluation.rating_deal %>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
         Pitch Efficiency
       </div>
       <div class="col-xs-6 text-right text-yellow">
-        <%= evaluation.star_score(evaluation.rating_pitch)%>
+        <%= render 'evaluations/stars', score: evaluation.rating_pitch %>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         Competence
       </div>
       <div class="col-xs-6 text-right text-yellow">
-        <%= evaluation.star_score(evaluation.rating_competence)%>
+        <%= render 'evaluations/stars', score: evaluation.rating_competence %>
       </div>
     </div>
 
@@ -44,7 +44,7 @@
         Commitment
       </div>
       <div class="col-xs-6 text-right text-yellow">
-        <%= evaluation.star_score(evaluation.rating_commitment)%>
+        <%= render 'evaluations/stars', score: evaluation.rating_commitment %>
       </div>
     </div>
     <br>
