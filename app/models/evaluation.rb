@@ -9,15 +9,13 @@ class Evaluation < ActiveRecord::Base
   has_many :votes, dependent: :destroy
 
   validates :investor_profile, :founder, presence: true
-  validates_presence_of :review_present, :unless => :rate_present
+  validates_presence_of :review_present, :unless => :rate_present, :message => "Rate or Review (title and review) an investor please"
 
   validates_numericality_of :rating_reputation, :rating_deal, :rating_pitch, :rating_competence, :rating_commitment, allow_nil: true
 
 
   before_save :set_average_score
   after_save :set_total_average_score
-
-
 
   #default_scope { order('created_at DESC') }
 
@@ -44,11 +42,11 @@ class Evaluation < ActiveRecord::Base
   private
 
     def rate_present
-        [rating_reputation, rating_deal, rating_pitch,rating_competence, rating_commitment].compact.present?
+      [rating_reputation, rating_deal, rating_pitch,rating_competence, rating_commitment].compact.present?
     end
 
     def review_present
-        title_review.present? && review.present?
+      title_review.present? && review.present?
     end
 
     def set_average_score
