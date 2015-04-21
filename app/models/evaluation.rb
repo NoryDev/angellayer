@@ -61,11 +61,12 @@ class Evaluation < ActiveRecord::Base
     def get_total_average_score(investor_profile)
     scores = investor_profile.evaluations.map{ |evaluation| evaluation.average_score }
     scores = scores.reject{ |score| score.nil? }
-    if scores.empty?
-      nil
-    else
-      average = scores.reduce(:+)/scores.size
-      average.round(1)
+      if scores.empty?
+        nil
+      else
+        average = scores.reduce(:+)/scores.size
+        average.round(1)
+      end
     end
-  end
+
 end
