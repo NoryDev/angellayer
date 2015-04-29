@@ -63,9 +63,6 @@
             <label for="cc-toggle"></label>
             <span class="off black-button">I'm an investor</span>
           </div>
-          <div class="form-group">
-            <%= f.text_field :code, class: "form-control input-box", placeholder: "Your invitation code" %>
-          </div>
           <div class="login-form">
             <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>
             <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>

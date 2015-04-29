@@ -25,27 +25,27 @@ $(document).ready(function() {
   });
 
   //js validation for form: need invitation code
-  var error = false;
-  $('.social-signup').click(function(event) {
-      // Remember the link href
-      var href = this.href;
+  // var error = false;
+  // $('.social-signup').click(function(event) {
+  //     // Remember the link href
+  //     var href = this.href;
 
-      // Don't follow the link
-      event.preventDefault();
+  //     // Don't follow the link
+  //     event.preventDefault();
 
-      var code = $('#resource_code').val();
-      var valid_code = '<%= ENV["SIGN_UP"] %>';
+  //     var code = $('#resource_code').val();
+  //     var valid_code = '<%= ENV["SIGN_UP"] %>';
 
-      // This is the completion callback for the asynchronous thing;
-      if ( code == valid_code ) {
-        // go to the link
-        error = false;
-        window.location = href;
-      } else if (!error) {
-        // error message
-        $('#resource_code').parent().addClass('has-error');
-        $('#resource_code').parent().append('<span class="text-danger code-error">Wrong invitation code</span>');
-        error = true;
-      }
-  });
+  //     // This is the completion callback for the asynchronous thing;
+  //     if ( code == valid_code ) {
+  //       // go to the link
+  //       error = false;
+  //       window.location = href;
+  //     } else if (!error) {
+  //       // error message
+  //       $('#resource_code').parent().addClass('has-error');
+  //       $('#resource_code').parent().append('<span class="text-danger code-error">Wrong invitation code</span>');
+  //       error = true;
+  //     }
+  // });
 });
