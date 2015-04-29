@@ -11,7 +11,8 @@
         <h1 data-sr="wait 0.1s, ease-in-out 100px" class="intro">Welcome to SharkRank
 
         </h1>
-        <p data-sr="move 16px scale up 20%, over 2s" class = "white-text big-text feature-list-1">Sharkrank is a crowdsourced rating and review system of the reputation and interactions of investors worldwide. <br> <br> Rate and review angel investors – Help other founders by publicly sharing your experiences when dealing with investors. Share trustworthy and first-hand tesimonials on the reputation of investors, and stop wasteful interactions.</p>
+        <p data-sr="move 16px scale up 20%, over 2s" class = "white-text big-text feature-list-1"><strong>Browse reviews</strong> and rankings of business angels, venture capitalists and investors. <br><br>
+        <strong>Rate and review </strong>angel investors.  <strong>Help</strong> other founders or entrepreneurs by <strong>sharing</strong> your experiences with investors. Share trustworthy and first-hand testimonials.</p>
       </div>
 
       <div class="col-xs-12 col-sm-4 intro-section">
@@ -111,8 +112,20 @@ SECTION - COMMUNITY
       <h2>Help the start-up community</h2>
       <div class="colored-line"></div>
       <div style="visibility: visible; ">
-        <strong>PAY IT BACK.</strong> Share your experience with other founders, tell them about previous experiences you've had with investors. Give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs.
+        <strong>PAY IT BACK.</strong> Share your experience with other founders and entrepreneurs. Tell them about your previous experiences with investors. Give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs.
       </div>
+
+      <div class="text-center">
+        <br><br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinModal">
+        Sign In
+        </button>
+        <!-- BUTTON SIGN UP -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
+        Sign Up
+        </button>
+      </div>
+
     </div>
   </div>
   <a class="" href="#snippets"><i class="fa fa-angle-down pulse scroll-btn black-text"></i></a>
@@ -152,7 +165,7 @@ SECTION - BULLET POINTS
         <br>
         <br>
         <h1 data-sr="wait 0.2s, enter right, scale down 20%" class="white-text">
-        A <strong>community</strong> of founders to rate and <strong>review</strong> angel investors and VC firms
+        A <strong>community</strong> of founders who rate and <strong>review</strong> angel investors and VC firms
         </h1>
         <ul class="feature-list-1 list-unstyled">
           <!-- FEATURE ROW -->
@@ -161,7 +174,7 @@ SECTION - BULLET POINTS
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              Help other founders by publicly sharing, reviewing and rating your experiences with angel investors and VC's
+              Help other founders by <strong>sharing</strong> your experience with investors.
             </p>
           </li>
           <!-- FEATURE ROW -->
@@ -170,7 +183,7 @@ SECTION - BULLET POINTS
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              As an investor, see what founders think of you and where you might want to improve your skills to attract better deal flow.
+              Browse reviews to find the investor best <strong>suited</strong> for your project.
             </p>
           </li>
           <!-- FEATURE ROW -->
@@ -179,7 +192,25 @@ SECTION - BULLET POINTS
               <i class="fa fa-check"></i>
             </div>
             <p class="text-left">
-              Browse the reputation of angel investors and VC's firms so founders can make better informed decisions.
+              As an investor, get <strong>feedback</strong> and discover what founders say about your company.
+            </p>
+          </li>
+          <!-- FEATURE ROW -->
+          <li data-sr="wait 0.5s, enter right">
+            <div class="icon-container pull-left text-center">
+              <i class="fa fa-check"></i>
+            </div>
+            <p class="text-left">
+              Use the reviews to improve your <strong>skills</strong> and attract better deal flow.
+            </p>
+          </li>
+          <!-- FEATURE ROW -->
+          <li data-sr="wait 0.5s, enter right">
+            <div class="icon-container pull-left text-center">
+              <i class="fa fa-check"></i>
+            </div>
+            <p class="text-left">
+              Tell founders and entrepreneurs of potential investments to look up your <strong>credentials</strong> on Sharkrank.
             </p>
           </li>
         </ul>
@@ -205,7 +236,17 @@ SECTION - BROWSE
       <div class="colored-line"></div>
       <div>
         <p>Are you the <strong>founder</strong> of a start-up, looking for the right investor? <br>
-        Browse the <strong>reputation</strong> of angel investors and Venture Capitalist firms to <strong>help you</strong> take a better and more informed decision.</p>
+        <strong>Browse reviews</strong> to help you find the <strong>right</strong> angel investors or Venture Capitalist firm.</p>
+      </div>
+      <div class="text-center">
+        <br><br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinModal">
+        Sign In
+        </button>
+        <!-- BUTTON SIGN UP -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">
+        Sign Up
+        </button>
       </div>
     </div>
     <div class="col-sm-7 col-sm-offset-1">
@@ -230,7 +271,7 @@ SECTION - CONTACT
       <h2 class="white-text">Contact us</h2>
       <div class="colored-line"></div>
       <div>
-        <p>Use the form to contact us or send us a mail to <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p>
+        <p>Use the form to contact us or send us a mail on <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p>
       </div>
     </div>
     <div class="col-sm-7 col-sm-offset-1">
@@ -252,3 +293,9 @@ SECTION 10 - FOOTER
     </div>
   </div>
 </footer>
+
+    <!-- =========================
+    MODAL SIGN-IN - SIGN-UP
+    ============================== -->
+
+    <%= render 'modal_sign_in' %>
