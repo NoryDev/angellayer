@@ -38,7 +38,7 @@
 
           <small><%= link_to "Forgot your password?", new_password_path(:founder), class: "text-right" %></small>
           <br>
-          <small> Sign in with
+          <small> Founders: Sign in with
           <%= link_to "Facebook, ", founder_omniauth_authorize_path(:facebook)%>
           <%= link_to "Twitter ", founder_omniauth_authorize_path(:twitter)%>  or
           <%= link_to "Linkedin ", founder_omniauth_authorize_path(:linkedin)%>
@@ -66,7 +66,7 @@
           <div class="login-form">
             <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>
             <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
-            <div class="col-xs-12">
+            <div class="row">
               <div class="col-sm-8 col-xs-12">
                 <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
               </div>
@@ -75,13 +75,16 @@
               </div>
               </div>
               <% end %>
-              <small>
-                Sign-up with
-              <%= link_to "Facebook, ", founder_omniauth_authorize_path(:facebook)%>
-              <%= link_to "Twitter ",founder_omniauth_authorize_path(:twitter)%>
-              or
-              <%= link_to "LinkedIn ",founder_omniauth_authorize_path(:linkedin)%>
-              </small>
+              <div class="for-founders">
+                <small>
+                  Sign-up with
+                  <%= link_to "Facebook, ", founder_omniauth_authorize_path(:facebook)%>
+                  <%= link_to "Twitter ",founder_omniauth_authorize_path(:twitter)%>
+                  or
+                  <%= link_to "LinkedIn ",founder_omniauth_authorize_path(:linkedin)%>
+                </small>
+              </div>
+
             </div>
           </div>
       </div> <!-- closing tag for 2 forms -->
