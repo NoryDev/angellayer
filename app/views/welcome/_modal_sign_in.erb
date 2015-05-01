@@ -49,11 +49,11 @@ MODAL - SIGN UP
         <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
         <div class="switch">
           <% if flash[:is_investor] %>
-          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "checked" %>
+          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle-modal", checked: "checked" %>
           <% else %>
-          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle", checked: "unchecked" %>
+          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle-modal", checked: "unchecked" %>
           <% end %>
-          <label for="cc-toggle"></label>
+          <label for="cc-toggle-modal"></label>
           <span class="off black-button">I'm an investor</span>
           <br>
         </div>
