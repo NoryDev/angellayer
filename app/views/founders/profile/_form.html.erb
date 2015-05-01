@@ -2,37 +2,41 @@
 <%= f.error_notification %>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :website, as: :url %>
-  <%= f.input :cell_phone %>
-</div>
-<br>
-
-<div class = "img-container img-rounded full-padded">
   <div class="row">
-  <div class="col-xs-12 col-sm-3">
-    <%= image_tag @founder.image, size: "100x100" %>
-  </div>
-  <div class="col-xs-12 col-sm-9">
-    <%= f.input :profile_pic, label:"Choose or modify profile picture" %>
-  </div>
+    <div class="col-xs-12 col-sm-3">
+      <!-- Click image to trigger hidden profile_pic button -->
+      <%= link_to (image_tag @founder.image, size: "100x100"), "", {id: "false-button"} %>
+      <!-- Hidden profile_pic input -->
+      <%= f.input :profile_pic, label: false, input_html: {id: "profile_pic", style: "display:none"}  %>
+      <!-- <div id="appearing-act"></div>Upload <br>New Picture -->
+      <p id="photo_path">Image Selected</p>
+      <!-- <input id="photo_path" class="input-large uneditable-input" type="text"> -->
+    <br><br>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <%= f.input :first_name, label: false, placeholder: 'First name - username for anonymity' %>
+      <%= f.input :last_name, label: false, placeholder: 'Last name - leave blank for anonymity' %>
+      <%= f.input :website, as: :url, label: false, placeholder: 'www.example.com' %>
+    </div>
   </div>
 </div>
 <br>
 
+
+
+
 <div class = "img-container img-rounded full-padded">
 
-<%= f.input :facebook, as: :url, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook' %>
-<%= f.input :twitter, as: :url, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter' %>
-<%= f.input :linkedin, as: :url, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin' %>
-<%= f.input :angellist, as: :url, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist' %>
-<%= f.input :skype, as: :url, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype' %>
+<%= f.input :facebook, as: :url, label: false, placeholder: 'Your Facebook page - leave empty for anonymity' %>
+<%= f.input :twitter, as: :url, placeholder: ' Your Twitter page - leave empty for anonymity', label: false %>
+<%= f.input :linkedin, as: :url, placeholder: 'Your Linkedin page - leave empty for anonymity', label: false %>
+<%= f.input :angellist, as: :url, placeholder: 'Your Angellist page - leave empty for anonymity', label: false %>
+<%= f.input :skype, as: :url, placeholder: 'Your Skype address - leave empty for anonymity', label: false  %>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
-<%= f.input :all_startups, hint: "List of all your current and previous start-ups with links." %>
+<%= f.input :all_startups, label: false, placeholder: "List of all your current and previous start-ups with links." %>
 <%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
     <%= link_to 'Cancel', founders_profile_path, {class: "text-muted"} %>
 </div>
