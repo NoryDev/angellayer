@@ -286,16 +286,33 @@ SECTION 10 - FOOTER
 
 <footer class="text-center bgcolor-2">
   <div class="container">
-    <div class="footer-logo">
-      <%= link_to root_path do %>
-      <p><%= image_tag "logo-sharkrank-welcome.svg", class: "welcome-logo"%></span></p>
-      <% end %>
+    <div class="row">
+      <div class="footer-logo col-xs-6">
+        <%= link_to root_path do %>
+          <p><%= image_tag "logo-sharkrank-welcome.svg", class: "welcome-logo"%></span>
+          </p>
+        <% end %>
+      </div>
+      <div class="social-footer">
+        <a href="https://www.facebook.com/sharkrank" target="_blank"><i class="fa fa-facebook-square footer-facebook footer-btn-padding"></i></a>
+        <a href="https://twitter.com/shark_rank" target="_blank"><i class="fa fa-twitter-square footer-twitter footer-btn-padding"></i></a>
+      </div>
     </div>
   </div>
 </footer>
 
-    <!-- =========================
-    MODAL SIGN-IN - SIGN-UP
-    ============================== -->
 
-    <%= render 'modal_sign_in' %>
+<!-- =========================
+SECTION 10 - SOCIALS
+============================== -->
+<div data-sr='wait 3s, ease-in 50px, enter left' class="social-bar" >
+  <a href="https://twitter.com/shark_rank" target="_blank"><i class="fa fa-twitter left-bar-button left-twitter"></i></a>
+  <a href="https://www.facebook.com/sharkrank" target="_blank"><i class="fa fa-facebook left-bar-button left-facebook"></i></a>
+</div>
+
+<!-- =========================
+MODAL SIGN-IN - SIGN-UP
+============================== -->
+
+<%= render 'modal_sign_in' %>
+
