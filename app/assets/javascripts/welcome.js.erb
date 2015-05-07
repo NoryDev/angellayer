@@ -15,8 +15,23 @@ $(document).ready(function() {
     $('.for-founders').show()
   }
 
+  if ($('#cc-toggle-modal').prop("checked")){
+    $('.for-founders').hide()
+  } else {
+    $('.for-founders').show()
+  }
+
+
   //hide social sign up for investors
   $('#cc-toggle').change(function() {
+    if ($(this).prop("checked")){
+      $('.for-founders').slideUp()
+    } else {
+      $('.for-founders').slideDown()
+    }
+  });
+
+  $('#cc-toggle-modal').change(function() {
     if ($(this).prop("checked")){
       $('.for-founders').slideUp()
     } else {
