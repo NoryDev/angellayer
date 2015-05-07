@@ -80,24 +80,24 @@
 
 <div class = "img-container img-rounded full-padded">
   <div class="row">
-    <div class="col-xs-12 ">Sectors invested in</div>
+    <div class="col-xs-12 ">Sector Focus</div>
     <div class="col-xs-12 ">
       <%= f.input :sectors_invested_in, label: false, placeholder: "Example Web apps, technology start-ups, environment related businesses..." %>
     </div>
 
-    <div class="col-xs-12 ">Capital under management</div>
+    <div class="col-xs-12 ">Capital Under Management</div>
     <div class="col-xs-12 ">
       <%= f.input :capital_under_managment, label: false, placeholder: "Please enter numbers only please" %>
     </div>
 
     <div class="col-xs-12 ">Geographical Focus</div>
     <div class="col-xs-12 ">
-      <%= f.input :geographical_focus, label: false, placeholder: "Example North America, South-East Asia..." %>
+      <%= f.input :geographical_focus, priority: [ "The Galaxy" ], collection: [ "The Galaxy", "North America", "Latin America", "Europe", "Asia Pacific", "Middle-East & Africa" ], label: false %>
     </div>
 
     <div class="col-xs-12 ">Investment Stage</div>
     <div class="col-xs-12 ">
-      <%= f.input :preferred_investment_stage, label: false, placeholder: "Example: Seed, Stage A, Stage B, Stage C ..." %>
+      <%= f.input :preferred_investment_stage, priority: [ "Seed Stage" ], collection: [ "Seed Stage", "Early Stage", "Expansion Stage", "Late Stage"], label: false %>
     </div>
 
     <div class="col-xs-12 ">Number of Projects under management</div>
@@ -125,7 +125,7 @@
       <%= f.input :contact_email, label: false, placeholder: "If different from above" %>
     </div>
 
-  <div class="col-xs-12 col-md-2">Cell</div>
+  <div class="col-xs-12 col-md-2">Cell Phone</div>
     <div class="col-xs-12 col-md-10">
       <%= f.input :contact_cell_phone, label: false %>
     </div>
