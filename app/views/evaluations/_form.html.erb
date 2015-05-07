@@ -75,7 +75,7 @@
   <br>
   <div class = "img-container img-rounded full-padded">
     <%= f.input :amount_raised, as: :currency, placeholder: 'Number in $' %>
-    <%= f.input :would_work_again, as: :radio_buttons, label: "Would you work again with this investor?"%>
+    <%= f.input :would_work_again, inline_label: "Would you work again with this investor?"%>
     <br>
     <div class="form-actions btn-group">
       <%= f.button :submit, {class: "btn btn-primary"} %> &nbsp; &nbsp;

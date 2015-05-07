@@ -3,20 +3,36 @@
 
 <div class = "img-container img-rounded full-padded">
   <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      <!-- Click image to trigger hidden profile_pic button -->
-      <%= link_to (image_tag @founder.image, size: "100x100"), "", {id: "false-button"} %>
-      <!-- Hidden profile_pic input -->
-      <%= f.input :profile_pic, label: false, input_html: {id: "profile_pic", style: "display:none"}  %>
-      <!-- <div id="appearing-act"></div>Upload <br>New Picture -->
-      <p id="photo_path">Image Selected</p>
-      <!-- <input id="photo_path" class="input-large uneditable-input" type="text"> -->
-    <br><br>
+    <div class="col-xs-12 col-md-2">
+      <%= image_tag @founder.image, size: "100x100"%>
     </div>
-    <div class="col-xs-12 col-sm-9">
+    <div class="col-xs-12 col-md-10">
+      <div class="small-marged">Choose or Modify your Profile Pic</div>
+      <%= f.input :profile_pic, as: :file, label: false %>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class = "img-container img-rounded full-padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-2">First Name</div>
+    <div class="col-xs-12 col-md-10">
       <%= f.input :first_name, label: false, placeholder: 'First name - username for anonymity' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Last Name</div>
+    <div class="col-xs-12 col-md-10">
       <%= f.input :last_name, label: false, placeholder: 'Last name - leave blank for anonymity' %>
-      <%= f.input :website, as: :url, label: false, placeholder: 'www.example.com' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Website</div>
+    <div class="col-xs-12 col-md-10">
+    <%= f.input :website, as: :url, label: false, placeholder: 'www.example.com' %>
     </div>
   </div>
 </div>
@@ -27,19 +43,69 @@
 
 <div class = "img-container img-rounded full-padded">
 
-<%= f.input :facebook, as: :url, label: false, placeholder: 'Your Facebook page - leave empty for anonymity' %>
-<%= f.input :twitter, as: :url, placeholder: ' Your Twitter page - leave empty for anonymity', label: false %>
-<%= f.input :linkedin, as: :url, placeholder: 'Your Linkedin page - leave empty for anonymity', label: false %>
-<%= f.input :angellist, as: :url, placeholder: 'Your Angellist page - leave empty for anonymity', label: false %>
-<%= f.input :skype, as: :url, placeholder: 'Your Skype address - leave empty for anonymity', label: false  %>
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-facebook"></i> Facebook
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :facebook, as: :url, label: false, placeholder: 'Your Facebook page - leave blank for anonymity' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-twitter"></i> Twitter
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :twitter, as: :url, placeholder: ' Your Twitter page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-linkedin"></i> Linkedin
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :linkedin, as: :url, placeholder: 'Your Linkedin page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-angellist"></i> Angellist
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :angellist, as: :url, placeholder: 'Your Angellist page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-skype"></i> Skype
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :skype, as: :url, placeholder: 'Your Skype address - leave blank for anonymity', label: false  %>
+    </div>
+  </div>
+
 </div>
 <br>
 
+
 <div class = "img-container img-rounded full-padded">
-<%= f.input :all_startups, label: false, placeholder: "List of all your current and previous start-ups with links." %>
-<%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      Previous start-ups
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :all_startups, label: false, placeholder: "List of all your current and previous start-ups with links." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
     <%= link_to 'Cancel', founders_profile_path, {class: "text-muted"} %>
+  </div>
 </div>
 <% end %>
-
 <br>
