@@ -1,13 +1,5 @@
 <%= simple_form_for(@profile, url: @profile.id? ? investors_profile_path(@profile) : investors_profile_index_path) do |f| %>
 <%= f.error_notification %>
-<div class = "img-container img-rounded full-padded">
-  <%= f.input :company_name, required: true, autofocus: true %>
-  <%= f.input :email %>
-  <%= f.input :physical_address %>
-  <%= f.input :phone_number %>
-  <%= f.input :website %>
-</div>
-<br>
 
 
 <div class = "img-container img-rounded full-padded">
@@ -22,30 +14,125 @@
 </div>
 <br>
 
+
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :facebook, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook', placeholder: "www.facebook.com/investor"  %>
-  <%= f.input :twitter, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter', placeholder: "www.twitter.com/investor"  %>
-  <%= f.input :linkedin, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin', placeholder: "www.linkedin.com/in/investor"  %>
-  <%= f.input :angellist, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist', placeholder: "www.angel.co/investor"  %>
-  <%= f.input :skype, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype', placeholder: "investor.name"  %>
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Company Name</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :company_name, label: false, required: true, autofocus: true, placeholder: "My Business Angel Firm" %>
+    </div>
+
+    <div class="col-xs-12 col-md-2">Email</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :email, label: false, placeholder: "info@mycompany.com" %>
+    </div>
+
+    <div class="col-xs-12 col-md-2">Location</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :physical_address, label: false, placeholder: "San Francisco, USA" %>
+    </div>
+
+    <div class="col-xs-12 col-md-2">Phone</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :phone_number, label: false, placeholder: "+1 415-777-7777" %>
+     </div>
+
+    <div class="col-xs-12 col-md-2">Website</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :website, label: false, placeholder: "www.mycompany.com" %>
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+
+<div class = "img-container img-rounded full-padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-2"><i class="fa fa-facebook"></i> Facebook</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :facebook, label: false, placeholder: "www.facebook.com/investor"  %>
+    </div>
+
+    <div class="col-xs-12 col-md-2"><i class="fa fa-twitter"></i> Twitter</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :twitter, label: false, placeholder: "www.twitter.com/investor"  %>
+    </div>
+
+    <div class="col-xs-12 col-md-2"><i class="fa fa-linkedin"></i> Linkedin</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :linkedin, label: false, placeholder: "www.linkedin.com/in/investor"  %>
+    </div>
+
+    <div class="col-xs-12 col-md-2"><i class="fa fa-angellist"></i> Angellist</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :angellist, label: false, placeholder: "www.angel.co/investor"  %>
+    </div>
+
+    <div class="col-xs-12 col-md-2"><i class="fa fa-skype"></i> Skype</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :skype, label: false, placeholder: "investor.name"  %>
+    </div>
+  </div>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :sectors_invested_in, placeholder: "Example Web apps, technology start-ups, environment related businesses..." %>
-  <%= f.input :capital_under_managment, label: "Capital Under Management in $", placeholder: "Please enter numbers only please" %>
-  <%= f.input :geographical_focus, placeholder: "Example North America, South-East Asia..." %>
-  <%= f.input :preferred_investment_stage, placeholder: "Example Seed, Stage A, Stage B, Stage C ..." %>
-  <%= f.input :nb_projects_invested_in %>
+  <div class="row">
+    <div class="col-xs-12 ">Sector Focus</div>
+    <div class="col-xs-12 ">
+      <%= f.input :sectors_invested_in, label: false, placeholder: "Example Web apps, technology start-ups, environment related businesses..." %>
+    </div>
+
+    <div class="col-xs-12 ">Capital Under Management</div>
+    <div class="col-xs-12 ">
+      <%= f.input :capital_under_managment, label: false, placeholder: "Please enter numbers only please" %>
+    </div>
+
+    <div class="col-xs-12 ">Geographical Focus</div>
+    <div class="col-xs-12 ">
+      <%= f.input :geographical_focus, priority: [ "The Galaxy" ], collection: [ "The Galaxy", "North America", "Latin America", "Europe", "Asia Pacific", "Middle-East & Africa" ], label: false %>
+    </div>
+
+    <div class="col-xs-12 ">Investment Stage</div>
+    <div class="col-xs-12 ">
+      <%= f.input :preferred_investment_stage, priority: [ "Seed Stage" ], collection: [ "Seed Stage", "Early Stage", "Expansion Stage", "Late Stage"], label: false %>
+    </div>
+
+    <div class="col-xs-12 ">Number of Projects under management</div>
+    <div class="col-xs-12">
+    <%= f.input :nb_projects_invested_in, label: false %>
+    </div>
+  </div>
 </div>
 <br>
 
 <div class = "img-container img-rounded full-padded">
-  <%= f.input :contact_person %>
-  <%= f.input :contact_email, placeholder: "If different from above" %>
-  <%= f.input :contact_cell_phone %>
+  <div class="row">
+    <div class="col-xs-12 col-md-2"><strong>Contact Info</strong> <br><br></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Person</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :contact_person, label: false, placeholder: "John Doe" %>
+    </div>
+
+  <div class="col-xs-12 col-md-2">Email</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :contact_email, label: false, placeholder: "If different from above" %>
+    </div>
+
+  <div class="col-xs-12 col-md-2">Cell Phone</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :contact_cell_phone, label: false %>
+    </div>
+
   <%= f.button :submit, "Save", class: "btn btn-primary" %>
   <%= link_to 'Cancel', investors_profile_index_path, {class: "btn text-muted"} %>
   <% end %>
+  </div>
 </div>
 <br>
