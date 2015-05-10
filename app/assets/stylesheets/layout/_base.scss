@@ -19,6 +19,26 @@
   padding: 1em;
 }
 
+.padded-less-top{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.padded-less-bottom{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+.white-link{
+  color: white;
+}
+
+.white-link:hover{
+  color: #e3e3e3;
+}
+
 hr {
   border-bottom: 1px solid rgba(0,0,0,0.2);
 }
