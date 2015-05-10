@@ -1,49 +1,38 @@
-<div class = "img-container img-rounded full-padded">
+<div class = "img-rounded snippet-box">
   <div class="row">
-    <div class="col-sm-3 col-xs-4 text-center">
-      <%= link_to investors_profile_path(evaluation.investor_profile) do %>
-        <div><%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar" %></div>
-      <% end %>
-      <% score = evaluation.investor_profile.total_average_score
-        if score.nil?
-          level = "default"
-        elsif score > 3.5
-          level = "success"
-        elsif score < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% if score.nil? %>
-          <% 5.times do %>
-            <i class="fa fa-star-o"></i>
+      <h2 class="text-center"><%= evaluation.investor_profile %></h2>
+  </div>
+  <div class="row full-padded">
+
+
+    <div class="row">
+
+      <p><small><%= evaluation.review.truncate_words(30) %>
+          <% if evaluation.review.split.size > 30 %>
+            <%= link_to "Read More", evaluation_path(evaluation) %>
+          <% else %>
+          ....
+          <%= link_to "View Review", evaluation_path(evaluation) %>
           <% end %>
-        <% else %>
-          <% star_used = 0 %>
-          <% score.to_i.times do %>
-            <i class="fa fa-star"></i>
-            <% star_used = score.to_i %>
-          <% end %>
-          <% if score - score.to_i >= 0.5 %>
-            <i class="fa fa-star-half-o"></i>
-            <% star_used += 1 %>
-          <% end %>
-          <% empty = 5 - star_used
-            empty.times do %>
-            <i class="fa fa-star-o"></i>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="text-uppercase text-muted"><small>Average: <%= score %></small></div>
+        </small></p>
+
     </div>
-    <div class="col-xs-7 col-xs-offset-1 col-sm-8">
-      <div class="review">
-        <p>
-          Review for <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
-        </p>
-        <p><small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", evaluation_path(evaluation) %></small></p>
+
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to investors_profile_path(evaluation.investor_profile) do %>
+      <div><%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar-2" %></div>
+    <% end %>
+      </div>
+      <div class="col-xs-8 col-xs-offset-1">
+        <div class="col-xs-6 text-left">
+        Average Score
+        </div>
+        <div class="col-xs-6 text-right text-yellow">
+          <%= render 'evaluations/stars', score: evaluation.investor_profile.total_average_score %>
+        </div>
       </div>
     </div>
   </div>

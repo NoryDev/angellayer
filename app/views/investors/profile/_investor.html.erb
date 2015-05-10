@@ -1,12 +1,54 @@
 <% @profiles.each do |profile| %>
 
-  <div class="img-container img-rounded full-padded">
-    <div class="row">
+  <div class="img-rounded snippet-box">
 
+    <div class="row">
+      <h2 class="text-center">
+        <% if profile.company_name %>
+          <%= link_to profile.company_name, investors_profile_path(profile), class: "white-link" %>
+        <% end %>
+      </h2>
+    </div>
+
+    <div class="row padded-less-bottom">
       <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
         <%= link_to investors_profile_path(profile) do %>
-          <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, style: "max-width: 90%; height: auto;"%></p>
+          <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, class: "snippet-avatar-2" %></p>
         <% end %>
+      </div>
+
+
+      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
+        <% if (current_investor && current_investor.investor_profile.nil?) || (current_founder && current_founder.admin) %>
+          <% user = current_investor || current_founder %>
+          <% unless profile.investor_id %>
+            <div class="pull-right">
+
+              <small>
+                <%= link_to "claim profile", "#", :data => { toggle: "modal", target: "#claim-#{profile.id}" } %>
+              </small>
+              <%= render 'claim_modal', profile: profile %>
+            </div>
+          <% end %>
+        <% end %>
+
+
+        <p><%= profile.physical_address %>
+          <br>
+          <% if profile.website %>
+            <%= link_to profile.website, "http://" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
+          <% end %>
+        </p>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row padded-less-top">
+      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
+
         <% score = profile.total_average_score
           if score.nil?
             level = "default"
@@ -42,33 +84,9 @@
       </div>
 
       <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if (current_investor && current_investor.investor_profile.nil?) || (current_founder && current_founder.admin) %>
-          <% user = current_investor || current_founder %>
-          <% unless profile.investor_id %>
-            <div class="pull-right">
-              <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{profile.company_name}", body: "I would like to claim #{profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. "} %>
-              <small>
-                <%= link_to "claim profile", "#", :data => { toggle: "modal", target: "#claim-#{profile.id}" } %>
-              </small>
-              <%= render 'claim_modal', profile: profile %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <% if profile.company_name %>
-          <p><strong><%= link_to profile.company_name, investors_profile_path(profile) %></strong></p>
-        <% end %>
-
-        <p><%= profile.physical_address %></p>
-        <p>
-          <% if profile.website %>
-            <%= link_to profile.website, "http://" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
-          <% end %>
-        </p>
-
-        <div class="text-uppercase text-muted">
-          <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
-        </div>
+        <div class="text-muted">
+            <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
+          </div>
       </div>
     </div>
   </div>

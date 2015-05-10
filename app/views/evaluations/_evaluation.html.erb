@@ -71,7 +71,13 @@
 
       <p>
         <small class="text-right pull-right">
-          <%= evaluation.work_again %> | amout raised : <%= evaluation.amount_raised %> $
+
+          <%= evaluation.work_again %>
+          <% if evaluation.work_again!= "" && evaluation.amount_raised != nil %> |
+          <% end %>
+          <% if evaluation.amount_raised != nil %>
+           amout raised : <%= evaluation.amount_raised %> $
+          <% end %>
         </small>
       </p>
       <br>
