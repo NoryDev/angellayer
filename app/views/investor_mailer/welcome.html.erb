@@ -1,50 +1,39 @@
-<table width="100%" border="0" cellspacing="0" cellpadding="5" margin="0" style="font-family: 'Helvetica Neue Regular', Arial, Helvetica, Geneva, sans-serif; font-size:18px; background:#eeeeee; margin:0; width:100%; color:#333333; font-weight: normal;">
-  <tr>
-    <th scope="col">
-      <table width="600"  align="center" border="0" cellspacing="0" cellpadding="5">
-        <tr>
-          <th scope="col">
-            <br><br>
-            <a href="http://sharkrank.co/"><img src="http://sharkrank.co/assets/logo-sharkrank-582beb8bb1a8f5ef2aa40f6fc7304ea1.svg" alt="SharkRank" height="50px" align="center"></a>
+<div align="left">
+  <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">Welcome to SharkRank</h2>
+
+  <p style="font-weight: normal;">A profile for <strong><%=@investor.company_name %></strong> has just been created on <a href="http://sharkrank.co/investors/sign_up">SharkRank</a>.
+    <br>You are welcome to modify and complete it.
+  </p>
+  <br>
+  <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">What is SharkRank?</h2>
+  <p style="font-weight: normal;"><a href="http://sharkrank.co/">SharkRank</a> is a community of founders who rate and review angel investors, Venture Capitalist firms and investors.
+  </p>
+  <br>
+  <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">How does SharkRank help you?</h2>
+
+  <ul style="font-weight: normal;">
+    <li>Get feedback and discover what founders say about you.
+    </li>
+    <li>Use the reviews to improve your skills and attract better deal flow.
+    </li>
+    <li>Tell potential investments to look up your credentials on Sharkrank.
+    </li>
+  </ul>
+  <br>
+
+  <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">How to claim your profile?</h2>
+
+  <ol style="font-weight: normal;"><li> <a href="http://sharkrank.co/investors/sign_up"><strong>Sign-up</strong></a> as an Investor</li>
+  <li>Go to your <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>">
+    <strong>profile</strong></a> page.</li>
+  <li>Click the <strong>"Claim Profile"</strong> button. We will manually check that you are the owner of the profile page and get back to you ASAP.</li>
+  <li>You can then complete your <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>"> <strong>profile</strong></a> page.</li>
+  <li>Send an email to all the founders of your previous investments and ask them to write a review about <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>"> <strong>you</strong></a>.
+    </ol>
+  <br>
+  <p style="font-weight: normal;">Let's build a stronger community together,<br><br>
+              <span style="font-size:22px; font-weight:bold;font-family:Comic Sans MS, Comic Sans,Lucida Handwriting, script, cursive">The SharkRank Team
+              </span>
               <br><br><br>
-            <div align="left">
-              <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">Welcome to SharkRank</h2>
-
-              <p style="font-weight: normal;">A profile for <strong><%=@investor.company_name %></strong> has just been created on <a href="http://sharkrank.co/investors/sign_up">SharkRank</a>.
-                <br>You are welcome to modify and complete it.
-              </p>
-              <br>
-              <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">What is SharkRank?</h2>
-              <p style="font-weight: normal;"><a href="http://sharkrank.co/">SharkRank</a> is a community of founders who rate and review angel investors, Venture Capitalist firms and investors.
-              </p>
-              <br>
-              <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">How does SharkRank help you?</h2>
-
-              <ul style="font-weight: normal;">
-                <li>Get feedback and discover what founders say about you.
-                </li>
-                <li>Use the reviews to improve your skills and attract better deal flow.
-                </li>
-                <li>Tell potential investments to look up your credentials on Sharkrank.
-                </li>
-              </ul>
-              <br>
-
-              <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">How to claim your profile?</h2>
-
-              <ol style="font-weight: normal;"><li> <a href="http://sharkrank.co/investors/sign_up"><strong>Sign-up</strong></a> as an Investor</li>
-              <li>Go to your <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>">
-                <strong>profile</strong></a> page.</li>
-              <li>Click the <strong>"Claim Profile"</strong> button. We will manually check that you are the owner of the profile page and get back to you ASAP.</li>
-              <li>You can then complete your <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>"> <strong>profile</strong></a> page.</li>
-              <li>Send an email to all the founders of your previous investments and ask them to write a review about <a href="http://sharkrank.co<%= investors_profile_path(@investor) %>"> <strong>you</strong></a>.
-                </ol>
-              <br>
-              <p style="font-weight: normal;">Let's build a stronger community together,<br>The SharkRank Team <br><br>For any questions, please don't hesitate to contact us <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p><br><br><br>
-            </div>
-          </th>
-        </tr>
-      </table>
-    </th>
-  </tr>
-</table>
+              For any questions, please don't hesitate to contact us <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p><br><br><br>
+</div>

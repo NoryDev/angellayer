@@ -1,5 +1,20 @@
 <html>
   <body>
-    <%= yield %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="5" margin="0" style="font-family: 'Helvetica Neue Regular', Arial, Helvetica, Geneva, sans-serif; font-size:18px; background:#eeeeee; margin:0; width:100%; color:#333333; font-weight: normal;">
+  <tr>
+    <th scope="col">
+      <table width="600"  align="center" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+          <th scope="col">
+            <br><br>
+            <a href="http://sharkrank.co/"><img src="http://sharkrank.co/assets/logo-sharkrank-582beb8bb1a8f5ef2aa40f6fc7304ea1.svg" alt="SharkRank" height="50px" align="center"></a>
+            <br><br><br>
+            <%= yield %>
+          </th>
+        </tr>
+      </table>
+    </th>
+  </tr>
+</table>
   </body>
 </html>
