@@ -9,11 +9,19 @@
     </div>
     <div class="col-xs-12 col-sm-9">
       <p>
-        <i class="fa fa-home"></i> <%= @profile.physical_address %>
+        <i class="fa fa-home"></i>
+        <% if @profile.physical_address != "" %>
+        <%= @profile.physical_address %>
+        <% else %>
+          No info yet
+        <% end %>
       </p>
       <p>
-        <i class="fa fa-globe"></i> <% if @profile.website %>
+        <i class="fa fa-globe"></i>
+        <% if @profile.website != "" %>
           <%= link_to @profile.website, "http://" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
+        <% else %>
+          No info yet
         <% end %>
       </p>
       <p>
@@ -68,9 +76,7 @@
         <div class="label label-<%= level %>">
 
           <% if @profile.rating(area.downcase).nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
+            Not rated
           <% else %>
             <% star_used = 0 %>
             <% @profile.rating(area.downcase).to_i.times do %>
@@ -93,23 +99,48 @@
   <hr>
 
   <p>
-    <i class="fa fa-cubes"></i> Sectors invested in: <%= @profile.sectors_invested_in %>
+    <i class="fa fa-cubes"></i> Sectors invested in:
+    <% if @profile.sectors_invested_in != "" %>
+      <%= @profile.sectors_invested_in %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-usd"></i> Capital under managment: <%= @profile.capital_under_managment %> $
+    <i class="fa fa-usd"></i> Capital under managment:
+    <% if @profile.capital_under_managment != nil %>
+      <%= @profile.capital_under_managment %> $
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-globe"></i> Geographical focus: <%= @profile.geographical_focus %>
+    <i class="fa fa-globe"></i> Geographical focus:
+    <% if @profile.geographical_focus != "" %>
+      <%= @profile.geographical_focus %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-tree"></i> Investment stage: <%= @profile.preferred_investment_stage %>
+    <i class="fa fa-tree"></i> Investment stage:
+    <% if @profile.preferred_investment_stage != "" %>
+      <%= @profile.preferred_investment_stage %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-users"></i> Nb of projects invested in: <%= @profile.nb_projects_invested_in %>
+    <i class="fa fa-users"></i> Nb of projects invested in:
+    <% if @profile.nb_projects_invested_in != nil %>
+      <%= @profile.nb_projects_invested_in %> $
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <% if @profile.investor_id %>
