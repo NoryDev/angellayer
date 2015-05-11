@@ -62,9 +62,7 @@
         %>
         <div class="label label-<%= level %>">
           <% if score.nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
+              Not Rated
           <% else %>
             <% star_used = 0 %>
             <% score.to_i.times do %>

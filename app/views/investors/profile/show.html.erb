@@ -76,9 +76,7 @@
         <div class="label label-<%= level %>">
 
           <% if @profile.rating(area.downcase).nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
+            Not rated
           <% else %>
             <% star_used = 0 %>
             <% @profile.rating(area.downcase).to_i.times do %>
