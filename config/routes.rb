@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  patch 'investors/profile/:investor_id/team_members/:id' => "investors/team_members#update", as: :update_investors_profile_team_member
+  patch 'investors/profile/:profile_id/team_members/:id' => "investors/team_members#update", as: :update_investors_profile_team_member
 
   get 'investors/profile/:investor_id/evaluations/new' => "evaluations#new", as: :new_investors_profile_evaluation
   post 'investors/profile/:investor_id/evaluations' => "evaluations#create", as: :investors_profile_evaluations

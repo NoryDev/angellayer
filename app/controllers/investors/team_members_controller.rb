@@ -1,6 +1,6 @@
 class Investors::TeamMembersController < ApplicationController
 
-  before_action :find_profile, only: [:new, :edit, :create]
+  before_action :find_profile, only: [:new, :edit, :create, :update]
   before_action :set_team_member, only: [:show, :edit, :update]
 
   skip_before_action :founder_not_authorized
@@ -31,6 +31,11 @@ class Investors::TeamMembersController < ApplicationController
   end
 
   def update
+    if @team_member.update(team_member_params)
+      redirect_to investors_profile_team_member_path(@team_member.investor_profile, @team_member), notice: 'Team Member was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   private
