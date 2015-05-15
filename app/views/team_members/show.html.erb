@@ -1,0 +1,105 @@
+<!-- <h1>TeamMembers#show</h1>
+<p>Find me in app/views/team_members/show.html.erb</p> -->
+<div class="img-container img-rounded full-padded">
+
+  <div class="text-center">
+    <h1><%= @team_member.name %></h1>
+    <div class="text-muted text-medium"><em>
+      <p>
+        <% if @team_member.job_title && !@team_member.job_title.empty? %>
+          <%= @team_member.job_title %> at <%= link_to @team_member.investor_profile.company_name, investors_profile_path(@team_member.investor_profile) %>
+        <% else %>
+          Works for <%= link_to @team_member.investor_profile.company_name, investors_profile_path(@team_member.investor_profile) %>
+        <% end %>
+
+        <% if @team_member.year_joined %>
+         since <%= @team_member.year_joined %>
+        <% end %>
+      </p>
+      <% if @team_member.speciality && !@team_member.speciality %>
+        <p>
+          Speciality: <%= @team_member.speciality %>
+        </p>
+      <% end %>
+    </em></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-4 padded-less-bottom">
+      <p>
+        <i class="fa fa-envelope fa-fw"></i>
+        <% if @team_member.email && !@team_member.email.empty? %>
+          <%= mail_to @team_member.email, @team_member.email %>
+        <% else %>
+          No email yet
+        <% end %>
+      </p>
+
+      <p>
+        <i class="fa fa-phone fa-fw"></i>
+        <% if @team_member.phone && !@team_member.phone.empty? %>
+          <%= @team_member.phone %>
+        <% else %>
+          No phone number yet
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+  <!-- Socials -->
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="text-large text-center">
+        <% unless @team_member.facebook.nil? || @team_member.facebook.empty? %>
+          <%= link_to "http://" + @team_member.facebook.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
+            <i class="fa fa-facebook"></i>
+          <% end %>
+          &nbsp;
+        <% end %>
+        <% unless @team_member.twitter.nil? || @team_member.twitter.empty? %>
+          <%= link_to "http://" + @team_member.twitter.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
+            <i class="fa fa-twitter"></i>
+          <% end %>
+          &nbsp;
+        <% end %>
+        <% unless @team_member.linkedin.nil? || @team_member.linkedin.empty? %>
+          <%= link_to "http://" + @team_member.linkedin.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
+            <i class="fa fa-linkedin"></i>
+          <% end %>
+          &nbsp;
+        <% end %>
+        <% unless @team_member.angellist.nil? || @team_member.angellist.empty? %>
+          <%= link_to "http://" + @team_member.angellist.gsub(/\Ahttps?:\/\//,""), target: "_blank" do %>
+            <i class="fa fa-angellist"></i>
+          <% end %>
+          &nbsp;
+        <% end %>
+        <% unless @team_member.skype.nil? || @team_member.skype.empty? %>
+          <%= link_to "skype:#{@team_member.skype}?chat", target: "_blank" do %>
+            <i class="fa fa-skype"></i>
+          <% end %>
+          &nbsp;
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+
+<!-- t.integer  "investor_profile_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "job_title"
+    t.string   "speciality"
+    t.integer  "year_joined"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "angellist"
+    t.string   "skype"
+    t.string   "linkedin" -->
+
+    </div>
+  </div>
+</div>

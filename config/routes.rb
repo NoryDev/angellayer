@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :team_members, except: [:index, :destroy]
+
   post 'contacts/send_contact'
   post 'contacts/flag'
   post 'contacts/claim'

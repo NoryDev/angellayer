@@ -1,6 +1,6 @@
-<div class = "img-container img-rounded full-padded">
+<div class="img-container img-rounded full-padded">
 
-  <h1 class = "text-center"><%= @profile.company_name %></h1>
+  <h1 class="text-center"><%= @profile.company_name %></h1>
   <hr>
 
   <div class="row">
@@ -9,21 +9,31 @@
     </div>
     <div class="col-xs-12 col-sm-9">
       <p>
-        <i class="fa fa-home"></i>
+        <i class="fa fa-home fa-fw"></i>
         <% if @profile.physical_address != "" %>
         <%= @profile.physical_address %>
         <% else %>
-          No info yet
+          No address yet
         <% end %>
       </p>
       <p>
-        <i class="fa fa-globe"></i>
+        <i class="fa fa-bookmark fa-fw"></i>
         <% if @profile.website != "" %>
           <%= link_to @profile.website, "http://" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
         <% else %>
-          No info yet
+          No website yet
         <% end %>
       </p>
+
+      <p>
+        <i class="fa fa-users fa-fw"></i>
+        <% if !@profile.team_members.empty? %>
+          <%= raw @profile.team_members.collect { |tm| link_to tm.name, team_member_path(tm) }.join(", ") %>
+        <% else %>
+          No Team Member yet
+        <% end %>
+      </p>
+
       <p>
         <% if current_founder %>
           <%= link_to new_investors_profile_evaluation_path(@profile), {class: 'btn btn-danger btn-sm'} do %>
@@ -99,7 +109,7 @@
   <hr>
 
   <p>
-    <i class="fa fa-cubes"></i> Sectors invested in:
+    <i class="fa fa-cubes fa-fw"></i> Sectors invested in:
     <% if @profile.sectors_invested_in != "" %>
       <%= @profile.sectors_invested_in %>
       <% else %>
@@ -108,7 +118,7 @@
   </p>
 
   <p>
-    <i class="fa fa-usd"></i> Capital under managment:
+    <i class="fa fa-usd fa-fw"></i> Capital under managment:
     <% if @profile.capital_under_managment != nil %>
       <%= @profile.capital_under_managment %> $
       <% else %>
@@ -117,7 +127,7 @@
   </p>
 
   <p>
-    <i class="fa fa-globe"></i> Geographical focus:
+    <i class="fa fa-globe fa-fw"></i> Geographical focus:
     <% if @profile.geographical_focus != "" %>
       <%= @profile.geographical_focus %>
       <% else %>
@@ -126,7 +136,7 @@
   </p>
 
   <p>
-    <i class="fa fa-tree"></i> Investment stage:
+    <i class="fa fa-tree fa-fw"></i> Investment stage:
     <% if @profile.preferred_investment_stage != "" %>
       <%= @profile.preferred_investment_stage %>
       <% else %>
@@ -135,7 +145,7 @@
   </p>
 
   <p>
-    <i class="fa fa-users"></i> Nb of projects invested in:
+    <i class="fa fa-flask fa-fw"></i> Nb of projects invested in:
     <% if @profile.nb_projects_invested_in != nil %>
       <%= @profile.nb_projects_invested_in %> $
       <% else %>
@@ -149,11 +159,11 @@
       <hr>
       <p><strong>Contact :</strong></p>
       <p>
-        <i class="fa fa-user"></i> <%= @profile.contact_person %>
+        <i class="fa fa-user fa-fw"></i> <%= @profile.contact_person %>
       </p>
 
       <p>
-        <i class="fa fa-envelope-o"></i> &nbsp;
+        <i class="fa fa-envelope-o fa-fw"></i> &nbsp;
         <% if @profile.contact_email %>
         <%= mail_to @profile.contact_email, @profile.contact_email %>
         <% else %>
@@ -161,10 +171,10 @@
         <% end %>
       </p>
       <p>
-        <i class="fa fa-phone"> &nbsp; </i><%= @profile.phone_number %>
+        <i class="fa fa-phone fa-fw"> &nbsp; </i><%= @profile.phone_number %>
       </p>
       <p>
-        <i class="fa fa-mobile"></i> <%= @profile.contact_cell_phone %>
+        <i class="fa fa-mobile fa-fw"></i> <%= @profile.contact_cell_phone %>
       </p>
     </div>
   <% else %>
