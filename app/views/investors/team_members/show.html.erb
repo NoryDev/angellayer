@@ -82,8 +82,9 @@
       </p>
     </div>
   </div>
-  <% if (current_founder && current_founder.admin) || (current_investor && @team_member.investor_profile.investor == current_investor) || (current_founder && @team_member.investor_profile.investor.nil? && @team_member.investor_profile.author_as_founder == current_founder) || (current_investor && @team_member.investor_profile.investor.nil? && @team_member.investor_profile.author_as_investor == current_investor) %>
+  <% if (current_founder && current_founder.admin) || (current_investor && @profile.investor == current_investor) || (current_founder && @profile.investor.nil? && @profile.author_as_founder == current_founder) || (current_investor && @profile.investor.nil? && @profile.author_as_investor == current_investor) %>
 
-    <%= link_to "Edit", edit_investors_profile_team_member_path(@team_member.investor_profile, @team_member), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_investors_profile_team_member_path(@profile, @team_member), class: "btn btn-primary" %>
+    <%= link_to "Delete", investors_profile_team_member_path(@profile, @team_member), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   <% end %>
 </div>

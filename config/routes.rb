@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :investors do
     resources :profile, only: [:index, :show, :edit, :update, :new, :create] do
-      resources :team_members, except: [:index, :destroy, :update]
+      resources :team_members, except: [:index, :update]
     end
   end
 

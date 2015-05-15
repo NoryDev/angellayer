@@ -1,7 +1,7 @@
 class Investors::TeamMembersController < ApplicationController
 
-  before_action :find_profile, only: [:new, :edit, :create, :update]
-  before_action :set_team_member, only: [:show, :edit, :update]
+  before_action :find_profile, only: [:show, :new, :edit, :create, :update]
+  before_action :set_team_member, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :founder_not_authorized
   skip_before_action :investor_not_authorized
@@ -21,7 +21,7 @@ class Investors::TeamMembersController < ApplicationController
     @team_member.investor_profile = @profile
 
     if @team_member.save
-      redirect_to investors_profile_path(@profile), notice: 'Team member was successfully added.'
+      redirect_to investors_profile_team_member_path(@profile, @team_member), notice: 'Team member was successfully added.'
     else
       render :new
     end
@@ -38,7 +38,39 @@ class Investors::TeamMembersController < ApplicationController
     end
   end
 
+  def destroy
+    @profile = @team_member.investor_profile
+
+    if @profile.investor_id
+      if current_investor && (current_investor.investor_profile != @profile)
+        investor_not_authorized
+      else
+        destroy_it(@team_member, @profile)
+      end
+    else
+      if current_founder
+        if current_founder != @profile.author_as_founder
+          founder_not_authorized
+        else
+          destroy_it(@team_member, @profile)
+        end
+      elsif current_investor
+        if current_investor != @profile.author_as_investor
+          investor_not_authorized
+        else
+          destroy_it(@team_member, @profile)
+        end
+      end
+    end
+
+  end
+
   private
+
+    def destroy_it(team_member, profile)
+      team_member.destroy
+      redirect_to investors_profile_path(profile), notice: 'Team member was successfully deleted.'
+    end
 
     def find_profile
       @profile = InvestorProfile.find(params[:profile_id])
