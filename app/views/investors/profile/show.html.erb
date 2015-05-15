@@ -32,6 +32,14 @@
         <% else %>
           No Team Member yet
         <% end %>
+
+        <% if (current_founder && current_founder.admin) || (current_investor && @profile.investor == current_investor) || (current_founder && @profile.investor.nil? && @profile.author_as_founder == current_founder) || (current_investor && @profile.investor.nil? && @profile.author_as_investor == current_investor) %>
+          &nbsp;
+          <%= link_to new_investors_profile_team_member_path(@profile), title: "Add a member", class: "btn-xs btn-success" do %>
+            <i class="fa fa-plus"></i>
+          <% end %>
+        <% end %>
+
       </p>
 
       <p>
