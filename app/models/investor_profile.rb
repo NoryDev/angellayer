@@ -6,6 +6,7 @@ class InvestorProfile < ActiveRecord::Base
   belongs_to :author_as_founder, :class_name => "Founder"
   belongs_to :author_as_investor, :class_name => "Investor"
 
+  has_many :team_members
   has_many :evaluations, dependent: :destroy
 
   has_attached_file :profile_pic,
