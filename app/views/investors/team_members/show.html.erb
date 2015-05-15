@@ -1,7 +1,5 @@
-<!-- <h1>TeamMembers#show</h1>
-<p>Find me in app/views/team_members/show.html.erb</p> -->
-<div class="img-container img-rounded full-padded">
 
+<div class="img-container img-rounded full-padded">
   <div class="text-center">
     <h1><%= @team_member.name %></h1>
     <div class="text-muted text-medium"><em>
@@ -84,22 +82,8 @@
       </p>
     </div>
   </div>
+  <% if (current_founder && current_founder.admin) || (current_investor && @team_member.investor_profile.investor == current_investor) || (current_founder && @team_member.investor_profile.investor.nil? && @team_member.investor_profile.author_as_founder == current_founder) || (current_investor && @team_member.investor_profile.investor.nil? && @team_member.investor_profile.author_as_investor == current_investor) %>
 
-
-<!-- t.integer  "investor_profile_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "job_title"
-    t.string   "speciality"
-    t.integer  "year_joined"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "angellist"
-    t.string   "skype"
-    t.string   "linkedin" -->
-
-    </div>
-  </div>
+    <%= link_to "Edit", edit_investors_profile_team_member_path(@team_member.investor_profile, @team_member), class: "btn btn-primary" %>
+  <% end %>
 </div>
