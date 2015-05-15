@@ -1,2 +1,5 @@
-<h1>TeamMembers#new</h1>
-<p>Find me in app/views/team_members/new.html.erb</p>
+<h1>New Team Member</h1>
+<h4 class="text-muted">For <%= link_to @profile.company_name, investors_profile_path(@profile) %></h4>
+<br>
+
+<%= render 'form' %>
