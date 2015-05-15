@@ -86,7 +86,7 @@
           <div><i class="fa fa-trophy fa-fw"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart fa-fw"></i> <small><%= profile.evaluations.count %> Reviews</small></div>
           <% if !profile.team_members.empty? %>
             <div><i class="fa fa-users fa-fw"></i><small>Members:
-              <%= raw profile.team_members.collect { |tm| link_to tm.name, team_member_path(tm) }.join(", ") %>
+              <%= raw profile.team_members.collect { |tm| link_to tm.name, investors_profile_team_member_path(id: tm.id, profile_id: profile.id) }.join(", ") %>
             </small></div>
           <% end %>
         </div>

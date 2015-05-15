@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :team_members, except: [:index, :destroy]
-
   post 'contacts/send_contact'
   post 'contacts/flag'
   post 'contacts/claim'
@@ -13,7 +11,9 @@ Rails.application.routes.draw do
   end
 
   namespace :investors do
-    resources :profile, only: [:index, :show, :edit, :update, :new, :create]
+    resources :profile, only: [:index, :show, :edit, :update, :new, :create] do
+      resources :team_members, except: [:index, :destroy]
+    end
   end
 
   get 'investors/profile/:investor_id/evaluations/new' => "evaluations#new", as: :new_investors_profile_evaluation

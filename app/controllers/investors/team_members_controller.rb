@@ -1,4 +1,4 @@
-class TeamMembersController < ApplicationController
+class Investors::TeamMembersController < ApplicationController
 
   skip_before_action :founder_not_authorized, only: [:show]
   skip_before_action :investor_not_authorized, only: [:show]
