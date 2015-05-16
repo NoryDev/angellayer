@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   end
 
   namespace :investors do
-    resources :profile, only: [:index, :show, :edit, :update, :new, :create]
+    resources :profile, only: [:index, :show, :edit, :update, :new, :create] do
+      resources :team_members, except: [:index, :update]
+    end
   end
+
+  patch 'investors/profile/:profile_id/team_members/:id' => "investors/team_members#update", as: :update_investors_profile_team_member
 
   get 'investors/profile/:investor_id/evaluations/new' => "evaluations#new", as: :new_investors_profile_evaluation
   post 'investors/profile/:investor_id/evaluations' => "evaluations#create", as: :investors_profile_evaluations

@@ -2,7 +2,7 @@
   <div class="text-right">
     <small>
       <span id="comment-<%= comment.id %>"><%= comment.content %></span> -
-      <span class = "text-muted">
+      <span class="text-muted">
         <%= link_to comment.founder, founders_profile_path(comment.founder) %> &nbsp;
         <%= time_ago_in_words(comment.created_at) %> ago
 

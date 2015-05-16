@@ -10,7 +10,7 @@ MODAL - SIGN IN
         <h4 class="modal-title" id="myModalLabel">Sign In</h4>
       </div>
       <div class="modal-body">
-        <div class = "black-button"><strong>Get instant access to all investors reviews and ratings</strong></div><br>
+        <div class="black-button"><strong>Get instant access to all investors reviews and ratings</strong></div><br>
         <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn social-signin" do %>
         <i class="fa fa-facebook"></i> Sign In
         <% end %>
@@ -21,7 +21,7 @@ MODAL - SIGN IN
         <i class="fa fa-linkedin"></i> Sign In
         <% end %>
         <div class="content_divider"></div>
-        <p class = "black-button text-center">Or</p>
+        <p class="black-button text-center">Or</p>
         <%= form_for :resource, :html => { class: "login-form", id: "login"}, url: log_in_path do |f| %>
         <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
         <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
@@ -68,7 +68,7 @@ MODAL - SIGN UP
           <i class="fa fa-linkedin"></i> Sign Up
           <% end %>
           <div class="content_divider"></div>
-          <p class = "black-button text-center">Or</p>
+          <p class="black-button text-center">Or</p>
         </div>
         <div class="login-form">
           <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>

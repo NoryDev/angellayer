@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419192602) do
+ActiveRecord::Schema.define(version: 20150515080904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,6 +166,26 @@ ActiveRecord::Schema.define(version: 20150419192602) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "investor_profile_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "job_title"
+    t.string   "speciality"
+    t.integer  "year_joined"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "angellist"
+    t.string   "skype"
+    t.string   "linkedin"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "team_members", ["investor_profile_id"], name: "index_team_members_on_investor_profile_id", using: :btree
+
   create_table "votes", force: :cascade do |t|
     t.integer  "founder_id"
     t.integer  "evaluation_id"
@@ -183,6 +203,7 @@ ActiveRecord::Schema.define(version: 20150419192602) do
   add_foreign_key "evaluations", "founders"
   add_foreign_key "evaluations", "investor_profiles"
   add_foreign_key "investor_profiles", "investors"
+  add_foreign_key "team_members", "investor_profiles"
   add_foreign_key "votes", "evaluations"
   add_foreign_key "votes", "founders"
 end
