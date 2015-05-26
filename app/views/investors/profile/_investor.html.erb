@@ -1,65 +1,33 @@
 <% @profiles.each do |profile| %>
+  <tr>
 
-  <div class="img-rounded snippet-box">
+<!-- =========================
+INVESTOR COLUMN
+============================== -->
+    <td>
+      <%= link_to investors_profile_path(profile) do %>
+        <%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, class: "snippet-avatar-3" %>
+      <% end %>
 
-    <div class="row">
-      <h2 class="text-center">
-        <% if profile.company_name %>
-          <%= link_to profile.company_name, investors_profile_path(profile), class: "white-link" %>
-        <% end %>
-      </h2>
-    </div>
+      <% if profile.company_name %>
+        <%= link_to profile.company_name, investors_profile_path(profile) %>
+      <% end %>
+    </td>
 
-    <div class="row padded-less-bottom">
-      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
-        <%= link_to investors_profile_path(profile) do %>
-          <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, class: "snippet-avatar-2" %></p>
-        <% end %>
-      </div>
-
-
-      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if (current_investor && current_investor.investor_profile.nil?) || (current_founder && current_founder.admin) %>
-          <% user = current_investor || current_founder %>
-          <% unless profile.investor_id %>
-            <div class="pull-right">
-
-              <small>
-                <%= link_to "claim profile", "#", :data => { toggle: "modal", target: "#claim-#{profile.id}" } %>
-              </small>
-              <%= render 'claim_modal', profile: profile %>
-            </div>
-          <% end %>
-        <% end %>
-
-
-        <p><%= profile.physical_address %>
-          <br>
-          <% if profile.website %>
-            <%= link_to profile.website, "http://" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
-          <% end %>
-        </p>
-
-
-      </div>
-    </div>
-
-
-
-    <div class="row padded-less-top">
-      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
-
-        <% score = profile.total_average_score
-          if score.nil?
-            level = "default"
-          elsif score > 3.5
-            level = "success"
-          elsif score < 2.5
-            level = "danger"
-          else
-            level = "warning"
-          end
-        %>
+<!-- =========================
+MOOD COLUMN
+============================== -->
+    <td>
+      <% score = profile.total_average_score
+        if score.nil?
+          level = "default"
+        elsif score > 3.5
+          level = "success"
+        elsif score < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end %>
         <div class="label label-<%= level %>">
           <% if score.nil? %>
               Not Rated
@@ -79,21 +47,34 @@
             <% end %>
           <% end %>
         </div>
-      </div>
+    </td>
 
-      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <div class="text-muted">
-          <div><i class="fa fa-trophy fa-fw"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart fa-fw"></i> <small><%= profile.evaluations.count %> Reviews</small></div>
-          <% if !profile.team_members.empty? %>
-            <div><i class="fa fa-users fa-fw"></i><small>Members:
-              <%= raw profile.team_members.collect { |tm| link_to tm.name, investors_profile_team_member_path(id: tm.id, profile_id: profile.id) }.join(", ") %>
-            </small></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- =========================
+RATING COLUMN
+============================== -->
 
-  <br>
+    <td class = "text-yellow">
+      <%= render 'evaluations/stars', score: profile.total_average_score %>
+    </td>
 
+<!-- =========================
+SHARKRANK COLUMN
+============================== -->
+
+    <td>
+      <%= render 'evaluations/grade', score: profile.total_average_score %>
+    </td>
+
+<!-- =========================
+LAST REVIEW COLUMN
+============================== -->
+
+    <td>
+      <% if profile.evaluations.count != 0 %>
+      <%= time_ago_in_words(profile.evaluations.last.created_at) %> ago
+      <% else %>
+      Add Review
+      <% end %>
+    </td>
+</tr>
 <% end %>

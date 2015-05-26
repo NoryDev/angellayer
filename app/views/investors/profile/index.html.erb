@@ -13,12 +13,25 @@
 <%= link_to "Number of reviews", investors_profile_index_path(order: :nb_reviews) %> |
 <%= link_to "Company name", investors_profile_index_path(order: :company_name) %></p>
 
-<div class="investor-container">
-  <%= render "investor" %>
-</div>
+
+  <table class="investor-container">
+    <thead>
+      <th>Investor</th>
+      <th>Mood</th>
+      <th>Rating</th>
+      <th>SharkRank</th>
+      <th>Last Review</th>
+    </thead>
+
+    <%= render "investor" %>
+
+  </table>
+
+<br>
+
 
 <div class="load-more-container text-center">
-        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+<!-- hide our loading gif image so that we show it when making ajax call via jquery -->
   <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
   <%= link_to "Load More", investors_profile_index_path, class: "load-more btn btn-primary" %>
 </div>

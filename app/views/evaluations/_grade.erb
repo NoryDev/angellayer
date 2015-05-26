@@ -1,0 +1,9 @@
+<div class="blue-box">
+  <% if score.nil? %> -
+  <% elsif score <= 1 %> F
+  <% elsif score <= 2 %> D
+  <% elsif score <= 3 %> C
+  <% elsif score <= 4 %> B
+  <% else score <= 5 %> A
+  <% end %>
+</div>
