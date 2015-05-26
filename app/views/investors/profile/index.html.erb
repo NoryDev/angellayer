@@ -8,19 +8,13 @@
   Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
 <div class="padded text-center "></div>
 
-<p class="text-center">Order by :
-<%= link_to "General Score", investors_profile_index_path(order: :average_score) %> |
-<%= link_to "Number of reviews", investors_profile_index_path(order: :nb_reviews) %> |
-<%= link_to "Company name", investors_profile_index_path(order: :company_name) %></p>
-
-
   <table class="investor-container">
     <thead>
-      <th>Investor</th>
+      <th><%= link_to "Investor", investors_profile_index_path(order: :company_name), class: "black-text"  %></th>
       <th>Mood</th>
-      <th>Rating</th>
+      <th><%= link_to "Rating", investors_profile_index_path(order: :average_score), class: "black-text" %></th>
       <th>SharkRank</th>
-      <th>Last Review</th>
+      <th><%= link_to "Reviews", investors_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
     </thead>
 
     <%= render "investor" %>
@@ -35,8 +29,3 @@
   <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
   <%= link_to "Load More", investors_profile_index_path, class: "load-more btn btn-primary" %>
 </div>
-
-<div class="padded text-center "></div>
-<div class="text-center alert alert-info alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
