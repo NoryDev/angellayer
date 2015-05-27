@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100", alt: @profile.company_name %>
+      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100", alt: @profile.company_name, class: "snippet-avatar-2" %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <p>
@@ -91,11 +91,14 @@
 
         <div><a class="popover_form" data-content="<small class='text-muted'> <%= t "#{area.downcase}_description" %></small>"><strong class="black-button"><%= area %> <i class="fa fa-question-circle"></i></strong></a></div>
 
-        <div class="label label-<%= level %>">
 
-          <% if @profile.rating(area.downcase).nil? %>
-            Not rated
-          <% else %>
+
+        <% if @profile.rating(area.downcase).nil? %>
+        <div class="not-rated">
+          Not rated
+        </div>
+        <% else %>
+          <div class="label label-<%= level %>">
             <% star_used = 0 %>
             <% @profile.rating(area.downcase).to_i.times do %>
               <i class="fa fa-star"></i>
@@ -109,8 +112,8 @@
               empty.times do %>
               <i class="fa fa-star-o"></i>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </li>
     <% end %>
   </ul>

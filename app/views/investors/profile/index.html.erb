@@ -10,11 +10,11 @@
 
   <table class="investor-container">
     <thead>
-      <th><%= link_to "Investor", investors_profile_index_path(order: :company_name), class: "black-text"  %></th>
+      <th><%= link_to 'Investor <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :company_name), class: "black-text"  %></th>
       <th>Mood</th>
-      <th><%= link_to "Rating", investors_profile_index_path(order: :average_score), class: "black-text" %></th>
+      <th><%= link_to 'Rating <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :average_score), class: "black-text" %></th>
       <th>SharkRank</th>
-      <th><%= link_to "Reviews", investors_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
+      <th><%= link_to 'Reviews <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
     </thead>
 
     <%= render "investor" %>
