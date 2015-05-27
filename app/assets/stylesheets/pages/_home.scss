@@ -85,6 +85,7 @@
 
 .snippet-avatar {
   width: 100%;
+  height: auto;
   border-radius: 5px;
 }
 
@@ -92,6 +93,12 @@
   width: 75%;
   height: auto;
   border-radius: 5px;
+}
+
+.snippet-avatar-3 {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
 }
 
 #home-header {

@@ -93,7 +93,7 @@ class Investors::ProfileController < ApplicationController
 
     # Number of profiles on a page
     def per_page
-      5
+      25
     end
 
 
