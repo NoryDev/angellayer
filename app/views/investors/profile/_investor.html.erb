@@ -28,25 +28,25 @@ MOOD COLUMN
         else
           level = "warning"
         end %>
+      <% if score.nil? %>
+          <div class="not-rated">Not Rated</div>
+      <% else %>
         <div class="label label-<%= level %> ">
-          <% if score.nil? %>
-            Not Rated
-          <% else %>
-            <% star_used = 0 %>
-            <% score.to_i.times do %>
-              <i class="fa fa-star"></i>
-              <% star_used = score.to_i %>
-            <% end %>
-            <% if score - score.to_i >= 0.5 %>
-              <i class="fa fa-star-half-o"></i>
-              <% star_used += 1 %>
-            <% end %>
-            <% empty = 5 - star_used
-              empty.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% end %>
+        <% star_used = 0 %>
+        <% score.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = score.to_i %>
+        <% end %>
+        <% if score - score.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
         </div>
+      <% end %>
     </td>
 
 <!-- =========================
@@ -85,5 +85,5 @@ REVIEW COUNT COLUMN
         <% end %>
       <% end %>
     </td>
-</tr>
+  </tr>
 <% end %>
