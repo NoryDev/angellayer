@@ -175,7 +175,7 @@
 
       <p>
         <i class="fa fa-envelope-o fa-fw"></i> &nbsp;
-        <% if @profile.contact_email %>
+        <% if @profile.contact_email != "" %>
         <%= mail_to @profile.contact_email, @profile.contact_email %>
         <% else %>
         <%= mail_to @profile.email, @profile.email %>
