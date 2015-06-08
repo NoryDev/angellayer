@@ -229,18 +229,27 @@ h6 {
 td {
   padding: 10px 20px;
   border-bottom: 1px solid lightgrey;
-  background-color: white;
 }
 
 th {
   padding: 10px 15px;
   border-bottom: 2px solid lightgrey;
-  background-color: #dddddd;
+  background-color: #eaecef;
 }
 
 table{
   width: 100%
 }
+
+tr{
+  background-color: white;
+}
+
+tr:hover td {
+  background:#eaecef;
+}
+
+
 
 .not-rated{
   width:78px;

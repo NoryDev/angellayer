@@ -8,12 +8,7 @@ class Investors::ProfileController < ApplicationController
   def index
     @profiles = fetch_profiles
     @profiles = @profiles.page(params[:page]).per(per_page)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-
+    render "index", layout: "header-fullpage"
   end
 
   def show
