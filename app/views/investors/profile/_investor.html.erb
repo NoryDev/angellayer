@@ -17,7 +17,7 @@ INVESTOR COLUMN
 <!-- =========================
 MOOD COLUMN
 ============================== -->
-    <td>
+    <td class="hide-mobile">
       <% score = profile.total_average_score
         if score.nil?
           level = "default"
@@ -67,7 +67,7 @@ RATING COLUMN
 SHARKRANK COLUMN
 ============================== -->
 
-    <td>
+    <td class="hide-mobile">
         <%= render 'evaluations/grade', score: profile.total_average_score %>
 
     </td>
