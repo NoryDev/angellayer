@@ -95,7 +95,9 @@ $navbar-profile-border-width: 1px;
   }
 
   .navbar-brand img, .navbar-brand svg {
-    height: $navbar-height;
+    // height: $navbar-height;
+    width: 180px;
+    height: auto;
     padding: 0px;
   }
 

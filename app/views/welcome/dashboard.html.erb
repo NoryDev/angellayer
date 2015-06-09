@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="text-center">
+  <div class="text-center padded">
     <% if @founder.name.empty? %>
       <div class="alert alert-info alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -9,20 +9,28 @@
   </div>
   <div class="row">
     <div class="col-sm-4 full-padded text-left img-container margin-right">
+
+  <!-- =========================
+FOUNDER IMAGE AND NAME
+============================== -->
       <p><%= image_tag @founder.image, size: "100x100", alt: @founder.name %> &nbsp;
         <%=@founder.name %> <br>
       </p>
 
-      <p>
         <table>
-
-
+<!-- =========================
+NUMBER OF REVIEWS
+============================== -->
           <% if @founder.evaluations.count > 0 %>
             <tr>
               <td>Reviews :</td>
               <td><strong><%= @founder.evaluations.count %></strong></td>
             </tr>
           <% end %>
+
+<!-- =========================
+NUMBER OF COMMENTS
+============================== -->
           <% if @founder.comments.count > 0 %>
             <tr>
               <td>Comments :</td>
@@ -30,6 +38,9 @@
             </tr>
           <% end %>
 
+<!-- =========================
+AMOUNT RAISED
+============================== -->
           <% total_raised = 0 %>
           <% @founder.evaluations.each do |evaluation| %>
           <% next if evaluation.amount_raised.nil? %>
@@ -45,7 +56,9 @@
         </table>
         <br>
 
-
+<!-- =========================
+RATE INVESTOR
+============================== -->
       <form class="form-inline">
         <div class="form-group">
         <select id="select-investor" class="form-control">
@@ -61,10 +74,12 @@
         <button id="submit-profile" class="btn btn-danger">Rate Investor</button>
       </form>
 
-
+<!-- =========================
+YOUR POPULAR REVIEWS
+============================== -->
       <div class="hidden-xs">
-        <hr>
         <% if @founder.evaluations.count > 0 %>
+          <hr>
           <h4>Your most popular reviews</h4>
           <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(5) %>
           <% evaluations.each do |evaluation| %>
@@ -73,10 +88,12 @@
         <% end %>
       </div>
 
-
+<!-- =========================
+YOUR LAST COMMENTS
+============================== -->
         <div class="hidden-xs">
-          <hr>
           <% if @founder.comments.count > 0 %>
+            <hr>
             <h4>Your last comments</h4>
             <% @founder.comments.limit(5).each do |comment| %>
               <small><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</small><br>
@@ -84,6 +101,9 @@
           <% end %>
         </div>
 
+<!-- =========================
+BLA BLA BLA TEXT
+============================== -->
       <!-- <div class="hidden-xs"><%# if @founder.evaluations.count > 0 || @founder.comments.count > 0 %>
         <%#= link_to "Rate an investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
         <br>
@@ -108,19 +128,31 @@
       <br>
     </div>
 
+
     <div class="col-sm-7 margin-right">
-      <h3>Most recent reviews</h3>
+
+<!-- =========================
+MOST RECENT REVIEWS
+============================== -->
+      <!-- <h3>Most recent reviews</h3> -->
       <% @evaluations.each do |evaluation| %>
         <%= render 'evaluations/show_snippets', evaluation: evaluation %>
         <% end %>
+
+<!-- =========================
+YOUR RECENT REVIEWS
+============================== -->
         <% if @founder.evaluations.blank? %>
         <% else %>
           <h3>Your Last Reviews</h3>
         <!-- using partial to render the show pages -->
+        <div class="grey-snippet">
           <% @founder.evaluations.limit(5).each do |evaluation| %>
             <%= render 'evaluations/show_snippets', evaluation: evaluation %>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
+
     </div>
   </div>
 </div>
