@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="padded text-center ">
+  <div class="text-center">
     <% if @founder.name.empty? %>
       <div class="alert alert-info alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -14,26 +14,40 @@
       </p>
 
       <p>
-        <% if @founder.evaluations.count > 0 %>
-        Reviews : <strong><%= @founder.evaluations.count %></strong> <br>
-        <% end %>
+        <table>
 
-        <% if @founder.comments.count > 0 %>
-        Comments : <strong><%= @founder.comments.count %></strong> <br>
-        <% end %>
 
-        <% total_raised = 0 %>
-        <% @founder.evaluations.each do |evaluation| %>
-        <% next if evaluation.amount_raised.nil? %>
-        <% total_raised += evaluation.amount_raised %>
-        <% end %>
-        <% if total_raised > 0 %>
-        Raised :
-        <strong><%= number_to_currency(total_raised) %></strong>
-        <% end %>
-      </p>
+          <% if @founder.evaluations.count > 0 %>
+            <tr>
+              <td>Reviews :</td>
+              <td><strong><%= @founder.evaluations.count %></strong></td>
+            </tr>
+          <% end %>
+          <% if @founder.comments.count > 0 %>
+            <tr>
+              <td>Comments :</td>
+              <td><strong><%= @founder.comments.count %></strong></td>
+            </tr>
+          <% end %>
 
-      <p>
+          <% total_raised = 0 %>
+          <% @founder.evaluations.each do |evaluation| %>
+          <% next if evaluation.amount_raised.nil? %>
+          <% total_raised += evaluation.amount_raised %>
+          <% end %>
+
+          <% if total_raised > 0 %>
+            <tr>
+              <td>Raised :</td>
+              <td><strong><%= number_to_currency(total_raised) %></strong></td>
+            </tr>
+          <% end %>
+        </table>
+        <br>
+
+
+      <form class="form-inline">
+        <div class="form-group">
         <select id="select-investor" class="form-control">
         <option value="0">Select Investor</option>
         <% @profiles.each do |profile| %>
@@ -41,60 +55,60 @@
         <% end %>
         <option value="0">Investor not in list</option>
         </select>
+        </div>
         <!-- check the dashboard.js for jquery code -->
-        </p>
-        <p>
-        <button id="submit-profile" class="btn btn-danger btn-lg">Rate an Investor</button>
-        <br><br>
-      </p>
+
+        <button id="submit-profile" class="btn btn-danger">Rate Investor</button>
+      </form>
+
 
       <div class="hidden-xs">
+        <hr>
         <% if @founder.evaluations.count > 0 %>
-          <h3>Your most popular reviews</h3>
+          <h4>Your most popular reviews</h4>
           <% evaluations = @founder.evaluations.sort_by{ |evaluation| -evaluation.score}.first(5) %>
           <% evaluations.each do |evaluation| %>
-            <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp; for <%= link_to evaluation.title_review, evaluation_path(evaluation) %></p>
+            <p class="score-list"><span class="label label-primary score-badge"><%= evaluation.score %></span> &nbsp;<small><%= link_to evaluation.title_review, evaluation_path(evaluation) %></small></p>
           <% end %>
-          <br>
         <% end %>
       </div>
 
 
         <div class="hidden-xs">
+          <hr>
           <% if @founder.comments.count > 0 %>
-            <h3>Your last comments</h3>
+            <h4>Your last comments</h4>
             <% @founder.comments.limit(5).each do |comment| %>
-              <p><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
+              <small><%= link_to comment.content, evaluation_path(comment.evaluation) %> - <%= time_ago_in_words(comment.created_at) %> ago</small><br>
             <% end %>
-            <br>
           <% end %>
         </div>
 
-      <div class="hidden-xs"><% if @founder.evaluations.count > 0 || @founder.comments.count > 0 %>
-        <%= link_to "Rate an investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
+      <!-- <div class="hidden-xs"><%# if @founder.evaluations.count > 0 || @founder.comments.count > 0 %>
+        <%#= link_to "Rate an investor", investors_profile_index_path, class: "btn btn-danger btn-lg" %>
         <br>
-      <% end %>
-      </div>
+      <%# end %>
+      </div> -->
 
 
-      <p class="hidden-xs">
+      <!-- <p class="hidden-xs">
         <strong>PAY IT FORWARD</strong>. Share your experience with other founders, tell them about previous experiences you've had with investors. Try writing a precise and thorough review, be just in your rating and don't hesitate to give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs. No anonymous reviews, be <strong>BRAVE</strong>, be <strong>TRUE</strong> but don't be <strong>RUDE</strong>... Of course rate only investors that you have contacted. If you allow other founders to contact you about your experience, please leave an email, linkedin address or cell phone so that they can contact you.
         <br>
       </p>
 
       <p class="hidden-xs">
-        <%= link_to "All reviews", evaluations_path, class: "btn btn-success btn-lg" %>
+        <%#= link_to "All reviews", evaluations_path, class: "btn btn-success btn-lg" %>
         <br>
         So you're about to sign that lifetime deal but don't know which of the potential investors that come banging on your door to choose from? If you are interested in knowing what other founders have written about investors and their own experience, check the reviews or search for an investor by name in the search bar above.
         <br>
-      </p>
+      </p> -->
     </div>
 
     <div class="visible-xs-block">
       <br>
     </div>
 
-    <div class="col-sm-7 full-padded img-container margin-right">
+    <div class="col-sm-7 margin-right">
       <h3>Most recent reviews</h3>
       <% @evaluations.each do |evaluation| %>
         <%= render 'evaluations/show_snippets', evaluation: evaluation %>
