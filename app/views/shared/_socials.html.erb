@@ -1,0 +1,36 @@
+<!-- =========================
+SOCIALS
+============================== -->
+<div data-sr='wait 3s, enter left' class="social-bar" >
+  <%= link_to '<i class="fa fa-envelope-o"></i>'.html_safe, "#", :data => { toggle: "modal", target: "#contact" }, class: "left-bar-button left-email" %>
+  <a href="https://twitter.com/shark_rank" target="_blank"><i class="fa fa-twitter left-bar-button left-twitter"></i></a>
+  <a href="https://www.facebook.com/sharkrank" target="_blank"><i class="fa fa-facebook left-bar-button left-facebook"></i></a>
+</div>
+
+
+<!-- =========================
+MODAL - Contact
+============================== -->
+
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Leave us your comment</h4>
+      </div>
+      <div class="modal-body">
+        <p class="thanks" style="display: none;"><strong>Thank you for your message</strong></p>
+        <% if founder_signed_in? %>
+          <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
+        <% elsif investor_signed_in? && current_investor.investor_profile %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: current_investor.investor_profile.company_name %>
+        <% elsif investor_signed_in? %>
+          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: "Investor without profile" %>
+        <% else %>
+          <%= render 'contacts/empty_contact_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

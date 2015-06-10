@@ -14,17 +14,8 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <%#= form_for :search, method: 'GET', url: search_path, :html => { class: "navbar-form navbar-left", style: "margin-top: 19px;", id: "search"} do |f| %>
-        <%#= f.text_field :searchfield, class: "form-control input-sm", placeholder: "Search..." %>
-        <%#= f.submit "Search", class: "btn btn-default btn-sm" %>
-      <%# end %>
-
-
-
-
-
 
       <ul class="nav navbar-nav navbar-right">
 
@@ -32,12 +23,6 @@
 BUTTONS
 ============================== -->
 
-
-
-
-<!--         <li>
-          <%#= link_to "Contact us", "#", :data => { toggle: "modal", target: "#contact" } %>
-        </li> -->
         <% if founder_signed_in? %>
           <li>
             <%= link_to "Investors", investors_profile_index_path %>
@@ -140,9 +125,6 @@ PROFILE - PIC
         </li>
       </ul>
 
-
-<%#= link_to "Add an investor", new_investors_profile_path, class: "btn btn-default btn-danger navbar-btn navbar-right btn-sm" %>
-
 <!-- =========================
 SEARCH FORM
 ============================== -->
@@ -163,30 +145,3 @@ SEARCH FORM
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<!-- =========================
-MODAL - Contact
-============================== -->
-
-<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Leave us your comment</h4>
-      </div>
-      <div class="modal-body">
-        <p class="thanks" style="display: none;"><strong>Thank you for your message</strong></p>
-        <% if founder_signed_in? %>
-          <%= render 'contacts/logged_contact_form', email: current_founder.email, name: current_founder.name %>
-        <% elsif investor_signed_in? && current_investor.investor_profile %>
-          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: current_investor.investor_profile.company_name %>
-        <% elsif investor_signed_in? %>
-          <%= render 'contacts/logged_contact_form', email: current_investor.email, name: "Investor without profile" %>
-        <% else %>
-          <%= render 'contacts/empty_contact_form' %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
