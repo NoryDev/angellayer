@@ -2,18 +2,26 @@
 <!-- <h1 class="text-center">Founders</h1>
 <div class="colored-line"></div>
   <br> -->
+  <table class="founder-container">
+    <thead>
+      <th><%= link_to 'Founder <small><i class="fa fa-sort"></i></small>'.html_safe, founders_profile_index_path(order: :last_name), class: "black-text"  %></th>
+      <th class="hide-mobile">Website</th>
+      <th><%= link_to 'Reviews <small><i class="fa fa-sort"></i></small>'.html_safe, founders_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
+      <th><%= link_to 'Comments <small><i class="fa fa-sort"></i></small>'.html_safe, founders_profile_index_path(order: :nb_comments), class: "black-text" %></th>
+    </thead>
 
-<p class="text-center">Order by :
-<%= link_to "Number of reviews", founders_profile_index_path(order: :nb_reviews) %> |
-<%= link_to "Number of comments", founders_profile_index_path(order: :nb_comments) %> |
-<%= link_to "Last name", founders_profile_index_path(order: :last_name) %></p>
+    <%= render "founder" %>
 
-<div class="founder-container">
-  <%= render "founder" %>
-</div>
+  </table>
 
-<div class="load-more-container text-center">
-        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
-  <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
-  <%= link_to "Load More", founders_profile_index_path, class: "load-more btn btn-primary" %>
-</div>
+<br>
+
+<% if @founders.count > 25 %>
+  <div class="load-more-container text-center">
+          <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+    <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+    <%= link_to "Load More", founders_profile_index_path, class: "load-more btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= render 'shared/socials' %>

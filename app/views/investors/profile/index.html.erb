@@ -3,18 +3,19 @@
 <div class="colored-line"></div>
 <br> -->
 
-<div class="text-center alert alert-info alert-dismissible" role="alert">
+<!-- <div class="text-center alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  Can't find an investor? Try the search bar above or &nbsp; <%= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
-<div class="padded text-center "></div>
+  Can't find an investor? Try the search bar above or &nbsp; <%#= link_to "Add an investor", new_investors_profile_path, class: "btn btn-success btn-xs" %> </div>
+<div class="padded text-center "></div> -->
 
   <table class="investor-container">
     <thead>
-      <th><%= link_to 'Investor <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :company_name), class: "black-text"  %></th>
-      <th>Mood</th>
-      <th><%= link_to 'Rating <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :average_score), class: "black-text" %></th>
-      <th>SharkRank</th>
-      <th><%= link_to 'Reviews <i class="fa fa-sort"></i>'.html_safe, investors_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
+      <th><%= link_to 'Investor <small><i class="fa fa-sort"></i></small>'.html_safe, investors_profile_index_path(order: :company_name), class: "black-text"  %>
+      </th>
+      <th class="hide-mobile">Mood</th>
+      <th><%= link_to 'Rating <small><i class="fa fa-sort"></i></small>'.html_safe, investors_profile_index_path(order: :average_score), class: "black-text" %></th>
+      <th class="hide-mobile">SharkRank</th>
+      <th><%= link_to 'Reviews <small><i class="fa fa-sort"></i></small>'.html_safe, investors_profile_index_path(order: :nb_reviews), class: "black-text" %></th>
     </thead>
 
     <%= render "investor" %>
@@ -23,9 +24,12 @@
 
 <br>
 
+<% if @profiles.count > 25 %>
+  <div class="load-more-container text-center">
+  <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+    <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+    <%= link_to "Load More", investors_profile_index_path, class: "load-more btn btn-primary" %>
+  </div>
+<% end %>
 
-<div class="load-more-container text-center">
-<!-- hide our loading gif image so that we show it when making ajax call via jquery -->
-  <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
-  <%= link_to "Load More", investors_profile_index_path, class: "load-more btn btn-primary" %>
-</div>
+<%= render 'shared/socials' %>

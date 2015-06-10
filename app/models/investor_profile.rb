@@ -16,6 +16,8 @@ class InvestorProfile < ActiveRecord::Base
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
 
+  validates :company_name, uniqueness: { case_sensitive: false }
+
   after_create :send_welcome_email
 
   def image

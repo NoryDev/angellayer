@@ -80,7 +80,7 @@ class WelcomeController < ApplicationController
     @evaluations = Evaluation.order(created_at: :desc).limit(5)
     @founder = current_founder
     @profiles = InvestorProfile.order(created_at: :desc).limit(5)
-    render 'dashboard', layout: 'dashboard-fullpage'
+    render 'dashboard', layout: 'header-fullpage'
   end
 
   private

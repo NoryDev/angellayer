@@ -6,7 +6,7 @@ INVESTOR COLUMN
 ============================== -->
     <td>
       <%= link_to investors_profile_path(profile) do %>
-        <%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, class: "snippet-avatar-3" %>
+        <%= image_tag profile.profile_pic.url, alt: profile.company_name, class: "snippet-avatar-3" %>
       <% end %>
 
       <% if profile.company_name %>
@@ -17,7 +17,7 @@ INVESTOR COLUMN
 <!-- =========================
 MOOD COLUMN
 ============================== -->
-    <td>
+    <td class="hide-mobile">
       <% score = profile.total_average_score
         if score.nil?
           level = "default"
@@ -67,7 +67,7 @@ RATING COLUMN
 SHARKRANK COLUMN
 ============================== -->
 
-    <td>
+    <td class="hide-mobile">
         <%= render 'evaluations/grade', score: profile.total_average_score %>
 
     </td>

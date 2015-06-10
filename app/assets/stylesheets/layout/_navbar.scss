@@ -7,7 +7,7 @@ $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
-$navbar-letter-spacing: 1.5px;
+$navbar-letter-spacing: 1.1px;
 $navbar-font-family: $navbar-font;
 $navbar-bg: white;
 
@@ -23,7 +23,7 @@ $navbar-border-bottom-color: $gray-lighter;
 /* -------------------------------------
  * Navbar button
  * ------------------------------------- */
-$navbar-btn-height: 40px;
+$navbar-btn-height: 30px;
 $navbar-btn-bg: $blue;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
@@ -66,6 +66,16 @@ $navbar-profile-border-width: 1px;
     background-color: transparent;
   }
 
+  @media (max-width: 768px) {
+  .navbar-nav > li > a,
+  .navbar-nav > .open > a,
+  .navbar-nav > li > a:focus,
+  .navbar-nav > .open > a:focus {
+    line-height: 20px;
+  }
+}
+
+
   .navbar-nav > li > a:hover,
   .navbar-nav > .open > a:hover {
     color: $navbar-hover-color;
@@ -86,16 +96,19 @@ $navbar-profile-border-width: 1px;
     color: $navbar-btn-color;
     border-radius: $navbar-btn-radius;
     margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
-    font-weight: bold;
+    font-weight: none;
     background-color: $navbar-btn-bg;
     font-size: 12px;
+    max-width: 130px;
     &:hover{
       background-color: darken($navbar-btn-bg, 10%);
     }
   }
 
   .navbar-brand img, .navbar-brand svg {
-    height: $navbar-height;
+    // height: $navbar-height;
+    width: 180px;
+    height: auto;
     padding: 0px;
   }
 
@@ -103,7 +116,7 @@ $navbar-profile-border-width: 1px;
     border: $navbar-profile-border-width solid $navbar-profile-border-color;
     //box-shadow: 0 0 2px rgb(200, 200, 200);
     height: $navbar-height - (2 * $navbar-profile-border-width);
-    margin-right: 10px;
+    margin-right: 5px;
     border-radius: $navbar-profile-radius;
   }
 
@@ -163,5 +176,17 @@ $navbar-profile-border-width: 1px;
  * ------------------------------------- */
 .margin-top {
 margin: 15px 15px 15px 0px;
+
+}
+
+.nav >li >a {
+  padding-right: 0px;
+  padding-left: 20px;
+}
+
+.investor-button{
+  margin-left: 20px;
+  margin-top: 15px;
+  font-weight: none;
 
 }
