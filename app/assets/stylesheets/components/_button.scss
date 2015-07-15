@@ -61,3 +61,82 @@
     background: #05519b;
     color: #ffffff;
 }
+
+.social-footer {
+  float:right;
+  font-size: 2em;
+}
+
+.footer-btn-padding{
+  padding-right: 7px;
+}
+
+.footer-facebook {
+    // background: #3B5998;
+    color: #ffffff;
+
+}
+
+.footer-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open > .dropdown-toggle.btn-facebook {
+    // background: #2d4278;
+    color: #3B5998;
+}
+
+.footer-twitter {
+    // background: #00aced;
+    color: #ffffff;
+}
+
+.footer-twitter:hover, .btn-twitter:focus, .btn-twitter:active, .btn-twitter.active, .open > .dropdown-toggle.btn-twitter {
+    // background: #0581bb;
+    color: #00aced;
+}
+
+.social-bar{
+  position: fixed;
+  top: 60%;
+  left: 0px;
+}
+
+.left-bar-button{
+  display: block;
+  width: 48px;
+  margin: 0;
+  padding: 10px;
+  outline: none;
+  text-align: center;
+  font-size: 2em;
+
+}
+
+.left-twitter {
+  background: #00aced;
+  color: #ffffff;
+}
+
+.left-twitter:hover{
+  background: #0581bb;
+  color: #ffffff;
+}
+
+.left-facebook {
+  background: #3B5998;
+  color: #ffffff;
+}
+
+.left-facebook:hover{
+  background: #2d4278;
+  color: #ffffff;
+}
+
+
+.left-email {
+  background: #949496;
+  color: #ffffff;
+  padding: 0px;
+}
+
+.left-email:hover{
+  background: #626364;
+  color: #ffffff;
+}

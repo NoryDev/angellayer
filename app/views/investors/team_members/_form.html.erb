@@ -1,0 +1,125 @@
+<%= simple_form_for([@profile, @team_member], url: @team_member.id? ? update_investors_profile_team_member_path(@profile, @team_member) : investors_profile_team_members_path) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="img-container img-rounded full-padded">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">First Name</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :first_name, label: false, required: true, autofocus: true %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Last Name</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :last_name, label: false, required: true %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="img-container img-rounded full-padded">
+
+    <p><strong>Role in <%= link_to @profile.company_name, investors_profile_path(@profile) %></strong></p>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Job Title</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :job_title, label: false %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Joined in</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :year_joined, collection: Time.now.year.to_i.downto(1900), label: false %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Speciality</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :speciality, label: false %>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="img-container img-rounded full-padded">
+    <p><strong>Contact Details</strong></p>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Email</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :email, label: false %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">Phone number</div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :phone, label: false %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="img-container img-rounded full-padded">
+
+    <p><strong>Social Networks</strong></p>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <i class="fa fa-facebook fa-fw"></i> Facebook
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :facebook, as: :url, label: false, placeholder: "full url" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <i class="fa fa-twitter fa-fw"></i> Twitter
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :twitter, as: :url, label: false, placeholder: "full url" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <i class="fa fa-linkedin fa-fw"></i> Linkedin
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :linkedin, as: :url, label: false, placeholder: "full url" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <i class="fa fa-angellist fa-fw"></i> Angellist
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :angellist, as: :url, label: false, placeholder: "full url" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-2">
+        <i class="fa fa-skype fa-fw"></i> Skype
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <%= f.input :skype, as: :url, label: false, placeholder: "Skype id"  %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
+    <%= link_to 'Cancel', investors_profile_path(@profile), {class: "text-muted"} %>
+  </div>
+
+<% end %>

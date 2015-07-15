@@ -1,0 +1,84 @@
+<!-- =========================
+MODAL - SIGN IN
+============================== -->
+
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <div class="black-button"><strong>Get instant access to all investors reviews and ratings</strong></div><br>
+        <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook btn social-signin" do %>
+        <i class="fa fa-facebook"></i> Sign In
+        <% end %>
+        <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signin" do %>
+        <i class="fa fa-twitter"></i> Sign In
+        <% end %>
+        <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signin" do %>
+        <i class="fa fa-linkedin"></i> Sign In
+        <% end %>
+        <div class="content_divider"></div>
+        <p class="black-button text-center">Or</p>
+        <%= form_for :resource, :html => { class: "login-form", id: "login"}, url: log_in_path do |f| %>
+        <%= f.email_field :email, class: "form-control input-box", placeholder: "Email", value: flash[:log_email] %>
+        <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+        <br>
+        <%= f.submit "Log in", class: "btn btn-primary", id: "submit" %>
+        <small><%= link_to "Forgot your password?", new_password_path(:founder), class: "text-right" %></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+MODAL - SIGN UP
+============================== -->
+
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :resource, :html => { class: "registration-form", id: "register"}, url: sign_up_path(:resource) do |f| %>
+        <div class="switch">
+          <% if flash[:is_investor] %>
+          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle-modal", checked: "checked" %>
+          <% else %>
+          <%= f.check_box :is_investor, class: "check-toggle check-toggle-round-flat", id:"cc-toggle-modal", checked: "unchecked" %>
+          <% end %>
+          <label for="cc-toggle-modal"></label>
+          <span class="off black-button">I'm an investor</span>
+          <br>
+        </div>
+        <div class="for-founders">
+          <%= link_to founder_omniauth_authorize_path(:facebook), class: "btn btn-facebook social-signup" do %>
+          <i class="fa fa-facebook"></i> Sign Up
+          <% end %>
+          <%= link_to founder_omniauth_authorize_path(:twitter), class: "btn btn-twitter social-signup" do %>
+          <i class="fa fa-twitter"></i> Sign Up
+          <% end %>
+          <%= link_to founder_omniauth_authorize_path(:linkedin), class: "btn btn-linkedin social-signup" do %>
+          <i class="fa fa-linkedin"></i> Sign Up
+          <% end %>
+          <div class="content_divider"></div>
+          <p class="black-button text-center">Or</p>
+        </div>
+        <div class="login-form">
+          <%= f.email_field :email, class: "form-control input-box ", placeholder: "Email", value: flash[:sign_email] %>
+          <%= f.password_field :password, class: "form-control input-box", placeholder: "Password" %>
+          <%= f.password_field :password_confirmation, class: "form-control input-box", placeholder: "Confirm Password" %>
+          <br>
+          <%= f.submit "Get Started", class: "btn btn-danger", id: "submit" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

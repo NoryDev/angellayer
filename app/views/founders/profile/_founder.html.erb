@@ -1,38 +1,44 @@
 <% @founders.each do |founder| %>
-<div class="img-container img-rounded full-padded">
-  <div class="row">
+  <tr>
 
-    <div class="col-xs-12 col-sm-8">
-      <%= link_to founders_profile_path(founder), class: "pull-left", style: "padding-right: 1em" do %>
-        <%= image_tag founder.image, size: "100x100", alt: founder.name %>
+<!-- =========================
+FOUNDER COLUMN
+============================== -->
+    <td>
+      <%= link_to founders_profile_path(founder) do %>
+        <%= image_tag founder.image, alt: founder.name, class: "snippet-avatar-3" %>
       <% end %>
 
-      <p><strong><%= link_to founder.name, founders_profile_path(founder) %></strong>
-        <br>
-        <br>
+      <% if founder.name %>
+        <%= link_to founder.name, founders_profile_path(founder) %>
+      <% end %>
+    </td>
 
-        <% if founder.website %>
+<!-- =========================
+WEBSITE COLUMN
+============================== -->
+    <td class="hide-mobile">
+      <% if founder.website %>
         <%= link_to founder.website, "http://" + founder.website.gsub(/\Ahttps?:\/\//,""), target: "_blank" %>
         <% else %>
         <% end %>
-        <br>
+    </td>
 
-        <% if current_founder == founder || (current_founder && current_founder.admin) %>
-          <%= link_to "Edit", edit_founders_profile_path(founder) %>
-        <% end %>
-        <br>
+<!-- =========================
+REVIEWS COUNT COLUMN
+============================== -->
+    <td>
+      <%= founder.evaluations.count %>
+    </td>
 
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <p><strong>Contribution</strong></p>
-      <div class="text-uppercase text-muted">
-       <i class="fa fa-bar-chart"></i> <small><%= founder.evaluations.count %> Reviews</small>
-      </div>
-      <div class="text-uppercase text-muted">
-       <i class="fa fa-comments"></i> <small><%= founder.comments.count %> Comments</small>
-      </div>
-    </div>
-  </div>
-</div>
-  <br>
+
+
+<!-- =========================
+COMMENT COUNT COLUMN
+============================== -->
+
+    <td>
+      <%= founder.comments.count %>
+    </td>
+  </tr>
 <% end %>

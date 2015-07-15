@@ -5,8 +5,8 @@
 .rating {
 
   width: 160px;
-  margin: 10px 0;
-  font-size: 2em;
+  margin-top: 10px;
+  font-size: 1.7em;
   overflow:hidden;
 
   label {
@@ -32,4 +32,17 @@
       color: orange;
       cursor: pointer;
     }
+}
+
+
+.rate-text {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+@media (max-width: 992px) {
+  .rate-text {
+    margin-top: 0px;
+    margin-left: 0px;
+  }
 }

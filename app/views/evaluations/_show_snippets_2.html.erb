@@ -1,0 +1,64 @@
+<div class="img-rounded snippet-box">
+  <div class="row">
+      <h2 class="text-center"><%= evaluation.investor_profile %></h2>
+  </div>
+  <div class="row full-padded">
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        Reputation
+      </div>
+      <div class="col-xs-6 text-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.rating_reputation %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        Deal Terms
+      </div>
+      <div class="col-xs-6 text-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.rating_deal %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        Pitch Efficiency
+      </div>
+      <div class="col-xs-6 text-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.rating_pitch %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        Competence
+      </div>
+      <div class="col-xs-6 text-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.rating_competence %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 text-left">
+        Commitment
+      </div>
+      <div class="col-xs-6 text-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.rating_commitment %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= link_to investors_profile_path(evaluation.investor_profile) do %>
+      <div><%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar" %></div>
+    <% end %>
+      </div>
+      <div class="col-xs-8 col-xs-offset-1">
+        <p><small><%= evaluation.review.truncate_words(14) %> <br></p>
+        <%= link_to "More", evaluation_path(evaluation), {class:"btn btn-primary btn-sm pull-right"} %></small>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,78 +1,89 @@
 <% @profiles.each do |profile| %>
+  <tr>
 
-  <div class="img-container img-rounded full-padded">
-    <div class="row">
+<!-- =========================
+INVESTOR COLUMN
+============================== -->
+    <td>
+      <%= link_to investors_profile_path(profile) do %>
+        <%= image_tag profile.profile_pic.url, alt: profile.company_name, class: "snippet-avatar-3" %>
+      <% end %>
 
-      <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center">
-        <%= link_to investors_profile_path(profile) do %>
-          <p><%= image_tag profile.profile_pic.url(:thumb), size: "100x100", alt: profile.company_name, style: "max-width: 90%; height: auto;"%></p>
+      <% if profile.company_name %>
+        <%= link_to profile.company_name, investors_profile_path(profile) %>
+      <% end %>
+    </td>
+
+<!-- =========================
+MOOD COLUMN
+============================== -->
+    <td class="hide-mobile">
+      <% score = profile.total_average_score
+        if score.nil?
+          level = "default"
+        elsif score > 3.5
+          level = "success"
+        elsif score < 2.5
+          level = "danger"
+        else
+          level = "warning"
+        end %>
+      <% if score.nil? %>
+          <div class="not-rated">Not Rated</div>
+      <% else %>
+        <div class="label label-<%= level %> ">
+        <% star_used = 0 %>
+        <% score.to_i.times do %>
+          <i class="fa fa-star"></i>
+          <% star_used = score.to_i %>
         <% end %>
-        <% score = profile.total_average_score
-          if score.nil?
-            level = "default"
-          elsif score > 3.5
-            level = "success"
-          elsif score < 2.5
-            level = "danger"
-          else
-            level = "warning"
-          end
-        %>
-        <div class="label label-<%= level %>">
-          <% if score.nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% else %>
-            <% star_used = 0 %>
-            <% score.to_i.times do %>
-              <i class="fa fa-star"></i>
-              <% star_used = score.to_i %>
-            <% end %>
-            <% if score - score.to_i >= 0.5 %>
-              <i class="fa fa-star-half-o"></i>
-              <% star_used += 1 %>
-            <% end %>
-            <% empty = 5 - star_used
-              empty.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% end %>
+        <% if score - score.to_i >= 0.5 %>
+          <i class="fa fa-star-half-o"></i>
+          <% star_used += 1 %>
+        <% end %>
+        <% empty = 5 - star_used
+          empty.times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
         </div>
-      </div>
+      <% end %>
+    </td>
 
-      <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-        <% if (current_investor && current_investor.investor_profile.nil?) || (current_founder && current_founder.admin) %>
-          <% user = current_investor || current_founder %>
-          <% unless profile.investor_id %>
-            <div class="pull-right">
-              <%#= mail_to "info@sharkrank.co", "claim profile", {subject: "Claiming profile #{profile.company_name}", body: "I would like to claim #{profile.company_name}. My email is #{user.email} and my SharkRank id is #{user.id}. I understand it might take some time my account to be linked to this profile. "} %>
-              <small>
-                <%= link_to "claim profile", "#", :data => { toggle: "modal", target: "#claim-#{profile.id}" } %>
-              </small>
-              <%= render 'claim_modal', profile: profile %>
-            </div>
-          <% end %>
+<!-- =========================
+RATING COLUMN
+============================== -->
+
+    <td class = "text-yellow">
+      <% if profile.total_average_score.nil? %>
+        <%= link_to new_investors_profile_evaluation_path(profile) do %>
+          Add Review
         <% end %>
+      <% else %>
+        <%= render 'evaluations/stars', score: profile.total_average_score %>
+      <% end %>
+    </td>
 
-        <% if profile.company_name %>
-          <p><strong><%= link_to profile.company_name, investors_profile_path(profile) %></strong></p>
+<!-- =========================
+SHARKRANK COLUMN
+============================== -->
+
+    <td class="hide-mobile">
+        <%= render 'evaluations/grade', score: profile.total_average_score %>
+
+    </td>
+
+<!-- =========================
+REVIEW COUNT COLUMN
+============================== -->
+
+    <td>
+      <% if profile.evaluations.count != 0 %>
+      <%= profile.evaluations.count %>
+      <% else %>
+        <%= link_to new_investors_profile_evaluation_path(profile) do %>
+          Add Review
         <% end %>
-
-        <p><%= profile.physical_address %></p>
-        <p>
-          <% if profile.website %>
-            <%= link_to profile.website, "http://" + profile.website.gsub(/\Ahttps?:\/\//,"") %>
-          <% end %>
-        </p>
-
-        <div class="text-uppercase text-muted">
-          <i class="fa fa-trophy"></i><small> Average score: <%= profile.total_average_score %></small> &nbsp;&nbsp;&nbsp; <i class="fa fa-bar-chart"></i> <small><%= profile.evaluations.count %> Reviews</small>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
+      <% end %>
+    </td>
+  </tr>
 <% end %>

@@ -6,6 +6,7 @@ class InvestorProfile < ActiveRecord::Base
   belongs_to :author_as_founder, :class_name => "Founder"
   belongs_to :author_as_investor, :class_name => "Investor"
 
+  has_many :team_members, dependent: :destroy
   has_many :evaluations, dependent: :destroy
 
   has_attached_file :profile_pic,
@@ -14,6 +15,8 @@ class InvestorProfile < ActiveRecord::Base
 
   validates_attachment_content_type :profile_pic,
     content_type: /\Aimage\/.*\z/
+
+  validates :company_name, uniqueness: { case_sensitive: false }
 
   after_create :send_welcome_email
 

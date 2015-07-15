@@ -1,5 +1,52 @@
-<p>Welcome <%= @email %>!</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" margin="0" style="font-family: 'Helvetica Neue Regular', Arial, Helvetica, Geneva, sans-serif; font-size:18px; background:#eeeeee; margin:0; width:100%; color:#333333; font-weight: normal;">
+  <tr>
+    <th scope="col">
+      <table width="600"  align="center" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+          <th scope="col">
+            <br><br>
+            <a href="http://sharkrank.co/"><img src="http://sharkrank.co/assets/logo-sharkrank-582beb8bb1a8f5ef2aa40f6fc7304ea1.svg" alt="SharkRank" height="50px" align="center"></a>
+            <br><br><br>
 
-<p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+            <div align="left">
+            <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">Welcome to SharkRank</h2>
+
+            <p style="font-weight: normal;">Thanks for joining the SharkRank community. <br>
+            Your email address : <%= @email %>  <br>
+            Please confirm this is your email by clicking on the link below: <br>
+            <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+            </p>
+            <br>
+            <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">What is SharkRank?</h2>
+            <p style="font-weight: normal;"><a href="http://sharkrank.co/">SharkRank</a> is a community of founders who rate and review angel investors, Venture Capitalist firms and investors.
+            </p>
+            <br>
+            <h2 style="margin-top:0px;margin-bottom:15px;font-size:24px;line-height:25px;font-weight:bold;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#565a5c">How does SharkRank help you?</h2>
+
+            <ul style="font-weight: normal;">
+              <li>Browse reviews and rankings of business angels, venture capitalists and investors.
+              </li>
+              <li>Rate and review angel investors. Help other founders or entrepreneurs by sharing your experiences with investors.
+              </li>
+              <li>Help the start-up community. Give other founders tips and tricks to keep on track. Help them find the profile of investor best suited to their needs.
+              </li>
+            </ul>
+            <br>
+            <p style="font-weight: normal;">Let's build a stronger community together,
+              <br><br>
+              <span style="font-size:22px; font-weight:bold;font-family:Comic Sans MS, Comic Sans,Lucida Handwriting, script, cursive">The SharkRank Team
+              </span>
+              <br><br><br>
+              For any questions, please don't hesitate to contact us <a href="mailto:info@sharkrank.co">info@sharkrank.co</a></p><br><br><br>
+
+
+            </div>
+
+          </th>
+        </tr>
+      </table>
+    </th>
+  </tr>
+</table>

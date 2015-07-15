@@ -1,41 +1,120 @@
 <%= simple_form_for(@founder, url: founders_profile_path) do |f| %>
 <%= f.error_notification %>
 
-<div class = "img-container img-rounded full-padded">
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :website, as: :url %>
-  <%= f.input :cell_phone %>
-</div>
-<br>
-
-<div class = "img-container img-rounded full-padded">
+<div class="img-container img-rounded full-padded">
   <div class="row">
-  <div class="col-xs-12 col-sm-3">
-    <%= image_tag @founder.image, size: "100x100" %>
-  </div>
-  <div class="col-xs-12 col-sm-9">
-    <%= f.input :profile_pic, label:"Choose or modify profile picture" %>
-  </div>
+    <div class="col-xs-12 col-md-2">
+      <%= image_tag @founder.image, size: "100x100"%>
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <div class="small-marged">Choose or Modify your Profile Pic</div>
+      <%= f.input :profile_pic, as: :file, label: false %>
+    </div>
   </div>
 </div>
 <br>
 
-<div class = "img-container img-rounded full-padded">
+<div class="img-container img-rounded full-padded">
 
-<%= f.input :facebook, as: :url, label: '<i class="fa fa-facebook"></i>'.html_safe + ' Facebook' %>
-<%= f.input :twitter, as: :url, label: '<i class="fa fa-twitter"></i>'.html_safe + ' Twitter' %>
-<%= f.input :linkedin, as: :url, label: '<i class="fa fa-linkedin"></i>'.html_safe + ' Linkedin' %>
-<%= f.input :angellist, as: :url, label: '<i class="fa fa-angellist"></i>'.html_safe + ' Angellist' %>
-<%= f.input :skype, as: :url, label: '<i class="fa fa-skype"></i>'.html_safe + ' Skype' %>
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Email</div>
+    <div class="col-xs-12 col-md-10">
+      <%= @founder.email %>
+      <br><br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">First Name</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :first_name, label: false, placeholder: 'First name - username for anonymity' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Last Name</div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :last_name, label: false, placeholder: 'Last name - leave blank for anonymity' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">Website</div>
+    <div class="col-xs-12 col-md-10">
+    <%= f.input :website, as: :url, label: false, placeholder: 'www.example.com' %>
+    </div>
+  </div>
 </div>
 <br>
 
-<div class = "img-container img-rounded full-padded">
-<%= f.input :all_startups, hint: "List of all your current and previous start-ups with links." %>
-<%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
+
+
+
+<div class="img-container img-rounded full-padded">
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-facebook fa-fw"></i> Facebook
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :facebook, as: :url, label: false, placeholder: 'Your Facebook page - leave blank for anonymity' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-twitter fa-fw"></i> Twitter
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :twitter, as: :url, placeholder: ' Your Twitter page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-linkedin fa-fw"></i> Linkedin
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :linkedin, as: :url, placeholder: 'Your Linkedin page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-angellist fa-fw"></i> Angellist
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :angellist, as: :url, placeholder: 'Your Angellist page - leave blank for anonymity', label: false %>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-2">
+      <i class="fa fa-skype fa-fw"></i> Skype
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :skype, as: :url, placeholder: 'Your Skype ID - leave blank for anonymity', label: false  %>
+    </div>
+  </div>
+
+</div>
+<br>
+
+
+<div class="img-container img-rounded full-padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-2">
+      Previous startups
+    </div>
+    <div class="col-xs-12 col-md-10">
+      <%= f.input :all_startups, label: false, placeholder: "List of all your current and previous start-ups with links." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.button :submit, "Save", class: "btn btn-primary" %> &nbsp; &nbsp;
     <%= link_to 'Cancel', founders_profile_path, {class: "text-muted"} %>
+  </div>
 </div>
 <% end %>
-
 <br>

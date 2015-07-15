@@ -6,11 +6,7 @@ class Founders::ProfileController < ApplicationController
   def index
     @founders = fetch_founders
     @founders = @founders.page(params[:page]).per(per_page)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "index", layout: "header-fullpage"
   end
 
   def show
@@ -57,7 +53,7 @@ class Founders::ProfileController < ApplicationController
 
     # Number of evaluation on a page
     def per_page
-      5
+      25
     end
 
     # Use callbacks to share common setup or constraints between actions.

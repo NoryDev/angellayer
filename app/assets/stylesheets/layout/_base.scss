@@ -19,6 +19,30 @@
   padding: 1em;
 }
 
+.small-padded{
+  padding: 0.5em;
+}
+
+.padded-less-top{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.padded-less-bottom{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+}
+
+.white-link{
+  color: white;
+}
+
+.white-link:hover{
+  color: #e3e3e3;
+}
+
 hr {
   border-bottom: 1px solid rgba(0,0,0,0.2);
 }
@@ -27,8 +51,12 @@ hr {
   font-size: 2em;
 }
 
+.text-medium {
+  font-size: 1.1em;
+}
+
 body {
-  font-family: "Source Sans pro", "sans-serif";
+  // font-family: "Source Sans pro", "sans-serif";
   //background: url(image_path('bg-texture.jpg')) repeat;
   background: #f7f8fa;
 
@@ -138,7 +166,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Raleway', sans-serif;
+  // font-family: 'Raleway', sans-serif;
   color: #323232;
   // margin-bottom: 0;
   // margin-top: 0;
@@ -189,3 +217,58 @@ h6 {
   max-width: 100%;
   height: auto;
 }
+
+.black-text{
+  color: black;
+}
+
+.blue-box{
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 3px;
+  width: 60px;
+  text-align: center;
+}
+
+td {
+  padding: 10px 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+th {
+  padding: 15px 15px;
+  border-bottom: 2px solid lightgrey;
+  background-color: #eaecef;
+  font-weight: normal;
+}
+
+table{
+  width: 100%
+}
+
+tr{
+  background-color: white;
+}
+
+tr:hover td {
+  background:#f0f1f5;
+}
+
+
+
+.not-rated{
+  width:78px;
+  height: 19px;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile{
+    display: none;
+  }
+}
+

@@ -1,51 +1,32 @@
-<div class = "img-container img-rounded full-padded">
+<div class="img-rounded snippet-box">
   <div class="row">
-    <div class="col-sm-3 col-xs-4 text-center">
+    <div class="snippet-title small-padded">
       <%= link_to investors_profile_path(evaluation.investor_profile) do %>
-        <div><%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar" %></div>
+        <%= image_tag evaluation.investor_profile.avatar, class: "snippet-avatar-3" %>
       <% end %>
-      <% score = evaluation.investor_profile.total_average_score
-        if score.nil?
-          level = "default"
-        elsif score > 3.5
-          level = "success"
-        elsif score < 2.5
-          level = "danger"
-        else
-          level = "warning"
-        end
-      %>
-      <div class="label label-<%= level %>">
-        <% if score.nil? %>
-          <% 5.times do %>
-            <i class="fa fa-star-o"></i>
-          <% end %>
-        <% else %>
-          <% star_used = 0 %>
-          <% score.to_i.times do %>
-            <i class="fa fa-star"></i>
-            <% star_used = score.to_i %>
-          <% end %>
-          <% if score - score.to_i >= 0.5 %>
-            <i class="fa fa-star-half-o"></i>
-            <% star_used += 1 %>
-          <% end %>
-          <% empty = 5 - star_used
-            empty.times do %>
-            <i class="fa fa-star-o"></i>
-          <% end %>
+      <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
+      <span class="pull-right text-yellow">
+        <%= render 'evaluations/stars', score: evaluation.investor_profile.total_average_score %>
+      </span>
+    </div>
+
+  </div>
+
+
+  <div class="row small-padded">
+
+    <p><small><%= evaluation.review.truncate_words(30) %>
+        <% if evaluation.review.split.size > 30 %>
+          <%= link_to "Read More", evaluation_path(evaluation) %>
+        <% elsif evaluation.review.split.size > 0 %>
+        ...
+        <%= link_to "View Review", evaluation_path(evaluation) %>
+        <% else%>
+        No Review,
+        <%= link_to " View Score", evaluation_path(evaluation) %>
         <% end %>
-      </div>
-      <div class="text-uppercase text-muted"><small>Average: <%= score %></small></div>
-    </div>
-    <div class="col-xs-7 col-xs-offset-1 col-sm-8">
-      <div class="review">
-        <p>
-          Review for <%= link_to evaluation.investor_profile, investors_profile_path(evaluation.investor_profile) %>
-        </p>
-        <p><small><%= evaluation.review.truncate_words(14) %> <%= link_to "Read more", evaluation_path(evaluation) %></small></p>
-      </div>
-    </div>
+      </small></p>
+
   </div>
 </div>
 <br>

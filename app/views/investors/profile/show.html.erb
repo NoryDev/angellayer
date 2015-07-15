@@ -1,21 +1,47 @@
-<div class = "img-container img-rounded full-padded">
+<div class="img-container img-rounded full-padded">
 
-  <h1 class = "text-center"><%= @profile.company_name %></h1>
+  <h1 class="text-center"><%= @profile.company_name %></h1>
   <hr>
 
   <div class="row">
     <div class="col-xs-12 col-sm-3">
-      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100", alt: @profile.company_name %>
+      <%= image_tag @profile.profile_pic.url(:thumb), size: "100x100", alt: @profile.company_name, class: "snippet-avatar-2" %>
     </div>
     <div class="col-xs-12 col-sm-9">
       <p>
-        <i class="fa fa-home"></i> <%= @profile.physical_address %>
-      </p>
-      <p>
-        <i class="fa fa-globe"></i> <% if @profile.website %>
-          <%= link_to @profile.website, "http://" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
+        <i class="fa fa-home fa-fw"></i>
+        <% if @profile.physical_address != "" %>
+        <%= @profile.physical_address %>
+        <% else %>
+          No address yet
         <% end %>
       </p>
+      <p>
+        <i class="fa fa-bookmark fa-fw"></i>
+        <% if @profile.website != "" %>
+          <%= link_to @profile.website, "http://" + @profile.website.gsub(/\Ahttps?:\/\//,"") %>
+        <% else %>
+          No website yet
+        <% end %>
+      </p>
+
+      <p>
+        <i class="fa fa-users fa-fw"></i>
+        <% if !@profile.team_members.empty? %>
+          <%= raw @profile.team_members.collect { |tm| link_to tm.name, investors_profile_team_member_path(id: tm.id, profile_id: @profile.id) }.join(", ") %>
+        <% else %>
+          No Team Member yet
+        <% end %>
+
+        <% if (current_founder && current_founder.admin) || (current_investor && @profile.investor == current_investor) || (current_founder && @profile.investor.nil? && @profile.author_as_founder == current_founder) || (current_investor && @profile.investor.nil? && @profile.author_as_investor == current_investor) %>
+          &nbsp;
+          <%= link_to new_investors_profile_team_member_path(@profile), title: "Add a member", class: "btn-xs btn-success" do %>
+            <i class="fa fa-plus"></i>
+          <% end %>
+        <% end %>
+
+      </p>
+
       <p>
         <% if current_founder %>
           <%= link_to new_investors_profile_evaluation_path(@profile), {class: 'btn btn-danger btn-sm'} do %>
@@ -65,13 +91,14 @@
 
         <div><a class="popover_form" data-content="<small class='text-muted'> <%= t "#{area.downcase}_description" %></small>"><strong class="black-button"><%= area %> <i class="fa fa-question-circle"></i></strong></a></div>
 
-        <div class="label label-<%= level %>">
 
-          <% if @profile.rating(area.downcase).nil? %>
-            <% 5.times do %>
-              <i class="fa fa-star-o"></i>
-            <% end %>
-          <% else %>
+
+        <% if @profile.rating(area.downcase).nil? %>
+        <div class="not-rated">
+          Not rated
+        </div>
+        <% else %>
+          <div class="label label-<%= level %>">
             <% star_used = 0 %>
             <% @profile.rating(area.downcase).to_i.times do %>
               <i class="fa fa-star"></i>
@@ -85,31 +112,56 @@
               empty.times do %>
               <i class="fa fa-star-o"></i>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </li>
     <% end %>
   </ul>
   <hr>
 
   <p>
-    <i class="fa fa-cubes"></i> Sectors invested in: <%= @profile.sectors_invested_in %>
+    <i class="fa fa-cubes fa-fw"></i> Sectors invested in:
+    <% if @profile.sectors_invested_in != "" %>
+      <%= @profile.sectors_invested_in %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-usd"></i> Capital under managment: <%= @profile.capital_under_managment %> $
+    <i class="fa fa-usd fa-fw"></i> Capital under managment:
+    <% if @profile.capital_under_managment != nil %>
+      <%= @profile.capital_under_managment %> $
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-globe"></i> Geographical focus: <%= @profile.geographical_focus %>
+    <i class="fa fa-globe fa-fw"></i> Geographical focus:
+    <% if @profile.geographical_focus != "" %>
+      <%= @profile.geographical_focus %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-tree"></i> Investment stage: <%= @profile.preferred_investment_stage %>
+    <i class="fa fa-tree fa-fw"></i> Investment stage:
+    <% if @profile.preferred_investment_stage != "" %>
+      <%= @profile.preferred_investment_stage %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <p>
-    <i class="fa fa-users"></i> Nb of projects invested in: <%= @profile.nb_projects_invested_in %>
+    <i class="fa fa-flask fa-fw"></i> Nb of projects invested in:
+    <% if @profile.nb_projects_invested_in != nil %>
+      <%= @profile.nb_projects_invested_in %>
+      <% else %>
+        No info yet
+    <% end %>
   </p>
 
   <% if @profile.investor_id %>
@@ -118,22 +170,22 @@
       <hr>
       <p><strong>Contact :</strong></p>
       <p>
-        <i class="fa fa-user"></i> <%= @profile.contact_person %>
+        <i class="fa fa-user fa-fw"></i> <%= @profile.contact_person %>
       </p>
 
       <p>
-        <i class="fa fa-envelope-o"></i> &nbsp;
-        <% if @profile.contact_email %>
+        <i class="fa fa-envelope-o fa-fw"></i> &nbsp;
+        <% if @profile.contact_email != "" %>
         <%= mail_to @profile.contact_email, @profile.contact_email %>
         <% else %>
         <%= mail_to @profile.email, @profile.email %>
         <% end %>
       </p>
       <p>
-        <i class="fa fa-phone"> &nbsp; </i><%= @profile.phone_number %>
+        <i class="fa fa-phone fa-fw"> &nbsp; </i><%= @profile.phone_number %>
       </p>
       <p>
-        <i class="fa fa-mobile"></i> <%= @profile.contact_cell_phone %>
+        <i class="fa fa-mobile fa-fw"></i> <%= @profile.contact_cell_phone %>
       </p>
     </div>
   <% else %>
@@ -215,3 +267,5 @@
   })
   </script>
 <% end %>
+
+<%= render 'shared/socials' %>

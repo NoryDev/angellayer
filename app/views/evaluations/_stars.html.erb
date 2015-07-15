@@ -1,0 +1,18 @@
+<% if score.nil? %>
+<span class="black-text">
+      Add Rating
+</span>
+<% else %>
+  <% stars_used = 0 %><% score.to_i.times do %>
+    <i class="fa fa-star"></i>
+  <% end %>
+  <% stars_used = score.to_i %>
+  <% if score - score.to_i >= 0.5 %>
+    <i class='fa fa-star-half-o'></i>
+    <% stars_used += 1 %>
+  <% end %>
+  <% empty = 5 - stars_used %>
+  <% empty.times do %>
+    <i class='fa fa-star-o'></i>
+  <% end %>
+<% end %>

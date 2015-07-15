@@ -37,6 +37,7 @@
   .intro-section {
     margin-top: 0px;
     margin-bottom: 10px;
+    margin-left: 3%;
   }
 
   .img-container {
@@ -73,7 +74,7 @@
 
   .footer-logo {
     max-width: 180px;
-    margin: auto;
+    // margin: auto;
   }
 
   .bgcolor-2 {
@@ -84,14 +85,27 @@
 
 .snippet-avatar {
   width: 100%;
+  height: auto;
   border-radius: 5px;
+}
+
+.snippet-avatar-2 {
+  width: 75%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.snippet-avatar-3 {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
 }
 
 #home-header {
   width: 100%;
   //height: 100%;
   min-height: 85vh;
-  background: url(image_path('welcome-2.jpg')) no-repeat center;
+  background: url(image_path('welcome-4.jpg')) no-repeat center;
   background-size: cover;
 
   section {
@@ -336,10 +350,10 @@
   background-color: #fafafa;
 }
 
-  .scroll-btn{
+.scroll-btn{
   position: absolute;
   width: 100px;
-  bottom: 20px;
+  bottom: 10px;
   left: calc(50% - 50px);
   text-align: center;
   font-size: 60px;
@@ -372,4 +386,92 @@
   margin-left: 0px;
   padding-left: 0px;
 
+}
+
+.white-box{
+background: white;
+padding: 20px;
+border-radius: 5px;
+}
+
+.button-margin-top{
+  margin-top: 5px;
+}
+
+.lower-margin{
+  margin-bottom: 5px;
+}
+
+.z-logo{
+  position: absolute;
+  width: 200px;
+  bottom: -100px;
+  left: calc(50% - 100px);
+  text-align: center;
+  z-index: 99;
+}
+
+@media (max-width: 767px) {
+  .scroll-btn-padding{
+    padding-bottom: 50px;
+  }
+  .logo-bottom-padded{
+  padding-bottom: 100px;
+  }
+  .logo-top-padded{
+    padding-top: 100px;
+  }
+}
+
+.snippet-box{
+  background: #ffffff;
+  border-left: 1px solid #e3e3e3;
+  border-radius: 3px;
+  box-shadow: 1px 2px 0 0 rgba(180, 180, 180, 0.50);
+  padding-top: 0px;
+}
+
+.snippet-title{
+  background: #428BCA;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.snippet-title:hover{
+  background: #2d6ba1;
+}
+
+.snippet-title a{
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.snippet-title .pull-right{
+  margin-top: 5px;
+  margin-right: 7px;
+}
+
+.snippet-title .snippet-avatar-3{
+  margin-right: 5px;
+}
+
+.text-yellow{
+  color: $yellow;
+}
+
+.bg-color-snippets{
+  background: #dddddd;
+}
+
+
+
+.grey-snippet .snippet-title{
+  background: #949496;
+}
+
+.grey-snippet .snippet-title:hover{
+  background: #626364;
 }
